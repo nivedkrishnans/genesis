@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+        <title>Pravega Originals</title>
+        <link href="{%static 'originals/originals_base.css'%}" type="text/css" rel="stylesheet">
+        <link href="{%static 'originals/originals_all.css'%}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block content %}
+
+    <div id="sidenav">
+        <a href="#">Blogs</a>
+        <a href="#">Science Quizzine</a>
+        <a href="#">Comic Strip</a>
+        <a href="#">Tuesday Trivia</a>
+        <a href="#">Throwback Thursdays</a>
+        <a href="#">Memes</a>
+        <a href="#">Videos</a>
+    </div>
+    <div id="originals-main">
+        <h1> Images </h1>
+        <div class="flexed">
+            {% for image in images %}
+                <img class="image" src="{{ MEDIA_URL }}{{ image.image_file.url }}">
+            {% endfor %}
+        </div>
+
+        <h1> Articles </h1>
+        <div class="flexed">
+            {% for article in articles %}
+                <p> {{ article.title }}  <br></p>
+            {% endfor %}
+        </div>
+
+        <h1> Videos </h1>
+        <div class="flexed">
+            {% for video in videos %}
+                 <iframe src="https://www.youtube.com/embed/{{ video.youtube_id }}" allowfullscreen frameborder='0'>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

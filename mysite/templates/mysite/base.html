@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        {% block head %}
+        {% endblock %}
+        <link href="{%static 'originals/style.css'%}" type="text/css" rel="stylesheet">
+
+    </head>
+    <body>
+
+    	<div id="top-bar">
+    		<ul id="top-bar-menu">
+    			<li class="top-bar-menu-item">EVENTS</li>
+    			<li class="top-bar-menu-item">HIGHLIGHTS</li>
+    			<li class="top-bar-menu-item">ORIGINALS</li>
+    			<li class="top-bar-menu-item">ARCHIVES</li>
+    			<li class="top-bar-menu-item">CONTACTS</li>
+    		</ul>
+    	</div>
+
+        {% block content %}
+
+        {% endblock %}
+
+		<script src="{%static 'originals/myscript.js'%}" ></script>
+    </body>
+</html>
