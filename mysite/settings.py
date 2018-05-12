@@ -125,7 +125,6 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     (os.path.join(BASE_DIR, 'mysite/templates')),
-    ('path_to_static_directory/static/'),
 ]
 
 STATIC_URL = '/static/'
