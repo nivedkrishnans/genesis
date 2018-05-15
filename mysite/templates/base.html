@@ -2,27 +2,42 @@
 {% load staticfiles %}
 <html>
     <head>
+        <link href="{%static 'style.css'%}" type="text/css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700" rel="stylesheet">
         {% block head %}
         {% endblock %}
-        <link href="{%static 'style.css'%}" type="text/css" rel="stylesheet">
+
 
     </head>
     <body>
 
-    	<div id="top-bar">
+        <div id="top-bar">
     		<ul id="top-bar-menu">
-    			<li class="top-bar-menu-item">EVENTS</li>
-    			<li class="top-bar-menu-item">HIGHLIGHTS</li>
-    			<li class="top-bar-menu-item">ORIGINALS</li>
-    			<li class="top-bar-menu-item">ARCHIVES</li>
-    			<li class="top-bar-menu-item">CONTACTS</li>
+    			<a href="#" class="top-bar-menu-item">EVENTS</a>
+    			<a href="#" class="top-bar-menu-item">HIGHLIGHTS</a>
+    			<a href="#" class="top-bar-menu-item">ORIGINALS</a>
+    			<a href="#" class="top-bar-menu-item">ARCHIVES</a>
+    			<a href="#" class="top-bar-menu-item">CONTACTS</a>
     		</ul>
     	</div>
 
-        <div>
+        <div id="side-nav">
+            <div class="side-nav-links">
+    			<a href="#" class="side-nav-item">Science Quizzine</a><br>
+    			<a href="#" class="side-nav-item">Memes</a><br>
+    			<a href="#" class="side-nav-item">Comic Strips</a><br>
+    			<a href="#" class="side-nav-item">Throwback Thursdays</a><br>
+    			<a href="#" class="side-nav-item">Tuesday Trivia</a><br>
+            </div>
+        </div>
+
+
+        <div class="main">
             {% block content %}
 
             {% endblock %}
         </div>
+        <script src="{%static 'myScript.css'%}" ></script>
     </body>
 </html>

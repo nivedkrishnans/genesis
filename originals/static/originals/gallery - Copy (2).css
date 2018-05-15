@@ -51,16 +51,9 @@ body {
     position: absolute;
     left:24px;
     right:24px;
-    bottom: 0;
     margin: 0;
     padding: 14px;
     background-color: rgba(0,0,0,0.2);
-    transition: 0.2s ease;
-}
-
-.image-details:hover{
-    background-color: rgba(0,0,0,0.8);
-    border: rgba(255,255,255,0.5) 1px solid;
 }
 
 .image-details p{
@@ -76,7 +69,7 @@ body {
   display: none;
   position: fixed;
   z-index: 1;
-  padding: 0;
+  padding: 80px;
   left: 0;
   top: 0;
   width: 100%;
@@ -87,23 +80,19 @@ body {
 
 /* Modal Content */
 .modal-content {
-  position: relative;
-  display: block;
+  position: absolute;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
   margin: 0;
   padding: 0;
   width: auto;
-  max-width: 80vw;
-  max-height: 80vh;
-  border: green 3px solid;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .modal-image{
-    width: 80vw;
-    height: 75vh;
-    object-fit: scale-down;
+    max-height: 80px;
 }
 
 /* The Close Button */
@@ -112,9 +101,8 @@ body {
   position: absolute;
   top: 10px;
   right: 25px;
-  font-size: 56px;
+  font-size: 35px;
   font-weight: bold;
-  transition: 0.2s ease;
 }
 
 .close:hover,
@@ -136,7 +124,7 @@ body {
 .prev,
 .next {
 
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
   cursor: pointer;
   position: fixed;
   top: 50%;
@@ -145,12 +133,11 @@ body {
   margin-top: -50px;
   color: white;
   font-weight: bold;
-  font-size: 48px;
+  font-size: 20px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
-  border: rgba(0, 0, 0, 0.2) 2px solid;
 }
 
 /* Position the "next button" to the right */
@@ -163,7 +150,6 @@ body {
 .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
-  border: white 2px solid;
 }
 
 /* Number text (1/3 etc) */

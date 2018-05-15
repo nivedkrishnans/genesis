@@ -1,95 +1,71 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 {% load staticfiles %}
-<html>
-    <head>
+{% block head %}
         <title>Pravega Gallery</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{%static 'originals/originals_base.css'%}" type="text/css" rel="stylesheet">
         <link href="{%static 'originals/originals_all.css'%}" type="text/css" rel="stylesheet">
         <link href="{%static 'originals/gallery.css'%}" type="text/css" rel="stylesheet">
-    </head>
+{% endblock %}
 
-
-    <body>
-    <h2 style="text-align:center">Lightbox</h2>
-
-    <div class="row">
-        {% for image in images %}
-        <div class="column">
-          <img src="{{ MEDIA_URL }}{{ image.image_file.url }}" style="width:100%; border:red 3px solid;" onclick="openModal();currentSlide({{ forloop.counter }})" class="hover-shadow cursor">
+{% block content %}
+        <div class="thumbnail-gallery">
+            {% for image in images %}
+            <div class="thumbnail-container">
+              <img src="{{ MEDIA_URL }}{{ image.image_file.url }}" alt="{{ image.title }}" onclick="openModal();currentSlide({{ forloop.counter }})" class="hover-shadow cursor thumbnail">
+            </div>
+          {% endfor%}
         </div>
-        <span id="{{ i }}" style="display:none;">{{ i|add:1}}</span>
-      {% endfor%}
-    </div>
 
-    <div id="myModal" class="modal">
-      <span class="close cursor" onclick="closeModal()">&times;</span>
-      <div class="modal-content">
-          {% for image in images %}
-          <div class="mySlides">
-              <div class="numbertext"> {{ forloop.counter }} / {{ length }}</div>
-              <img src="{{ MEDIA_URL }}{{ image.image_file.url }}" >
+        <div id="myModal" class="modal">
+          <span class="close cursor" onclick="closeModal()">&times;</span>
+          <div class="modal-content">
+              {% for image in images %}
+              <div class="mySlides">
+                  <div class="numbertext"> {{ forloop.counter }} / {{ length }}</div>
+                  <img class="modal-image" src="{{ MEDIA_URL }}{{ image.image_file.url }}" alt="{{ image.title }}">
+                  <div class="image-details">
+                      <p>{{ image.description }}</p>
+                  </div>
+              </div>
+            {% endfor%}
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
           </div>
-        {% endfor%}
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-        <div class="caption-container">
-          <p id="caption"></p>
         </div>
 
+        <script>
+        function openModal() {
+          document.getElementById('myModal').style.display = "block";
+        }
 
-        <!-- {% with i=1 %}
-        {% for image in images %}
-        <div class="column">
-          <img class="demo cursor" src="{{ MEDIA_URL }}{{ image.image_file.url }}" style="width:100%" onclick="currentSlide({{ i }})" alt="{{ image.title }}">
-        </div>
-        {{ i|add:'1'}}
-        {% endfor%}
-        {% endwith %}
-    -->
-      </div>
-    </div>
+        function closeModal() {
+          document.getElementById('myModal').style.display = "none";
+        }
 
-    <script>
-    function openModal() {
-      document.getElementById('myModal').style.display = "block";
-    }
+        var slideIndex = 1;
+        showSlides(slideIndex);
 
-    function closeModal() {
-      document.getElementById('myModal').style.display = "none";
-    }
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
 
-    var slideIndex = 1;
-    showSlides(slideIndex);
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
 
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
 
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("demo");
-      var captionText = document.getElementById("caption");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " active";
-      captionText.innerHTML = dots[slideIndex-1].alt;
-    }
-    </script>
-
-    </body>
-    </html>
+          slides[slideIndex-1].style.display = "block";
+        }
+        </script>
+{% endblock %}
