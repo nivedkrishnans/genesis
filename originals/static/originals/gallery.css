@@ -49,12 +49,12 @@ body {
     border-radius: 5px;
     border: rgba(255,255,255,0.1) 1px solid;
     position: absolute;
-    left:24px;
-    right:24px;
-    bottom: 0;
     margin: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 14px;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.4);
     transition: 0.2s ease;
 }
 
@@ -95,14 +95,13 @@ body {
   margin: 0;
   padding: 0;
   width: auto;
-  max-width: 80vw;
-  max-height: 80vh;
-  border: green 3px solid;
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
 .modal-image{
-    width: 80vw;
-    height: 75vh;
+    width: 90vw;
+    height: 90vh;
     object-fit: scale-down;
 }
 
@@ -135,14 +134,15 @@ body {
 /* Next & previous buttons */
 .prev,
 .next {
-
+    vertical-align: middle;
   background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
   position: fixed;
   top: 50%;
+  transform: translateY(-50%);
   width: auto;
-  padding: 16px;
-  margin-top: -50px;
+  padding: 20vh 16px ;
+  margin: 0;
   color: white;
   font-weight: bold;
   font-size: 48px;

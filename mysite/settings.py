@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'originals',
-	'home',
+	'Previous_Pravega',
 ]
 
 MIDDLEWARE = [

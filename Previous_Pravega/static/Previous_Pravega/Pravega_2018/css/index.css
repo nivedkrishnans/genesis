@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter|Raleway');
+#footer {
+    bottom: -4vh;
+}
+
+#floating-footer {
+    transform: scale(0.6) translateX(150%);
+}
+
+#main {
+    width: 100%;
+    display: block;
+    padding: 0 !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#disabler {
+    position: absolute;
+    float: left;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 4999;
+    background-color: black;
+    opacity: 0.15;
+    display: none;
+}
+
+#pravega_logo,
+#year,
+#airbus_logo,
+#presents {
+    font-size: 8.25em;
+    color: #FFF;
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    display: table;
+    white-space: nowrap;
+}
+
+#details {
+    margin-bottom: -35px;
+    font-size: 2.25em;
+    z-index: 3000;
+    color: #000000;
+    display: block;
+    width: 100%;
+    justify-content: center;
+}
+
+#pra {
+    display: inline;
+    position: relative;
+    padding: 10px 0 10px 30px;
+}
+
+#v-logo {
+    display: inline;
+    position: relative;
+    padding: 0;
+}
+
+#ega {
+    display: inline;
+    position: relative;
+    padding: 10px 0;
+}
+
+#year,
+#airbus_logo,
+#presents {
+    font-size: 1.5em;
+    opacity: 0;
+    text-align: center;
+}
+
+#airbus_logo,
+#presents {
+    opacity: 1;
+}
+#scroll_me_arrow {
+    position: fixed;
+    top: 85vh;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    display: none;
+    margin-left: -12px;
+    border-left: 2px solid #FFF;
+    border-bottom: 2px solid #FFF;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: up_down 2s infinite;
+    animation: up_down 2s infinite;
+    box-sizing: border-box;
+}
+
+@-webkit-keyframes up_down {
+    0% {
+        -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+    20% {
+        -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+    }
+    40% {
+        -webkit-transform: rotate(-45deg) translate(0, 0);
+    }
+}
+
+@keyframes up_down {
+    0% {
+        transform: rotate(-45deg) translate(0, 0);
+    }
+    20% {
+        transform: rotate(-45deg) translate(-10px, 10px);
+    }
+    40% {
+        transform: rotate(-45deg) translate(0, 0);
+    }
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background: linear-gradient(#0E0D59, #0E0D59 40%, #7C5B31);
+}
+
+#black-trans {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+}
+
+#home {
+    position: absolute;
+    top: 30vh;
+    width: 100%;
+    height: auto;
+}
+
+.content-text-section p {
+    margin-bottom: 20px;
+}
+
+#intro p {
+    margin: 5px 0px 5px 0px;
+}
+
+@media only screen and (max-width: 900px) {
+    #header-logo {
+        padding: 10px 20px 10px 20px;
+        width: 40px;
+        height: 40px;
+        float: left;
+    }
+    #pravega_logo {
+        font-size: 4em;
+    }
+    #pra {
+        padding: 10px 0;
+    }
+    #v-logo {
+        height: 70px;
+        width: 50px;
+    }
+    #year {
+        font-size: 1.3em;
+        width: 244px;
+    }
+    #home {
+        top: 10vh;
+    }
+    #main {
+        top: -5%;
+    }
+    #title {
+        margin: 0;
+        font-size: 2em;
+    }
+    #title {
+        margin: 0;
+        font-size: 2em;
+    }
+    #main {
+        margin-top: 80px;
+        margin-left: 0;
+    }
+    #scroll_me_arrow {
+        top: 65vh;
+    }
+    .content-text-section {
+        padding: 20px;
+    }
+}

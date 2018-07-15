@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter|Raleway');
+#main a,
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+#content-header {
+    background-color: black;
+    color: white;
+}
+
+#content-header h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin: 0;
+    padding: 27px 0;
+}
+
+#content-header h2 {
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.contact {
+    margin-top: 1vh;
+    height: auto;
+}
+
+.contact.left {
+    margin-top: 0;
+}
+
+.header {
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: normal;
+    color: black;
+}
+
+.contact img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.details a h3 {
+    font-size: 1em;
+}
+
+#fullpage {
+    padding-bottom: 25px;
+}
+
+.details {
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 0;
+    width: 300px;
+    background: black;
+    border-radius: 8%;
+    border: 1px solid black;
+}
+
+#main .center .details {
+    margin: 10px auto;
+}
+
+#main .left .details {
+    margin-left: 12.5%;
+    float: left;
+}
+
+#main .right .details {
+    margin-left: 75%;
+    transform: translateX(-50%);
+}
+
+@media only screen and (max-width: 900px) {
+    .details {
+        width: 90%;
+        height: auto;
+    }
+    .header {
+        padding-top: 20px;
+        left: 0;
+        width: 100vw;
+    }
+    #main .center .details,
+    #main .left .details,
+    #main .right .details {
+        margin-left: 5%;
+        float: none;
+        text-align: center;
+        transform: translateX(0);
+    }
+    .content-text-section {
+        padding: 20px;
+    }
+    #content-header {
+        padding: 0 10px;
+    }
+}

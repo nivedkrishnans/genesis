@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter|Raleway');
+h1 {
+    text-align: center;
+    line-height: 1.2;
+}
+
+.content p {
+    display: block;
+    font-weight: 600;
+}
+.content table {
+    margin: 0 auto;
+    border-spacing: 0;
+}
+.content tr, .content td {
+    padding: 10px;
+    text-align: center;
+}
+.content tr td:first-child {
+    border-right: 1px solid black;
+}
+.content a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.content-right {
+    float: left;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+.subject {
+    position: fixed;
+    font-size: 3em;
+    top: 0px;
+    left: 90px;
+}
+
+.content {
+    display: flex;
+    position: relative;
+    height: 100vh;
+    align-items: center;
+}
+
+.content ol,
+.content ul {
+    font-size: 1.2em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.content-img {
+    height: 50%;
+    margin: auto;
+    display: inline-block;
+}
+
+.content-text {
+    padding-left: 60px;
+    padding-right: 100px;
+    width: calc(60% - 80px);
+    line-height: 100%;
+    display: inline-block;
+    text-align: justify;
+}
+.content .content-text h4 span {
+    display: none;
+}
+#fullpage {
+    z-index: 1000;
+}
+
+@media only screen and (max-width: 900px),
+(max-height: 500px) {
+    .content {
+        height: auto;
+    }
+    .content p {
+        font-weight: 400;
+        font-size: 1em;
+        text-align: left;
+    }
+    .content-text {
+        width: 80%;
+        height: auto;
+        text-align: left;
+        padding-left: 40px;
+        padding-right: 80px;
+    }
+    .content-text h1 {
+        font-size: 1.25em;
+    }
+    .content-img {
+        display: none;
+    }
+    .subject {
+        position: fixed;
+        display: block;
+        font-size: 1.75em;
+        top: 70px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #main {
+        padding: 0;
+    }
+    .content .content-text h4 span {
+        display: inline;
+    }
+    .content .content-text p sub {
+        display: none;
+    }
+    .content table img {
+        display: none;
+    }
+}

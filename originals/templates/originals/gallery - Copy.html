@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+{% block head %}
+        <title>Pravega Gallery</title>
+        <link href="{%static 'originals/originals_base.css'%}" type="text/css" rel="stylesheet">
+        <link href="{%static 'originals/originals_all.css'%}" type="text/css" rel="stylesheet">
+        <link href="{%static 'originals/gallery.css'%}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+        <div class="thumbnail-gallery">
+            {% for image in images %}
+            <div class="thumbnail-container">
+              <img src="{{ MEDIA_URL }}{{ image.image_file.url }}" alt="{{ image.title }}" onclick="openModal();currentSlide({{ forloop.counter }})" class="hover-shadow cursor thumbnail">
+            </div>
+          {% endfor%}
+        </div>
+
+        <div id="myModal" class="modal">
+          <span class="close cursor" onclick="closeModal()">&times;</span>
+          <div class="modal-content">
+              {% for image in images %}
+              <div class="mySlides">
+                  <div class="numbertext"> {{ forloop.counter }} / {{ length }}</div>
+                  <img class="modal-image" src="{{ MEDIA_URL }}{{ image.image_file.url }}" alt="{{ image.title }}">
+                  <div class="image-details">
+                      <p>{{ image.description }}</p>
+                  </div>
+              </div>
+            {% endfor%}
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+          </div>
+        </div>
+
+        <script>
+        function openModal() {
+          document.getElementById('myModal').style.display = "block";
+        }
+
+        function closeModal() {
+          document.getElementById('myModal').style.display = "none";
+        }
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
+
+          slides[slideIndex-1].style.display = "block";
+        }
+        </script>
+{% endblock %}
