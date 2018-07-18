@@ -7,7 +7,18 @@ body {
 
 font-family: 'Overlock SC', cursive;
   font-weight: 700;
-  color: rgb(225,225,225);
+  color: #d4bb55;
+}
+
+h1{
+    margin-bottom: 14px;
+}
+
+.horizontal-line{
+    width: 100%;
+    height: 2px;
+    background-color: #d4bb55;
+    margin-bottom: 8px;
 }
 
 #bg{
@@ -45,7 +56,7 @@ font-family: 'Overlock SC', cursive;
 }
 .thumbnail-area:hover{
     box-shadow: 0 0 10px rgba(225,225,225,0.1);;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.1);
     transform: scale(1.05 , 1.05);
 }
 
