@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 {% block head %}
-        <title>Science Quizzine | Pravega</title>
+        <title>Pravega Gallery</title>
+        <link href="{%static 'originals/originals_base.css'%}" type="text/css" rel="stylesheet">
+        <link href="{%static 'originals/originals_all.css'%}" type="text/css" rel="stylesheet">
         <link href="{%static 'originals/gallery.css'%}" type="text/css" rel="stylesheet">
 
 
@@ -18,11 +20,8 @@
 
     <div class="thumbnail-gallery">
         {% for image in images %}
-            <div class="thumbnail-area">
-                <div class="thumbnail-container" onclick="openPhotoSwipeIndex({{ forloop.counter0 }});">
-                  <img src="{{ MEDIA_URL }}{{ image.image_file.url }}" alt="{{ image.description }}"  class="hover-shadow cursor thumbnail">
-                </div>
-                <div class="thumbnail-caption"> {{ image.title }} </div>
+            <div class="thumbnail-container" onclick="openPhotoSwipeIndex({{ forloop.counter0 }});">
+              <img src="{{ MEDIA_URL }}{{ image.image_file.url }}" alt="{{ image.description }}"  class="hover-shadow cursor thumbnail">
             </div>
       {% endfor%}
     </div>
@@ -107,7 +106,7 @@
                     src: "{{ MEDIA_URL }}{{ i.image_file.url }}",
                     w:{{ i.image_file.width }},
                     h:{{ i.image_file.height }},
-                    title: "{{ i.description }}"
+                    title: "{{ i.title }}"
                 }
             {% endfor%}
         ];
