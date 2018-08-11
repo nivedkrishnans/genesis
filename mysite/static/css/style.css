@@ -1,0 +1,276 @@
+/* Colours Used:
+    Primary Colour: #baa956
+    Text Colour: #fff2c4;
+    Emphasis Colours: #ffee9c
+                      #e5ca47
+    Background Colours: #030200
+                        #0a0a0a
+    Disabled Colour: #787460
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:300,400');
+
+*{
+    border: white dotted 0px;
+}
+html{
+    font-family: 'Lato', 'Helvetica', sans-serif;
+    font-size: 12px;
+    min-height: 100%;
+}
+
+body{
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    background-color: #030200;
+    color: #fff8de;
+}
+
+a{
+    transition: all 0.2s;
+}
+
+a, a:visited{
+    text-decoration: none;
+    color: #baa956;
+}
+
+a:hover, a:hover > *{
+    color: #baa956;
+}
+
+a:active{
+    color: #7d6e27;
+}
+
+a.disabled{
+    color: #787460;
+}
+
+#hoverNavDisplay{
+    box-sizing: border-box;
+    display: block;
+    height: 0;
+    width: 0;
+}
+
+#navBarMobile{
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 42px;
+    position: fixed;
+    background-color: rgba(8,8,8,1);
+    z-index: 3;
+    padding: 1px;
+    border-bottom: #ffee9c solid 1px;
+    top: 0px;
+    transition: all 0.3s;    
+}
+
+#mobileNavLogo{
+    display: inline-block;
+    height: 40px;
+
+    float: left;
+    margin: 1px 1px 1px 24px;
+
+}
+
+#homeNav{
+    display: inline-block;
+    padding: 4px;
+    margin: 8px 2px 4px 2px;
+    opacity: 0;
+    font-size: 22px;
+    color: #ffee9c;
+    transition: all 0.3s;    
+}
+
+
+#hamburgerButton{
+    position: relative;
+    float: right;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+
+#navBar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    width: 100%;
+    min-height: 42px;
+    position: fixed;
+    background-color: rgba(8,8,8,0.95);
+    z-index: 2;
+
+    padding: 2px 4px;
+    padding-top: 32px;
+    border-bottom: #ffee9c solid 1px;
+    top: 0px;
+    transition: all 0.3s;
+}
+
+
+#navBar a:hover{
+    transform: scale(1.05 , 1.05);
+}
+
+#navBar ul{
+    display: flex;
+    height: 100%;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    transition: flex 0.23s ease;
+}
+
+#navBar li{
+    flex: 1;
+    margin: 4px 2%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 12.5vw;
+}
+
+#navBar a, #navBar a:visited{
+    color: #baa956;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#navBar a.curr, #navBar a.curr:visited{
+    color: #e5ca47;
+}
+
+#navBar a .big{
+    display: block;
+    font-family: 'Montserrat', 'Helvetica', sans-serif;
+    font-size: 48px;
+    height: 48px;
+    font-weight: 300;
+        /* transition: font-size 0.23s ease; */
+    order: 1;
+}
+
+#navBar a .small{
+    padding-top: 12px;
+    font-size: 15px;
+    order: 2;
+        /* transition: font-size 0.13s ease; */
+}
+
+#navBar a img{
+    height: 48px;
+    vertical-align: baseline;
+}
+
+#logo{
+    display: none !important;
+    order: 0;
+    height: 48px;
+}
+
+.navLinkSet{
+    margin-top: 12px; 
+}
+
+.home-container{
+    font-size: 14px;
+    padding: 12px 12.5%;
+}
+
+.home-container > h1{
+    font-size: 28px;
+    font-weight: 400;
+    font-family: "Raleway", "Helvetica", sans-serif;
+}
+
+
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 72px;
+    background-color: #0a0a0a;
+    box-shadow: 0 0 2px rgba(0,0,0,1);
+}
+
+footer > a{
+    font-size: 36px;
+    color: #0a0a0a !important;
+    background-color: #e5ca47;
+    border-radius: 4px;
+    box-shadow: 2px 1px 4px rgba(0,0,0,0.5);
+    margin: 6px;
+    padding: 3px 36px;
+}
+
+footer > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+footer img{
+    height: 28px;
+    margin: 18px;
+}
+
+@media (min-width: 760px) { 
+    #hoverNavDisplay{
+        z-index: 3;
+        background-color: transparent;
+        height: 84px;
+        width: 100%;
+        position: absolute;
+        top:0;
+        left: 0;
+    }
+
+    #navBarMobile{
+        display: none;
+    }
+    
+    #navBar{
+        padding: 2px 4px;
+        height: 84px;
+    }
+    
+    #navBar a .big{
+        height: 48px;
+    }
+    
+    #navBar a .small{
+        font-size: 15px;
+    }
+    
+    #logo{
+
+        display: flex !important; 
+        order: 2;
+    }
+
+    .navLinkSet{
+        margin-top: 0; 
+    }
+    
+    .home-container{
+        margin-top: 120px;
+    }
+}

@@ -1,62 +1,78 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html>
-    <head>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href={%static 'assets/base.css'%} type="text/css" rel="stylesheet">
-        <link rel="icon" type:"image/gif" href="assets/icon-gold.gif" />
-
-        {% block head %}
-        {% endblock %}
-
-
-    </head>
-    <body>
-
-        <style >
-            #bg-overlay{
-                opacity: 0.5;
-            }
-
-        </style>
-
-
-    	<div id="bg"> </div>
-        <div id="bg-overlay"> </div>
-
-
-
-    	<div id="top-bar">
-    		<a class="top-bar-item" href="#">Updates</a>
-    		<a class="top-bar-item" href="#">Pravega 2k18</a>
-    		<a class="top-bar-item" href="#">FAQs</a>
-    		<a class="top-bar-item" href="#">Sponsors</a>
-    		<a class="top-bar-item top-logo" href="index.html"><img class="logo" src={%static "assets/logo-gold.svg"%}></a>
-    		<a class="top-bar-item active-page" href="index.html">Home</a>
-    		<a class="top-bar-item" href="events.html">Events</a>
-    		<a class="top-bar-item" href="#">Registrations</a>
-    		<a class="top-bar-item" href="#">Contact Us</a>
-    	</div>
-
-
-        <div id="main">
-            {% block content %}
-
+        <head>
+            {% block head %}
             {% endblock %}
-        </div>
+        </head>
+    	<body>
+    		<header>
+                <div id="navBarMobile">
+                    <a href="#">
+                        <img src="{%static 'img/logo-gold.svg'%}" id="mobileNavLogo">
+                        <div id="homeNav"> Home </div>
+                    </a>
+                    <button id="hamburgerButton" class="hamburger hamburger--slider" type="button" >
+                      <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                      </span>
+                    </button>
+                </div>
+                <div id="hoverNavDisplay">
+                    <nav id="navBar">
+                        <ul class="navLinkSet" style="flex: 1 0 100%;  order: 1;">
+                            <li><a href="#">
+                                <span class="small">Events</span>
+                                <img class="big" alt="E" src="{%static 'img/icons/IconEvents.svg' %}">
+                            </a></li>
+                            <li><a href="#">
+                                <span class="small">Registrations</span>
+                                <img class="big" alt="R" src="{%static 'img/icons/IconRegistrations.svg' %}">
+                            </a></li>
+                            <li><a href="#">
+                                <span class="small">Updates</span>
+                                <img class="big" alt="U" src="{%static 'img/icons/IconUpdates.svg' %}">
+                            </a></li>
+                        </ul>
+                        <a href="#" id="logo" class="navLinkSet curr" style="flex: 1 0 100%;">
+                                <span class="small">Home</span>
+                                <img class="big" src="{%static 'img/icons/IconEvents.svg' %}" alt="V">
+                        </a>
+                        <ul class="navLinkSet" style="flex: 1 0 100%; order: 3;">
+                            <li><a href="#">
+                                <span class="small">Archive</span>
+                                <img class="big" alt="A" src="{%static 'img/icons/IconArchive.svg' %}">
+                            </a></li>
+                            <li><a href="#">
+                                <span class="small">Partners</span>
+                                <img class="big" alt="P" src="{%static 'img/icons/IconPartners.svg' %}">
+                            </a></li>
+                            <li><a href="#">
+                                <span class="small">FAQs</span>
+                                <img class="big" alt="Q" src="{%static 'img/icons/IconFAQs.svg' %}">
+                            </a></li>
+                            <li><a href="#">
+                                <span class="small">Contact Us</span>
+                                <img class="big" alt="C" src="{%static 'img/icons/IconContact.svg' %}">
+                            </a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
 
-        <div id="social-bar">
-    		<a href="#">
-    			<svg data-name="Layer 21" height="24" id="Layer_21" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title/><path d="M15.5,3h-7A5.5,5.5,0,0,0,3,8.5v7A5.5,5.5,0,0,0,8.5,21h7A5.5,5.5,0,0,0,21,15.5v-7A5.5,5.5,0,0,0,15.5,3Zm4,12.5a4.00454,4.00454,0,0,1-4,4h-7a4.00454,4.00454,0,0,1-4-4v-7a4.0045,4.0045,0,0,1,4-4h7a4.0045,4.0045,0,0,1,4,4Z"/><path d="M12,7.5A4.5,4.5,0,1,0,16.5,12,4.5,4.5,0,0,0,12,7.5ZM12,15a3,3,0,1,1,3-3A3.0034,3.0034,0,0,1,12,15Z"/><circle cx="16.70001" cy="7.29999" r="1"/></svg>
-			</a>
-			<a href="#">
-    			<svg data-name="Layer 21" height="24" id="Layer_21" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title/><path d="M16.75,9H13.5V7a1,1,0,0,1,1-1h2V3H14a4,4,0,0,0-4,4V9H8v3h2v9h3.5V12H16Z"/></svg>
-    		</a>
-			<a href="#">
-    			<svg data-name="Layer 21" height="24" id="Layer_21" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title/><circle cx="16" cy="8" r="4"/><path d="M12.58331,8.83331C12.37488,8.83331,12,9.26563,12,9.5A8.5,8.5,0,0,1,3.5,18a8.52217,8.52217,0,0,1-1.28479-.1073A11.41717,11.41717,0,0,0,20,8.41663C20,7.681,15.31757,8.83331,12.58331,8.83331Z"/><path d="M12.58331,8.83331a11.385,11.385,0,0,1-8.69452-4.028A3.93758,3.93758,0,0,0,3.35,6.77081,3.9792,3.9792,0,0,0,7.32916,10.75c2.12482,0,5.89844.02264,6.14691-1.96179C13.18054,8.81116,12.8847,8.83331,12.58331,8.83331Z"/><path d="M5.24585,10.04163a3.93437,3.93437,0,0,1-1.88977-.49774c-.00031.02057-.0061.03961-.0061.06024a3.9792,3.9792,0,0,0,3.97919,3.97919c2.19763,0,5.275-1.594,5.275-3.79165C12.60417,8.282,7.42285,10.04163,5.24585,10.04163Z"/><path d="M7.72642,12.99649a3.90991,3.90991,0,0,1-3.02909.52286A3.96636,3.96636,0,0,0,8.49585,16.375a5.25835,5.25835,0,0,0,4.67082-4.66667C13.16667,9.81478,8.82831,12.28888,7.72642,12.99649Z"/><path d="M17.61041,5.37915c-1.32214,0-1.63562,1.6604.075,1.6604a3.96629,3.96629,0,0,0,3.754-2.71222A7.49909,7.49909,0,0,1,17.61041,5.37915Z"/><path d="M18.82916,6.5354a7.52209,7.52209,0,0,1-2.93716-.593c-2.70831-1.14551-4.35526,3.343-.18784,3.343A7.53392,7.53392,0,0,0,22.05579,5.803,7.50268,7.50268,0,0,1,18.82916,6.5354Z"/></svg>
-    		</a>
-    	</div>
+            {% block content %}
+            {% endblock %}
 
+
+            <footer>
+                <a href="#">Register</a>
+                <div>
+                    <a href="https://www.facebook.com/PravegaIISc"><img src="{%static 'img/flogo-HexRBG-Wht-58.svg' %}"></a>
+                    <a href="https://www.twitter.com/PravegaIISc"><img src="{%static 'img/Twitter_Logo_WhiteOnImage.svg' %}"></a>
+                </div>
+            </footer>
+
+
+            <script src="{%static 'js/navBar.js' %}" type="text/javascript"></script>
     </body>
 </html>
