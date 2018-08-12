@@ -20,7 +20,7 @@
                 </div>
                 <div id="hoverNavDisplay">
                     <nav id="navBar">
-                        <ul class="navLinkSet" style="flex: 1 0 100%;  order: 1;">
+                        <ul class="navLinkSet" style="order: 1;">
                             <li><a href="{%url 'events'%}">
                                 <span class="small">Events</span>
                                 <img class="big" alt="E" src="{%static 'img/icons/IconEvents.svg' %}">
@@ -33,12 +33,16 @@
                                 <span class="small">Updates</span>
                                 <img class="big" alt="U" src="{%static 'img/icons/IconUpdates.svg' %}">
                             </a></li>
+                            <li><a href="{%url 'originals'%}">
+                                <span class="small">Originals</span>
+                                <img class="big" alt="O" src="{%static 'img/icons/IconOriginals.svg' %}">
+                            </a></li>
                         </ul>
                         <a href="{%url 'home'%}" id="logo" class="navLinkSet curr" style="flex: 1 0 100%;">
                                 <span class="small">Home</span>
                                 <img class="big" src="{%static 'img/logo-gold.svg' %}" alt="V">
                         </a>
-                        <ul class="navLinkSet" style="flex: 1 0 100%; order: 3;">
+                        <ul class="navLinkSet" style="order: 3;">
                             <li><a href="{%url 'archive'%}">
                                 <span class="small">Archive</span>
                                 <img class="big" alt="A" src="{%static 'img/icons/IconArchive.svg' %}">

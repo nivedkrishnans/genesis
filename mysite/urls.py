@@ -17,9 +17,7 @@ urlpatterns = [
 	url(r'^archive/$', essentials.views.comingsoon , name="archive"),
 	url(r'^partners/$', essentials.views.comingsoon , name="partners"),
 	url(r'^register/$', essentials.views.comingsoon , name="register"),
-    url(r'^archives/', essentials.views.comingsoon),
-    url(r'^sciencequizzine/', originals.views.sciencequizzine),
-    url(r'^originals/', include('originals.urls')),
+    url(r'^originals/', originals.views.originals , name="originals"),
 	url(r'^2018/$', views.pravega2018 , name="pravega2018"),
 	url(r'^2017/$', views.pravega2017 , name="pravega2017"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

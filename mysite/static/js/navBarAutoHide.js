@@ -32,7 +32,7 @@ window.onscroll = function(){
 window.onresize = function(){
     toggleNavMobile(false);
     if(document.documentElement.clientWidth >= 760){
-        navSets[0].style.flex = "3 0 0";
+        navSets[0].style.flex = "4 0 0";
         navSets[1].style.flex = "1 0 0";
         navSets[2].style.flex = "4 0 0";
 
@@ -49,7 +49,7 @@ window.onresize = function(){
 window.onload = function(){
     toggleNavMobile(false);
     if(document.documentElement.clientWidth >= 760){
-        navSets[0].style.flex = "3 0 0";
+        navSets[0].style.flex = "4 0 0";
         navSets[1].style.flex = "1 0 0";
         navSets[2].style.flex = "4 0 0";
     }
@@ -63,7 +63,7 @@ window.onload = function(){
 
 
 function toggleNavMobile(disp){         //shows nav menu for mobile if argument is true, otherwise hides
-    
+
     if(!disp){
         navMobile.style.borderBottom = "#ffee9c solid 1px";
         navBar.style.top = "-400px";
