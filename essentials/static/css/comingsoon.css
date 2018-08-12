@@ -1,0 +1,75 @@
+html{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#main{
+    background-color: rgb(12,12,12);
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20vw 4px 196px 4px;
+}
+#cslogo{
+    width: 30vw;
+    align-self: center;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 14px;
+}
+#cstitle{
+    font-family: 'Dosis', sans-serif;
+    text-transform: uppercase;
+    font-size: 24px;
+    text-align: center;
+}
+#cssubtitle{
+    font-family: 'Dosis', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-align: center;
+}
+
+@media (min-width:760px) {
+    #main{
+        padding: 128px 96px 196px 96px;
+    }
+
+    #cslogo{
+        width: 196px;
+    }
+
+    #cstitle{
+        font-size: 40px;
+    }
+
+    #cssubtitle{
+        font-size: 36px;
+    }
+
+}
+
+@media (min-width: 992px) {
+    #main{
+        padding: 128px 196px 196px 196px;
+    }
+    #cstitle{
+        font-size: 48px;
+    }
+    #cssubtitle{
+        font-size: 36px;
+    }
+
+}
+
+@media (min-width: 1800px) {
+    #main{
+        padding: 160px 234px 196px 234px;
+    }
+}

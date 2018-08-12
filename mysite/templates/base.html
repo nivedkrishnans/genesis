@@ -8,7 +8,7 @@
     	<body>
     		<header>
                 <div id="navBarMobile">
-                    <a href="#">
+                    <a href="{%url 'home'%}">
                         <img src="{%static 'img/logo-gold.svg'%}" id="mobileNavLogo">
                         <div id="homeNav"> Home </div>
                     </a>
@@ -21,37 +21,37 @@
                 <div id="hoverNavDisplay">
                     <nav id="navBar">
                         <ul class="navLinkSet" style="flex: 1 0 100%;  order: 1;">
-                            <li><a href="#">
+                            <li><a href="{%url 'events'%}">
                                 <span class="small">Events</span>
                                 <img class="big" alt="E" src="{%static 'img/icons/IconEvents.svg' %}">
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="{%url 'register'%}">
                                 <span class="small">Registrations</span>
                                 <img class="big" alt="R" src="{%static 'img/icons/IconRegistrations.svg' %}">
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="{%url 'updates'%}">
                                 <span class="small">Updates</span>
                                 <img class="big" alt="U" src="{%static 'img/icons/IconUpdates.svg' %}">
                             </a></li>
                         </ul>
-                        <a href="#" id="logo" class="navLinkSet curr" style="flex: 1 0 100%;">
+                        <a href="{%url 'home'%}" id="logo" class="navLinkSet curr" style="flex: 1 0 100%;">
                                 <span class="small">Home</span>
-                                <img class="big" src="{%static 'img/icons/IconEvents.svg' %}" alt="V">
+                                <img class="big" src="{%static 'img/logo-gold.svg' %}" alt="V">
                         </a>
                         <ul class="navLinkSet" style="flex: 1 0 100%; order: 3;">
-                            <li><a href="#">
+                            <li><a href="{%url 'archive'%}">
                                 <span class="small">Archive</span>
                                 <img class="big" alt="A" src="{%static 'img/icons/IconArchive.svg' %}">
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="{%url 'partners'%}">
                                 <span class="small">Partners</span>
                                 <img class="big" alt="P" src="{%static 'img/icons/IconPartners.svg' %}">
                             </a></li>
-                            <li><a href="#">
-                                <span class="small">FAQs</span>
+                            <li><a href="{%url 'help'%}">
+                                <span class="small">Help</span>
                                 <img class="big" alt="Q" src="{%static 'img/icons/IconFAQs.svg' %}">
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="{%url 'contact'%}">
                                 <span class="small">Contact Us</span>
                                 <img class="big" alt="C" src="{%static 'img/icons/IconContact.svg' %}">
                             </a></li>
@@ -65,7 +65,7 @@
 
 
             <footer>
-                <a href="#">Register</a>
+                <a href="{%url 'register'%}">Register</a>
                 <div>
                     <a href="https://www.facebook.com/PravegaIISc"><img src="{%static 'img/flogo-HexRBG-Wht-58.svg' %}"></a>
                     <a href="https://www.twitter.com/PravegaIISc"><img src="{%static 'img/Twitter_Logo_WhiteOnImage.svg' %}"></a>
@@ -73,6 +73,5 @@
             </footer>
 
 
-            <script src="{%static 'js/navBar.js' %}" type="text/javascript"></script>
     </body>
 </html>

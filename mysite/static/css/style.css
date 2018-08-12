@@ -8,11 +8,6 @@
     Disabled Colour: #787460
 */
 
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:300,400');
-
-*{
-    border: white dotted 0px;
-}
 html{
     font-family: 'Lato', 'Helvetica', sans-serif;
     font-size: 12px;
@@ -26,6 +21,10 @@ body{
     overflow-y: scroll;
     background-color: #030200;
     color: #fff8de;
+}
+
+header{
+    font-family: 'Overlock SC', cursive;
 }
 
 a{
@@ -50,6 +49,9 @@ a.disabled{
 }
 
 #hoverNavDisplay{
+    position: absolute;
+    top: 0;
+    left: 0;
     box-sizing: border-box;
     display: block;
     height: 0;
@@ -62,11 +64,11 @@ a.disabled{
     min-height: 42px;
     position: fixed;
     background-color: rgba(8,8,8,1);
-    z-index: 3;
+    z-index: 4;
     padding: 1px;
     border-bottom: #ffee9c solid 1px;
     top: 0px;
-    transition: all 0.3s;    
+    transition: all 0.3s;
 }
 
 #mobileNavLogo{
@@ -85,7 +87,7 @@ a.disabled{
     opacity: 0;
     font-size: 22px;
     color: #ffee9c;
-    transition: all 0.3s;    
+    transition: all 0.3s;
 }
 
 
@@ -106,7 +108,7 @@ a.disabled{
     min-height: 42px;
     position: fixed;
     background-color: rgba(8,8,8,0.95);
-    z-index: 2;
+    z-index: 6;
 
     padding: 2px 4px;
     padding-top: 32px;
@@ -183,7 +185,7 @@ a.disabled{
 }
 
 .navLinkSet{
-    margin-top: 12px; 
+    margin-top: 12px;
 }
 
 .home-container{
@@ -232,7 +234,7 @@ footer img{
     margin: 18px;
 }
 
-@media (min-width: 760px) { 
+@media (min-width: 760px) {
     #hoverNavDisplay{
         z-index: 3;
         background-color: transparent;
@@ -246,30 +248,30 @@ footer img{
     #navBarMobile{
         display: none;
     }
-    
+
     #navBar{
         padding: 2px 4px;
         height: 84px;
     }
-    
+
     #navBar a .big{
         height: 48px;
     }
-    
+
     #navBar a .small{
-        font-size: 15px;
+        font-size: 16px;
     }
-    
+
     #logo{
 
-        display: flex !important; 
+        display: flex !important;
         order: 2;
     }
 
     .navLinkSet{
-        margin-top: 0; 
+        margin-top: 0;
     }
-    
+
     .home-container{
         margin-top: 120px;
     }

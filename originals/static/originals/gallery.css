@@ -1,42 +1,44 @@
 
-@import url('https://fonts.googleapis.com/css?family=Bellefair|Cinzel|Cormorant+SC|Overlock+SC|Poiret+One');
-
-body {
-  margin: 0;
-  letter-spacing: 0.5px;
-
-font-family: 'Overlock SC', cursive;
-  font-weight: 700;
-  color: #d4bb55;
+html{
+    padding: 0;
+    margin: 0;
 }
 
-h1{
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#hoverNavDisplay{
+    display: absolute;
+
+}
+
+#main{
+    background-color: rgb(17,17,17);
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    padding: 128px 196px 196px 196px;
+}
+
+.heading{
+    color: #d4bb55;
     margin-bottom: 14px;
+    font-family: 'Overlock SC', cursive;
+    font-weight: 700;
+    font-size: 48px;
 }
 
 .horizontal-line{
-    width: 100%;
+    position: relative;
+    left: 0;
+    right: 0;
     height: 2px;
     background-color: #d4bb55;
     margin-bottom: 8px;
 }
 
-#bg{
-
-  background-color: rgb(17,17,17);
-  background-image: none;
-
-}
-
-
-.top-bar-item{
-
-  font-size: 18px;
-}
-
-#top-bar{
-  background-color:none;
-}
 
 
 .thumbnail-gallery{
@@ -85,9 +87,4 @@ h1{
 
 .cursor{
   cursor: pointer;
-}
-
-
-#main{
-  margin: 84px 120px;
 }

@@ -2,10 +2,41 @@ from django.db import models
 from django.utils import timezone
 
 #are the properties enough? too many? are arguments right?
-
-class Images(models.Model):
+class ArchiveImage(models.Model):
 	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-	publish_date = models.DateTimeField(auto_now=False, auto_now_add=False, blank=True, null=True)
+	publish_date = models.DateTimeField(default=timezone.now, auto_now=False, auto_now_add=False, blank=True, null=True)
+	title = models.CharField(max_length=200)
+	OCCASION_CHOICES = (
+				('P18','Pravega 2018'),
+				('P17','Pravega 2017'),
+				('P16','Pravega 2016'),
+				('I0','Hidden'),
+			)
+	content_type = models.CharField(
+		max_length=2,
+		choices = OCCASION_CHOICES,
+		 )
+	description = models.CharField(max_length=280)
+	image_file = models.ImageField(upload_to='archiveimages/%Y/%m/%d')
+
+class ScienceQuizzine(models.Model):
+	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+	publish_date = models.DateTimeField(default=timezone.now(), auto_now=False, auto_now_add=False, blank=True, null=True)
+	title = models.CharField(max_length=200)
+	description = models.CharField(max_length=280)
+	image_file = models.ImageField(upload_to='sciencequizzine')
+	#winners??
+	def publish(self):
+		self.published_date = timezone.now()
+		self.save()
+
+	def __str__(self):
+ 		return self.title
+
+
+class Image(models.Model):
+	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+	publish_date = models.DateTimeField(default=timezone.now(), auto_now=False, auto_now_add=False, blank=True, null=True)
 	title = models.CharField(max_length=200)
 	CONTENT_CHOICES = (
 				('I1','Science Quizzine'),
@@ -32,9 +63,9 @@ class Images(models.Model):
 
 
 
-class Articles(models.Model):
+class Article(models.Model):
 	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-	publish_date = models.DateTimeField(auto_now=False, auto_now_add=False, blank=True, null=True)
+	publish_date = models.DateTimeField(default=timezone.now(), auto_now=False, auto_now_add=False, blank=True, null=True)
 	title = models.CharField(max_length=200)
 	CONTENT_CHOICES =	(
 				('A1','Blog'),
@@ -61,9 +92,9 @@ class Articles(models.Model):
 
 
 
-class Videos(models.Model):
+class Video(models.Model):
 	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-	publish_date = models.DateTimeField(auto_now=False, auto_now_add=False, blank=True, null=True)
+	publish_date = models.DateTimeField(default=timezone.now(), auto_now=False, auto_now_add=False, blank=True, null=True)
 	title = models.CharField(max_length=200)
 	CONTENT_CHOICES = (
 				('V1','Interview'),
