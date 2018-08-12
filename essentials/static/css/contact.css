@@ -1,0 +1,112 @@
+
+#main{
+    background-color: rgb(17,17,17);
+    box-sizing: border-box;
+    width:100%;
+    min-height: 100vh;
+    padding: 72px 2px 72px 2px;
+}
+
+.top{
+    margin: 0 auto;
+    margin-bottom: 45px;
+    color:	rgb(212,175,55);
+    font-family: 'Abel', sans-serif;
+}
+
+.contact-container{
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    /*background-color: cyan;*/
+    margin: 0 auto;
+    flex-direction: column;
+    height: auto;
+    min-height: 400px;
+    width: 90%;
+}
+
+.contact-detail{
+    /*border: 1px solid black;*/
+    margin:auto;
+    /*background-color:chartreuse;*/
+    width:90%;
+    height: 30vh;
+    text-align:center;
+    font-size:30px;
+    min-height: 60%;
+    color:	rgb(212,175,55);
+    font-family: 'Abel', sans-serif;
+}
+.contact-detail p{
+    text-align:center;
+}
+
+#request{
+    font-size: 15px;
+    text-align: center;
+}
+
+h1 {
+  width: 70%;
+  margin: .7em auto;
+  overflow: hidden;
+  text-align: center;
+  font-weight:300;
+  color: rgb(212,175,55);
+  font-size: 50px;
+
+}
+h1:before, h1:after {
+  content: "";
+  display: inline-block;
+  width: 50%;
+  margin: 0 .5em 0 -55%;
+  vertical-align: middle;
+  border-bottom: 1px solid;
+}
+h1:after {
+  margin: 0 -55% 0 .5em;
+}
+span {
+  display: inline-block;
+  vertical-align: middle;
+}
+p{
+    margin: 0 0 0 0;
+    text-align: justify;
+}
+
+
+@media (min-width : 760px){
+
+    .contact-container{
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        /*background-color: cyan;*/
+        margin: 0 auto;
+        flex-direction: row;
+
+        height: auto;
+        min-height: 400px;
+        width: 90%;
+    }
+    .contact-detail{
+        /*border: 1px solid black;*/
+        margin:auto;
+        /*background-color:chartreuse;*/
+        width:30%;
+        height: 30vh;
+        text-align:center;
+        font-size:30px;
+        min-height: 60%;
+        color:	rgb(212,175,55);
+        font-family: 'Abel', sans-serif;
+
+    }
+    #main{
+        padding: 128px 10vw 196px 10vw;
+    }
+
+}
