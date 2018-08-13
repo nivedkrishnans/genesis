@@ -76,26 +76,27 @@ p{
     margin: 0 0 0 0;
     text-align: justify;
 }
+.designation{
+    font-size: 22px;
+}
 
+.email{
+    font-size: 22px;
+}
 
 @media (min-width : 760px){
-
     .contact-container{
         margin: 0 auto;
         display: flex;
         flex-wrap: wrap;
-        /*background-color: cyan;*/
         margin: 0 auto;
         flex-direction: row;
-
         height: auto;
         min-height: 400px;
         width: 90%;
     }
     .contact-detail{
-        /*border: 1px solid black;*/
         margin:auto;
-        /*background-color:chartreuse;*/
         width:30%;
         height: 30vh;
         text-align:center;
