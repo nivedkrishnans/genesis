@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.svg'%}">
+
+    <title>Proscenium|Pravega 2019|IISc's Annual Fest</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700|Lato:300,400|Overlock+SC|Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+{% endblock %}
+
+{% block content %}
+    <div id="main">
+        <div class="heading">Proscenium</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+            <p>
+                Proscenium is the Thespian Extravaganza of Pravega, in which some of our country’s most talented student theatre groups argue for a debatable statement presented a-priori. The plays can be in English, Hindi, or Kannada.
+            </p>
+    </div>
+        <div class="main-section">
+            <div class="section-heading">Video Preliminaries</div>
+            <div class="horizontal-line"></div>
+            <p>
+                The preliminaries will be held during September and October. The camera must remain stationary and the recording must be a single take. The duration of the video must not exceed 10 minutes.
+            </p>
+            <p>
+                The results of the preliminaries will be declared latest by 1st November. 6-8 teams will be selected from the entries pool for the final event. Plays with social relevance are expected for the prelims.
+            </p>
+        </div>
+        <div class="main-section">
+            <div class="section-heading">General Rules of the Event:</div>
+            <div class="horizontal-line"></div>
+            <ul>
+                <li>	Each team must comprise of a minimum of 4 and a maximum of 20 individuals (exclusive of all the helpers). </li>
+                <li>	The teams must bring their own props and costumes.</li>
+                <li>	The theme for the finals will be announced with the results of the prelims.</li>
+                <li>	The maximum duration of the play is 30 minutes (this includes 5 minutes set-up time). Teams exceeding the stipulated time limit will be penalized and those crossing 5 minutes extra-time will be disqualified.</li>
+                <li>	Use of fire (even diyas, candles or lighters) and water is not allowed.</li>
+            </ul>
+        </div>
+        <div class="main-section">
+            <div class="section-heading">Registration</div>
+            <div class="horizontal-line"></div>
+                <p>
+                    Registrations will be accepted online through the website prior to the event. No spot registrations will be allowed.
+                </p>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <script>
+        var navBar = document.getElementById("navBar");
+        var navMobile = document.getElementById('navBarMobile');
+        var homeNav = document.getElementById("homeNav");
+        var ham = document.getElementById('hamburgerButton');
+        var navDisplay = false;     //whether or not nav menu is displayed on mobile
+        var navSets = document.getElementsByClassName("navLinkSet");
+
+        window.onresize = function(){
+            toggleNavMobile(false);
+            if(document.documentElement.clientWidth >= 760){
+
+                navSets[0].style.flex = "4 0 0";
+                navSets[1].style.flex = "1 0 0";
+                navSets[2].style.flex = "4 0 0";
+                navBar.style.top = "0";
+            }
+            else{
+                navSets[0].style.flex =  "1 0 100%";
+                navSets[1].style.flex =  "1 0 100%";
+                navSets[2].style.flex =  "1 0 100%";
+            }
+        };
+
+        window.onload = function(){
+            toggleNavMobile(false);
+            if(document.documentElement.clientWidth >= 760){
+
+                navSets[0].style.flex = "4 0 0";
+                navSets[1].style.flex = "1 0 0";
+                navSets[2].style.flex = "4 0 0";
+                navBar.style.top = "0";
+            }
+            else{
+                navSets[0].style.flex =  "1 0 100%";
+                navSets[1].style.flex =  "1 0 100%";
+                navSets[2].style.flex =  "1 0 100%";
+            }
+        };
+
+        function toggleNavMobile(disp){         //shows nav menu for mobile if argument is true, otherwise hides
+
+            if(!disp){
+                navMobile.style.borderBottom = "#ffee9c solid 1px";
+                navBar.style.top = "-280px";
+                ham.classList.remove('is-active');
+                homeNav.style.opacity= "0";
+            }
+            else{
+                navMobile.style.borderBottom = "#000000 solid 1px";
+                navBar.style.top = "44px";
+                ham.classList.add('is-active');
+                homeNav.style.opacity= "1";
+            }
+            navDisplay = !navDisplay;
+        }
+
+        ham.addEventListener("click", function() {
+            toggleNavMobile(!navDisplay);
+            }, true);
+
+    </script>
+{% endblock %}

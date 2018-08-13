@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
         <link rel="icon" href="{%static 'img/logo-gold.svg'%}">
 
-        <title>Science Quizzine | Pravega</title>
+        <title>Archive | Pravega 2019</title>
         <link href="{%static 'originals/gallery.css'%}" type="text/css" rel="stylesheet">
         <!-- photoswipe -->
         <link href="{%static 'originals/src/photoswipe.css'%}" type="text/css" rel="stylesheet">
@@ -21,7 +21,7 @@
 
 {% block content %}
     <div id="main">
-        <div class="heading">Science Quizzine</div>
+        <div class="heading">Pravega 2018</div>
         <div class="horizontal-line"></div>
         <div class="thumbnail-gallery">
             {% for image in images %}
@@ -33,22 +33,6 @@
                 </div>
           {% endfor%}
         </div>
-
-
-        <div class="heading">Let's Talk Science</div>
-        <div class="horizontal-line"></div>
-        <div class="video-gallery">
-            {% for video in videos %}
-                <div class="video-area">
-                    <div class="video-container" onclick="openPhotoSwipeIndex({{ forloop.counter0 }});">
-                      <iframe class="video-iframe" src="https://www.youtube.com/embed/{{ video.youtube_id }}" allowfullscreen frameborder='0'></iframe>
-                    </div>
-                    <div class="video-caption"> {{ video.title }} </div>
-                    <p class="video-description"> {{ video.description }} </p>
-                </div>
-          {% endfor%}
-        </div>
-    </div>
 
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="pswp__bg"></div>
@@ -98,7 +82,7 @@
                     src: "{{ MEDIA_URL }}{{ i.image_file.url }}",
                     w:{{ i.image_file.width }},
                     h:{{ i.image_file.height }},
-                    title: "{{ i.description }}"
+                    //title: "{{ i.description }}"
                 }
             {% endfor%}
         ];

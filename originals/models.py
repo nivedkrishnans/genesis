@@ -7,9 +7,9 @@ class ArchiveImage(models.Model):
 	publish_date = models.DateTimeField(default=timezone.now, auto_now=False, auto_now_add=False, blank=True, null=True)
 	title = models.CharField(max_length=200)
 	OCCASION_CHOICES = (
-				('P18','Pravega 2018'),
-				('P17','Pravega 2017'),
-				('P16','Pravega 2016'),
+				('P8','Pravega 2018'),
+				('P7','Pravega 2017'),
+				('P6','Pravega 2016'),
 				('I0','Hidden'),
 			)
 	content_type = models.CharField(

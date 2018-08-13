@@ -13,6 +13,25 @@ def help(request):
 def contact(request):
 	return render(request, 'essentials/contact.html', {})
 
+def register(request):
+	return render(request, 'essentials/register.html', {})
+
+def carousel(request):
+	return render(request, 'essentials/carousel.html', {})
+
+def proscenium(request):
+	return render(request, 'essentials/proscenium.html', {})
+
+def battleofbands(request):
+	return render(request, 'essentials/battleofbands.html', {})
+
+def footprints(request):
+	return render(request, 'essentials/footprints.html', {})
+
+def lasya(request):
+	return render(request, 'essentials/lasya.html', {})
+
+
 #def archive(request):
 #	return render(request, 'essentials/archive.html', {})
 

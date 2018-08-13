@@ -20,8 +20,9 @@ body{
     padding: 0 14px;
     color: #d4bb55;
     margin-bottom: 14px;
-    font-family: 'Overlock SC', cursive;
-    font-weight: 700;
+
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
     font-size: 36px;
 }
 .horizontal-line{
@@ -38,6 +39,7 @@ body{
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 96px;
 }
 .thumbnail-area{
     box-sizing: border-box;
