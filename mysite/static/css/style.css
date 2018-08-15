@@ -235,6 +235,25 @@ footer img{
     margin: 18px;
 }
 
+.quicklinks{
+    font-family: 'Overlock SC', cursive;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+.quicklinks div{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}
+.quicklinks a{
+    color: rgb(255,255,240);
+    padding: 14px;
+}
+
 @media (min-width: 760px) {
     #hoverNavDisplay{
         z-index: 3;

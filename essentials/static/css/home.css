@@ -493,6 +493,8 @@
         padding: 18px 36px;
     }
     .home-section > div > div{
+        margin-left: 14px;
+        margin-right: 14px;
         flex-basis: 0;
         flex-grow: 1;
     }

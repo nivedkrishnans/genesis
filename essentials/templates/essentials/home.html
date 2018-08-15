@@ -179,6 +179,8 @@
                     navSets[2].style.flex =  "1 0 100%";
                 }
                 navAppear();
+    			activateSlides(slideShows[0],2000);
+        		activateSlides(slideShows[1],2000);
             };
 
             function toggleNavMobile(disp){         //shows nav menu for mobile if argument is true, otherwise hides
@@ -225,14 +227,8 @@
 					slides[currentSlide].classList.remove("slide-element-ontop");
 					currentSlide=(currentSlide+1)%(n);
 					slides[currentSlide].classList.add("slide-element-ontop");
-					console.log(currentSlide);
 			},interval);
-
 			}
-			document.body.onload=function(){
-				activateSlides(slideShows[0],2000);
-    			activateSlides(slideShows[1],2000);
-			};
 
 
         </script>
