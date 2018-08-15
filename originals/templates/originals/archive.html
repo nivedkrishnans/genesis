@@ -21,7 +21,7 @@
 
 {% block content %}
     <div id="main">
-        <div class="heading">Pravega 2018</div>
+        <div class="heading"><a href="{%url 'pravega2018'%}">Pravega 2018</a></div>
         <div class="horizontal-line"></div>
         <div class="thumbnail-gallery">
             {% for image in images %}
@@ -29,11 +29,11 @@
                     <div class="thumbnail-container" onclick="openPhotoSwipeIndex({{ forloop.counter0 }});">
                       <img src="{{ MEDIA_URL }}{{ image.image_file.url }}" alt="{{ image.description }}"  class="hover-shadow cursor thumbnail">
                     </div>
-                    <div class="thumbnail-caption"> {{ image.title }} </div>
+
                 </div>
           {% endfor%}
         </div>
-
+    </div>
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="pswp__bg"></div>
         <div class="pswp__scroll-wrap">

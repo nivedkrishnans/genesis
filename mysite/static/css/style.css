@@ -232,7 +232,7 @@ footer > div{
 
 footer img{
     height: 28px;
-    margin: 18px;
+    margin: 22px;
 }
 
 .quicklinks{
@@ -247,11 +247,12 @@ footer img{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-
+    justify-content: center;
 }
 .quicklinks a{
     color: rgb(255,255,240);
-    padding: 14px;
+    padding: 2px;
+    margin: 12px;
 }
 
 @media (min-width: 760px) {
