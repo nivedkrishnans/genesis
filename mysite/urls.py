@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'^$', essentials.views.home , name="home"),
 	url(r'^updates/$', essentials.views.comingsoon , name="updates"),
-    url(r'^events/$', essentials.views.comingsoon , name="events"),
+    url(r'^events/$', essentials.views.events , name="events"),
 	url(r'^help/$', essentials.views.comingsoon , name="help"),
 	url(r'^contact/$', essentials.views.contact , name="contact"),
 	url(r'^partners/$', essentials.views.partners , name="partners"),

@@ -4,7 +4,7 @@
 {% block head %}
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Overlock+SC|Raleway:300,400|Dosis:300,400,700,800|Josefin+Sans:400,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Josefin+Sans:400" rel="stylesheet">
         <link rel="stylesheet" href="{%static 'css/style.css'%}">
         <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
         <link rel="icon" href="{%static 'img/logo-gold.svg'%}">
@@ -21,7 +21,7 @@
 
 {% block content %}
     <div id="main">
-        <div class="heading">Science Quizzine</div>
+        <div class="heading">Science Quizzine<span> - An Online Quiz Challenge</span></div>
         <div class="horizontal-line"></div>
         <div class="thumbnail-gallery">
             {% for image in images %}
@@ -35,7 +35,7 @@
         </div>
 
 
-        <div class="heading">Let's Talk Science</div>
+        <div class="heading">Let's Talk Science<span> - A Pravega Initiative for Science Communication</span></div>
         <div class="horizontal-line"></div>
         <div class="video-gallery">
             {% for video in videos %}

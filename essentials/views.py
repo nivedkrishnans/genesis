@@ -10,6 +10,9 @@ def updates(request):
 def help(request):
 	return render(request, 'essentials/help.html', {})
 
+def events(request):
+	return render(request, 'essentials/events.html', {})
+
 def contact(request):
 	return render(request, 'essentials/contact.html', {})
 

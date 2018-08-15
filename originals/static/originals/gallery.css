@@ -25,6 +25,10 @@ body{
     font-weight: 400;
     font-size: 36px;
 }
+
+.heading span{
+    font-size: 24px;
+}
 .horizontal-line{
     position: relative;
     left: 0;
@@ -133,6 +137,12 @@ body{
         margin-bottom: 14px;
         font-size: 40px;
     }
+
+
+    .heading span{
+        font-size: 24px;
+    }
+    
     .horizontal-line{
         margin-bottom: 8px;
     }
