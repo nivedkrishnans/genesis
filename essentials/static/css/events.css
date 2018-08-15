@@ -154,6 +154,7 @@ body{
         width:50%;
         font-size:18px;
         border:2px solid white;
+        color: white;
     }
 
     .see-more:active{
