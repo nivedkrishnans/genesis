@@ -4,7 +4,7 @@
     box-sizing: border-box;
     width:100%;
     min-height: 100vh;
-    padding: 72px 2px 72px 2px;
+    padding: 72px 2px 48px 2px;
 }
 
 .top{
@@ -12,6 +12,10 @@
     margin-bottom: 45px;
     color:	rgb(212,175,55);
     font-family: 'Abel', sans-serif;
+}
+
+#cc{
+    order: -1;
 }
 
 .contact-container{
@@ -27,14 +31,12 @@
 }
 
 .contact-detail{
-    /*border: 1px solid black;*/
-    margin:auto;
-    /*background-color:chartreuse;*/
+    margin: auto;
+    margin-bottom: 64px;;
     width:90%;
-    height: 30vh;
+    height: auto;
     text-align:center;
     font-size:30px;
-    min-height: 60%;
     color:	rgb(212,175,55);
     font-family: 'Abel', sans-serif;
 }
@@ -85,6 +87,9 @@ p{
 }
 
 @media (min-width : 760px){
+    #cc{
+        order: 0;
+    }
     .contact-container{
         margin: 0 auto;
         display: flex;
@@ -107,7 +112,7 @@ p{
 
     }
     #main{
-        padding: 128px 10vw 196px 10vw;
+        padding: 128px 10vw 48px 10vw;
     }
 
 }

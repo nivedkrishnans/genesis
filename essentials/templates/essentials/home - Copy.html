@@ -36,62 +36,57 @@
                 </div>
                 <img src="{%static 'img/IISc_logo.png'%}" id="iiscLogo">
             </div>
-            <div class="home-section l">
+            <div class="home-section l tri-red">
+                <h1>Events</h1>
                 <div>
-                    <div class="slide-container">
-            			<div class="spinner">
-            			  <div class="double-bounce1"></div>
-            			  <div class="double-bounce2"></div>
-            			</div>
-                		<div class="slide-element">
-                			<img class="slide-image" src="{%static 'img/slide/d1.jpg'%}">
-                		</div>
-                		<div class="slide-element">
-                			<img class="slide-image" src="{%static 'img/slide/d2.jpg'%}">
-                		</div>
-                		<div class="slide-element">
-                			<img class="slide-image" src="{%static 'img/slide/d3.jpg'%}">
-                		</div>
-                		<div class="slide-element">
-                			<img class="slide-image" src="{%static 'img/slide/d4.jpg'%}">
-                		</div>
-                		<div class="slide-element">
-                			<img class="slide-image" src="{%static 'img/slide/d5.jpg'%}">
-                		</div>
-                    </div>
+                    <img src="{%static 'img/microscope.png'%}">
                     <div>
-                        <p style="vertical-align:middle;">
-                            <span style="font-size:48px;letter-spacing:-4px;color:#d63737;">T</span>he Indian Institute of Science boasts an ever-growing platter of enthralling Science events, quizzes, open mics, workshops, fun and game zones, OTG events and street performances at Pravega. It’s upto one’s appetite to juice out their share.
+                        <p>
+                            The Indian Institute of Science boasts an ever-growing platter of enthralling Science events, quizzes, open mics, workshops, fun and game zones, OTG events and street performances at Pravega. It’s upto one’s appetite to juice out their share.
 
                         </p>
+                        <ul>
+                            <li><a href="#">Out of Thin Air</a></li>
+                            <li><a href="#">Decoherence</a></li>
+                            <li><a href="#">Footprints</a></li>
+                            <li><a href="#">Some other</a> popular event.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="home-section r">
+            <div class="home-section r tri-green">
+                <h1>Highlights</h1>
                 <div>
-                    <div class="slide-container">
-                        <div class="spinner">
-                          <div class="double-bounce1"></div>
-                          <div class="double-bounce2"></div>
-                        </div>
-                        <div class="slide-element">
-                            <img class="slide-image" src="{%static 'img/slide/n1.jpg'%}">
-                        </div>
-                        <div class="slide-element">
-                            <img class="slide-image" src="{%static 'img/slide/n2.jpg'%}">
-                        </div>
-                        <div class="slide-element">
-                            <img class="slide-image" src="{%static 'img/slide/n3.jpg'%}">
-                        </div>
-                        <div class="slide-element">
-                            <img class="slide-image" src="{%static 'img/slide/n4.jpg'%}">
-                        </div>
-                    </div>
+                    <img src="{%static 'img/person.png'%}">
                     <div>
                         <p>
-                            <span style="font-size:48px;letter-spacing:-4px;color:#42ff68;">T</span>he evenings come to life and the fireworks cannot be stopped at the cultural extravaganzas in town. Lined with the best artists from the country and abroad, goosebumps are a regular artefact to get used to.
+                            The evenings come to life and the fireworks cannot be stopped at the cultural extravaganzas in town. Lined with the best artists from the country and abroad, goosebumps are a regular artefact to get used to.
                         </p>
+                        <ul>
+                            <li><a href="#">Pronites</a></li>
+                            <li><a href="#">Lasya</a></li>
+                            <li><a href="#">BoB</a></li>
+                            <li><a href="#">Proscenium</a></li>
+                        </ul>
                     </div>
+                </div>
+            </div>
+            <div class="home-section l tri-yellow">
+                <h1>Archive</h1>
+                <div>
+                    <div>
+                        <ul>
+                            <li><a href="#">Pravega 2018</a></li>
+                            <li><a href="#">Pravega 2017</a></li>
+                            <li><a href="#">Pravega 2016</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="home-section c">
+                <h1>Prouldy Sponsored By</h1>
+                <div>
+                    <img src="{%static 'img/microscope.png'%}">
                 </div>
             </div>
             <div class="home-section l">
@@ -212,27 +207,6 @@
                         navBar.style.top = "-100px";
                 }
             }
-
-            var slideShows = document.getElementsByClassName("slide-container");
-
-			function activateSlides(element,interval){
-				element.getElementsByClassName("spinner")[0].style.display="none";
-				var currentSlide = 0;
-				var slides=element.getElementsByClassName("slide-element");
-				slides[0].classList.add("slide-element-ontop");
-				var n=slides.length;
-				var slideShowAction = setInterval(function(){
-					slides[currentSlide].classList.remove("slide-element-ontop");
-					currentSlide=(currentSlide+1)%(n);
-					slides[currentSlide].classList.add("slide-element-ontop");
-					console.log(currentSlide);
-			},interval);
-
-			}
-			document.body.onload=function(){
-				activateSlides(slideShows[0],2000);
-    			activateSlides(slideShows[1],2000);
-			};
 
 
         </script>

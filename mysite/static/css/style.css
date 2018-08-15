@@ -114,7 +114,7 @@ a.disabled{
     padding: 2px 4px;
     padding-top: 32px;
     border-bottom: #ffee9c solid 1px;
-    top: 0px;
+    top: -280px;
     transition: all 0.3s;
 }
 
@@ -251,6 +251,7 @@ footer img{
     }
 
     #navBar{
+        top: -600px;
         padding: 2px 4px;
         height: 84px;
     }
