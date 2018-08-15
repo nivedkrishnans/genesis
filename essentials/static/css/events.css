@@ -22,7 +22,7 @@ body{
 
 /*partititons for mobile version*/
     .partition1{
-        background-image:url(../img/backgrounds/bob-b.jpeg);
+        background-image:url(../img/backgrounds/bob-b.jpg);
         background-size:cover;
         background-repeat:no-repeat;
         height:100%;
@@ -32,7 +32,7 @@ body{
     .partition2{
         margin:0px;
         top:0px;;
-        background-image:url(../img/backgrounds/proscenium-b.jpeg);
+        background-image:url(../img/backgrounds/proscenium-b.jpg);
         background-size:cover;
         background-repeat:no-repeat;
         height:100%;
@@ -60,7 +60,7 @@ body{
     .partition5{
         width:100%;
         height:100%;
-        background-image: url(../img/backgrounds/more.jpeg);
+        background-image: url(../img/backgrounds/more.jpg);
         background-size:cover;
         background-repeat:no-repeat;
     }
@@ -226,7 +226,7 @@ body{
     .partition1{
         display: inline-block;
         float:left;
-        background-image:url(../img/backgrounds/bob-b.jpeg);
+        background-image:url(../img/backgrounds/bob-b.jpg);
         background-size:cover;
         background-repeat:no-repeat;
         background-position: 50%;
@@ -299,7 +299,7 @@ body{
         top:0px;
         left:0px;
         float:left;
-        background-image:url(../img/backgrounds/proscenium-b.jpeg);
+        background-image:url(../img/backgrounds/proscenium-b.jpg);
         background-size:cover;
         -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
         filter: grayscale(100%);
@@ -339,7 +339,7 @@ body{
         float:left;
         width:20%;
         height:100%;
-        background-image: url(../img/backgrounds/more.jpeg);
+        background-image: url(../img/backgrounds/more.jpg);
         background-size:cover;
         background-repeat:no-repeat;
         -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
