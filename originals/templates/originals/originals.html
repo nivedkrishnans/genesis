@@ -7,9 +7,9 @@
         <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Josefin+Sans:400" rel="stylesheet">
         <link rel="stylesheet" href="{%static 'css/style.css'%}">
         <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
-        <link rel="icon" href="{%static 'img/logo-gold.svg'%}">
+        <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
-        <title>Science Quizzine | Pravega</title>
+        <title>Originals | Pravega 2019, IISc Bangalore</title>
         <link href="{%static 'originals/gallery.css'%}" type="text/css" rel="stylesheet">
         <!-- photoswipe -->
         <link href="{%static 'originals/src/photoswipe.css'%}" type="text/css" rel="stylesheet">
@@ -82,10 +82,31 @@
                 </button>
                 <div class="pswp__caption">
                     <div class="pswp__caption__center"></div>
+                    <div class="pswp__caption__center">Answer</div>
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+    .pswp__caption{
+        color: rgba(255,255,240,0);
+        transition: all 0.2s;
+    }
+    .pswp__caption:hover{
+        color: rgba(255,255,240,1);
+    }
+    .pswp__caption__center{
+        color: inherit;
+    }
+    .pswp__caption__center:nth-of-type(2){
+        color: rgba(255,255,240,1);
+        transition: all 0.2s;
+    }
+    .pswp__caption__center:nth-of-type(2):hover{
+        color: rgba(255,255,240,0);
+    }
+    </style>
 
     <script>
         var pswpElement = document.querySelectorAll('.pswp')[0];
