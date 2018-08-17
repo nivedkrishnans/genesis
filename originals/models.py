@@ -21,13 +21,13 @@ class ArchiveImage(models.Model):
 
 class ScienceQuizzine(models.Model):
 	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-	publish_date = models.DateTimeField(default=timezone.now(), auto_now=False, auto_now_add=False, blank=True, null=True)
+	publish_date = models.DateTimeField(default=timezone.now, auto_now=False, auto_now_add=False, blank=True, null=True)
 	title = models.CharField(max_length=200)
 	description = models.CharField(max_length=280)
 	image_file = models.ImageField(upload_to='sciencequizzine')
 	#winners??
 	def publish(self):
-		self.published_date = timezone.now()
+		self.publish_date = timezone.now()
 		self.save()
 
 	def __str__(self):
@@ -36,13 +36,13 @@ class ScienceQuizzine(models.Model):
 
 class LetsTalkScience(models.Model):
 	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-	publish_date = models.DateTimeField(default=timezone.now(), auto_now=False, auto_now_add=False, blank=True, null=True)
+	publish_date = models.DateTimeField(default=timezone.now, auto_now=False, auto_now_add=False, blank=True, null=True)
 	title = models.CharField(max_length=200)
 	description = models.TextField()
 	youtube_id = models.CharField(max_length=200)
 
 	def publish(self):
-		self.published_date = timezone.now()
+		self.publish_date = timezone.now()
 		self.save()
 
 	def __str__(self):
