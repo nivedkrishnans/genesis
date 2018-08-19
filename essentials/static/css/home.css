@@ -190,6 +190,8 @@
 }
 
 #title-caption{
+    line-height: 1.3em;
+    font-family: 'Titillium Web', sans-serif;
 
     padding:0;
     margin: 4px 0 4px 0;
@@ -426,6 +428,9 @@
     margin: 0;
     padding: 18px 18px;
     flex-grow: 2;
+
+    line-height: 1.3em;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 
@@ -531,6 +536,8 @@
     }
 
     #title-caption{
+        line-height: 1.1em;
+        font-family: 'Titillium Web', sans-serif;
         font-size: 24px;
         padding: 4px 20px;
         margin: 0 24px 24px 24px;
