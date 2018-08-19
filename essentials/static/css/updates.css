@@ -49,25 +49,63 @@ body{
 }
 
 .update-container{
-    border: 2px solid yellow;
+    background-color: rgba(17,17,17,0.99);
     margin: 14px 14px;
     display: flex;
     flex-direction: column;
+    border-radius: 8px 8px 8px 8px;
 }
 .date-card{
-    border: 2px solid white;
     margin: 0;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    background-color: #efcd43;
+
+    background-color: #B87D4B;
+    border-radius: 8px 8px 0 0;
+    text-shadow: rgb(8,8,8) 2px 2px 1px;
 }
 .update-date{
+    margin: 0;
     font-family: 'Stardos Stencil', cursive;
+    font-weight: 700;
+    font-size: 28px;
+    padding: 2px 4px;
+}
+.update-month{
+    margin: 0;
+    font-family: 'Stardos Stencil', cursive;
+    font-weight: 700;
+    font-size: 28px;
+    text-transform: uppercase;
+    padding: 2px 4px;
 }
 .data-region{
-    border: 2px solid blue;
+    padding: 8px;
     margin: 0;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+
+}
+.update-text{
+    text-indent: 14px;
+    margin: 0;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.3em;
+    padding: 4px;
+    align-self: flex-start;
+}
+.update-text::first-letter{
+    color: #efcd43;
+    font-size: 1.1em;
+}
+.update-ago{
+    margin: 0;
+    align-self: flex-end;
 }
 
 @media (min-width: 760px) {
@@ -89,16 +127,92 @@ body{
         margin-bottom: 8px;
     }
     .update-container{
-        padding: 22px;
-        border-bottom: 1px solid rgb(230,230,230);
-        background-color: rgba(8,8,8,0.8);
+        padding: 0;
         border-radius: 4px;
         margin: 14px 0;
+        margin: 14px 14px;
+        flex-direction: row;
+        border-radius: 8px 8px 8px 8px;
+    }
+    .date-card{
+        margin: 0;
+        min-width: 96px;
+        min-height: 84px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px 0 0 8px;
+    }
+    .update-date{
+        margin: 0;
+        font-weight: 700;
+        font-size: 28px;
+        padding: 2px 4px;
+    }
+    .update-month{
+        margin: 0;
+        font-size: 28px;
+        padding: 2px 4px;
+    }
+    .data-region{
+        padding: 8px;
+        margin: 0;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100%;
+    }
+    .update-text{
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.3em;
+        padding: 4px;
+        align-self: flex-start;
+    }
+    .update-ago{
+        font-size: 12px;
+        margin: 4px;
+        align-self: flex-end;
     }
 }
 
 @media (min-width: 992px) {
     #main{
         padding: 128px 196px 196px 196px;
+    }
+    .update-date{
+        font-size: 28px;
+    }
+    .update-month{
+        font-size: 28px;
+    }
+    .update-text{
+        font-size: 18px;
+    }
+    .update-ago{
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1800px) {
+    #main{
+        padding: 128px 256px 196px 256px;
+    }
+    .heading{
+        font-size: 60px;
+    }
+    .update-container{
+        margin: 28px;
+    }
+    .update-date{
+        font-size: 36px;
+    }
+    .update-month{
+        font-size: 36px;
+    }
+    .update-text{
+        font-size: 24px;
+    }
+    .update-ago{
+        font-size: 16px;
     }
 }
