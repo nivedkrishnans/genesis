@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load humanize %}
+{% load index %}
 
 {% block head %}
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,50 +11,30 @@
     <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
     <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
-    <title>Pravega 2019 - IISc's Annual Fest</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Overlock+SC|Raleway:300,400|Dosis:300,400,700,800|Abel" rel="stylesheet">
-    <link rel="stylesheet" href="{%static 'css/contact.css'%}">
+    <title>Updates | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Josefin+Sans:400|PT+Sans:400,400i,700,700i|Titillium+Web:300,400,600,700|Roboto|Stardos+Stencil:700" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/updates.css'%}">
 {% endblock %}
 
 {% block content %}
-<div id = "main">
-    <div class = "top">
-        <h1>CONTACT</h1>
-        <p id = "request">Please feel free to contact us</p>
+    <div id="main">
+        <div class="heading">Updates</div>
+        <div class="horizontal-line"></div>
+        {% for update in updates %}
+            <div class="update-container">
+                <div class="date-card">
+                    <div class="update-date">{{ update.publish_date.day }}</div>
+                    <div class="update-month">{{ updateMonth|index:forloop.counter0 }}</div>
+                </div>
+                <div class="data-region">
+                    <div class="update-text">{{ update.text|safe }}</div>
+                    <div class="update-ago">{{ update.publish_date|naturaltime }}</div>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+
     </div>
-    <div class = "contact-container">
-        <div class = "contact-detail">
-            <p>Praveen Jayakumar</p>
-            <p class = "designation">Sponsorship and Corporate Relations</p>
-            <a href="mailto:jpraveen@iisc.ac.in"><p class = "email">jpraveen@iisc.ac.in</p></a>
-        </div>
-        <div id='cc' class = "contact-detail">
-            <p>Shrey Gupta</p>
-            <p class = "designation">Convener</p>
-            <a href="mailto:shreygupta@iisc.ac.in"><p class = "email">shreygupta@iisc.ac.in</p></a>
-        </div>
-        <div class = "contact-detail">
-            <p>Prakhar Suhalka</p>
-            <p class = "designation">Workshops Coordinator</p>
-            <a href="mailto:prakhars@iisc.ac.in"><p class = "email">prakhars@iisc.ac.in</p></a>
-        </div>
-        <div class = "contact-detail">
-            <p>Arpit Behera</p>
-            <p class = "designation">General Events Co-Coordinator</p>
-            <a href="mailto:arpitbehera@iisc.ac.in"><p class = "email">arpitbehera@iisc.ac.in</p></a>
-        </div>
-        <div class = "contact-detail">
-            <p>Ansh Kuhikar</p>
-            <p class = "designation">General Events Co-Coordinator</p>
-            <a href="mailto:anshkuhikar@iisc.ac.in"><p class = "email">anshkuhikar@iisc.ac.in</p></a>
-        </div>
-        <div class = "contact-detail">
-            <p>Agrim Sharma</p>
-            <p class = "designation">Science Events Coordinator</p>
-            <a href="mailto:agrimsharma@iisc.ac.in"><p class = "email">agrimsharma@iisc.ac.in</p></a>
-        </div>
-    </div>
-</div>
 
     <script>
         var navBar = document.getElementById("navBar");

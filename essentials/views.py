@@ -1,11 +1,21 @@
 from django.shortcuts import render
 from django.utils import timezone
+from .models import Update
 
 def home(request):
 	return render(request, 'essentials/home.html', {})
 
 def updates(request):
-	return render(request, 'essentials/updates.html', {})
+	monthDict={1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr', 5:'May', 6:'Jun', 7:'Jul', 8:'Aug', 9:'Sep', 10:'Oct', 11:'Nov', 12:'Dec'}
+	updates =  Update.objects.filter(publish_date__lte=timezone.now()).order_by('-publish_date')
+	updateMonth=[]
+	updateDate=[]
+	temp=0
+	for i in updates:
+		temp=i.publish_date.month
+		updateMonth.append(monthDict[temp])
+
+	return render(request, 'essentials/updates.html', {'updates':updates , 'monthDict':monthDict, 'updateMonth':updateMonth})
 
 def help(request):
 	return render(request, 'essentials/help.html', {})
@@ -33,10 +43,6 @@ def footprints(request):
 
 def lasya(request):
 	return render(request, 'essentials/lasya.html', {})
-
-
-#def archive(request):
-#	return render(request, 'essentials/archive.html', {})
 
 def partners(request):
 	return render(request, 'essentials/partners.html', {})

@@ -544,5 +544,7 @@
     .home-section:first-of-type > svg{
         order: 1;
         height: 50vh;
+        margin: auto;
+        padding-bottom: 10vh;
     }
 }

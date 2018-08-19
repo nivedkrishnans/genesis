@@ -108,7 +108,7 @@ a.disabled{
     width: 100%;
     min-height: 42px;
     position: fixed;
-    background-color: rgba(8,8,8,0.95);
+    background-color: rgba(0,0,0,0.9);
     z-index: 3;
 
     padding: 2px 4px;
@@ -279,7 +279,7 @@ footer img{
     #navBar{
         top: -600px;
         padding: 2px 4px;
-        height: 84px;
+        height: 90px;
     }
 
     #navBar a .big{

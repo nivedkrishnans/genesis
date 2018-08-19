@@ -18,6 +18,9 @@ class ArchiveImage(models.Model):
 		 )
 	description = models.CharField(max_length=280)
 	image_file = models.ImageField(upload_to='archiveimages/%Y/%m/%d')
+	
+	def __str__(self):
+	 	return self.title
 
 class ScienceQuizzine(models.Model):
 	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)

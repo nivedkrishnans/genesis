@@ -110,7 +110,7 @@ body{
 }
 
 .video-description{
-    text-align: justify;
+    text-align: left;
     color: #fff2c4;
     box-sizing: border-box;
     margin: 2px;
@@ -130,7 +130,7 @@ body{
         display: absolute;
     }
     #main{
-        padding: 128px 196px 196px 196px;
+        padding: 128px 28px 196px 28px;
     }
     .heading{
         color: #d4bb55;
@@ -142,7 +142,7 @@ body{
     .heading span{
         font-size: 24px;
     }
-    
+
     .horizontal-line{
         margin-bottom: 8px;
     }
@@ -211,4 +211,10 @@ body{
         font-size: 16px;
     }
 
+}
+
+@media (min-width: 992px) {
+    #main{
+        padding: 128px 160px 196px 160px;
+    }
 }
