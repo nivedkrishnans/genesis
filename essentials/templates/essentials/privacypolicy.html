@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Privacy Policy | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700|Lato:300,400|Overlock+SC|Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+{% endblock %}
+
+{% block content %}
+    <div id="main">
+        <div class="heading">Privacy Policy</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+            <p>
+                Last updated: (22nd August 2018)
+            </p>
+            <p>
+                Pravega operates www.pravega.org . This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site.
+            </p>
+            <p>
+                We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.
+            </p>
+    </div>
+        <div class="main-section">
+            <div class="section-subheading">Information Collection And Use </div>
+            <div class="horizontal-line"></div>
+            <p>
+                We use third party services such as Google Analytics that collect, monitor and analyse information such as the pages of our Site that you visit, the time and date of your visit, the time spent on those pages, browser type, browser version and other statistics.
+            </p>
+        </div>
+        <div class="main-section">
+            <div class="section-subheading">Cookies</div>
+            <div class="horizontal-line"></div>
+            <p>
+                Cookies are files with small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a web site and stored on your computer's hard drive.
+            </p>
+            <p>
+                Like many sites, we use "cookies" to collect information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Site.
+            </p>
+        </div>
+        <div class="main-section">
+            <div class="section-subheading">Security</div>
+            <div class="horizontal-line"></div>
+                <p>
+                    The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.
+                </p>
+        </div>
+        <div class="main-section">
+            <div class="section-subheading">Changes To This Privacy Policy</div>
+            <div class="horizontal-line"></div>
+            <p>
+                This Privacy Policy is effective as of (28th August, 2018) and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page.
+            </p>
+            <p>
+                We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this page will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy.
+            </p>
+            <p>
+                If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website.
+            </p>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <script>
+        var navBar = document.getElementById("navBar");
+        var navMobile = document.getElementById('navBarMobile');
+        var homeNav = document.getElementById("homeNav");
+        var ham = document.getElementById('hamburgerButton');
+        var navDisplay = false;     //whether or not nav menu is displayed on mobile
+        var navSets = document.getElementsByClassName("navLinkSet");
+
+        window.onresize = function(){
+            toggleNavMobile(false);
+            if(document.documentElement.clientWidth >= 760){
+
+                navSets[0].style.flex = "4 0 0";
+                navSets[1].style.flex = "1 0 0";
+                navSets[2].style.flex = "4 0 0";
+                navBar.style.top = "0";
+            }
+            else{
+                navSets[0].style.flex =  "1 0 100%";
+                navSets[1].style.flex =  "1 0 100%";
+                navSets[2].style.flex =  "1 0 100%";
+            }
+        };
+
+        window.onload = function(){
+            toggleNavMobile(false);
+            if(document.documentElement.clientWidth >= 760){
+
+                navSets[0].style.flex = "4 0 0";
+                navSets[1].style.flex = "1 0 0";
+                navSets[2].style.flex = "4 0 0";
+                navBar.style.top = "0";
+            }
+            else{
+                navSets[0].style.flex =  "1 0 100%";
+                navSets[1].style.flex =  "1 0 100%";
+                navSets[2].style.flex =  "1 0 100%";
+            }
+        };
+
+        function toggleNavMobile(disp){         //shows nav menu for mobile if argument is true, otherwise hides
+
+            if(!disp){
+                navMobile.style.borderBottom = "#ffee9c solid 1px";
+                navBar.style.top = "-280px";
+                ham.classList.remove('is-active');
+                homeNav.style.opacity= "0";
+            }
+            else{
+                navMobile.style.borderBottom = "#000000 solid 1px";
+                navBar.style.top = "44px";
+                ham.classList.add('is-active');
+                homeNav.style.opacity= "1";
+            }
+            navDisplay = !navDisplay;
+        }
+
+        ham.addEventListener("click", function() {
+            toggleNavMobile(!navDisplay);
+            }, true);
+
+    </script>
+{% endblock %}

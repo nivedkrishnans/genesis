@@ -49,3 +49,7 @@ def partners(request):
 
 def comingsoon(request):
 	return render(request, 'essentials/comingsoon.html', {})
+
+
+def policy(request):
+	return render(request, 'essentials/privacypolicy.html', {})

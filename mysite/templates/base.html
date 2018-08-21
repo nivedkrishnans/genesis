@@ -2,6 +2,13 @@
 {% load staticfiles %}
 <html>
         <head>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124407715-1"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'UA-124407715-1');
+            </script>
             {% block head %}
             {% endblock %}
         </head>
@@ -85,6 +92,7 @@
                         <a href="{%url 'partners'%}">Partners</a>
                         <a href="{%url 'help'%}">Help</a>
                         <a href="{%url 'contact'%}">Contact</a>
+                        <a href="{%url 'policy'%}">Privacy Policy</a>
                     </div>
 
                     </div>

@@ -17,6 +17,7 @@ urlpatterns = [
 	url(r'^register/$', essentials.views.register , name="register"),
     url(r'^originals/$', originals.views.originals , name="originals"),
 	url(r'^archive/$', originals.views.archive , name="archive"),
+	url(r'^policy/$', essentials.views.policy , name="policy"),
 	url(r'^2018/$', views.pravega2018 , name="pravega2018"),
 	url(r'^2017/$', views.pravega2017 , name="pravega2017"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
