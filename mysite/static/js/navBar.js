@@ -8,10 +8,10 @@ var navSets = document.getElementsByClassName("navLinkSet");
 window.onresize = function(){
     toggleNavMobile(false);
     if(document.documentElement.clientWidth >= 760){
-        navBar.style.top = "0";
         navSets[0].style.flex = "4 0 0";
         navSets[1].style.flex = "1 0 0";
         navSets[2].style.flex = "4 0 0";
+        navBar.style.top = "0";
     }
     else{
         navSets[0].style.flex =  "1 0 100%";

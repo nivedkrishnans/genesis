@@ -1,102 +1,102 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html>
-        <head>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124407715-1"></script>
-            <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'UA-124407715-1');
-            </script>
-            {% block head %}
-            {% endblock %}
-        </head>
-    	<body>
-    		<header>
-                <div id="navBarMobile">
-                    <a href="{%url 'home'%}">
-                        <img src="{%static 'img/logo-gold.svg'%}" id="mobileNavLogo">
-                        <div id="homeNav"> Home </div>
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124407715-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-124407715-1');
+        </script>
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+    	<header>
+            <div id="navBarMobile">
+                <a href="{%url 'home'%}">
+                    <img src="{%static 'img/logo-gold.svg'%}" id="mobileNavLogo">
+                    <div id="homeNav"> Home </div>
+                </a>
+                <button id="hamburgerButton" class="hamburger hamburger--slider" type="button" >
+                  <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                  </span>
+                </button>
+            </div>
+            <div id="hoverNavDisplay">
+                <nav id="navBar">
+                    <ul class="navLinkSet" style="order: 1;">
+                        <li><a href="{%url 'events'%}">
+                            <span class="small">Events</span>
+                            <img class="big" alt="E" src="{%static 'img/icons/IconEvents.svg' %}">
+                        </a></li>
+                        <li><a href="{%url 'register'%}">
+                            <span class="small">Registrations</span>
+                            <img class="big" alt="R" src="{%static 'img/icons/IconRegistrations.svg' %}">
+                        </a></li>
+                        <li><a href="{%url 'updates'%}">
+                            <span class="small">Updates</span>
+                            <img class="big" alt="U" src="{%static 'img/icons/IconUpdates.svg' %}">
+                        </a></li>
+                        <li><a href="{%url 'originals'%}">
+                            <span class="small">Originals</span>
+                            <img class="big" alt="O" src="{%static 'img/icons/IconOriginals.svg' %}">
+                        </a></li>
+                    </ul>
+                    <a href="{%url 'home'%}" id="logo" class="navLinkSet curr" style="flex: 1 0 100%;">
+                            <span class="small">Home</span>
+                            <img class="big" src="{%static 'img/logo-gold.svg' %}" alt="V">
                     </a>
-                    <button id="hamburgerButton" class="hamburger hamburger--slider" type="button" >
-                      <span class="hamburger-box">
-                        <span class="hamburger-inner"></span>
-                      </span>
-                    </button>
-                </div>
-                <div id="hoverNavDisplay">
-                    <nav id="navBar">
-                        <ul class="navLinkSet" style="order: 1;">
-                            <li><a href="{%url 'events'%}">
-                                <span class="small">Events</span>
-                                <img class="big" alt="E" src="{%static 'img/icons/IconEvents.svg' %}">
-                            </a></li>
-                            <li><a href="{%url 'register'%}">
-                                <span class="small">Registrations</span>
-                                <img class="big" alt="R" src="{%static 'img/icons/IconRegistrations.svg' %}">
-                            </a></li>
-                            <li><a href="{%url 'updates'%}">
-                                <span class="small">Updates</span>
-                                <img class="big" alt="U" src="{%static 'img/icons/IconUpdates.svg' %}">
-                            </a></li>
-                            <li><a href="{%url 'originals'%}">
-                                <span class="small">Originals</span>
-                                <img class="big" alt="O" src="{%static 'img/icons/IconOriginals.svg' %}">
-                            </a></li>
-                        </ul>
-                        <a href="{%url 'home'%}" id="logo" class="navLinkSet curr" style="flex: 1 0 100%;">
-                                <span class="small">Home</span>
-                                <img class="big" src="{%static 'img/logo-gold.svg' %}" alt="V">
-                        </a>
-                        <ul class="navLinkSet" style="order: 3;">
-                            <li><a href="{%url 'archive'%}">
-                                <span class="small">Archive</span>
-                                <img class="big" alt="A" src="{%static 'img/icons/IconArchive.svg' %}">
-                            </a></li>
-                            <li><a href="{%url 'partners'%}">
-                                <span class="small">Partners</span>
-                                <img class="big" alt="P" src="{%static 'img/icons/IconPartners.svg' %}">
-                            </a></li>
-                            <li><a href="{%url 'help'%}">
-                                <span class="small">Help</span>
-                                <img class="big" alt="Q" src="{%static 'img/icons/IconFAQs.svg' %}">
-                            </a></li>
-                            <li><a href="{%url 'contact'%}">
-                                <span class="small">Contact Us</span>
-                                <img class="big" alt="C" src="{%static 'img/icons/IconContact.svg' %}">
-                            </a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
-            {% block content %}
-            {% endblock %}
-            <footer>
-                <!-- <a class="foot-reg" href="{%url 'register'%}">Register</a>  -->
+                    <ul class="navLinkSet" style="order: 3;">
+                        <li><a href="{%url 'archive'%}">
+                            <span class="small">Archive</span>
+                            <img class="big" alt="A" src="{%static 'img/icons/IconArchive.svg' %}">
+                        </a></li>
+                        <li><a href="{%url 'partners'%}">
+                            <span class="small">Partners</span>
+                            <img class="big" alt="P" src="{%static 'img/icons/IconPartners.svg' %}">
+                        </a></li>
+                        <li><a href="{%url 'help'%}">
+                            <span class="small">Help</span>
+                            <img class="big" alt="Q" src="{%static 'img/icons/IconFAQs.svg' %}">
+                        </a></li>
+                        <li><a href="{%url 'contact'%}">
+                            <span class="small">Contact Us</span>
+                            <img class="big" alt="C" src="{%static 'img/icons/IconContact.svg' %}">
+                        </a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        {% block content %}
+        {% endblock %}
+        <footer>
+            <!-- <a class="foot-reg" href="{%url 'register'%}">Register</a>  -->
+            <div>
+                <a href="https://www.facebook.com/PravegaIISc"><img src="{%static 'img/facebook.svg' %}"></a>
+                <a href="https://www.twitter.com/PravegaIISc"><img src="{%static 'img/twitter.svg' %}"></a>
+                <a href="https://www.instagram.com/mypravega/"><img src="{%static 'img/instagram.svg' %}"></a>
+            </div>
+            <div class="quicklinks">
                 <div>
-                    <a href="https://www.facebook.com/PravegaIISc"><img src="{%static 'img/facebook.svg' %}"></a>
-                    <a href="https://www.twitter.com/PravegaIISc"><img src="{%static 'img/twitter.svg' %}"></a>
-                    <a href="https://www.instagram.com/mypravega/"><img src="{%static 'img/instagram.svg' %}"></a>
+                    <a href="{%url 'home'%}" >Home</a>
+                    <a href="{%url 'register'%}">Register</a>
+                    <a href="{%url 'events'%}">Events</a>
+                    <a href="{%url 'originals'%}">Originals</a>
+                    <a href="{%url 'archive'%}">Archive</a>
                 </div>
-                <div class="quicklinks">
-                    <div>
-                        <a href="{%url 'home'%}" >Home</a>
-                        <a href="{%url 'register'%}">Register</a>
-                        <a href="{%url 'events'%}">Events</a>
-                        <a href="{%url 'originals'%}">Originals</a>
-                        <a href="{%url 'archive'%}">Archive</a>
-                    </div>
-                    <div>
-                        <a href="{%url 'updates'%}">Updates</a>
-                        <a href="{%url 'partners'%}">Partners</a>
-                        <a href="{%url 'help'%}">Help</a>
-                        <a href="{%url 'contact'%}">Contact</a>
-                        <a href="{%url 'policy'%}">Privacy Policy</a>
-                    </div>
+                <div>
+                    <a href="{%url 'updates'%}">Updates</a>
+                    <a href="{%url 'partners'%}">Partners</a>
+                    <a href="{%url 'help'%}">Help</a>
+                    <a href="{%url 'contact'%}">Contact</a>
+                    <a href="{%url 'policy'%}">Privacy Policy</a>
+                </div>
 
-                    </div>
-            </footer>
+                </div>
+        </footer>
 
 
     </body>

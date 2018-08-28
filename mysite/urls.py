@@ -4,11 +4,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 import essentials.views
 import originals.views
+import registration.views
 from . import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^demigod/', admin.site.urls),
 	url(r'^$', essentials.views.home , name="home"),
+    url(r'^registration/', include('registration.urls')),
 	url(r'^updates/$', essentials.views.updates , name="updates"),
     url(r'^events/', include('essentials.urls')),
 	url(r'^help/$', essentials.views.comingsoon , name="help"),

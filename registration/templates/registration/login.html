@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Login | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Overlock+SC|Raleway:300,400|Dosis:300,400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/comingsoon.css'%}">
+{% endblock %}
+
+{% block content %}
+    <div id="main">
+        <h2>Login</h2>
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% if user.is_authenticated %}
+          Hi {{ user.username }}!
+          <a href="{% url 'logout' %}">logout</a>
+          <a href="{% url 'password_change' %}"> change password</a>
+        {% else %}
+            Don't have an account? <a href="{% url 'signup' %}">Click here to sign up</a>
+            <br>Forgotten your password? <a href="{% url 'password_reset' %}">Click here to reset password</a>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+          </form>
+        {% endif %}
+
+
+    </div>
+
+    <script src="{%static 'js/navBar.js'%}"> </script>
+{% endblock %}

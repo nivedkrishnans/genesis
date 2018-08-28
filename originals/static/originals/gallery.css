@@ -65,7 +65,7 @@ body{
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .thumbnail-caption{
   color: #fff2c4;
@@ -170,7 +170,7 @@ body{
     .thumbnail{
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
     .thumbnail-caption{
       margin: 2px;
