@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm
+from .forms import SignUpForm,LasyaForm
 from django.shortcuts import render, redirect, get_object_or_404, reverse, Http404
 from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
@@ -7,7 +7,44 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib import messages
 from . import helpers
-from .models import UserData
+from .models import UserData,AdminEvent,LasyaRegistration
+from django.utils import timezone
+
+def closed(request):
+    return render(request, 'registration/closed.html', {})
+
+def registered(request):
+    return render(request, 'registration/registered.html', {})
+
+def lasyaRegistration(request):
+    lasyaEvent = get_object_or_404(AdminEvent, title='lasya')
+    if lasyaEvent.registrationActive:
+        if request.user.is_authenticated:
+            allRegistrations = LasyaRegistration.objects.all()
+            isRegistered=False;
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered=True
+            if isRegistered:
+                return render(request, 'registration/registered.html',{})
+            else:
+                if request.method == "POST":
+                    f = LasyaForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        reg.event = lasyaEvent
+                        reg.save()
+                        messages.add_message(request, messages.INFO, 'You have succesfully registered for Lasya')
+                        return redirect('registration')
+                else:
+                    f = LasyaForm()
+                return render(request, 'registration/lasyaRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Lasya')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
 
 def redirectLogin(request):
     return redirect(to="login")
@@ -55,7 +92,6 @@ def signup(request):
         f = SignUpForm()
 
     return render(request, 'registration/signup.html', {'form': f})
-
 
 def activateAccount(request):
     key = request.GET['key']

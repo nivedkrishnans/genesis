@@ -6,8 +6,15 @@ import django.contrib.auth.views
 
 
 urlpatterns = [
-	url(r'^signup$', views.signup, name='signup'),
+	url(r'^closed$', views.closed, name='closed'),
+	url(r'^closed/$', views.closed, name='closed'),
+	url(r'^registered$', views.registered, name='registered'),
+	url(r'^registered/$', views.registered, name='registered'),
+	url(r'^lasya$', views.lasyaRegistration, name='lasyaRegistration'),
+	url(r'^lasya/$', views.lasyaRegistration, name='lasyaRegistration'),
+	url(r'^signup$', views.signup, name='signup'),	url(r'^signup$', views.signup, name='signup'),
+	url(r'^signup/$', views.signup, name='signup'),	url(r'^signup$', views.signup, name='signup'),
 	url(r'^activate/account/$', views.activateAccount),
-	url(r'^$', views.redirectLogin),
+	url(r'^$', views.redirectLogin, name='registration'),
 	url(r'^', include('django.contrib.auth.urls')),
 ]

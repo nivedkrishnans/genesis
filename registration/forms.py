@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
 from . import models
-
+from .models import LasyaRegistration
+from django.utils.translation import gettext_lazy as _
 
 class SignUpForm(forms.Form):
     first_name = forms.CharField(label='Enter Your Name', min_length=3, max_length=30)
@@ -42,3 +43,11 @@ class SignUpForm(forms.Form):
             self.cleaned_data['password1']
         )
         return user
+
+class LasyaForm(forms.ModelForm):
+    class Meta:
+        model = LasyaRegistration
+        fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile')
+        label = {
+            'teamName': _('Writer'),
+        }

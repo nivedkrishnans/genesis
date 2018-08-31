@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
     <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
-    <title>Password Change Done | Pravega 2019, IISc Bangalore</title>
+    <title>Lasya Registration | Pravega 2019, IISc Bangalore</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Overlock+SC|Raleway:300,400|Dosis:300,400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/comingsoon.css'%}">
     <link rel="stylesheet" href="{%static 'css/reg.css'%}">
-
 {% endblock %}
 
 {% block content %}
     <div id="main">
-        <div class="heading">Password Change Done</div>
+        <h2>Lasya Registration</h2>
         {% if messages %}
             <ul class="messages">
             {% for message in messages %}
@@ -26,9 +26,17 @@
             </ul>
         {% endif %}
         {% if user.is_authenticated %}
-          Hi {{ user.username }}! Your password was changed!
+          Hi {{ user.username }}!<br>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+          </form>
         {% else %}
-              <p>You are not supposed to be here ;'-( '</p>
+            <h3>You have to log in to register for Lasya</h3><br>
+            Have an account? <a href="{% url 'login' %}">Click here to Log in</a><br>
+            Don't have an account? <a href="{% url 'signup' %}">Click here to sign up</a><br>
+
         {% endif %}
 
 

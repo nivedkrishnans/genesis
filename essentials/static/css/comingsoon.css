@@ -3,13 +3,9 @@ html{
     margin: 0;
 }
 
-body{
-    padding: 0;
-    margin: 0;
-}
 
 #main{
-    background-color: rgb(12,12,12);
+    background-color: rgba(8,8,8,0.8);
     box-sizing: border-box;
     width: 100%;
     min-height: 100vh;
@@ -35,6 +31,12 @@ body{
     font-size: 18px;
     text-align: center;
 }
+
+#cssubsubtitle{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
 .wanna-contact{
     margin-top: 14px;
     font-family: 'Dosis', sans-serif;
@@ -52,11 +54,15 @@ body{
     }
 
     #cstitle{
-        font-size: 40px;
+        font-size: 38px;
     }
 
     #cssubtitle{
-        font-size: 36px;
+        font-size: 30px;
+    }
+
+    #cssubsubtitle{
+        font-size: 22px;
     }
     .wanna-contact{
         margin-top: 14px;
@@ -72,10 +78,13 @@ body{
         padding: 128px 196px 196px 196px;
     }
     #cstitle{
-        font-size: 48px;
+        font-size: 44px;
     }
     #cssubtitle{
-        font-size: 36px;
+        font-size: 32px;
+    }
+    #cssubsubtitle{
+        font-size: 20px;
     }
 
 }

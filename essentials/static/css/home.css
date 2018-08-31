@@ -8,6 +8,12 @@
                         #0d0b01
     Disabled Colour: #787460
 */
+
+body{
+    background-image: none !important;
+    background-color: #030200;
+}
+
 .slide-container{
     box-sizing: border-box;
     position: relative;

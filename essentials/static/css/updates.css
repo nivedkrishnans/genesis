@@ -12,7 +12,7 @@ body{
     display: absolute;
 }
 #main{
-    background-color: rgb(8,8,8);
+    background-color: rgba(8,8,8,0.7);
     box-sizing: border-box;
     width: 100%;
     min-height: 100vh;
@@ -48,11 +48,12 @@ body{
 }
 
 .update-container{
-    background-color: rgba(17,17,17,0.99);
+    background-color: rgba(12,12,12,0.99);
     margin: 14px 14px;
     display: flex;
     flex-direction: column;
     border-radius: 8px 8px 8px 8px;
+    border: 1px rgba(255,255,240,0.01) solid;
 }
 .date-card{
     margin: 0;

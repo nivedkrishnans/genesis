@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Lasya Registration | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Overlock+SC|Raleway:300,400|Dosis:300,400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/reg.css'%}">
+{% endblock %}
+
+{% block content %}
+    <div id="main">
+        <div class="heading">Lasya Registration</div>
+        {% if user.is_authenticated %}
+          <p>Hi {{ user.username }}!</p>
+
+          {% if form.errors %}
+              <div class="errors">
+                  <h4>Please fix the following errors</h4>
+                  <ul>
+                      {% for field in form %}
+                          {% if field.errors %}
+                              {% for error in field.errors %}
+                                  <li>{{ error|escape }}</li>
+                              {% endfor %}
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+                  {% if form.non_field_errors %}
+                      {{ form.non_field_errors }}
+                  {% endif %}
+              </div>
+          {% endif %}
+          {% if messages %}
+              <div class="messages">
+                  <ul>
+                  {% for message in messages %}
+                      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                  {% endfor %}
+                  </ul>
+              </div>
+          {% endif %}
+
+          <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="field-space">
+                    {{ field.errors }}
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+          </form>
+        {% else %}
+            <h3>You have to log in to register for Lasya</h3><br>
+            Have an account? <a href="{% url 'login' %}">Click here to Log in</a><br>
+            Don't have an account? <a href="{% url 'signup' %}">Click here to sign up</a><br>
+
+        {% endif %}
+
+
+    </div>
+
+    <script src="{%static 'js/navBar.js'%}"> </script>
+{% endblock %}
