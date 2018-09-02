@@ -4,7 +4,7 @@ body{
 }
 
 #main{
-    background-color: rgba(8,8,8,0.8);
+    background-color: rgba(8,8,8,0.90);
     box-sizing: border-box;
     width:100%;
     min-height: 100vh;

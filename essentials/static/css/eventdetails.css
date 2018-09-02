@@ -9,7 +9,7 @@ body{
 }
 
 #main{
-    background-color: rgba(8,8,8,0.7);
+    background-color: rgba(8,8,8,0.85);
     box-sizing: border-box;
     width: 100%;
     min-height: 100vh;

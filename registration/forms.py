@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
 from . import models
-from .models import LasyaRegistration
+from .models import LasyaRegistration,ProsceniumRegistration,FootprintsRegistration
 from django.utils.translation import gettext_lazy as _
 
 class SignUpForm(forms.Form):
@@ -48,6 +48,15 @@ class LasyaForm(forms.ModelForm):
     class Meta:
         model = LasyaRegistration
         fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile')
-        label = {
-            'teamName': _('Writer'),
-        }
+
+
+class ProsceniumForm(forms.ModelForm):
+    class Meta:
+        model = ProsceniumRegistration
+        fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile')
+
+
+class FootprintsForm(forms.ModelForm):
+    class Meta:
+        model = FootprintsRegistration
+        fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile')

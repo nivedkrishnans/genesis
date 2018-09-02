@@ -32,7 +32,7 @@
                             <span class="small">Events</span>
                             <img class="big" alt="E" src="{%static 'img/icons/IconEvents.svg' %}">
                         </a></li>
-                        <li><a href="{%url 'register'%}">
+                        <li><a href="{%url 'registration'%}">
                             <span class="small">Registrations</span>
                             <img class="big" alt="R" src="{%static 'img/icons/IconRegistrations.svg' %}">
                         </a></li>
@@ -73,7 +73,6 @@
         {% block content %}
         {% endblock %}
         <footer>
-            <!-- <a class="foot-reg" href="{%url 'register'%}">Register</a>  -->
             <div>
                 <a href="https://www.facebook.com/PravegaIISc"><img src="{%static 'img/facebook.svg' %}"></a>
                 <a href="https://www.twitter.com/PravegaIISc"><img src="{%static 'img/twitter.svg' %}"></a>
@@ -82,7 +81,7 @@
             <div class="quicklinks">
                 <div>
                     <a href="{%url 'home'%}" >Home</a>
-                    <a href="{%url 'register'%}">Register</a>
+                    <a href="{%url 'registration'%}">Register</a>
                     <a href="{%url 'events'%}">Events</a>
                     <a href="{%url 'originals'%}">Originals</a>
                     <a href="{%url 'archive'%}">Archive</a>

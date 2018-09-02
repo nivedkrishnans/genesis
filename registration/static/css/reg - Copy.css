@@ -2,24 +2,21 @@ body{
     padding: 0;
     margin: 0;
 }
-
+ul{
+    color: red;
+}
 #main{
     background-color: rgba(8,8,8,0.7);
     box-sizing: border-box;
     min-height: 100vh;
     border: 1px rgba(0,0,0,0.1) solid;
-    width: 100%;
-    margin: 0;
-    padding: 128px 24px 0 24px;
-    color: rgb(255,255,240);
-    font-size: 18px;
+    width: 600px;
+    margin: 0 auto 12px auto;
+    padding: 160px 48px 48px 48px;
+    color: rgba(255,255,240);
+    font-size: 16px;
     font-family: 'Raleway', sans-serif;
 }
-
-a:hover,a:active{
-    color: inherit;
-}
-
 
 p{
     margin: 24px 0;
@@ -43,19 +40,8 @@ p{
     border-radius: 4px;
     border: 1px solid white;
     font-size: 16px;
-    color: rgb(255,255,240);
+    color: rgba(255,255,240);
     transition: all 0.2s;
-}
-.divButton:hover{
-    transform: scale(1.05,1.05);
-    background-color: rgb(255,255,240);
-    color: rgb(8,8,8);
-    text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
-}
-.divButton:active{
-    transform: scale(1,1);
-    background-color: rgb(150,150,150);
-    text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
 }
 
 button{
@@ -63,7 +49,7 @@ button{
     box-sizing: border-box;
     color: rgba(8,8,8);
     background-color: rgba(255,255,240,0.8);
-    margin: 44px auto 24px auto;
+    margin: 44px 2px 24px auto;
     display: block;
     border-radius: 4px;
     transition: all 0.2s;
@@ -78,10 +64,6 @@ button:active{
     outline: 0;
     background-color: rgba(255,255,240,0.3);
 }
-button:focus{
-    outline: 0;
-    background-color: rgba(255,255,240,0.3);
-}
 
 .field-space{
     margin: 14px 0;
@@ -93,13 +75,12 @@ label{
 }
 
 input,textarea{
-    box-sizing: border-box;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid rgba(255,255,240,0.3);
-    font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
     padding: 4px 8px;
     color: rgba(255,255,240);
     display: block;
@@ -107,7 +88,7 @@ input,textarea{
     margin: 8px 8px 8px 16px;
     width: 100%;
     transition: 0.2s all;
-  }
+}
 
 textarea{
     border: 1px solid rgba(255,255,240,0.3);
@@ -115,7 +96,7 @@ textarea{
 
 input:hover,textarea:hover{
     outline: 0px;
-    border-bottom: 1px solid rgba(255,255,240,0.4);
+    border-bottom: 1px solid rgba(255,255,255,1);
 }
 
 input:focus,textarea:focus{
@@ -127,60 +108,4 @@ input:focus,textarea:focus{
 input[type=file]{
     color: white;
     cursor: pointer;
-}
-
-@media (min-width: 760px) {
-    #main {
-      width: 600px;
-      padding: 160px 48px 48px 48px;
-      margin: 0 auto 12px auto;
-    }
-}
-@media (min-width: 1200px) {
-    #main {
-      padding: 200px 48px 48px 48px;
-      font-size: 18px;
-    }
-    input,textarea{
-        font-size: 18px;
-    }
-    button{
-        margin: 44px 2px 24px auto;
-    }
-    p {
-      margin: 40px 0;
-    }
-    .heading {
-      font-size: 36px;
-    }
-    .field-space {
-      margin: 20px 0;
-    }
-}
-
-@media (min-width: 1800px) {
-    #main {
-        width: 840px;
-        padding: 220px 68px 68px 68px;
-        font-size: 24px;
-    }
-    .divButton,button{
-        font-size: 22px;
-        margin: 24px;
-    }
-    input,textarea{
-        font-size: 26px;
-    }
-    button{
-        margin: 44px 2px 24px auto;
-    }
-    p {
-      margin: 40px 0;
-    }
-    .heading {
-      font-size: 44px;
-    }
-    .field-space {
-      margin: 32px 0;
-    }
 }

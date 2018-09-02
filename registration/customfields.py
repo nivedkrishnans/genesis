@@ -3,37 +3,81 @@ from django import forms
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 import os.path
+import ast
 
 lasyaSizeLimit = 1024
+prosceniumSizeLimit = 314572800
+footprintsSizeLimit = 314572800
 videoExtensions = ['.mp4', '.avi', '.mov', '.mkv']
 
 
 def fileSizeText(value):
     if (value < 1024.0):
-        size = value + " bytes"
+        size = str(round(value,2)) + " Bytes"
     elif (value < 1048576.0):
-        size = (value/1024.0) + " KB"
+        size = str(round(value/1024.0,2)) + " KB"
     elif (value < 1073741824.0):
-        size = (value/1048576.0) + " MB"
+        size = str(round(value/1048576.0,2)) + " MB"
     else :
-        size = (value/1073741824.0) + " GB"
+        size = str(round(value/1073741824.0,2)) + " GB"
     return size
 
 def lasya_file_validation(value):
     extension = os.path.splitext( value.name)[1]
     filesize= value.size
-    if ((filesize > lasyaSizeLimit) | (extension not in videoExtensions)):
-        if filesize > lasyaSizeLimit:
-            raise ValidationError("The maximum file size that can be uploaded is " + fileSizeText(lasyaSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".")
-        if extension not in videoExtensions:
-            extensions = ""
-            for i in videoExtensions:
-                extensions = extensions + i + " "
-            raise ValidationError("Unknown filetype. The supported file types are " + extensions + " .")
+    if ((filesize > lasyaSizeLimit) & (extension not in videoExtensions)):
+        extensions = ""
+        for i in videoExtensions:
+            extensions = extensions + i + ", "
+        raise ValidationError("Invalid file size and file type. The maximum file size that can be uploaded is " + fileSizeText(lasyaSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".  The supported file types are " + extensions + " .")
+    elif filesize > lasyaSizeLimit:
+        raise ValidationError("The maximum file size that can be uploaded is " + fileSizeText(lasyaSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".")
+    elif extension not in videoExtensions:
+        extensions = ""
+        for i in videoExtensions:
+            extensions = extensions + i + ", "
+        raise ValidationError("Unknown filetype. The supported file types are " + extensions + " .")
+    else:
+        return value
+
+def proscenium_file_validation(value):
+    extension = os.path.splitext( value.name)[1]
+    filesize= value.size
+    if ((filesize > prosceniumSizeLimit) & (extension not in videoExtensions)):
+        extensions = ""
+        for i in videoExtensions:
+            extensions = extensions + i + ", "
+        raise ValidationError("Invalid file size and file type. The maximum file size that can be uploaded is " + fileSizeText(prosceniumSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".  The supported file types are " + extensions + " .")
+    elif filesize > prosceniumSizeLimit:
+        raise ValidationError("The maximum file size that can be uploaded is " + fileSizeText(prosceniumSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".")
+    elif extension not in videoExtensions:
+        extensions = ""
+        for i in videoExtensions:
+            extensions = extensions + i + ", "
+        raise ValidationError("Unknown filetype. The supported file types are " + extensions + " .")
     else:
         return value
 
 
+def footprints_file_validation(value):
+    extension = os.path.splitext( value.name)[1]
+    filesize= value.size
+    if ((filesize > footprintsSizeLimit) & (extension not in videoExtensions)):
+        extensions = ""
+        for i in videoExtensions:
+            extensions = extensions + i + ", "
+        raise ValidationError("Invalid file size and file type. The maximum file size that can be uploaded is " + fileSizeText(footprintsSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".  The supported file types are " + extensions + " .")
+    elif filesize > footprintsSizeLimit:
+        raise ValidationError("The maximum file size that can be uploaded is " + fileSizeText(footprintsSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".")
+    elif extension not in videoExtensions:
+        extensions = ""
+        for i in videoExtensions:
+            extensions = extensions + i + ", "
+        raise ValidationError("Unknown filetype. The supported file types are " + extensions + " .")
+    else:
+        return value
+
+#thanks to pravega18
 class PhoneNumberField():
     phone_regex = r'^\+91\d{10}$|^0\d{10}$|^\d{10}$'
     message = "Please enter a valid 10 digit phone number, prefixed by either 0, +91, or nothing"

@@ -21,7 +21,7 @@
         <div class="heading">Login</div>
 
         {% if user.is_authenticated %}
-          <p> Hi {{ user.username }}! You are already logged in!</p>
+          <p> Hi {{ user.username }}! You are logged in!</p>
           <p> Check out our events on the <a href="{% url 'events'%}"> events </a> page.</p>
           <p> Go to the <a href="{% url 'registration'%}"> registrations </a> page to register to our events.</p>
           <div class="buttonCollection">

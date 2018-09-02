@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm,LasyaForm
+from .forms import SignUpForm,LasyaForm,ProsceniumForm,FootprintsForm
 from django.shortcuts import render, redirect, get_object_or_404, reverse, Http404
 from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib import messages
 from . import helpers
-from .models import UserData,AdminEvent,LasyaRegistration
+from .models import UserData,AdminEvent,LasyaRegistration,FootprintsRegistration,ProsceniumRegistration
 from django.utils import timezone
 
 def closed(request):
@@ -16,9 +16,33 @@ def closed(request):
 def registered(request):
     return render(request, 'registration/registered.html', {})
 
+
+def registration_index(request):
+    eventDictionary=0
+    userReg=[]
+    openedEvents = AdminEvent.objects.filter(registrationStatus='opened')
+    closedEvents = AdminEvent.objects.filter(registrationStatus='closed')
+    notyetEvents = AdminEvent.objects.filter(registrationStatus='notyet')
+    if request.user.is_authenticated:
+        eventDictionary={
+            'lasya':LasyaRegistration,
+            'proscenium':ProsceniumRegistration,
+            'footprints':FootprintsRegistration,
+        }
+        for i in openedEvents:
+            eventTitle = i.title
+            allRegistrations = eventDictionary[eventTitle].objects.all()
+            isRegistered=False;
+            for j in allRegistrations:
+                if (request.user == j.user):
+                    isRegistered=True
+            userReg.append(isRegistered)
+
+    return render(request, 'registration/registration_index.html', {'userReg':userReg, 'openedEvents':openedEvents, 'closedEvents':closedEvents, 'notyetEvents':notyetEvents })
+
 def lasyaRegistration(request):
-    lasyaEvent = get_object_or_404(AdminEvent, title='lasya')
-    if lasyaEvent.registrationActive:
+    thisEvent = get_object_or_404(AdminEvent, title='lasya')
+    if thisEvent.registrationStatus == 'opened':
         if request.user.is_authenticated:
             allRegistrations = LasyaRegistration.objects.all()
             isRegistered=False;
@@ -33,9 +57,14 @@ def lasyaRegistration(request):
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
-                        reg.event = lasyaEvent
+                        reg.event = thisEvent
                         reg.save()
                         messages.add_message(request, messages.INFO, 'You have succesfully registered for Lasya')
+                        subject = "Successfully registered for Lasya"
+                        message = '''\n
+                        You have successfully registered for Lasya. Will see you soon!
+                        '''
+                        send_mail(subject, message, settings.SERVER_EMAIL,[request.user.email])
                         return redirect('registration')
                 else:
                     f = LasyaForm()
@@ -45,6 +74,77 @@ def lasyaRegistration(request):
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
+
+def prosceniumRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='proscenium')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations = ProsceniumRegistration.objects.all()
+            isRegistered=False;
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered=True
+            if isRegistered:
+                return render(request, 'registration/registered.html',{})
+            else:
+                if request.method == "POST":
+                    f = ProsceniumForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        reg.event = thisEvent
+                        reg.save()
+                        messages.add_message(request, messages.INFO, 'You have succesfully registered for Proscenium')
+                        subject = "Successfully registered for Proscenium"
+                        message = '''\n
+                        You have successfully registered for Proscenium. Will see you soon!
+                        '''
+                        send_mail(subject, message, settings.SERVER_EMAIL, [request.user.email])
+                        return redirect('registration')
+                else:
+                    f = ProsceniumForm()
+                return render(request, 'registration/prosceniumRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Proscenium')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+def footprintsRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='footprints')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations = FootprintsRegistration.objects.all()
+            isRegistered=False;
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered=True
+            if isRegistered:
+                return render(request, 'registration/registered.html',{})
+            else:
+                if request.method == "POST":
+                    f = FootprintsForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        reg.event = thisEvent
+                        reg.save()
+                        messages.add_message(request, messages.INFO, 'You have succesfully registered for Footprints')
+                        subject = "Successfully registered for Footprints"
+                        message = '''\n
+                        You have successfully registered for Footprints. Will see you soon!
+                                    '''
+                        send_mail(subject, message, settings.SERVER_EMAIL, [request.user.email])
+                        return redirect('registration')
+                else:
+                    f = FootprintsForm()
+                return render(request, 'registration/footprintsRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Footprints')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
 
 def redirectLogin(request):
     return redirect(to="login")

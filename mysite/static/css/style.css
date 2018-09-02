@@ -312,4 +312,10 @@ footer img{
     .quicklinks{
         font-size: 18px;
     }
+    #navBar a .big{
+        height: 48px;
+    }
+    #navBar a .small{
+        font-size: 20px;
+    }
 }

@@ -1,0 +1,178 @@
+html{
+    padding: 0;
+    margin: 0;
+}
+body{
+    padding: 0;
+    margin: 0;
+    color: rgb(255,255,240);
+}
+
+a:hover,a:active{
+    color: inherit;
+}
+
+#main{
+    background-color: rgba(8,8,8,0.7);
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    padding: 96px 8px 60px 8px;
+    margin: 0;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.heading{
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 36px;
+    color: #ffee9c;
+}
+
+.buttonCollection{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+
+.divButton{
+    text-align: center;
+    min-width: 80px;
+    margin: 6px 12px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid white;
+    font-size: 16px;
+    color: rgb(255,255,240);
+    transition: all 0.2s;
+}
+.divButton:hover{
+    transform: scale(1.05,1.05);
+    background-color: rgb(255,255,240);
+    color: rgb(8,8,8);
+    text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
+}
+.divButton:active{
+    transform: scale(1,1);
+    background-color: rgb(150,150,150);
+    text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
+}
+.cursor{
+  cursor: pointer;
+}
+
+.inactive-event{
+    filter: brightness(0.4);
+}
+
+.event-area{
+    background-color: rgba(8,8,8,0.99);
+    margin: 14px 14px;
+    border-radius: 8px 8px 8px 8px;
+    border: 1px rgba(255,255,240,0.01) solid;
+}
+
+.event-title{
+    font-family: 'Titillium Web', sans-serif;
+    text-transform: capitalize;
+    font-size: 32px;
+    color: #ffee9c;
+}
+.event-description{
+    text-indent: 14px;
+}
+
+.event-essentials{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.green-status{
+    border: 1px solid #3df230;
+    color: #3df230;
+    background-color: rgb(8,8,8);
+}
+
+.yellow-status{
+    border: 1px solid #f7ec56;
+    color: #f7ec56;
+    transition: all 0.2s;
+}
+.yellow-status:hover{
+    transform: scale(1.05,1.05);
+    border: 1px solid rgb(8,8,8);
+    color: rgb(8,8,8);
+    background-color:  #f7ec56;
+    text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
+}
+.yellow-status:active{
+    transform: scale(1,1);
+    background-color:  #ba9d1b;
+}
+.orange-status{
+    border: 1px solid #ff8c00;
+    color: #ff8c00;
+}
+.red-status{
+    border: 1px solid #e20f0f;
+    color: #e20f0f;
+}
+.green-status,.yellow-status,.red-status,.orange-status{
+    margin: 14px;
+    padding: 4px;
+    text-align: left;
+}
+
+
+
+.center{
+    text-align: center;
+}
+
+
+
+@media (min-width: 760px) {
+
+    #main{
+        padding: 128px 28px 196px 28px;
+    }
+    .buttonCollection{
+        flex-direction: row;
+    }
+    .event-area{
+        padding: 22px 36px;
+        border-radius: 4px;
+        margin: 14px 0;
+        margin: 14px 14px;
+        border-radius: 8px 8px 8px 8px;
+    }
+    .event-essentials{
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width: 992px) {
+    #main{
+        padding: 128px 196px 196px 196px;
+    }
+}
+
+@media (min-width: 1800px) {
+    #main{
+        padding: 128px 256px 196px 256px;
+    }
+
+    .divButton{
+        font-size: 22px;
+        margin: 24px;
+    }
+    .event-area{
+        margin: 28px;
+    }
+}

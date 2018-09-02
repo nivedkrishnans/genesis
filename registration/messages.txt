@@ -1,0 +1,7 @@
+subject = "Successfully registered for Lasya"
+
+message = '''\n
+You have successfully registered for Lasya. Will see you soon!
+            '''.
+
+send_mail(subject, message, settings.SERVER_EMAIL, request.user.email)
