@@ -19,7 +19,7 @@ def event_confirmation_mail(event_name):
                     '''.format(request.scheme, request.get_host(),name,event_name)
     success=True
     try:
-        msg = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [request.POST['email']])
+        msg = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [request.user.email])
         msg.attach_alternative(html_content, "text/html")
         msg.send()
         temp = 'Successfully registered for ' + event_name + '.'

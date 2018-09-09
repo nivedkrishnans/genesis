@@ -240,7 +240,7 @@ def activateAccount(request):
                     \n Pravega Team.
                     '''.format(request.scheme, request.get_host(),name)
     error = False
-    msg = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [request.POST['email']])
+    msg = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [request.user.email])
     msg.attach_alternative(html_content, "text/html")
     msg.send()
 
