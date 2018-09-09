@@ -3,7 +3,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 
-def event_confirmation_mail(event_name):
+def event_confirmation_mail(event_name,request):
     #email confirmation
     base_location = "{0}://{1}".format(request.scheme, request.get_host())
     subject = event_name + " Registration Confirmation"

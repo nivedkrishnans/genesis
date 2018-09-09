@@ -73,7 +73,7 @@ def lasyaRegistration(request):
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
-                        if event_confirmation_mail('Lasya'):
+                        if event_confirmation_mail('Lasya',request):
                             reg.confirmation_email_sent = True
                         reg.save()
                         messages.add_message(request, messages.INFO, 'You have succesfully registered for Lasya')
@@ -104,7 +104,7 @@ def prosceniumRegistration(request):
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
-                        if event_confirmation_mail('Proscenium'):
+                        if event_confirmation_mail('Proscenium',request):
                             reg.confirmation_email_sent = True
                         reg.save()
                         messages.add_message(request, messages.INFO, 'You have succesfully registered for Proscenium')
@@ -136,7 +136,7 @@ def footprintsRegistration(request):
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
-                        if event_confirmation_mail('Footprints'):
+                        if event_confirmation_mail('Footprints',request):
                             reg.confirmation_email_sent = True
                         reg.save()
                         messages.add_message(request, messages.INFO, 'You have succesfully registered for Footprints')
@@ -240,7 +240,7 @@ def activateAccount(request):
                     \n Pravega Team.
                     '''.format(request.scheme, request.get_host(),name)
     error = False
-    msg = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [request.user.email])
+    msg = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [r.user.email])
     msg.attach_alternative(html_content, "text/html")
     msg.send()
 
