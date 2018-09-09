@@ -18,7 +18,7 @@
     <div id="main">
         <div class="heading">Proscenium Registration</div>
         {% if user.is_authenticated %}
-          <p>Hi {{ user.username }}!</p>
+          <p>Hi {{ user }}!</p>
 
           {% if form.errors %}
               <div class="errors">

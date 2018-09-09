@@ -8,6 +8,7 @@ body{
     color: rgb(255,255,240);
 }
 
+
 a:hover,a:active{
     color: inherit;
 }
@@ -22,6 +23,16 @@ a:hover,a:active{
     font-size: 18px;
     font-family: 'Raleway', sans-serif;
 }
+
+
+.messages{
+    color: #fcae2f;
+}
+
+.errors{
+    color: #f72e18;
+}
+
 
 .heading{
     text-align: center;
@@ -65,12 +76,12 @@ a:hover,a:active{
 }
 
 .inactive-event{
-    filter: brightness(0.4);
+    filter: brightness(0.7);
 }
 
 .event-area{
     background-color: rgba(8,8,8,0.99);
-    margin: 14px 14px;
+    margin: 24px 14px;
     border-radius: 8px 8px 8px 8px;
     border: 1px rgba(255,255,240,0.01) solid;
 }
@@ -123,7 +134,7 @@ a:hover,a:active{
     color: #e20f0f;
 }
 .green-status,.yellow-status,.red-status,.orange-status{
-    margin: 14px;
+    margin: 14px 14px 2px 14px;
     padding: 4px;
     text-align: left;
 }
@@ -150,6 +161,7 @@ a:hover,a:active{
         margin: 14px 0;
         margin: 14px 14px;
         border-radius: 8px 8px 8px 8px;
+        transition: all 0.5s;
     }
     .event-essentials{
         flex-direction: row;

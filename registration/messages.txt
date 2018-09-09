@@ -1,7 +1,15 @@
-subject = "Successfully registered for Lasya"
+subject = "Pravega Account is Active!"
 
 message = '''\n
-You have successfully registered for Lasya. Will see you soon!
+You have successfully activated your Pravega Account. Will see you soon!
             '''.
 
 send_mail(subject, message, settings.SERVER_EMAIL, request.user.email)
+
+
+
+subject =  "Your Pravega Account is Active!"
+message = '''\n
+You have successfully activated your Pravega Account. Will see you soon!
+            '''
+send_mail(subject, message, settings.SERVER_EMAIL, [request.user.email])

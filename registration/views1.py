@@ -9,9 +9,6 @@ from django.contrib import messages
 from . import helpers
 from .models import UserData,AdminEvent,LasyaRegistration,FootprintsRegistration,ProsceniumRegistration
 from django.utils import timezone
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 
 def closed(request):
     return render(request, 'registration/closed.html', {})
@@ -171,31 +168,22 @@ def signup(request):
         if f.is_valid():
             # send email verification now
             activation_key = helpers.generate_activation_key(username=request.POST['email'])
+
             subject = "Pravega Account Verification"
-            name = str(request.POST['full_name'])
-            confirm_url = "{0}://{1}/registration/activate/account/?key={2}".format(request.scheme, request.get_host(), activation_key)
-            html_content = render_to_string('email_templates/confirm_email.html', {'confirm_url':'confirm_url','name':'name'}) # render with dynamic value
-            #for text version of mail
-            text_content = '''\n
-                            Welcome, {3}. Glad to have you as a part of Pravega 2019!
-                            Please activate your Pravega account by clicking on the link below
-                            \n\n
-                            {0}://{1}/registration/activate/account/?key={2}
-                            \n \n Once confirmed you will be able to log into your Pravega account.
-                            \n\n Best wishes,
-                            \n Pravega Team.
-                            '''.format(request.scheme, request.get_host(), activation_key,name)
+
+            message = '''\n
+            Please visit the following link to verify your Pravega account \n\n{0}://{1}/registration/activate/account/?key={2}
+                        '''.format(request.scheme, request.get_host(), activation_key)
+
             error = False
 
             try:
-                msg = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [request.POST['email']])
-                msg.attach_alternative(html_content, "text/html")
-                msg.send()
+                send_mail(subject, message, settings.SERVER_EMAIL, [request.POST['email']])
                 messages.add_message(request, messages.INFO, 'Account created! Click on the link sent to your email to activate the account')
 
             except:
                 error = True
-                messages.add_message(request, messages.INFO, 'Unable to send activation link. Please try again')
+                messages.add_message(request, messages.INFO, 'Unable to send email verification. Please try again')
 
             if not error:
                 u = User.objects.create_user(

@@ -3,19 +3,29 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
 from .customfields import PhoneNumberField,lasya_file_validation,proscenium_file_validation,footprints_file_validation
-#from django.db.models.signals import post_save
+#for user full name or username display
+from django.contrib.auth.models import User
 
-#def dateUpdate(self):
-#    if self.user:
-#        self.modified_date = datetime.now()
-#    else:
-#        self.created_date = datetime.now()
+def get_first_name(self):
+    name='friend'
+    try:
+        if (self.userdata_link.full_name != 'unknown_name') and (self.userdata_link.full_name):
+            name=self.userdata_link.full_name
+    except:
+        name=self.username
+    return name
+
+User.add_to_class("__str__", get_first_name)
+
 
 class UserData(models.Model):
     #associates Author model with User model (Important)
-    user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(User, related_name='userdata_link', on_delete=models.CASCADE, null=True, blank=True)
+    full_name =  models.CharField(max_length=127, default='unknown_name')
+    institution =  models.CharField(max_length=127, default='unknown_institution')
+    place =  models.CharField(max_length=127, default='unknown_place')
+    contact = models.CharField(max_length=20, default='NO_NUMBER')
     create_date = models.DateTimeField( null=True, blank=True)
-    modify_date = models.DateTimeField( null=True, blank=True)
     # additional fields
     activation_key = models.CharField(max_length=255, default=1)
     email_validated = models.BooleanField(default=False)
@@ -24,7 +34,7 @@ class UserData(models.Model):
     #proscenium = models.BooleanField(default=False)
     #footprints = models.BooleanField(default=False)
     def __str__(self):
-        return self.user.username
+        return self.full_name
 
 class AdminEvent(models.Model):
     REGISTRATION_STATUS_CHOICES=(

@@ -19,6 +19,6 @@ urlpatterns = [
 	url(r'^signup$', views.signup, name='signup'),	url(r'^signup$', views.signup, name='signup'),
 	url(r'^signup/$', views.signup, name='signup'),	url(r'^signup$', views.signup, name='signup'),
 	url(r'^activate/account/$', views.activateAccount),
-	url(r'^$', views.registration_index, name='registration'),
+	url(r'^$', views.registration_index, name="registration"),
 	url(r'^', include('django.contrib.auth.urls')),
 ]

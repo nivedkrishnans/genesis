@@ -18,7 +18,7 @@
     <div id="main">
         <div class="heading">Footprints Registration</div>
         {% if user.is_authenticated %}
-          <p>Hi {{ user.username }}!</p>
+          <p>Hi {{ user.first_name }}!</p>
 
           {% if form.errors %}
               <div class="errors">

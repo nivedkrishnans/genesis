@@ -3,15 +3,19 @@ from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
 from . import models
-from .models import LasyaRegistration,ProsceniumRegistration,FootprintsRegistration
+from .models import *
 from django.utils.translation import gettext_lazy as _
+from .customfields import PhoneNumberField
 
 class SignUpForm(forms.Form):
-    first_name = forms.CharField(label='Enter Your Name', min_length=3, max_length=30)
-    username = forms.CharField(label='Enter Username', min_length=4, max_length=30)
-    email = forms.EmailField(label='Enter email')
+    full_name = forms.CharField(label='Full Name', min_length=3, max_length=127)
+    institution = forms.CharField(label='Institution', min_length=3, max_length=127)
+    place = forms.CharField(label='Place', min_length=3, max_length=127)
+    email = forms.EmailField(label='Email')
+    contact = forms.CharField(label='Contact number', min_length=3, max_length=20)
     password1 = forms.CharField(label='Enter password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
+
 
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
@@ -38,7 +42,7 @@ class SignUpForm(forms.Form):
 
     def save(self, commit=True):
         user = User.objects.create_user(
-            self.cleaned_data['username'],
+            self.cleaned_data['email'],
             self.cleaned_data['email'],
             self.cleaned_data['password1']
         )
@@ -48,15 +52,47 @@ class LasyaForm(forms.ModelForm):
     class Meta:
         model = LasyaRegistration
         fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile')
-
+        labels = {
+            "teamName": "Team Name",
+            "teamLeader": "Team Leader",
+            "institution": "Institution",
+            "place": "Place",
+            "email": "Email",
+            "contact1": "Mobile Number",
+            "contact2": "Another Mobile Number",
+            "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
+            "videoFile": "Video File",
+        }
 
 class ProsceniumForm(forms.ModelForm):
     class Meta:
         model = ProsceniumRegistration
         fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile')
+        labels = {
+            "teamName": "Team Name",
+            "teamLeader": "Team Leader",
+            "institution": "Institution",
+            "place": "Place",
+            "email": "Email",
+            "contact1": "Mobile Number",
+            "contact2": "Another Mobile Number",
+            "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
+            "videoFile": "Video File",
+        }
 
 
 class FootprintsForm(forms.ModelForm):
     class Meta:
         model = FootprintsRegistration
         fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile')
+        labels = {
+            "teamName": "Team Name",
+            "teamLeader": "Team Leader",
+            "institution": "Institution",
+            "place": "Place",
+            "email": "Email",
+            "contact1": "Mobile Number",
+            "contact2": "Another Mobile Number",
+            "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
+            "videoFile": "Video File",
+        }

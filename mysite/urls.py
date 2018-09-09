@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^demigod/', admin.site.urls),
 	url(r'^$', essentials.views.home , name="home"),
     url(r'^registration/', include('registration.urls')),
-    url(r'^register/',include('registration.urls')),
+    url(r'^register/',registration.views.redirectRegistrationIndex),
 	url(r'^updates/$', essentials.views.updates , name="updates"),
     url(r'^events/', include('essentials.urls')),
 	url(r'^help/$', essentials.views.comingsoon , name="help"),

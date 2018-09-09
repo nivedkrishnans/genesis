@@ -21,7 +21,7 @@
         <div class="heading">Login</div>
 
         {% if user.is_authenticated %}
-          <p> Hi {{ user.username }}! You are logged in!</p>
+          <p> Hi {{ user }}! You are logged in!</p>
           <p> Check out our events on the <a href="{% url 'events'%}"> events </a> page.</p>
           <p> Go to the <a href="{% url 'registration'%}"> registrations </a> page to register to our events.</p>
           <div class="buttonCollection">
@@ -33,6 +33,7 @@
                 <a href="{% url 'signup' %}"><div class="divButton">Sign Up</div></a>
                 <a href="{% url 'password_reset' %}"><div class="divButton">Reset Password</div></a>
             </div>
+
             {% if form.errors %}
                 <div class="errors">
                     <p>Please fix the following errors</p>
@@ -72,7 +73,10 @@
                                 </ul>
                             </div>
                         {% endif %}
-                        {{ field.label_tag }}
+                        <!-- For changing 'username' field to 'email'-->
+                                    {% if forloop.counter0 %} {{ field.label_tag }}
+                                    {% else %}  Email:
+                                    {% endif %}
                         {{ field }}
                     </div>
                 {% endfor %}

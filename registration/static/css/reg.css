@@ -16,6 +16,16 @@ body{
     font-family: 'Raleway', sans-serif;
 }
 
+
+
+.messages{
+    color: #fcae2f;
+}
+
+.errors{
+    color: #f72e18;
+}
+
 a:hover,a:active{
     color: inherit;
 }
@@ -29,7 +39,15 @@ p{
     font-family: 'Titillium Web', sans-serif;
     font-size: 32px;
 }
-
+button{
+    background-color: transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 44px auto 24px auto;
+    display: block;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
 .buttonCollection{
     display: flex;
     justify-content: center;
@@ -46,42 +64,20 @@ p{
     color: rgb(255,255,240);
     transition: all 0.2s;
 }
-.divButton:hover{
+.divButton:hover,button:hover{
     transform: scale(1.05,1.05);
     background-color: rgb(255,255,240);
     color: rgb(8,8,8);
     text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
 }
-.divButton:active{
+.divButton:active,button:active{
     transform: scale(1,1);
     background-color: rgb(150,150,150);
     text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
 }
 
-button{
-    cursor: pointer;
-    box-sizing: border-box;
-    color: rgba(8,8,8);
-    background-color: rgba(255,255,240,0.8);
-    margin: 44px auto 24px auto;
-    display: block;
-    border-radius: 4px;
-    transition: all 0.2s;
-}
 
-button:hover{
-    outline: 0;
-    background-color: rgba(255,255,240,1);
-}
 
-button:active{
-    outline: 0;
-    background-color: rgba(255,255,240,0.3);
-}
-button:focus{
-    outline: 0;
-    background-color: rgba(255,255,240,0.3);
-}
 
 .field-space{
     margin: 14px 0;
