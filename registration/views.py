@@ -171,10 +171,11 @@ def signup(request):
         if f.is_valid():
             # send email verification now
             activation_key = helpers.generate_activation_key(username=request.POST['email'])
+            base_location = "{0}://{1}".format(request.scheme, request.get_host())
             subject = "Pravega Account Verification"
             name = str(request.POST['full_name'])
             confirm_url = "{0}://{1}/registration/activate/account/?key={2}".format(request.scheme, request.get_host(), activation_key)
-            html_content = render_to_string('registration/email_templates/confirm_email.html', {'confirm_url':'confirm_url','name':'name'}) # render with dynamic value
+            html_content = render_to_string('registration/email_templates/confirm_email.html', {'base_location':base_location,'confirm_url':confirm_url,'name':name}) # render with dynamic value
             #for text version of mail
             text_content = '''\n
                             Welcome, {3}. Glad to have you as a part of Pravega 2019!
@@ -191,7 +192,7 @@ def signup(request):
                 msg = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [request.POST['email']])
                 msg.attach_alternative(html_content, "text/html")
                 msg.send()
-                messages.add_message(request, messages.INFO, 'Account created! Click on the link sent to your email to activate the account')
+                messages.add_message(request, messages.INFO, 'Account created! Click on the link sent to your email to activate your Pravega account')
 
             except:
                 error = True
