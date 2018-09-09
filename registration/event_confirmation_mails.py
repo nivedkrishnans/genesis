@@ -8,7 +8,7 @@ from django.contrib import messages
 def event_confirmation_mail(event_name,request):
     #email confirmation
     base_location = "{0}://{1}".format(request.scheme, request.get_host())
-    subject = event_name + " Registration Confirmation"
+    subject = event_name + " Registration Successful"
     name = str(request.user)
     html_content = render_to_string('registration/email_templates/event_registered.html', {'event_name':event_name,'base_location':base_location,'name':name}) # render with dynamic value
     #for text version of mail
