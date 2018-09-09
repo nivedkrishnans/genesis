@@ -51,7 +51,7 @@ class SignUpForm(forms.Form):
 class LasyaForm(forms.ModelForm):
     class Meta:
         model = LasyaRegistration
-        fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile')
+        fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile','videoFileLink')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
@@ -62,12 +62,13 @@ class LasyaForm(forms.ModelForm):
             "contact2": "Another Mobile Number",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
             "videoFile": videoFileSupportMessage(lasyaSizeLimit),
+            "videoFileLink":"Link to Video (Only if you do not upload the video file)"
         }
 
 class ProsceniumForm(forms.ModelForm):
     class Meta:
         model = ProsceniumRegistration
-        fields = ('teamName', 'teamLeader','language','institution','place','email','contact1','contact2','participantList','videoFile')
+        fields = ('teamName', 'teamLeader','language','institution','place','email','contact1','contact2','participantList','videoFile','videoFileLink')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
@@ -79,6 +80,7 @@ class ProsceniumForm(forms.ModelForm):
             "contact2": "Another Mobile Number",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
             "videoFile": videoFileSupportMessage(prosceniumSizeLimit),
+            "videoFileLink":"Link to Video (Only if you do not upload the video file)"
         }
 
 

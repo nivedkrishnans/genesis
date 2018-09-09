@@ -71,13 +71,25 @@ def lasyaRegistration(request):
                 if request.method == "POST":
                     f = LasyaForm(request.POST, request.FILES)
                     if f.is_valid():
-                        reg = f.save(commit=False)
-                        reg.user = request.user
-                        if event_confirmation_mail('Lasya',request):
-                            reg.confirmation_email_sent = True
-                        reg.save()
-                        messages.add_message(request, messages.INFO, 'You have succesfully registered for Lasya')
-                        return redirect('registration')
+                        #checking if the video file was uploaded. if yes, we expect a MultiValueDictKeyError
+                        videoFileAvailable = False
+                        try:
+                            if request.POST['videoFile']:
+                                videoFileAvailable = False;
+                        except:
+                            videoFileAvailable = True;
+                        #checking if either the video file or the link was obtained
+                        if request.POST['videoFileLink'] or videoFileAvailable:
+                            reg = f.save(commit=False)
+                            reg.user = request.user
+                            if event_confirmation_mail('Lasya',request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully registered for Lasya')
+                            return redirect('registration')
+                        else:
+                            messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
+                            return render(request, 'registration/lasyaRegistration.html', {'form': f})
                 else:
                     f = LasyaForm()
                 return render(request, 'registration/lasyaRegistration.html', {'form': f})
@@ -102,14 +114,25 @@ def prosceniumRegistration(request):
                 if request.method == "POST":
                     f = ProsceniumForm(request.POST, request.FILES)
                     if f.is_valid():
-                        reg = f.save(commit=False)
-                        reg.user = request.user
-                        if event_confirmation_mail('Proscenium',request):
-                            reg.confirmation_email_sent = True
-                        reg.save()
-                        messages.add_message(request, messages.INFO, 'You have succesfully registered for Proscenium')
-
-                        return redirect('registration')
+                        #checking if the video file was uploaded. if yes, we expect a MultiValueDictKeyError
+                        videoFileAvailable = False
+                        try:
+                            if request.POST['videoFile']:
+                                videoFileAvailable = False;
+                        except:
+                            videoFileAvailable = True;
+                        #checking if either the video file or the link was obtained
+                        if request.POST['videoFileLink'] or videoFileAvailable:
+                            reg = f.save(commit=False)
+                            reg.user = request.user
+                            if event_confirmation_mail('Proscenium',request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully registered for Proscenium')
+                            return redirect('registration')
+                        else:
+                            messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
+                            return render(request, 'registration/prosceniumRegistration.html', {'form': f})
                 else:
                     f = ProsceniumForm()
                 return render(request, 'registration/prosceniumRegistration.html', {'form': f})

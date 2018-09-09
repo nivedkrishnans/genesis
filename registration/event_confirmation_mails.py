@@ -1,6 +1,8 @@
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.conf import settings
+from django.contrib import messages
 
 
 def event_confirmation_mail(event_name,request):
@@ -22,8 +24,6 @@ def event_confirmation_mail(event_name,request):
         msg = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [request.user.email])
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-        temp = 'Successfully registered for ' + event_name + '.'
-        messages.add_message(request, messages.INFO, temp)
     except:
         success=False
         messages.add_message(request, messages.INFO, 'We are facing some difficulty sending the confirmation mail.')
