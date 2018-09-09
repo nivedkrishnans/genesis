@@ -12,6 +12,7 @@ from django.utils import timezone
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from .event_confirmation_mails import event_confirmation_mail
 
 def closed(request):
     return render(request, 'registration/closed.html', {})
@@ -72,14 +73,10 @@ def lasyaRegistration(request):
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
-                        reg.event = thisEvent
+                        if event_confirmation_mail('Lasya'):
+                            reg.confirmation_email_sent = True
                         reg.save()
                         messages.add_message(request, messages.INFO, 'You have succesfully registered for Lasya')
-                        subject = "Successfully registered for Lasya"
-                        message = '''\n
-                        You have successfully registered for Lasya. Will see you soon!
-                        '''
-                        send_mail(subject, message, settings.SERVER_EMAIL,[request.user.email])
                         return redirect('registration')
                 else:
                     f = LasyaForm()
@@ -107,14 +104,11 @@ def prosceniumRegistration(request):
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
-                        reg.event = thisEvent
+                        if event_confirmation_mail('Proscenium'):
+                            reg.confirmation_email_sent = True
                         reg.save()
                         messages.add_message(request, messages.INFO, 'You have succesfully registered for Proscenium')
-                        subject = "Successfully registered for Proscenium"
-                        message = '''\n
-                        You have successfully registered for Proscenium. Will see you soon!
-                        '''
-                        send_mail(subject, message, settings.SERVER_EMAIL, [request.user.email])
+
                         return redirect('registration')
                 else:
                     f = ProsceniumForm()
@@ -142,14 +136,10 @@ def footprintsRegistration(request):
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
-                        reg.event = thisEvent
+                        if event_confirmation_mail('Footprints'):
+                            reg.confirmation_email_sent = True
                         reg.save()
                         messages.add_message(request, messages.INFO, 'You have succesfully registered for Footprints')
-                        subject = "Successfully registered for Footprints"
-                        message = '''\n
-                        You have successfully registered for Footprints. Will see you soon!
-                                    '''
-                        send_mail(subject, message, settings.SERVER_EMAIL, [request.user.email])
                         return redirect('registration')
                 else:
                     f = FootprintsForm()
@@ -235,9 +225,23 @@ def activateAccount(request):
     r.save()
     temp = 'Your account ' + r.user.email + ' is active!'
     messages.add_message(request, messages.INFO,  temp)
-    subject =  "Your Pravega Account is Active!"
-    message = '''\n
-    You have successfully activated your Pravega Account. Will see you soon!
-                '''
-    send_mail(subject, message, settings.SERVER_EMAIL, [r.user.email])
+
+    #email confirmation
+    base_location = "{0}://{1}".format(request.scheme, request.get_host())
+    subject = "Pravega Account Confirmed"
+    name = str(r.user)
+    html_content = render_to_string('registration/email_templates/account_confirmed.html', {'base_location':base_location,'name':name}) # render with dynamic value
+    #for text version of mail
+    text_content = '''\n
+                    Hello, {2}. Your Pravega account is activated!
+                    \n\n
+                    You have successfully registered your account with us on Pravega.
+                    \n\n Best wishes,
+                    \n Pravega Team.
+                    '''.format(request.scheme, request.get_host(),name)
+    error = False
+    msg = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [request.POST['email']])
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
+
     return redirect('login')
