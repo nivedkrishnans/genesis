@@ -174,7 +174,7 @@ def signup(request):
             subject = "Pravega Account Verification"
             name = str(request.POST['full_name'])
             confirm_url = "{0}://{1}/registration/activate/account/?key={2}".format(request.scheme, request.get_host(), activation_key)
-            html_content = render_to_string('email_templates/confirm_email.html', {'confirm_url':'confirm_url','name':'name'}) # render with dynamic value
+            html_content = render_to_string('registration/email_templates/confirm_email.html', {'confirm_url':'confirm_url','name':'name'}) # render with dynamic value
             #for text version of mail
             text_content = '''\n
                             Welcome, {3}. Glad to have you as a part of Pravega 2019!
