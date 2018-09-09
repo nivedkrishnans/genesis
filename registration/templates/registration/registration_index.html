@@ -31,8 +31,8 @@
                 <div class="buttonCollection">
                     <a href="{% url 'login' %}"><div class="divButton">Log In</div></a>
                     <a href="{% url 'signup' %}"><div class="divButton">Sign Up</div></a>
-                    <a href="{% url 'password_reset' %}"><div class="divButton">Reset Password</div></a>
                 </div>
+                <p class="center"><a href="{% url 'password_reset' %}">Forgot Password? Click here.</a></p>
             {% endif %}
             {% if messages %}
                 <div class="messages">

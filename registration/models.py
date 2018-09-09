@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
-from .customfields import PhoneNumberField,lasya_file_validation,proscenium_file_validation,footprints_file_validation
+from .field_helpers import PhoneNumberField,lasya_file_validation,proscenium_file_validation
 #for user full name or username display
 from django.contrib.auth.models import User
 
@@ -72,6 +72,12 @@ class ProsceniumRegistration(models.Model):
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     teamName = models.CharField(max_length=200)
     teamLeader = models.CharField(max_length=200)
+    LANGUAGE_CHOICES=(
+        ('English','English'),
+        ('Hindi','Hindi'),
+        ('Kannada','Kannada'),
+    )
+    language = models.CharField(default="English", max_length=200, choices=LANGUAGE_CHOICES)
     institution = models.CharField(max_length=200)
     place = models.CharField(max_length=200)
     email = models.EmailField(max_length=200, null=False, blank=False)
@@ -88,13 +94,18 @@ class FootprintsRegistration(models.Model):
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     teamName = models.CharField(max_length=200)
     teamLeader = models.CharField(max_length=200)
+    LANGUAGE_CHOICES=(
+        ('English','English'),
+        ('Hindi','Hindi'),
+        ('Kannada','Kannada'),
+    )
+    language = models.CharField(default="English", max_length=200, choices=LANGUAGE_CHOICES)
     institution = models.CharField(max_length=200)
     place = models.CharField(max_length=200)
     email = models.EmailField(max_length=200, null=False, blank=False)
     contact1 = PhoneNumberField.get_field()
     contact2 = PhoneNumberField.get_field(blank=True)
     participantList =  models.TextField()
-    videoFile = models.FileField(validators=[footprints_file_validation], upload_to="fp238a576afovpy23mlzra/do9862x0k3pyl5bxnwxkr8/5n61kixjqfk8lbhkxxvw9m/lasya/%Y/%m/%d", null=True, blank=False)
     confirmation_email_sent = models.BooleanField(default=False)
     def __str__(self):
         return self.teamName

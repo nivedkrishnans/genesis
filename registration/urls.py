@@ -20,5 +20,12 @@ urlpatterns = [
 	url(r'^signup/$', views.signup, name='signup'),	url(r'^signup$', views.signup, name='signup'),
 	url(r'^activate/account/$', views.activateAccount),
 	url(r'^$', views.registration_index, name="registration"),
+	url('^password_reset/$', django.contrib.auth.views.password_reset,
+    {
+        'email_template_name': 'registration/email_templates/password_reset.txt',
+        'html_email_template_name': 'registration/email_templates/reset_password_email.html',
+        'subject_template_name': 'registration/email_templates/password_reset_subject.txt'
+    },
+    name='password_reset'),
 	url(r'^', include('django.contrib.auth.urls')),
 ]

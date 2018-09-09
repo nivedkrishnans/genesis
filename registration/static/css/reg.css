@@ -87,8 +87,12 @@ label{
     display: block;
     margin: 8px 0;
 }
+option{
+    background-color: rgb(8,8,8);
+    max-width: 100%;
+}
 
-input,textarea{
+select,input,textarea{
     box-sizing: border-box;
     border-top: none;
     border-left: none;
@@ -109,12 +113,12 @@ textarea{
     border: 1px solid rgba(255,255,240,0.3);
 }
 
-input:hover,textarea:hover{
+select:hover,input:hover,textarea:hover{
     outline: 0px;
     border-bottom: 1px solid rgba(255,255,240,0.4);
 }
 
-input:focus,textarea:focus{
+select:focus,input:focus,textarea:focus{
     outline: 0px;
     background-color: rgba(120,120,120,0.1);
     border-bottom: 1px solid rgba(255,255,240,0.8);

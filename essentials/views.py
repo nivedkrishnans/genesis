@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Update
+from registration.field_helpers import videoFileSupportMessage,lasyaSizeLimit,prosceniumSizeLimit
 
 def home(request):
 	return render(request, 'essentials/home.html', {})
@@ -33,7 +34,7 @@ def carousel(request):
 	return render(request, 'essentials/carousel.html', {})
 
 def proscenium(request):
-	return render(request, 'essentials/proscenium.html', {})
+	return render(request, 'essentials/proscenium.html', {'file_info' : videoFileSupportMessage(prosceniumSizeLimit),})
 
 def battleofbands(request):
 	return render(request, 'essentials/battleofbands.html', {})
@@ -42,7 +43,7 @@ def footprints(request):
 	return render(request, 'essentials/footprints.html', {})
 
 def lasya(request):
-	return render(request, 'essentials/lasya.html', {})
+	return render(request, 'essentials/lasya.html', {'file_info' : videoFileSupportMessage(lasyaSizeLimit),})
 
 def partners(request):
 	return render(request, 'essentials/partners.html', {})

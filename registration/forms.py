@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from . import models
 from .models import *
 from django.utils.translation import gettext_lazy as _
-from .customfields import PhoneNumberField
+from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,videoFileSupportMessage
 
 class SignUpForm(forms.Form):
     full_name = forms.CharField(label='Full Name', min_length=3, max_length=127)
@@ -61,38 +61,39 @@ class LasyaForm(forms.ModelForm):
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
-            "videoFile": "Video File",
+            "videoFile": videoFileSupportMessage(lasyaSizeLimit),
         }
 
 class ProsceniumForm(forms.ModelForm):
     class Meta:
         model = ProsceniumRegistration
-        fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile')
+        fields = ('teamName', 'teamLeader','language','institution','place','email','contact1','contact2','participantList','videoFile')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
+            "language":"Language",
             "institution": "Institution",
             "place": "Place",
             "email": "Email",
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
-            "videoFile": "Video File",
+            "videoFile": videoFileSupportMessage(prosceniumSizeLimit),
         }
 
 
 class FootprintsForm(forms.ModelForm):
     class Meta:
         model = FootprintsRegistration
-        fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile')
+        fields = ('teamName', 'teamLeader','language','institution','place','email','contact1','contact2','participantList')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
+            "language":"Language",
             "institution": "Institution",
             "place": "Place",
             "email": "Email",
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
-            "videoFile": "Video File",
         }

@@ -5,10 +5,19 @@ from django.core.exceptions import ValidationError
 import os.path
 import ast
 
-lasyaSizeLimit = 1024
-prosceniumSizeLimit = 314572800
-footprintsSizeLimit = 314572800
+lasyaSizeLimit = 419430400
+prosceniumSizeLimit = 1073741824
+#footprintsSizeLimit = 314572800
 videoExtensions = ['.mp4', '.avi', '.mov', '.mkv']
+
+def videoFileSupportMessage(size):
+    extensions = ""
+    for i in videoExtensions:
+        extensions = extensions + i + ", "
+    if len(videoExtensions):
+        extensions = extensions[0:(len(extensions)-2)]
+    temp = "Video File (Maximum file size: " + fileSizeText(size) + ". Supported file types: "+ extensions+ ")"
+    return temp
 
 
 def fileSizeText(value):

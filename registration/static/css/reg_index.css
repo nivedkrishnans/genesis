@@ -9,8 +9,12 @@ body{
 }
 
 
-a:hover,a:active{
-    color: inherit;
+a{
+    color:rgb(255,255,240) !important;
+}
+
+a:hover{
+    color:rgb(220,220,0) !important;
 }
 
 #main{
