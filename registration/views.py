@@ -223,7 +223,7 @@ def signup(request):
                 userdata.activation_key = activation_key
                 userdata.full_name = request.POST['full_name']
                 userdata.institution = request.POST['institution']
-                userdata.place = request.POST['place']
+                userdata.city = request.POST['city']
                 userdata.contact = request.POST['contact']
                 userdata.create_date = timezone.now()
                 userdata.user = u

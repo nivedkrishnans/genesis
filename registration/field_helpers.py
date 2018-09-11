@@ -45,7 +45,7 @@ def lasya_file_validation(value):
         extensions = ""
         for i in videoExtensions:
             extensions = extensions + i + ", "
-        raise ValidationError("Unknown filetype. The supported file types are " + extensions + " .")
+        raise ValidationError("Unsupported filetype. The supported file types are " + extensions + " .")
     else:
         return value
 
@@ -63,7 +63,7 @@ def proscenium_file_validation(value):
         extensions = ""
         for i in videoExtensions:
             extensions = extensions + i + ", "
-        raise ValidationError("Unknown filetype. The supported file types are " + extensions + " .")
+        raise ValidationError("Unsupported filetype. The supported file types are " + extensions + " .")
     else:
         return value
 

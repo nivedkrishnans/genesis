@@ -10,7 +10,7 @@ from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,v
 class SignUpForm(forms.Form):
     full_name = forms.CharField(label='Full Name', min_length=3, max_length=127)
     institution = forms.CharField(label='Institution', min_length=3, max_length=127)
-    place = forms.CharField(label='Place', min_length=3, max_length=127)
+    city = forms.CharField(label='City', min_length=3, max_length=127)
     email = forms.EmailField(label='Email')
     contact = forms.CharField(label='Contact number', min_length=3, max_length=20)
     password1 = forms.CharField(label='Enter password', widget=forms.PasswordInput)
@@ -51,12 +51,12 @@ class SignUpForm(forms.Form):
 class LasyaForm(forms.ModelForm):
     class Meta:
         model = LasyaRegistration
-        fields = ('teamName', 'teamLeader','institution','place','email','contact1','contact2','participantList','videoFile','videoFileLink')
+        fields = ('teamName', 'teamLeader','institution','city','email','contact1','contact2','participantList','videoFile','videoFileLink')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
             "institution": "Institution",
-            "place": "Place",
+            "city": "City",
             "email": "Email",
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",
@@ -68,13 +68,13 @@ class LasyaForm(forms.ModelForm):
 class ProsceniumForm(forms.ModelForm):
     class Meta:
         model = ProsceniumRegistration
-        fields = ('teamName', 'teamLeader','language','institution','place','email','contact1','contact2','participantList','videoFile','videoFileLink')
+        fields = ('teamName', 'teamLeader','language','institution','city','email','contact1','contact2','participantList','videoFile','videoFileLink')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
             "language":"Language",
             "institution": "Institution",
-            "place": "Place",
+            "city": "City",
             "email": "Email",
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",
@@ -87,13 +87,13 @@ class ProsceniumForm(forms.ModelForm):
 class FootprintsForm(forms.ModelForm):
     class Meta:
         model = FootprintsRegistration
-        fields = ('teamName', 'teamLeader','language','institution','place','email','contact1','contact2','participantList')
+        fields = ('teamName', 'teamLeader','language','institution','city','email','contact1','contact2','participantList')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
             "language":"Language",
             "institution": "Institution",
-            "place": "Place",
+            "city": "City",
             "email": "Email",
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",
