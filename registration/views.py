@@ -224,6 +224,7 @@ def signup(request):
                 userdata.full_name = request.POST['full_name']
                 userdata.institution = request.POST['institution']
                 userdata.city = request.POST['city']
+                userdata.email = request.POST['email']
                 userdata.contact = request.POST['contact']
                 userdata.create_date = timezone.now()
                 userdata.user = u

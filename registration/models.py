@@ -28,6 +28,7 @@ class UserData(models.Model):
     full_name =  models.CharField(max_length=127, default='unknown_name')
     institution =  models.CharField(max_length=127, default='unknown_institution')
     city =  models.CharField(max_length=127, default='unknown_city')
+    email = models.EmailField(max_length=144, null=True, blank=True)
     contact = models.CharField(max_length=20, default='NO_NUMBER')
     create_date = models.DateTimeField( null=True, blank=True)
     # additional fields
