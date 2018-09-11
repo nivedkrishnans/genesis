@@ -39,15 +39,7 @@ p{
     font-family: 'Titillium Web', sans-serif;
     font-size: 32px;
 }
-button{
-    background-color: transparent;
-    cursor: pointer;
-    box-sizing: border-box;
-    margin: 44px auto 24px auto;
-    display: block;
-    border-radius: 4px;
-    transition: all 0.2s;
-}
+
 .buttonCollection{
     display: flex;
     justify-content: center;
@@ -76,6 +68,15 @@ button{
     text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
 }
 
+button{
+    background-color: transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 34px 24px 34px auto;
+    display: block;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
 
 
 

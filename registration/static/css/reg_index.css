@@ -9,11 +9,11 @@ body{
 }
 
 
-a{
+p > a{
     color:rgb(255,255,240) !important;
 }
 
-a:hover{
+p > a:hover{
     color:rgb(220,220,0) !important;
 }
 
