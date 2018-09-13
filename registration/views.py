@@ -107,7 +107,7 @@ def lasyaRegistration(request):
                                 #checking if the video file was uploaded.
                                 if f["videoFileLink"].value() or f["videoFile"].value() :
                                     thisInstance.isSubmit = True
-                                    if event_confirmation_mail('Lasya',request):
+                                    if event_confirmation_mail('Lasya',request.POST['email'],request):
                                         thisInstance.confirmation_email_sent = True
                                     thisInstance.save()
                                     messages.add_message(request, messages.INFO, 'You have succesfully submitted your Lasya Registration Form')
@@ -133,7 +133,7 @@ def lasyaRegistration(request):
                             #checking if either the video file or the link was obtained
                             if f["videoFileLink"].value() or f["videoFile"].value():
                                 reg.isSubmit = True
-                                if event_confirmation_mail('Lasya',request):
+                                if event_confirmation_mail('Lasya',request.POST['email'],request):
                                     reg.confirmation_email_sent = True
                                 reg.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your Lasya Registration Form')
@@ -178,7 +178,7 @@ def prosceniumRegistration(request):
                                 #checking if the video file was uploaded.
                                 if f["videoFileLink"].value() or f["videoFile"].value() :
                                     thisInstance.isSubmit = True
-                                    if event_confirmation_mail('Proscenium',request):
+                                    if event_confirmation_mail('Proscenium',request.POST['email'],request):
                                         thisInstance.confirmation_email_sent = True
                                     thisInstance.save()
                                     messages.add_message(request, messages.INFO, 'You have succesfully submitted your Proscenium Registration Form')
@@ -204,7 +204,7 @@ def prosceniumRegistration(request):
                             #checking if either the video file or the link was obtained
                             if f["videoFileLink"].value() or f["videoFile"].value():
                                 reg.isSubmit = True
-                                if event_confirmation_mail('Proscenium',request):
+                                if event_confirmation_mail('Proscenium',request.POST['email'],request):
                                     reg.confirmation_email_sent = True
                                 reg.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your Proscenium Registration Form')
@@ -247,7 +247,7 @@ def footprintsRegistration(request):
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
                                 thisInstance.isSubmit = True
-                                if event_confirmation_mail('Footprints',request):
+                                if event_confirmation_mail('Footprints',request.POST['email'],request):
                                     thisInstance.confirmation_email_sent = True
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your Footprints Registration Form')
@@ -265,7 +265,7 @@ def footprintsRegistration(request):
                         reg.user = request.user
                         if request.POST.get("submit"):
                             reg.isSubmit = True
-                            if event_confirmation_mail('Footprints',request):
+                            if event_confirmation_mail('Footprints',request.POST['email'],request):
                                 reg.confirmation_email_sent = True
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully submitted your Footprints Registration Form')
