@@ -9,6 +9,8 @@
     width: 50%;
     height: auto;
     transition: all 0.2s;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 400;
 }
 
 .thumbnail-container{
@@ -42,6 +44,7 @@
   border: 1px solid rgb(8,8,8);
   border-radius: 4px;
   transition: 0.2s all;
+  font-weight: 600;
 }
 .thumbnail-answer:hover{
   transform: scale(1.05,1.05);
@@ -63,8 +66,8 @@
         border-radius: 4px;
     }
     .thumbnail-area:hover{
-        transform: scale(1,1);
-        background-color: rgba(122,122,122,0.1);
+        transform: scale(1.02,1.02);
+        background-color: rgba(80,80,80,0.1);
     }
     .thumbnail-container{
       width: 200px;
