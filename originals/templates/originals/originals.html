@@ -11,6 +11,7 @@
 
         <title>Originals | Pravega 2019, IISc Bangalore</title>
         <link href="{%static 'originals/gallery.css'%}" type="text/css" rel="stylesheet">
+        <link href="{%static 'originals/gallery_originals.css'%}" type="text/css" rel="stylesheet">
         <!-- photoswipe -->
         <link href="{%static 'originals/src/photoswipe.css'%}" type="text/css" rel="stylesheet">
         <link href="{%static 'originals/src/default-skin/default-skin.css'%}" type="text/css" rel="stylesheet">
@@ -27,9 +28,16 @@
             {% for image in images %}
                 <div class="thumbnail-area">
                     <div class="thumbnail-container" onclick="openPhotoSwipeIndex({{ forloop.counter0 }});">
-                      <img src="{{ MEDIA_URL }}{{ image.image_file.url }}" alt="{{ image.description }}"  class="hover-shadow cursor thumbnail">
+                      <img src="{{ MEDIA_URL }}{{ image.image_file.url }}" alt="{{ image.title }}"  class="hover-shadow cursor thumbnail">
                     </div>
                     <div class="thumbnail-caption"> {{ image.title }} </div>
+                    <div id='ans{{ forloop.counter0 }}' class="thumbnail-answer" onclick="(function(){
+                        thisElement = document.getElementById('ans{{ forloop.counter0 }}');
+                        if (thisElement.innerHTML=='Click to Reveal Answer'){
+                            thisElement.innerHTML='{{ image.description }}';}
+                        else{
+                            thisElement.innerHTML='Click to Reveal Answer';}
+                    })();">Click to Reveal Answer</div>
                 </div>
           {% endfor%}
         </div>
@@ -82,31 +90,12 @@
                 </button>
                 <div class="pswp__caption">
                     <div class="pswp__caption__center"></div>
-                    <div class="pswp__caption__center">Answer</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <style>
-    .pswp__caption{
-        color: rgba(255,255,240,0);
-        transition: all 0.2s;
-    }
-    .pswp__caption:hover{
-        color: rgba(255,255,240,1);
-    }
-    .pswp__caption__center{
-        color: inherit;
-    }
-    .pswp__caption__center:nth-of-type(2){
-        color: rgba(255,255,240,1);
-        transition: all 0.2s;
-    }
-    .pswp__caption__center:nth-of-type(2):hover{
-        color: rgba(255,255,240,0);
-    }
-    </style>
+
 
     <script>
         var pswpElement = document.querySelectorAll('.pswp')[0];
@@ -119,7 +108,6 @@
                     src: "{{ MEDIA_URL }}{{ i.image_file.url }}",
                     w:{{ i.image_file.width }},
                     h:{{ i.image_file.height }},
-                    title: "{{ i.description }}"
                 }
             {% endfor%}
         ];
