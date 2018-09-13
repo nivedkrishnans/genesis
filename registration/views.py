@@ -30,6 +30,7 @@ def registration_index(request):
     notyetEvents = AdminEvent.objects.filter(registrationStatus='notyet')
     #showing which events where Registered
     registeredEvents = []
+    registeredEventsString = ''
     #distionary of events and their models
     eventDictionary={
         'lasya':LasyaRegistration,
@@ -64,7 +65,6 @@ def registration_index(request):
             if isRegistered:
                 registeredEvents.append(i)
 
-        registeredEventsString = ''
         if len(registeredEvents) != 0:
             if len(registeredEvents) == 1:
                 registeredEventsString = registeredEventsString + (registeredEvents[0].title).capitalize()
