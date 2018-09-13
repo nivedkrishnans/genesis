@@ -24,37 +24,64 @@ def redirectRegistrationIndex(request):
     return redirect('registration')
 
 def registration_index(request):
-    eventDictionary=0
-    userRegOpen=[]
-    userRegClosed=[]
+    eventDictionary = 0
     openedEvents = AdminEvent.objects.filter(registrationStatus='opened')
     closedEvents = AdminEvent.objects.filter(registrationStatus='closed')
     notyetEvents = AdminEvent.objects.filter(registrationStatus='notyet')
+    #showing which events where Registered
+    registeredEvents = []
+    #distionary of events and their models
+    eventDictionary={
+        'lasya':LasyaRegistration,
+        'proscenium':ProsceniumRegistration,
+        'footprints':FootprintsRegistration,
+    }
     if request.user.is_authenticated:
-        eventDictionary={
-            'lasya':LasyaRegistration,
-            'proscenium':ProsceniumRegistration,
-            'footprints':FootprintsRegistration,
-        }
         for i in openedEvents:
-            eventTitle = i.title
-            allRegistrations = eventDictionary[eventTitle].objects.all()
+            allRegistrations = eventDictionary[i.title].objects.all()
             isRegistered=False;
             for j in allRegistrations:
-                if (request.user == j.user):
+                if (request.user == j.user) and j.isSubmit:
                     isRegistered=True
-            userRegOpen.append(isRegistered)
+            if isRegistered:
+                registeredEvents.append(i)
 
         for i in closedEvents:
-            eventTitle = i.title
-            allRegistrations = eventDictionary[eventTitle].objects.all()
+            allRegistrations = eventDictionary[i.title].objects.all()
             isRegistered=False;
             for j in allRegistrations:
-                if (request.user == j.user):
+                if (request.user == j.user) and j.isSubmit:
                     isRegistered=True
-            userRegClosed.append(isRegistered)
+            if isRegistered:
+                registeredEvents.append(i)
 
-    return render(request, 'registration/registration_index.html', {'userRegOpen':userRegOpen, 'userRegClosed':userRegClosed, 'openedEvents':openedEvents, 'closedEvents':closedEvents, 'notyetEvents':notyetEvents })
+        for i in notyetEvents:
+            allRegistrations = eventDictionary[i.title].objects.all()
+            isRegistered=False;
+            for j in allRegistrations:
+                if (request.user == j.user) and j.isSubmit:
+                    isRegistered=True
+            if isRegistered:
+                registeredEvents.append(i)
+
+        registeredEventsString = ''
+        if len(registeredEvents) != 0:
+            if len(registeredEvents) == 1:
+                registeredEventsString = registeredEventsString + (registeredEvents[0].title).capitalize()
+            else:
+                j = 1       #loop variable
+                for i in registeredEvents:
+                    registeredEventsString = registeredEventsString + (i.title).capitalize()
+                    if j == (len(registeredEvents) - 1):
+                        registeredEventsString = registeredEventsString + " and "
+                    elif j == len(registeredEvents):
+                        continue
+                    else:
+                        registeredEventsString = registeredEventsString + ", "
+                    j+=1
+            registeredEventsString = "<p class='center'> You have successfully registered for " +  registeredEventsString + "</p>"
+
+    return render(request, 'registration/registration_index.html', {'registeredEventsString':registeredEventsString, 'openedEvents':openedEvents, 'closedEvents':closedEvents, 'notyetEvents':notyetEvents })
 
 def lasyaRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='lasya')

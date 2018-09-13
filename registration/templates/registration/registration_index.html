@@ -30,6 +30,7 @@
                   <a href="{% url 'logout' %}"><div class="divButton">Log Out</div></a>
                   <a href="{% url 'password_change' %}"><div class="divButton">Change Password</div></a>
               </div>
+              {{ registeredEventsString|safe }}
             {% else %}
                 <p class="center">Please Log In to register to the events of Pravega.</p>
                 <div class="buttonCollection">
