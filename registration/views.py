@@ -61,38 +61,66 @@ def lasyaRegistration(request):
     if thisEvent.registrationStatus == 'opened':
         if request.user.is_authenticated:
             allRegistrations = LasyaRegistration.objects.all()
-            isRegistered=False;
+            isRegistered = False
+            thisInstance = False
             for i in allRegistrations:
                 if (request.user == i.user):
-                    isRegistered=True
+                    isRegistered = True
+                    thisInstance = i
             if isRegistered:
-                return render(request, 'registration/registered.html',{})
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = LasyaForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = LasyaForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                #checking if the video file was uploaded.
+                                if f["videoFileLink"].value() or f["videoFile"].value() :
+                                    thisInstance.isSubmit = True
+                                    if event_confirmation_mail('Lasya',request):
+                                        thisInstance.confirmation_email_sent = True
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your Lasya Registration Form')
+                                    return redirect('registration')
+                                else:
+                                    thisInstance.save()
+                                    f = LasyaForm(instance=thisInstance)
+                                    messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
+                                    return render(request, 'registration/lasyaRegistration.html', {'form': f})
+
+                            else:
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Lasya Registration Form')
+                                f = LasyaForm(instance=thisInstance)
+                                return render(request, 'registration/lasyaRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
                     f = LasyaForm(request.POST, request.FILES)
                     if f.is_valid():
-                        #checking if the video file was uploaded. if yes, we expect a MultiValueDictKeyError
-                        videoFileAvailable = False
-                        try:
-                            if request.POST['videoFile']:
-                                videoFileAvailable = False;
-                        except:
-                            videoFileAvailable = True;
-                        #checking if either the video file or the link was obtained
-                        if request.POST['videoFileLink'] or videoFileAvailable:
-                            reg = f.save(commit=False)
-                            reg.user = request.user
-                            if event_confirmation_mail('Lasya',request):
-                                reg.confirmation_email_sent = True
-                            reg.save()
-                            messages.add_message(request, messages.INFO, 'You have succesfully registered for Lasya')
-                            return redirect('registration')
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        if request.POST.get("submit"):
+                            #checking if either the video file or the link was obtained
+                            if f["videoFileLink"].value() or f["videoFile"].value():
+                                reg.isSubmit = True
+                                if event_confirmation_mail('Lasya',request):
+                                    reg.confirmation_email_sent = True
+                                reg.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Lasya Registration Form')
+                            else:
+                                messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
+                                return render(request, 'registration/lasyaRegistration.html', {'form': f})
                         else:
-                            messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Lasya Registration Form')
                             return render(request, 'registration/lasyaRegistration.html', {'form': f})
+                        return redirect('registration')
                 else:
                     f = LasyaForm()
-                return render(request, 'registration/lasyaRegistration.html', {'form': f})
+            return render(request, 'registration/lasyaRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for Lasya')
             return redirect('login')
@@ -104,38 +132,66 @@ def prosceniumRegistration(request):
     if thisEvent.registrationStatus == 'opened':
         if request.user.is_authenticated:
             allRegistrations = ProsceniumRegistration.objects.all()
-            isRegistered=False;
+            isRegistered = False
+            thisInstance = False
             for i in allRegistrations:
                 if (request.user == i.user):
-                    isRegistered=True
+                    isRegistered = True
+                    thisInstance = i
             if isRegistered:
-                return render(request, 'registration/registered.html',{})
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = ProsceniumForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = ProsceniumForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                #checking if the video file was uploaded.
+                                if f["videoFileLink"].value() or f["videoFile"].value() :
+                                    thisInstance.isSubmit = True
+                                    if event_confirmation_mail('Proscenium',request):
+                                        thisInstance.confirmation_email_sent = True
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your Proscenium Registration Form')
+                                    return redirect('registration')
+                                else:
+                                    thisInstance.save()
+                                    f = ProsceniumForm(instance=thisInstance)
+                                    messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
+                                    return render(request, 'registration/prosceniumRegistration.html', {'form': f})
+
+                            else:
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Proscenium Registration Form')
+                                f =ProsceniumForm(instance=thisInstance)
+                                return render(request, 'registration/prosceniumRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
                     f = ProsceniumForm(request.POST, request.FILES)
                     if f.is_valid():
-                        #checking if the video file was uploaded. if yes, we expect a MultiValueDictKeyError
-                        videoFileAvailable = False
-                        try:
-                            if request.POST['videoFile']:
-                                videoFileAvailable = False;
-                        except:
-                            videoFileAvailable = True;
-                        #checking if either the video file or the link was obtained
-                        if request.POST['videoFileLink'] or videoFileAvailable:
-                            reg = f.save(commit=False)
-                            reg.user = request.user
-                            if event_confirmation_mail('Proscenium',request):
-                                reg.confirmation_email_sent = True
-                            reg.save()
-                            messages.add_message(request, messages.INFO, 'You have succesfully registered for Proscenium')
-                            return redirect('registration')
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        if request.POST.get("submit"):
+                            #checking if either the video file or the link was obtained
+                            if f["videoFileLink"].value() or f["videoFile"].value():
+                                reg.isSubmit = True
+                                if event_confirmation_mail('Proscenium',request):
+                                    reg.confirmation_email_sent = True
+                                reg.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Proscenium Registration Form')
+                            else:
+                                messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
+                                return render(request, 'registration/prosceniumRegistration.html', {'form': f})
                         else:
-                            messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Proscenium Registration Form')
                             return render(request, 'registration/prosceniumRegistration.html', {'form': f})
+                        return redirect('registration')
                 else:
                     f = ProsceniumForm()
-                return render(request, 'registration/prosceniumRegistration.html', {'form': f})
+            return render(request, 'registration/prosceniumRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for Proscenium')
             return redirect('login')
@@ -147,26 +203,53 @@ def footprintsRegistration(request):
     if thisEvent.registrationStatus == 'opened':
         if request.user.is_authenticated:
             allRegistrations = FootprintsRegistration.objects.all()
-            isRegistered=False;
+            isRegistered = False
+            thisInstance = False
             for i in allRegistrations:
                 if (request.user == i.user):
-                    isRegistered=True
+                    isRegistered = True
+                    thisInstance = i
             if isRegistered:
-                return render(request, 'registration/registered.html',{})
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = FootprintsForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = FootprintsForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                if event_confirmation_mail('Footprints',request):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Footprints Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Footprints Registration Form')
+                                f =FootprintsForm(instance=thisInstance)
+                                return render(request, 'registration/footprintsRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
                     f = FootprintsForm(request.POST, request.FILES)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
-                        if event_confirmation_mail('Footprints',request):
-                            reg.confirmation_email_sent = True
-                        reg.save()
-                        messages.add_message(request, messages.INFO, 'You have succesfully registered for Footprints')
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            if event_confirmation_mail('Footprints',request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Footprints Registration Form')
+                        else:
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Footprints Registration Form')
+                            return render(request, 'registration/footprintsRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
                     f = FootprintsForm()
-                return render(request, 'registration/footprintsRegistration.html', {'form': f})
+            return render(request, 'registration/footprintsRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for Footprints')
             return redirect('login')

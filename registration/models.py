@@ -64,9 +64,9 @@ class LasyaRegistration(models.Model):
     institution = models.CharField(max_length=144)
     city = models.CharField(max_length=144)
     email = models.EmailField(max_length=144, null=False, blank=False)
-    contact1 = PhoneNumberField.get_field()
-    contact2 = PhoneNumberField.get_field(blank=True)
-    participantList =  models.TextField()
+    contact1 = models.CharField(max_length=20)
+    contact2 = models.CharField(max_length=20,blank=False)
+    participantList =  models.TextField(blank=True)
     videoFileLink = models.URLField(max_length=300, null=False, blank=True)
     #function to generate a path to upload the file
     def filePathGenerate(instance,filename):
@@ -77,6 +77,8 @@ class LasyaRegistration(models.Model):
         return temp
     videoFile = models.FileField(validators=[lasya_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
     confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
     def __str__(self):
         return self.teamName
 
@@ -107,6 +109,8 @@ class ProsceniumRegistration(models.Model):
         return temp
     videoFile = models.FileField(validators=[proscenium_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
     confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
     def __str__(self):
         return self.teamName
 
@@ -128,5 +132,7 @@ class FootprintsRegistration(models.Model):
     contact2 = PhoneNumberField.get_field(blank=True)
     participantList =  models.TextField()
     confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
     def __str__(self):
         return self.teamName

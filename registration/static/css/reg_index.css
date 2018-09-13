@@ -22,10 +22,14 @@ p > a:hover{
     box-sizing: border-box;
     width: 100%;
     min-height: 100vh;
-    padding: 96px 8px 60px 8px;
+    padding: 96px 8px 64px 8px;
     margin: 0;
     font-size: 18px;
     font-family: 'Raleway', sans-serif;
+}
+
+.event-essentials a:hover{
+    color: rgb(255,255,240) !important;
 }
 
 
@@ -107,28 +111,29 @@ p > a:hover{
     justify-content: flex-end;
 }
 
-.green-status{
-    border: 1px solid #3df230;
-    color: #3df230;
-    background-color: rgb(8,8,8);
-}
-
-.yellow-status{
-    border: 1px solid #f7ec56;
-    color: #f7ec56;
+.green-status,.red-status,.orange-status{
+    margin: 14px 14px 2px 14px;
+    padding: 6px;
+    text-align: left;
+    border-radius: 8px 14px;
     transition: all 0.2s;
 }
-.yellow-status:hover{
-    transform: scale(1.05,1.05);
-    border: 1px solid rgb(8,8,8);
-    color: rgb(8,8,8);
-    background-color:  #f7ec56;
-    text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
+.green-status{
+    border: 1px solid #31c42f;
+    color: #31c42f !important;
+    text-shadow: 0.5px 0.5px 0.5px black;
+    box-shadow: -1px 1px 1px #33b231;
 }
-.yellow-status:active{
+.green-status:hover{
+    transform: scale(1.04,1.04);
+    border: 1px solid #31ff2f;
+    color: #31ff2f !important;
+    box-shadow: -1px 1px 1px #31ff2f;
+}
+.green-status:active{
     transform: scale(1,1);
-    background-color:  #ba9d1b;
 }
+
 .orange-status{
     border: 1px solid #ff8c00;
     color: #ff8c00;
@@ -136,11 +141,6 @@ p > a:hover{
 .red-status{
     border: 1px solid #e20f0f;
     color: #e20f0f;
-}
-.green-status,.yellow-status,.red-status,.orange-status{
-    margin: 14px 14px 2px 14px;
-    padding: 4px;
-    text-align: left;
 }
 
 
@@ -154,7 +154,7 @@ p > a:hover{
 @media (min-width: 760px) {
 
     #main{
-        padding: 128px 28px 196px 28px;
+        padding: 128px 28px 48px 28px;
     }
     .buttonCollection{
         flex-direction: row;
@@ -175,13 +175,13 @@ p > a:hover{
 
 @media (min-width: 992px) {
     #main{
-        padding: 128px 196px 196px 196px;
+        padding: 128px 196px 48px 196px;
     }
 }
 
 @media (min-width: 1800px) {
     #main{
-        padding: 128px 256px 196px 256px;
+        padding: 128px 256px 48px 256px;
     }
 
     .divButton{
