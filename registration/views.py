@@ -107,18 +107,21 @@ def lasyaRegistration(request):
                                 #checking if the video file was uploaded.
                                 if f["videoFileLink"].value() or f["videoFile"].value() :
                                     thisInstance.isSubmit = True
+                                    thisInstance.submit_date = timezone.now()
                                     if event_confirmation_mail('Lasya',request.POST['email'],request):
                                         thisInstance.confirmation_email_sent = True
                                     thisInstance.save()
                                     messages.add_message(request, messages.INFO, 'You have succesfully submitted your Lasya Registration Form')
                                     return redirect('registration')
                                 else:
+                                    thisInstance.last_modify_date = timezone.now()
                                     thisInstance.save()
                                     f = LasyaForm(instance=thisInstance)
                                     messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
                                     return render(request, 'registration/lasyaRegistration.html', {'form': f})
 
                             else:
+                                thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your Lasya Registration Form')
                                 f = LasyaForm(instance=thisInstance)
@@ -133,6 +136,7 @@ def lasyaRegistration(request):
                             #checking if either the video file or the link was obtained
                             if f["videoFileLink"].value() or f["videoFile"].value():
                                 reg.isSubmit = True
+                                reg.submit_date = timezone.now()
                                 if event_confirmation_mail('Lasya',request.POST['email'],request):
                                     reg.confirmation_email_sent = True
                                 reg.save()
@@ -141,6 +145,7 @@ def lasyaRegistration(request):
                                 messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
                                 return render(request, 'registration/lasyaRegistration.html', {'form': f})
                         else:
+                            reg.last_modify_date = timezone.now()
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully saved your Lasya Registration Form')
                             return render(request, 'registration/lasyaRegistration.html', {'form': f})
@@ -178,18 +183,21 @@ def prosceniumRegistration(request):
                                 #checking if the video file was uploaded.
                                 if f["videoFileLink"].value() or f["videoFile"].value() :
                                     thisInstance.isSubmit = True
+                                    thisInstance.submit_date = timezone.now()
                                     if event_confirmation_mail('Proscenium',request.POST['email'],request):
                                         thisInstance.confirmation_email_sent = True
                                     thisInstance.save()
                                     messages.add_message(request, messages.INFO, 'You have succesfully submitted your Proscenium Registration Form')
                                     return redirect('registration')
                                 else:
+                                    thisInstance.last_modify_date = timezone.now()
                                     thisInstance.save()
                                     f = ProsceniumForm(instance=thisInstance)
                                     messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
                                     return render(request, 'registration/prosceniumRegistration.html', {'form': f})
 
                             else:
+                                thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your Proscenium Registration Form')
                                 f =ProsceniumForm(instance=thisInstance)
@@ -204,6 +212,7 @@ def prosceniumRegistration(request):
                             #checking if either the video file or the link was obtained
                             if f["videoFileLink"].value() or f["videoFile"].value():
                                 reg.isSubmit = True
+                                reg.submit_date = timezone.now()
                                 if event_confirmation_mail('Proscenium',request.POST['email'],request):
                                     reg.confirmation_email_sent = True
                                 reg.save()
@@ -212,6 +221,7 @@ def prosceniumRegistration(request):
                                 messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
                                 return render(request, 'registration/prosceniumRegistration.html', {'form': f})
                         else:
+                            reg.last_modify_date = timezone.now()
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully saved your Proscenium Registration Form')
                             return render(request, 'registration/prosceniumRegistration.html', {'form': f})
@@ -247,12 +257,14 @@ def footprintsRegistration(request):
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
                                 thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
                                 if event_confirmation_mail('Footprints',request.POST['email'],request):
                                     thisInstance.confirmation_email_sent = True
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your Footprints Registration Form')
                                 return redirect('registration')
                             else:
+                                thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your Footprints Registration Form')
                                 f =FootprintsForm(instance=thisInstance)
@@ -265,11 +277,13 @@ def footprintsRegistration(request):
                         reg.user = request.user
                         if request.POST.get("submit"):
                             reg.isSubmit = True
+                            reg.submit_date = timezone.now()
                             if event_confirmation_mail('Footprints',request.POST['email'],request):
                                 reg.confirmation_email_sent = True
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully submitted your Footprints Registration Form')
                         else:
+                            reg.last_modify_date = timezone.now()
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully saved your Footprints Registration Form')
                             return render(request, 'registration/footprintsRegistration.html', {'form': f})

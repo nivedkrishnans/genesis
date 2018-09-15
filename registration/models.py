@@ -79,6 +79,8 @@ class LasyaRegistration(models.Model):
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
     def __str__(self):
         return self.teamName
 
@@ -111,6 +113,8 @@ class ProsceniumRegistration(models.Model):
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
     def __str__(self):
         return self.teamName
 
@@ -134,5 +138,7 @@ class FootprintsRegistration(models.Model):
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
     def __str__(self):
         return self.teamName
