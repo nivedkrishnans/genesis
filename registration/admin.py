@@ -19,7 +19,7 @@ class AdminEventResource(ImportExportModelAdmin):
         model = AdminEvent
 
 class LasyaRegistrationResource(ImportExportModelAdmin):
-    list_display = ('user','teamName','teamLeader','institution','city','submit_date','seeVideoFile','seeVideoLink',)
+    list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeVideoFile','seeVideoLink',)
     list_filter = ('submit_date','institution','city',)
     readonly_fields = ('videoFile','videoFileLink',)
     def seeVideoFile(self, obj):
@@ -44,7 +44,7 @@ class LasyaRegistrationResource(ImportExportModelAdmin):
         model = LasyaRegistration
 
 class ProsceniumRegistrationResource(ImportExportModelAdmin):
-    list_display = ('user','teamName','teamLeader','institution','city','submit_date','seeVideoFile','seeVideoLink')
+    list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeVideoFile','seeVideoLink')
     list_filter = ('submit_date','institution','city',)
     readonly_fields = ('videoFile','videoFileLink',)
     def seeVideoFile(self, obj):
@@ -69,7 +69,7 @@ class ProsceniumRegistrationResource(ImportExportModelAdmin):
         model = ProsceniumRegistration
 
 class FootprintsRegistrationResource(ImportExportModelAdmin):
-    list_display = ('user','teamName','teamLeader','institution','city','submit_date')
+    list_display = ('user','teamName','teamLeader','email','institution','city','submit_date')
     list_filter = ('submit_date','institution','city',)
     class Meta:
         model = FootprintsRegistration
