@@ -1,0 +1,39 @@
+#main-data{
+    background-color: rgba(8,8,8,0.85);
+    box-sizing: border-box;
+    margin: 42px 4px 24px 4px;
+    padding: 32px 18px 18px 18px;
+    color: ivory;
+    font-size: 18px;
+}
+#main{
+    min-height: 50vh;
+    margin-top: 8px;
+    padding-top: 48px;
+}
+
+
+@media (min-width: 760px){
+    #main-data{
+        margin:0;
+        padding: 128px 118px 42px 118px;
+    }
+
+}
+
+
+@media (min-width: 1200px) {
+    #main-data{
+        padding: 164px 256px 48px 256px;
+    }
+}
+
+@media (min-width: 1800px) {
+    #main-data{
+        font-size: 24px;
+        padding: 188px 288px 42px 288px;
+    }
+    .heading{
+        font-size: 58px;
+    }
+}

@@ -23,7 +23,7 @@
 
         -->
         <div class="event-area">
-            <div class="heading">Event Registrations</div>
+            <div class="heading">Pravega Registrations</div>
             {% if user.is_authenticated %}
               <p class="center"> You are logged in as {{ user }}!</p>
               <div class="buttonCollection">
@@ -32,7 +32,7 @@
               </div>
               {{ registeredEventsString|safe }}
             {% else %}
-                <p class="center">Please Log In to register to the events of Pravega.</p>
+                <p class="center">Please Log In to Register to the Events of Pravega.</p>
                 <div class="buttonCollection">
                     <a href="{% url 'login' %}"><div class="divButton">Log In</div></a>
                     <a href="{% url 'signup' %}"><div class="divButton">Sign Up</div></a>
@@ -49,7 +49,15 @@
                 </div>
             {% endif %}
         </div>
-
+        {% if campusAmbassadorEvent.registrationStatus == 'opened' %}
+            <div class="event-area">
+                <div class="event-title">Campus Ambassador Program</div>
+                <div class="event-description">{{campusAmbassadorEvent.description|safe}}</div>
+                <div class="event-essentials">
+                    <a href="{{campusAmbassadorEvent.registrationLink}}"><div class="green-status"> &#10004; Registrations Open</div></a>
+                </div>
+            </div>
+        {% endif %}
         {% for i in openedEvents %}
             <div class="event-area">
                 <div class="event-title">{{i.title}}</div>
@@ -77,6 +85,15 @@
                 </div>
             </div>
         {% endfor %}
+        {% if campusAmbassadorEvent.registrationStatus == 'closed' %}
+            <div class="event-area">
+                <div class="event-title">Campus Ambassador Program</div>
+                <div class="event-description">{{campusAmbassadorEvent.description|safe}}</div>
+                <div class="event-essentials">
+                    <div class="red-status"> &#10006; Registrations Closed</div>
+                </div>
+            </div>
+        {% endif %}
 
     </div>
 

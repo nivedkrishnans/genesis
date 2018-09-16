@@ -48,6 +48,20 @@ class SignUpForm(forms.Form):
         )
         return user
 
+
+class CampusAmbassadorForm(forms.ModelForm):
+    class Meta:
+        model = CampusAmbassador
+        fields = ('full_name', 'institution','city','email','contactForCalls','contactForWhatsapp',)
+        labels = {
+            "full_name": "Full Name",
+            "institution": "Institution",
+            "city": "City",
+            "email": "Email",
+            "contactForCalls": "Mobile Number",
+            "contactForWhatsapp": "Mobile Number (WhatsApp)",
+        }
+
 class LasyaForm(forms.ModelForm):
     class Meta:
         model = LasyaRegistration

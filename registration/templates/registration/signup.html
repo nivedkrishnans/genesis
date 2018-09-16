@@ -24,6 +24,23 @@
         {% else %}
           <p>Welcome to Pravega!</p>
           <p>Already have an account? <a href={% url 'login'%}> Log In </a></p>
+          {% if form.errors %}
+              <div class="errors">
+                  <p>Please fix the following errors</p>
+                  <ul>
+                      {% for field in form %}
+                          {% if field.errors %}
+                              {% for error in field.errors %}
+                                  <li>{{ error|escape }}</li>
+                              {% endfor %}
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+                  {% if form.non_field_errors %}
+                      {{ form.non_field_errors }}
+                  {% endif %}
+              </div>
+          {% endif %}
           <form method="post">
             {% csrf_token %}
             {% for field in form %}

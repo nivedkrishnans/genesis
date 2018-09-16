@@ -55,6 +55,18 @@ class AdminEvent(models.Model):
     def __str__(self):
         return self.title
 
+class CampusAmbassador(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    full_name =  models.CharField(max_length=127, default='unknown_name')
+    institution = models.CharField(max_length=144)
+    city = models.CharField(max_length=144)
+    email = models.EmailField(max_length=144, null=False, blank=False)
+    contactForCalls = models.CharField(max_length=20)
+    contactForWhatsapp = models.CharField(max_length=20)
+    isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
 
 class LasyaRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)

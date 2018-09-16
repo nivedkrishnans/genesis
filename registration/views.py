@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm,LasyaForm,ProsceniumForm,FootprintsForm
+from .forms import SignUpForm,CampusAmbassadorForm,LasyaForm,ProsceniumForm,FootprintsForm
 from django.shortcuts import render, redirect, get_object_or_404, reverse, Http404
 from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib import messages
 from . import helpers
-from .models import UserData,AdminEvent,LasyaRegistration,FootprintsRegistration,ProsceniumRegistration
+from .models import UserData,AdminEvent,CampusAmbassador,LasyaRegistration,FootprintsRegistration,ProsceniumRegistration
 from django.utils import timezone
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
@@ -24,19 +24,30 @@ def redirectRegistrationIndex(request):
     return redirect('registration')
 
 def registration_index(request):
-    eventDictionary = 0
-    openedEvents = AdminEvent.objects.filter(registrationStatus='opened')
-    closedEvents = AdminEvent.objects.filter(registrationStatus='closed')
-    notyetEvents = AdminEvent.objects.filter(registrationStatus='notyet')
-    #showing which events where Registered
-    registeredEvents = []
-    registeredEventsString = ''
+    # campusAmbassador is not an event
+    campusAmbassadorEvent = AdminEvent.objects.filter(title='Campus Ambassadors')[0]
+
     #distionary of events and their models
     eventDictionary={
         'lasya':LasyaRegistration,
         'proscenium':ProsceniumRegistration,
         'footprints':FootprintsRegistration,
     }
+
+    # converting the following querysets to list so that remove function  can be called
+    openedEvents = list(AdminEvent.objects.filter(registrationStatus='opened'))
+    closedEvents = list(AdminEvent.objects.filter(registrationStatus='closed'))
+    notyetEvents = list(AdminEvent.objects.filter(registrationStatus='notyet'))
+
+    #removes the campusAmbassador from the lists of Events
+    if campusAmbassadorEvent in openedEvents :openedEvents.remove(campusAmbassadorEvent)
+    if campusAmbassadorEvent in closedEvents :closedEvents.remove(campusAmbassadorEvent)
+    if campusAmbassadorEvent in notyetEvents :notyetEvents.remove(campusAmbassadorEvent)
+
+    #showing which events where Registered
+    registeredEvents = []
+    registeredEventsString = ''
+
     if request.user.is_authenticated:
         for i in openedEvents:
             allRegistrations = eventDictionary[i.title].objects.all()
@@ -81,7 +92,7 @@ def registration_index(request):
                     j+=1
             registeredEventsString = "<p class='center'> You have successfully registered for " +  registeredEventsString + "</p>"
 
-    return render(request, 'registration/registration_index.html', {'registeredEventsString':registeredEventsString, 'openedEvents':openedEvents, 'closedEvents':closedEvents, 'notyetEvents':notyetEvents })
+    return render(request, 'registration/registration_index.html', {'campusAmbassadorEvent':campusAmbassadorEvent,'registeredEventsString':registeredEventsString, 'openedEvents':openedEvents, 'closedEvents':closedEvents, 'notyetEvents':notyetEvents })
 
 def lasyaRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='lasya')
@@ -393,3 +404,72 @@ def activateAccount(request):
     msg.send()
 
     return redirect('login')
+
+
+
+def campusambassadors(request):
+    thisEvent = get_object_or_404(AdminEvent, title='Campus Ambassadors')
+    isRegistered = False
+    isSubmit = False
+    isOpen = thisEvent.registrationStatus == 'opened'
+    f = CampusAmbassadorForm()
+    if request.user.is_authenticated:
+        allRegistrations = CampusAmbassador.objects.all()
+        allUserData = UserData.objects.all()
+        thisInstance = False
+        thisUserData = False
+        for i in allRegistrations:
+            if (request.user == i.user):
+                isRegistered = True
+                thisInstance = i
+        for i in allUserData:
+            if (request.user == i.user):
+                thisUserData = i
+        if isRegistered:
+            if thisInstance.isSubmit:
+                isSubmit = True
+                return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit, 'isOpen':isOpen, 'form':f})
+            else:
+                f = CampusAmbassadorForm(instance=thisInstance)
+                if request.method == "POST":
+                    f = CampusAmbassadorForm(request.POST, instance=thisInstance)
+                    if f.is_valid():
+                        thisInstance = f.save(commit=False)
+                        if request.POST.get("submit"):
+                            thisInstance.isSubmit = True
+                            thisInstance.submit_date = timezone.now()
+                            if event_confirmation_mail('Campus Ambassador',request.POST['email'],request):
+                                thisInstance.confirmation_email_sent = True
+                            thisInstance.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Campus Ambassador Registration Form')
+                            return redirect('registration')
+                        else:
+                            thisInstance.last_modify_date = timezone.now()
+                            thisInstance.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully modified your Campus Ambassador Registration Form')
+                            f = CampusAmbassadorForm(instance=thisInstance)
+                            return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit, 'isOpen':isOpen,'form':f})
+        else:
+            if request.method == "POST":
+                f = CampusAmbassadorForm(request.POST)
+                if f.is_valid():
+                    reg = f.save(commit=False)
+                    reg.user = request.user
+                    if request.POST.get("submit"):
+                        reg.isSubmit = True
+                        reg.submit_date = timezone.now()
+                        if event_confirmation_mail('Campus Ambassador',request.POST['email'],request):
+                            reg.confirmation_email_sent = True
+                        reg.save()
+                        messages.add_message(request, messages.INFO, 'You have succesfully submitted your Campus Ambassador Registration Form')
+                    else:
+                        reg.last_modify_date = timezone.now()
+                        reg.save()
+                        messages.add_message(request, messages.INFO, 'You have succesfully saved your Campus Ambassador Registration Form')
+                        return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit, 'isOpen':isOpen,'form':f})
+                    return redirect('registration')
+            else:
+                f = CampusAmbassadorForm(initial = {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email,"contactForCalls":thisUserData.contact,})
+        return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit,'isOpen':isOpen, 'form':f})
+
+    return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit, 'isOpen':isOpen, 'form':f})

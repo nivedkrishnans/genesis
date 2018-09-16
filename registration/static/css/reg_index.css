@@ -22,7 +22,7 @@ p > a:hover{
     box-sizing: border-box;
     width: 100%;
     min-height: 100vh;
-    padding: 96px 8px 64px 8px;
+    padding: 64px 8px 64px 8px;
     margin: 0;
     font-size: 18px;
     font-family: 'Raleway', sans-serif;
@@ -89,7 +89,8 @@ p > a:hover{
 
 .event-area{
     background-color: rgba(8,8,8,0.99);
-    margin: 24px 14px;
+    margin: 24px 6px;
+    padding: 14px 8px;
     border-radius: 8px 8px 8px 8px;
     border: 1px rgba(255,255,240,0.01) solid;
 }
