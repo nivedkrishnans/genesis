@@ -438,7 +438,7 @@ def campusambassadors(request):
                         if request.POST.get("submit"):
                             thisInstance.isSubmit = True
                             thisInstance.submit_date = timezone.now()
-                            if event_confirmation_mail('Campus Ambassador',request.POST['email'],request):
+                            if event_confirmation_mail('Campus Ambassador Program',request.POST['email'],request):
                                 thisInstance.confirmation_email_sent = True
                             thisInstance.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully submitted your Campus Ambassador Registration Form')
@@ -458,7 +458,7 @@ def campusambassadors(request):
                     if request.POST.get("submit"):
                         reg.isSubmit = True
                         reg.submit_date = timezone.now()
-                        if event_confirmation_mail('Campus Ambassador',request.POST['email'],request):
+                        if event_confirmation_mail('Campus Ambassador Program',request.POST['email'],request):
                             reg.confirmation_email_sent = True
                         reg.save()
                         messages.add_message(request, messages.INFO, 'You have succesfully submitted your Campus Ambassador Registration Form')
