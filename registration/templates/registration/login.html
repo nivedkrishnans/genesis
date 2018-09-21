@@ -33,7 +33,6 @@
                 <a href="{% url 'signup' %}"><div class="divButton">Sign Up</div></a>
                 <a href="{% url 'password_reset' %}"><div class="divButton">Reset Password</div></a>
             </div>
-
             {% if form.errors %}
                 <div class="errors">
                     <p>Please fix the following errors</p>
@@ -60,6 +59,11 @@
                     </ul>
                 </div>
             {% endif %}
+            <div class="messages">
+                <ul>
+                    <li>You can log in only after you click on the confirmation link sent to your mail.</li>
+                </ul>
+            </div>
             <form method="post">
                 {% csrf_token %}
                 {% for field in form %}

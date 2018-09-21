@@ -7,7 +7,8 @@ body{
 
 .main-content{
     color: rgb(255,255,240);
-    padding: 48px 256px;
+    padding: 48px 48px;
+    margin: 14px 212px -14px 212px;
     background-color: rgba(0,0,0,0.5);
     font-size: 16px;
 }
@@ -18,7 +19,8 @@ body{
 
 @media (max-width: 800px) {
     .main-content{
-        padding: 32px 64px;
+        padding: 32px 36px;
+        margin: 14px 14px -14px 14px;
     }
 }
 
@@ -37,6 +39,8 @@ body{
 .background{
     z-index:-1;
     position:fixed;
+    top: 0;
+    left: 0;
     width:100%;
     height:100%;
     background-color:#0f0e0e;
@@ -150,6 +154,12 @@ body{
     transform: scale(0.6) rotateX(180deg);
     filter:blur(3px);
 }
+@media (max-width:760px){
+    .set3{
+        display: none;
+    }
+}
+
 
 /*the animation which all of the runes will follow, this is general for all the symbols and additional tweaks are done in their individual sets or n-th child selectors as used earlier*/
 @keyframes animate{
@@ -200,7 +210,7 @@ body{
     margin-top:20px;
     margin-right:20px;
     margin-bottom:10px;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.5);
 }
 
 .box-image{
@@ -337,9 +347,11 @@ body{
 
     .main-content{
         padding: 48px 24px;
+        margin: 0 4px;
     }
     .main-area{
         padding-top: 60px;
+        margin: 0 24px;
     }
 
 .flex-container{
@@ -358,7 +370,7 @@ body{
     width:auto;
     min-width:300px;
     margin:20px 4px;
-    background-color:rgba(0,0,0,0.7);
+    background-color:rgba(0,0,0,0.5);
 }
 
 .active-box-img{

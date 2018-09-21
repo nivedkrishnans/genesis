@@ -1,0 +1,55 @@
+.slide{
+  position: absolute;
+  top: 30%;
+  left:20%;
+  width:60%;
+  bottom: 20%;
+}
+
+
+footer{
+  position: absolute;
+  background-color: rgba(4,4,4,0.6);
+  bottom:0%;
+  width: 100vw;
+}
+
+section{
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+/*changing slide parameters for different screen sizes*/
+@media (max-width: 760px) {
+  .slide{
+    position: absolute;
+    top: 20%;
+    left:10%;
+    width:80%;
+    bottom: 10%;
+  }
+}
+
+/*footer is in separate section */
+@media (max-width: 370px) {
+  footer{
+    position: absolute;
+    bottom:30%;
+    }
+    .slide{
+      position: absolute;
+      top: 15%;
+
+    }
+
+}
+/*mobilescreen*/
+@media (max-width: 270px) {
+  .slide{
+    position: absolute;
+    top: 20%;
+    left:2%;
+    width:90%;
+    bottom: 10%;
+  }
+}

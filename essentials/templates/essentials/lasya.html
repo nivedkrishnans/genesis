@@ -12,75 +12,104 @@
     <title>Lasya | Pravega 2019, IISc Bangalore</title>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Roboto:400" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
 {% endblock %}
 
 {% block content %}
-    <div id="main">
+<div id="main" class="main" >
+		<section style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
         <div class="heading">Lasya</div>
         <div class="horizontal-line"></div>
         <div class="main-section">
+		<div class="part1">
             <p>
                 With an exquisite blend of rhythm and poise, a touch of innovation, and a footfall of more than a thousand, Lasya represents the dance exponent of Pravega, and displays the delicate balance of passion and grace in our life.
             </p>
+		</div>
+		<div class="part2">
             <p>
                 It comprises of 3 events – Solo Dance, Duet Dance and Group Dance.
             </p>
             <p>
-                The group event will have teams comprising of a minimum of 3 and a maximum of 25 members.
+                The group event will have teams comprising of a minimum of 5 and a maximum of 25 members.
             </p>
-    </div>
+		</div>
+		</div>
+		</div>
+		</section >
+		<section style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
         <div class="main-section">
             <div class="section-heading">Preliminaries</div>
             <div class="horizontal-line"></div>
+			<div class="part1">
             <div class="section-subheading">Video Preliminaries:</div>
             <p>
                 Video must be uploaded to the website portal or YouTube/Vimeo link must be provided at time of registration. The camera must remain stationary and the recording must be a single take.
             </p>
+			</div>
+			<div class="part2">
             <p>
                 The duration of video must not exceed 3 minutes.
             </p>
             <p>
-                 Type of file : {{ file_info }}.
-             </p>
-            <p>
                 The results of prelims will be declared latest by 1st November. 6 teams will be selected from the entries pool for Lasya finals in each event, i.e. a total of 18 teams.
             </p>
-
+			</div>
         </div>
+		</div>
+		</section >
+		<section style="background-color:rgba(8,8,8,0.5);">
+			<div class="slide">
         <div class="main-section">
             <div class="section-heading">General Rules of the Event:</div>
             <div class="horizontal-line"></div>
+
             <ul>
+			<div class="part1list">
                 <li>	Teams must bring their own props and costumes </li>
                 <li>	Maximum duration allowed for the performance for FINALS is 10 minutes (including set-up time).</li>
+			</div>
+			<div class="part2list">
                 <li>	Teams exceeding the stipulated time limit will be penalized and those crossing 3 minutes extra-time will be disqualified.</li>
                 <li>	Use of fire (even diyas, candles or lighters) and water is not allowed.</li>
-
+			</div>
             </ul>
         </div>
+		</div>
+		</section>
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
         <div class="main-section">
             <div class="section-heading">Registration</div>
             <div class="horizontal-line"></div>
                 <p>
-                    Registrations will be accepted online through the website prior to the event. No spot registrations are allowed.
-                </p>
-                <p>
+                    Registrations will be accepted online through the website prior to the event. No spot registrations are allowed. 
                     <em>Registrations close on 15th October.</em>
                 </p>
                 <div class="event-essentials">
                     <a href="{% url 'lasyaRegistration' %}"><div class="yellow-status">&#10010; Register Now</div></a>
                 </div>
         </div>
+		</div>
+		<div id="footer-id">
 
 
 
-
-
-
-
-
-
-    </div>
-
-    <script src="{%static 'js/navBar.js'%}"> </script>
 {% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}
