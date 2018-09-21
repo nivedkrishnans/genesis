@@ -53,7 +53,7 @@ p{
     flex-wrap: wrap;
 }
 
-.divButton,button{
+.divButton,#main button{
     text-align: center;
     min-width: 80px;
     margin: 12px;
@@ -67,13 +67,13 @@ p{
     cursor: pointer;
     box-sizing: border-box;
 }
-.divButton:hover,button:hover{
+.divButton:hover,#main button:hover{
     transform: scale(1.05,1.05);
     background-color: rgb(255,255,240);
     color: rgb(8,8,8);
     text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
 }
-.divButton:active,button:active{
+.divButton:active,#main button:active{
     transform: scale(1,1);
     background-color: rgb(150,150,150);
     text-shadow: 0.5px 0.5px 0.5px  rgb(8,8,8);
@@ -186,7 +186,7 @@ label[for=videoFile-clear_id]{
         padding: 220px 68px 68px 68px;
         font-size: 24px;
     }
-    .divButton,button{
+    .divButton,#main button{
         font-size: 22px;
         margin: 24px;
     }
