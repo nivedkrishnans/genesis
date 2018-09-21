@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load humanize %}
+{% load index %}
+
+{% block head %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Linguistics | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Josefin+Sans:400|Titillium+Web:300,400,600,700|Roboto|Stardos+Stencil:700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/linguistics.css'%}">
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="main-area">
+<!-------------------------------------------------------------------------------------------->
+    <!--the following code block is for the fancy floating rune symbol thingies going on in the background. It just is 3 layers (3 sets) of svgs which are given different settings and animations in the css-->
+        <div class="background">
+            <div class="set">
+                <div class="rune"><img src="{%static 'img/runes/rune1.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune2.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune3.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune4.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune5.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune6.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune7.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune8.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune9.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune10.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune11.svg'%}"></div>
+            </div>
+            <div class="set set2">
+                <div class="rune"><img src="{%static 'img/runes/rune1.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune2.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune3.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune4.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune5.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune6.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune8.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune9.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune10.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune11.svg'%}"></div>
+            </div>
+            <div class="set set3">
+                <div class="rune"><img src="{%static 'img/runes/rune1.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune2.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune3.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune4.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune5.svg'%}"></div>
+                <div class="rune"><img src="{%static 'img/runes/rune6.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune8.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune9.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune10.svg'%}"></div>
+                <div class="rune2"><img src="{%static 'img/runes/rune11.svg'%}"></div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h1>
+                In Other Words
+            </h1>
+            <div class="hline"></div>
+            <p>
+                If the slashes of Old Mongolian and Celtic runes excite you, if you enjoy the feeling of digging into the corners of human communication, or even if you find yourself sniped by every other puzzle on your plate, then In Other Words is back with a serving of some of the most enjoyable linguistic puzzles you will ever encounter!
+            </p>
+            <p>
+                Register to solve weekly problems for your leaderboard score and potentially receive exciting goodies and/or cash worth Rs. 10,000!
+            </p>
+        </div>
+
+<!-------------------------------------------------------------------------------------------------->
+        <!--the following code block should contain all the flexboxes for containing the actual content, I.e. the cards for each individual events/questions-->
+        <div class="flex-container">
+            <!-- code for the first block which will be given visual emphasis in the css as it is the current active card-->
+            {% for active in IOW_active%}
+            <div class="box active-box">
+                <div class="box-text active-box-txt">
+                    <div class="box-heading active-box-heading">{{active.title}}</div>
+                    <div class="box-details active-box-details">
+                        {{active.description}}
+                    </div>
+                </div>
+                <div class="box-image active-box-img">
+                    <img src = '{{active.snippet.url}}'>
+                </div>
+                <div class="button-container main-button-container">
+                    <a href="{{active.question_PDF.url}}"><div class="button active-button">See Question</div></a>
+                    <a href = "{{active.link_form}}"><div class="button active-button">Answer Here</div></a>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!--a small seperator element to show that the events at the bottom are the ones that are already over-->
+            {% if IOW_inactive %}
+                <div class="seperator">
+                    Previous Questions
+                </div>
+            {% endif %}
+            <!--code for all the other tiles. which are uniformly stylized and the styles are inheritedd by the active element, except a few added  properties-->
+            {% for inactive in IOW_inactive %}
+            <div class="box">
+
+                <div class="box-text">
+                    <div class="box-heading">{{inactive.title}}</div>
+                    <div class="box-details">
+                        {{inactive.description}}
+                    </div>
+                </div>
+                <div class="box-image">
+                     <img src = '{{inactive.snippet.url}}'>
+                </div>
+                <div class="button-container">
+                    <a href="{{inotherword.question_PDF.url}}"><div class="button">See Question</div></a>
+                    <a href="{{inotherword.answer_PDF.url}}"><div class="button">Answers</div></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{%static 'js/navBar.js'%}"> </script>
+{% endblock %}

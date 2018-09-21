@@ -8,6 +8,7 @@ from django.conf import settings
 from django.contrib import messages
 from . import helpers
 from .models import UserData,AdminEvent,CampusAmbassador,LasyaRegistration,FootprintsRegistration,ProsceniumRegistration
+from originals.models import InOtherWord
 from django.utils import timezone
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
@@ -33,6 +34,9 @@ def registration_index(request):
         'proscenium':ProsceniumRegistration,
         'footprints':FootprintsRegistration,
     }
+
+    #inotherwords
+    iow_isactive = list(InOtherWord.objects.filter(active=True))
 
     # converting the following querysets to list so that remove function  can be called
     openedEvents = list(AdminEvent.objects.filter(registrationStatus='opened'))
@@ -92,7 +96,7 @@ def registration_index(request):
                     j+=1
             registeredEventsString = "<p class='center'> You have successfully registered for " +  registeredEventsString + "</p>"
 
-    return render(request, 'registration/registration_index.html', {'campusAmbassadorEvent':campusAmbassadorEvent,'registeredEventsString':registeredEventsString, 'openedEvents':openedEvents, 'closedEvents':closedEvents, 'notyetEvents':notyetEvents })
+    return render(request, 'registration/registration_index.html', {'iow_isactive':iow_isactive,'campusAmbassadorEvent':campusAmbassadorEvent,'registeredEventsString':registeredEventsString, 'openedEvents':openedEvents, 'closedEvents':closedEvents, 'notyetEvents':notyetEvents })
 
 def lasyaRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='lasya')

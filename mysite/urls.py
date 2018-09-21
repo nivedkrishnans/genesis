@@ -8,7 +8,7 @@ import registration.views
 from . import views
 
 urlpatterns = [
-    url(r'^demigod/', admin.site.urls),
+    url(r'^cp/demigod/', admin.site.urls),
 	url(r'^$', essentials.views.home , name="home"),
     url(r'^registration/', include('registration.urls')),
     url(r'^register/',registration.views.redirectRegistrationIndex),
@@ -20,6 +20,9 @@ urlpatterns = [
     url(r'^originals/$', originals.views.originals , name="originals"),
 	url(r'^archive/$', originals.views.archive , name="archive"),
 	url(r'^policy/$', essentials.views.policy , name="policy"),
+	url(r'^inotherwords/$', originals.views.InOtherWords , name="inotherwords"),
 	url(r'^2018/$', views.pravega2018 , name="pravega2018"),
 	url(r'^2017/$', views.pravega2017 , name="pravega2017"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns.append(url(r'^inotherwords/ch01$', originals.views.IOW_challenge01 , name="iow_challenge01"))

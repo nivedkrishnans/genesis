@@ -2,9 +2,6 @@ from django.conf.urls import include, url
 from . import views
 import django.contrib.auth.views
 
-#havev;t been abale to get custom password reset templates
-
-
 urlpatterns = [
 	url(r'^closed$', views.closed, name='closed'),
 	url(r'^closed/$', views.closed, name='closed'),
