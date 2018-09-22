@@ -59,7 +59,7 @@
                       </ul>
                   </div>
               {% endif %}
-              <p><a href="{% url 'registration'%}">Click here</a> to go back to the registrations index page.</p>
+             
                 {% if isSubmit %}
                     <p>You are already Registered as a Campus Ambassador</p>
                 {% else %}
@@ -76,7 +76,7 @@
                         <p style="margin-bottom:14px;">Important:</p>
                         <ul>
                             <li>You have two options, 'save' and 'submit'.</li>
-                            <li>If you click save, you will be able to edit the form until you click submit or until the event registration closes, WHICHEVER COMES FIRST.</li>
+                            <li>If you click save, you will be able to edit the form until you click submit or until the registration closes, WHICHEVER COMES FIRST.</li>
                             <li>Once you click submit, YOU WILL NOT BE ABLE TO EDIT THE FORM.</li>
                         </ul>
                     </div>
@@ -87,9 +87,15 @@
                   </form>
                  {% endif %}
             {% else %}
-                <p>You have to log in to register as a Campus Ambassador</p><br>
-                Have an account? <a href="{% url 'login' %}">Click here to Log in</a><br>
-                Don't have an account? <a href="{% url 'signup' %}">Click here to sign up</a><br>
+                <div>
+                    <ul>
+                        <li>You have to log in to register as a Campus Ambassador.</li>
+                    </ul>
+                </div>
+                <div class="buttonCollection">
+                    <a href="{% url 'login' %}"><div class="divButton">Log In</div></a>
+                    <a href="{% url 'signup' %}"><div class="divButton">Sign Up</div></a>
+                </div>
             {% endif %}
         {% else %}
             <p>The Campus Ambassador Registration Portal is closed.</p>

@@ -1,37 +1,53 @@
 #main-data{
-    background-color: rgba(8,8,8,0.85);
+    background-color: rgba(8,8,8,0.6);
     box-sizing: border-box;
-    margin: 42px 4px 24px 4px;
-    padding: 32px 18px 18px 18px;
+    margin: 42px 8px 24px 8px;
+    padding: 32px 24px 18px 24px;
     color: ivory;
     font-size: 18px;
 }
 #main{
+    background-color: rgba(8,8,8,0.6);
     min-height: 50vh;
     margin-top: 8px;
     padding-top: 48px;
+    padding: auto 28px;
 }
 
 
 @media (min-width: 760px){
     #main-data{
-        margin:0;
-        padding: 128px 118px 42px 118px;
+        margin:0 48px;
+        padding: 128px 70px 42px 70px;
     }
+    #main{
+        margin:20px auto;
+        padding: 64px 70px 64px 70px;
+
+    }
+
 
 }
 
 
 @media (min-width: 1200px) {
     #main-data{
-        padding: 164px 256px 48px 256px;
+        padding: 164px 96px 48px 96px;
+        margin: 14px 180px 48px 180px;
+
+    }
+    #main{
+        margin: 14px 256px 48px 256px;
+        padding: 64px 160px 64px 160px;
+        width: auto;
     }
 }
 
 @media (min-width: 1800px) {
     #main-data{
         font-size: 24px;
-        padding: 188px 288px 42px 288px;
+        padding: 188px 156px 42px 156px;
+        margin: 14px 216px 48px 216px;
     }
     .heading{
         font-size: 58px;
