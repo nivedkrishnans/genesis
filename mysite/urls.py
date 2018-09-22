@@ -6,6 +6,9 @@ import essentials.views
 import originals.views
 import registration.views
 from . import views
+from django.views.generic import TemplateView
+
+
 
 urlpatterns = [
     url(r'^cp/demigod/', admin.site.urls),
@@ -21,6 +24,8 @@ urlpatterns = [
 	url(r'^archive/$', originals.views.archive , name="archive"),
 	url(r'^policy/$', essentials.views.policy , name="policy"),
 	url(r'^events/inotherwords/$', originals.views.InOtherWords , name="inotherwords"),
+    url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain'), name="robots"),
+	url(r'^sitemap\.xml$', TemplateView.as_view(template_name='sitemap.xml', content_type='text/plain'), name="sitemap"),
 	url(r'^2018/$', views.pravega2018 , name="pravega2018"),
 	url(r'^2017/$', views.pravega2017 , name="pravega2017"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
