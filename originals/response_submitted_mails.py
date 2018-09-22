@@ -5,12 +5,12 @@ from django.conf import settings
 from django.contrib import messages
 
 #sends the event confirmation mail to both the team email and the user email, unless they are the same. if they are the same, only one email is sent
-def response_submitted_mail(challenge_number ,email,request):
+def response_submitted_mail(challenge_title ,email,request):
     #email confirmation
     base_location = "{0}://{1}".format(request.scheme, request.get_host())
     subject = " Submitted \'In Other Words\' Responses"
     name = str(request.user)
-    html_content = render_to_string('originals/email_templates/responses_submitted.html', {'challenge_number ':challenge_number ,'base_location':base_location,'name':name}) # render with dynamic value
+    html_content = render_to_string('originals/email_templates/responses_submitted.html', {'challenge_title ':challenge_title ,'base_location':base_location,'name':name}) # render with dynamic value
     #for text version of mail
     text_content = '''\n
                     Hello, {2}.
@@ -18,7 +18,7 @@ def response_submitted_mail(challenge_number ,email,request):
                     You have successfully submitted your \'In Other Words\' Challenge {3} Responses
                     \n\n Best wishes,
                     \n Pravega Team.
-                    '''.format(request.scheme, request.get_host(),name,challenge_number)
+                    '''.format(request.scheme, request.get_host(),name,challenge_title)
     success=True
     try:
         msg1 = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [email])

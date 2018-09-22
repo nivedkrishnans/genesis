@@ -50,7 +50,7 @@ def IOW_challenge01(request):
 							if request.POST.get("submit"):
 								thisInstance.isSubmit = True
 								thisInstance.submit_date = timezone.now()
-								if response_submitted_mail(str(1),thisUserData.email,request):
+								if response_submitted_mail(thisEvent.title,thisUserData.email,request):
 								    thisInstance.confirmation_email_sent = True
 								thisInstance.user = thisUserData.user
 								thisInstance.name = thisUserData.full_name
@@ -59,7 +59,7 @@ def IOW_challenge01(request):
 								thisInstance.email = thisUserData.email
 								thisInstance.contact = thisUserData.contact
 								thisInstance.save()
-								messages.add_message(request, messages.INFO, 'You have succesfully submitted your \'In Other Words\' Challenge 01 Responses')
+								messages.add_message(request, messages.INFO, 'You have succesfully submitted your \'In Other Words\' Challenge \'' + thisEvent.title + '\' Responses')
 								return redirect('registration')
 							else:
 								thisInstance.last_modify_date = timezone.now()
@@ -70,7 +70,7 @@ def IOW_challenge01(request):
 								thisInstance.email = thisUserData.email
 								thisInstance.contact = thisUserData.contact
 								thisInstance.save()
-								messages.add_message(request, messages.INFO, 'You have succesfully modified your  \'In Other Words\' Challenge 01 Responses')
+								messages.add_message(request, messages.INFO, 'You have succesfully modified your  \'In Other Words\' Challenge \'' + thisEvent.title + '\' Responses')
 								f =InOtherWordsChallengeForm01(instance=thisInstance)
 								return render(request, 'originals/iow_challenge01.html', {'form': f})
 			else:
@@ -83,7 +83,7 @@ def IOW_challenge01(request):
 						if request.POST.get("submit"):
 							reg.isSubmit = True
 							reg.submit_date = timezone.now()
-							if response_submitted_mail(str(1),thisUserData.email,request):
+							if response_submitted_mail(thisEvent.title,thisUserData.email,request):
 							    reg.confirmation_email_sent = True
 							reg.user = thisUserData.user
 							reg.name = thisUserData.full_name
@@ -92,7 +92,7 @@ def IOW_challenge01(request):
 							reg.email = thisUserData.email
 							reg.contact = thisUserData.contact
 							reg.save()
-							messages.add_message(request, messages.INFO, 'You have succesfully submitted your \'In Other Words\' Challenge 01 Responses')
+							messages.add_message(request, messages.INFO, 'You have succesfully submitted your \'In Other Words\' Challenge \'' + thisEvent.title + '\' Responses')
 						else:
 							reg.last_modify_date = timezone.now()
 							reg.user = thisUserData.user
@@ -102,7 +102,7 @@ def IOW_challenge01(request):
 							reg.email = thisUserData.email
 							reg.contact = thisUserData.contact
 							reg.save()
-							messages.add_message(request, messages.INFO, 'You have succesfully saved your \'In Other Words\' Challenge 01 Responses')
+							messages.add_message(request, messages.INFO, 'You have succesfully saved your \'In Other Words\' Challenge \'' + thisEvent.title + '\' Responses')
 							return render(request, 'originals/iow_challenge01.html', {'form': f})
 						return redirect('registration')
 				else:
