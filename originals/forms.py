@@ -21,3 +21,13 @@ class InOtherWordsChallengeForm01(forms.ModelForm):
 			"city10": "City Number 10",
 			"bonusquestion": "Bonus Question",
         }
+
+
+class InOtherWordsChallengeForm02(forms.ModelForm):
+    class Meta:
+        model = InOtherWordsChallenge02
+        fields = ('placesOrder','question2',)
+        labels = {
+			"placesOrder": "Order of the five places",
+			"question2": "Answer to Question 2",
+        }

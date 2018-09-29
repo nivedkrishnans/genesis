@@ -127,9 +127,9 @@ p > a:hover{
 }
 .green-status:hover{
     transform: scale(1.04,1.04);
-    border: 1px solid #31ff2f;
-    color: #31ff2f !important;
-    box-shadow: -1px 1px 1px #31ff2f;
+    border: 1px solid #31c42f;
+    color: #31c42f !important;
+    box-shadow: -1px 1px 1px #31c42f;
 }
 .green-status:active{
     transform: scale(1,1);

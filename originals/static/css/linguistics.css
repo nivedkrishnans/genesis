@@ -155,9 +155,13 @@ body{
     filter:blur(3px);
 }
 @media (max-width:760px){
+    .set2{
+        display: none;
+    }
     .set3{
         display: none;
     }
+
 }
 
 
@@ -200,6 +204,7 @@ body{
     display:flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: center;
 }
 
 /*box for individual item cards*/
@@ -340,10 +345,44 @@ body{
     font-size:32px;
 }
 
+.head-and-logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.head-and-logo > h1{
+    display: inline-block;
+}
+
+.capillary_logo{
+    padding: 24px;
+    height: 2em;
+}
+
+.head-and-logo  p{
+    display: none;
+}
+
 /*----------------------------------------------------------------------------------*/
 
 /*USING MEDIA QUERIES FOR RESPONSIVENESS FOR MOBILE*/
 @media(max-width:759px) {
+    .head-and-logo{
+        flex-direction: column;
+    }
+    .head-and-logo  p{
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        display: block;
+    }
+    .capillary_logo{
+        margin: 4px;
+        padding: 14px;
+    }
 
     .main-content{
         padding: 48px 24px;

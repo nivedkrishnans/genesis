@@ -95,3 +95,23 @@ class InOtherWordsChallenge01(models.Model):
 	isSubmit = models.BooleanField(default=False)
 	def __str__(self):
 		return self.name
+
+
+class InOtherWordsChallenge02(models.Model):
+	#The answers:
+	placesOrder = models.CharField(max_length=20, blank=True, null=True)
+	question2 = models.TextField(max_length=400, blank=True, null=True)
+	#user info:
+	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+	last_modify_date = models.DateTimeField( null=True, blank=True)
+	submit_date = models.DateTimeField( null=True, blank=True)
+	name = models.CharField(max_length=200)
+	institution = models.CharField(max_length=200)
+	city = models.CharField(max_length=200)
+	email = models.EmailField(max_length=200, null=False, blank=False)
+	contact = models.CharField(max_length=20)
+	confirmation_email_sent = models.BooleanField(default=False)
+	isSubmit = models.BooleanField(default=False)
+	def __str__(self):
+		return self.name
