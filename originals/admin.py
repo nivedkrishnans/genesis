@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ArchiveImage,ScienceQuizzine,LetsTalkScience,InOtherWord,InOtherWordsChallenge01
+from .models import ArchiveImage,ScienceQuizzine,LetsTalkScience,InOtherWord,InOtherWordsChallenge01,InOtherWordsChallenge02
 from import_export.admin import ImportExportModelAdmin
 from registration import adminResources
 
@@ -23,3 +23,4 @@ admin.site.register(ScienceQuizzine)
 admin.site.register(LetsTalkScience)
 admin.site.register(InOtherWord)
 admin.site.register(InOtherWordsChallenge01)
+admin.site.register(InOtherWordsChallenge02)
