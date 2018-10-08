@@ -14,6 +14,15 @@
     padding: auto 28px;
 }
 
+#main-data p{
+    margin-bottom: 14px;
+}
+
+.incentives{
+    margin-top: 24px;
+    list-style-type: square;
+}
+
 
 @media (min-width: 760px){
     #main-data{

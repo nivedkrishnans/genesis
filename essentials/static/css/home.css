@@ -192,29 +192,40 @@ body{
     font-size: 44px;
     padding: 0;
     margin: 0;
-    animation: showh 2.5s ease-in-out 1s 1 both paused;
+    animation: showh 2s ease-in-out 1s 1 both paused;
 }
 
 #title-caption{
     line-height: 1.3em;
     font-family: 'Titillium Web', sans-serif;
-
     padding:0;
     margin: 4px 0 4px 0;
     flex-grow: 0;
-    animation: showp 2.5s ease-in-out 1s 1 both paused;
+    animation: showp 2s ease-in-out 1s 1 both paused;
+}
+
+
+
+#title-button-container{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    height: auto;
+    max-height: 4em;
 }
 
 #title-register{
-    display: block;
     color: #e5ca47;
     font-size: 18px;
     padding: 6px 8px;
     margin: 4px;
-    animation: showa 2.5s ease-in-out 1s 1 both paused;
+    animation: showa 2s ease-in-out 1s 1 both paused;
     border: #e5ca47 solid 2px;
     background-color: rgba(0,0,0,0);
     transition: all 0.2s;
+    max-height: 1.4em;
 }
 
 #title-register:hover{
@@ -222,6 +233,44 @@ body{
     background-color: rgba(229, 202, 71,1);
     border: rgba(0,0,0,0.8) solid 2px;
     text-shadow: black 0.2px 0.2px;
+}
+
+#title-register2{
+    color: #e5ca47;
+    font-size: 18px;
+    padding: 6px 8px;
+    margin: 4px 6px;
+    animation: showa 2s ease-in-out 1s 1 both paused;
+    border: #e5ca47 solid 2px;
+    background-color: rgba(0,0,0,0);
+    transition: all 0.2s;
+    max-height: 1.4em;
+}
+
+#title-register2:hover{
+    color: rgba(0,0,0,0.9);
+    background-color: rgba(229, 202, 71,1);
+    border: rgba(0,0,0,0.8) solid 2px;
+    text-shadow: black 0.2px 0.2px;
+}
+
+@media (max-width: 340px) {
+
+    #title{
+        font-size: 36px;
+    }
+
+    #title-caption{
+        font-size: 15px;
+    }
+
+    #title-register{
+        font-size: 16px;
+    }
+
+    #title-register2{
+        font-size: 16px;
+    }
 }
 
 
@@ -551,9 +600,13 @@ body{
 
     #title-register{
         font-size: 24px;
-        margin: 0 24px 24px 48px;
+        margin: 0 14px 24px 48px;
     }
 
+    #title-register2{
+        font-size: 24px;
+        margin: 0 24px 24px 24px;
+    }
     .home-section:first-of-type > svg{
         order: 1;
         height: 50vh;

@@ -2,9 +2,16 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import Update
 from registration.field_helpers import videoFileSupportMessage,lasyaSizeLimit,prosceniumSizeLimit
+from registration.models import AdminEvent
 
 def home(request):
-	return render(request, 'essentials/home.html', {})
+	allAdminEvents = AdminEvent.objects.all()
+	campusAmbassadorOpen = False
+	for i in allAdminEvents:
+		if (i.title == 'Campus Ambassadors'):
+			if (i.registrationStatus == 'opened'):
+				campusAmbassadorOpen = True
+	return render(request, 'essentials/home.html', {'campusAmbassadorOpen':campusAmbassadorOpen,})
 
 def updates(request):
 	monthDict={1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr', 5:'May', 6:'Jun', 7:'Jul', 8:'Aug', 9:'Sep', 10:'Oct', 11:'Nov', 12:'Dec'}
