@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm,CampusAmbassadorForm,LasyaForm,ProsceniumForm,FootprintsForm
+from .forms import *
 from django.shortcuts import render, redirect, get_object_or_404, reverse, Http404
 from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib import messages
 from . import helpers
-from .models import UserData,AdminEvent,CampusAmbassador,LasyaRegistration,FootprintsRegistration,ProsceniumRegistration
+from .models import *
 from originals.models import InOtherWord
 from django.utils import timezone
 from django.core.mail import EmailMultiAlternatives
@@ -33,6 +33,8 @@ def registration_index(request):
         'lasya':LasyaRegistration,
         'proscenium':ProsceniumRegistration,
         'footprints':FootprintsRegistration,
+        'battle of bands':BattleOfBandsRegistration,
+        'decoherence':DecoherenceRegistration,
     }
 
     #inotherwords
@@ -311,6 +313,153 @@ def footprintsRegistration(request):
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
+
+
+
+def battleofbandsRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='battle of bands')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations = BattleOfBandsRegistration.objects.all()
+            isRegistered = False
+            thisInstance = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = BattleOfBandsForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = BattleOfBandsForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                #checking if the video file was uploaded.
+                                if f["videoFileLink"].value() or f["videoFile"].value() :
+                                    thisInstance.isSubmit = True
+                                    thisInstance.submit_date = timezone.now()
+                                    if event_confirmation_mail('Battle Of Bands',request.POST['email'],request):
+                                        thisInstance.confirmation_email_sent = True
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your Battle Of Bands Registration Form')
+                                    return redirect('registration')
+                                else:
+                                    thisInstance.last_modify_date = timezone.now()
+                                    thisInstance.save()
+                                    f = BattleOfBandsForm(instance=thisInstance)
+                                    messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
+                                    return render(request, 'registration/battleofbandsRegistration.html', {'form': f})
+
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Battle Of Bands Registration Form')
+                                f =BattleOfBandsForm(instance=thisInstance)
+                                return render(request, 'registration/battleofbandsRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = BattleOfBandsForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        if request.POST.get("submit"):
+                            #checking if either the video file or the link was obtained
+                            if f["videoFileLink"].value() or f["videoFile"].value():
+                                reg.isSubmit = True
+                                reg.submit_date = timezone.now()
+                                if event_confirmation_mail('BattleOfBands',request.POST['email'],request):
+                                    reg.confirmation_email_sent = True
+                                reg.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Battle Of Bands Registration Form')
+                            else:
+                                messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
+                                return render(request, 'registration/battleofbandsRegistration.html', {'form': f})
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Battle Of Bands Registration Form')
+                            return render(request, 'registration/battleofbandsRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = BattleOfBandsForm()
+            return render(request, 'registration/battleofbandsRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Battle Of Bands')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+def decoherenceRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='decoherence')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations = DecoherenceRegistration.objects.all()
+            isRegistered = False
+            thisInstance = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = DecoherenceForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = DecoherenceForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('Decoherence',request.POST['email'],request):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Decoherence Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Decoherence Registration Form')
+                                f =DecoherenceForm(instance=thisInstance)
+                                return render(request, 'registration/decoherenceRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = DecoherenceForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('Decoherence',request.POST['email'],request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Decoherence Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Decoherence Registration Form')
+                            return render(request, 'registration/decoherenceRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = DecoherenceForm()
+            return render(request, 'registration/decoherenceRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Decoherence')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+
+
+
+
+
+
 
 
 def redirectLogin(request):

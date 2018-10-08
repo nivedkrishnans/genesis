@@ -7,7 +7,7 @@ import ast
 
 lasyaSizeLimit = 419430400
 prosceniumSizeLimit = 1073741824
-#footprintsSizeLimit = 314572800
+battleofbandsSizeLimit = 419430400
 videoExtensions = ['.mp4', '.avi', '.mov', '.mkv']
 
 def videoFileSupportMessage(size):
@@ -59,6 +59,25 @@ def proscenium_file_validation(value):
         raise ValidationError("Invalid file size and file type. The maximum file size that can be uploaded is " + fileSizeText(prosceniumSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".  The supported file types are " + extensions + " .")
     elif filesize > prosceniumSizeLimit:
         raise ValidationError("The maximum file size that can be uploaded is " + fileSizeText(prosceniumSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".")
+    elif extension not in videoExtensions:
+        extensions = ""
+        for i in videoExtensions:
+            extensions = extensions + i + ", "
+        raise ValidationError("Unsupported filetype. The supported file types are " + extensions + " .")
+    else:
+        return value
+
+
+def battleofbands_file_validation(value):
+    extension = os.path.splitext( value.name)[1]
+    filesize= value.size
+    if ((filesize > battleofbandsSizeLimit) & (extension not in videoExtensions)):
+        extensions = ""
+        for i in videoExtensions:
+            extensions = extensions + i + ", "
+        raise ValidationError("Invalid file size and file type. The maximum file size that can be uploaded is " + fileSizeText(battleofbandsSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".  The supported file types are " + extensions + " .")
+    elif filesize > prosceniumSizeLimit:
+        raise ValidationError("The maximum file size that can be uploaded is " + fileSizeText(battleofbandsSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".")
     elif extension not in videoExtensions:
         extensions = ""
         for i in videoExtensions:

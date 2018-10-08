@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from . import models
 from .models import *
 from django.utils.translation import gettext_lazy as _
-from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,videoFileSupportMessage
+from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,battleofbandsSizeLimit,videoFileSupportMessage
 
 class SignUpForm(forms.Form):
     full_name = forms.CharField(label='Full Name', min_length=3, max_length=127)
@@ -98,6 +98,23 @@ class ProsceniumForm(forms.ModelForm):
         }
 
 
+class BattleOfBandsForm(forms.ModelForm):
+    class Meta:
+        model = BattleOfBandsRegistration
+        fields = ('teamName', 'teamLeader','institution','city','email','contact1','contact2','participantList','videoFile','videoFileLink')
+        labels = {
+            "teamName": "Team Name",
+            "teamLeader": "Team Leader",
+            "institution": "Institution",
+            "city": "City",
+            "email": "Email",
+            "contact1": "Mobile Number",
+            "contact2": "Another Mobile Number",
+            "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
+            "videoFile": videoFileSupportMessage(battleofbandsSizeLimit),
+            "videoFileLink":"Link to Video (Only if you do not upload the video file)"
+        }
+
 class FootprintsForm(forms.ModelForm):
     class Meta:
         model = FootprintsRegistration
@@ -112,4 +129,22 @@ class FootprintsForm(forms.ModelForm):
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
+        }
+
+class DecoherenceForm(forms.ModelForm):
+    class Meta:
+        model = DecoherenceRegistration
+        fields = ('teamName', 'institution','city', 'participant1', 'qualification1', 'email1', 'contact1', 'participant2', 'qualification2', 'email2', 'contact2', )
+        labels = {
+            "teamName": "Team Name",
+            "institution": "Institution",
+            "participant1": "Full Name",
+            "qualification1": "Qualification",
+            "email1": 'Email',
+            "contact1": "Mobile Number",
+            "participant2": "Full Name",
+            "qualification2": "Qualification",
+            "email2": 'Email',
+            "contact2": "Mobile Number",
+            "city": "City",
         }
