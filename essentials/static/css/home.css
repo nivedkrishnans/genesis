@@ -601,11 +601,13 @@ body{
     #title-register{
         font-size: 24px;
         margin: 0 14px 24px 48px;
+        max-height: 1.1em;
     }
 
     #title-register2{
         font-size: 24px;
         margin: 0 24px 24px 24px;
+        max-height: 1.1em;
     }
     .home-section:first-of-type > svg{
         order: 1;
