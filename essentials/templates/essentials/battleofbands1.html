@@ -12,132 +12,65 @@
     <title>Battle of Bands | Pravega 2019, IISc Bangalore</title>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Roboto:400" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
-
-	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
-	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
-	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
-	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
 {% endblock %}
 
 {% block content %}
-<div id="main" class="main" >
-		<section >
-		<div class="slide">
-
+    <div id="main">
         <div class="heading">Battle of Bands</div>
         <div class="horizontal-line"></div>
         <div class="main-section">
-		<p>
+            <p>
                 Battle of the Bands is the annual band competition of Pravega.
             </p>
             <p>
                 The event will comprise of two primary levels followed by the finals which will be held at IISc during Pravega:
             </p>
-		</div>
-		</div>
-		</section >
-			<section >
-		<div class="slide">
+    </div>
         <div class="main-section">
             <div class="section-heading">Preliminaries</div>
             <div class="horizontal-line"></div>
-
-
-            <div class="section-subheading">Video Preliminaries:</div>
+            <div class="section-subheading">1<sup>st</sup> Round</div>
             <p>
-                Video must be uploaded to the website portal or YouTube/Vimeo link must be provided at time of registration. The camera must remain stationary and the recording must be a single take.
+                In the first round of preliminaries, the bands should send in their content as YouTube/Soundcloud links at the time of registration. The registration portal will close on 15th October.
             </p>
-            <p>
-                The duration of video must not exceed 3 minutes. Type of file : {{ file_info }}.
-            </p>
-
-
-        </div>
-		</div>
-		</section >
-		<section >
-		<div class="slide">
-        <div class="main-section">
-            <div class="section-heading">Preliminaries</div>
-            <div class="horizontal-line"></div>
-
             <div class="section-subheading">2<sup>nd</sup> Round</div>
             <p>
                 The 2nd round of preliminaries will be held live in the following cities- Bangalore, Chennai, Kochi, Mumbai, Hyderabad.
             </p>
-
-			</div>
-        </div>
-
-		</section >
-		<section >
-		<div class="slide">
-        <div class="main-section">
-            <div class="section-heading">Preliminaries</div>
-            <div class="horizontal-line"></div>
-
-            <div class="section-subheading">2<sup>nd</sup> Round</div>
-          <div class="part1">
             <p>
                 6 teams selected from each region from the 1st Prelims pool will participate in the 2nd Prelims which will be held at pubs, jam pads and studios in the cities mentioned above tentatively in the months of October and November.
             </p>
-			</div>
-			<div class="part2">
             <p>
-                The winners from each region will participate in the Pravega finals. The finale winners receive a generous cash prize, amount TBA.
+                The winners from each region will participate in the Pravega finals. The finale winners receive a generous cash prize.
             </p>
-			</div>
-			</div>
-        </div>
 
-		</section >
-<section>
-			<div class="slide">
+        </div>
         <div class="main-section">
             <div class="section-heading">General Rules of the Event:</div>
             <div class="horizontal-line"></div>
-
             <ul>
-			<div class="part1list">
                 <li>	In the preliminaries, the performances (including set-up time) should not exceed a duration of 30 minutes. </li>
-
-			</div>
-			<div class="part2list">
-   <li>	In the finals, the maximum duration of performance can be 45 minutes (inclusive of a 5 minutes set-up time).</li>
+                <li>	In the finals, the maximum duration of performance can be 45 minutes (inclusive of a 5 minutes set-up time).</li>
                 <li>	Teams exceeding the stipulated time limit will be penalized and those crossing 10 minutes extra time will be disqualified.</li>
-			</div>
             </ul>
-
         </div>
-		</div>
-		</section>
-
-		<section>
-
-		<!--The id "last" is imoprtant to handle the footer during reizes-->
-		<div class="slide" id="last">
         <div class="main-section">
             <div class="section-heading">Registration</div>
             <div class="horizontal-line"></div>
                 <p>
                     Registrations will be accepted online through the website prior to the event. No spot registrations are allowed.
                 </p>
-				<div class="event-essentials">
-                    <a href="{% url 'battleofbandsRegistration' %}"><div class="yellow-status">&#10010; Register Now</div></a>
-                </div>
         </div>
 
-		</div>
-		<div id="footer-id">
 
 
 
+
+
+
+
+
+    </div>
+
+    <script src="{%static 'js/navBar.js'%}"> </script>
 {% endblock %}
-
-{%block postfooter %}
-		</div>
-		</section>
-</div>
-<script src="{%static 'js/navBar.js'%}"> </script>
-<script src="{%static 'js/slideScroll.js'%}"></script>
-{%endblock %}
