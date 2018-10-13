@@ -316,6 +316,7 @@ def footprintsRegistration(request):
 
 
 
+
 def battleofbandsRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='battle of bands')
     if thisEvent.registrationStatus == 'opened':
@@ -337,8 +338,8 @@ def battleofbandsRegistration(request):
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
-                                #checking if the video file was uploaded.
-                                if f["videoFileLink"].value() or f["videoFile"].value() :
+                                #checking if the audio/video file was uploaded.
+                                if f["audioVideoFileLink"].value() or f["audioVideoFile"].value() :
                                     thisInstance.isSubmit = True
                                     thisInstance.submit_date = timezone.now()
                                     if event_confirmation_mail('Battle Of Bands',request.POST['email'],request):
@@ -350,7 +351,7 @@ def battleofbandsRegistration(request):
                                     thisInstance.last_modify_date = timezone.now()
                                     thisInstance.save()
                                     f = BattleOfBandsForm(instance=thisInstance)
-                                    messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
+                                    messages.add_message(request, messages.INFO, 'Please upload audio/video file or enter audio/video link')
                                     return render(request, 'registration/battleofbandsRegistration.html', {'form': f})
 
                             else:
@@ -366,8 +367,8 @@ def battleofbandsRegistration(request):
                         reg = f.save(commit=False)
                         reg.user = request.user
                         if request.POST.get("submit"):
-                            #checking if either the video file or the link was obtained
-                            if f["videoFileLink"].value() or f["videoFile"].value():
+                            #checking if either the audio/video file or the link was obtained
+                            if f["audioVideoFileLink"].value() or f["audioVideoFile"].value():
                                 reg.isSubmit = True
                                 reg.submit_date = timezone.now()
                                 if event_confirmation_mail('BattleOfBands',request.POST['email'],request):
@@ -375,7 +376,7 @@ def battleofbandsRegistration(request):
                                 reg.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your Battle Of Bands Registration Form')
                             else:
-                                messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
+                                messages.add_message(request, messages.INFO, 'Please upload audio/video file or enter audio/video link' )
                                 return render(request, 'registration/battleofbandsRegistration.html', {'form': f})
                         else:
                             reg.last_modify_date = timezone.now()
@@ -391,6 +392,7 @@ def battleofbandsRegistration(request):
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
+
 
 def decoherenceRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='decoherence')

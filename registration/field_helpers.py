@@ -9,6 +9,7 @@ lasyaSizeLimit = 419430400
 prosceniumSizeLimit = 1073741824
 battleofbandsSizeLimit = 419430400
 videoExtensions = ['.mp4', '.avi', '.mov', '.mkv']
+audioVideoExtensions = ['.mp3', '.aac', '.wav', '.mp4', '.avi', '.mov', '.mkv']
 
 def videoFileSupportMessage(size):
     extensions = ""
@@ -19,6 +20,15 @@ def videoFileSupportMessage(size):
     temp = "Video File (Maximum file size: " + fileSizeText(size) + ". Supported file types: "+ extensions+ ")"
     return temp
 
+
+def audioVideoFileSupportMessage(size):
+    extensions = ""
+    for i in audioVideoExtensions:
+        extensions = extensions + i + ", "
+    if len(audioVideoExtensions):
+        extensions = extensions[0:(len(extensions)-2)]
+    temp = "Audio/Video File (Maximum file size: " + fileSizeText(size) + ". Supported file types: "+ extensions+ ")"
+    return temp
 
 def fileSizeText(value):
     if (value < 1024.0):
@@ -71,16 +81,16 @@ def proscenium_file_validation(value):
 def battleofbands_file_validation(value):
     extension = os.path.splitext( value.name)[1]
     filesize= value.size
-    if ((filesize > battleofbandsSizeLimit) & (extension not in videoExtensions)):
+    if ((filesize > battleofbandsSizeLimit) & (extension not in audioVideoExtensions)):
         extensions = ""
-        for i in videoExtensions:
+        for i in audioVideoExtensions:
             extensions = extensions + i + ", "
         raise ValidationError("Invalid file size and file type. The maximum file size that can be uploaded is " + fileSizeText(battleofbandsSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".  The supported file types are " + extensions + " .")
     elif filesize > prosceniumSizeLimit:
         raise ValidationError("The maximum file size that can be uploaded is " + fileSizeText(battleofbandsSizeLimit) + ". Uploaded file size is " + fileSizeText(filesize) + ".")
-    elif extension not in videoExtensions:
+    elif extension not in audioVideoExtensions:
         extensions = ""
-        for i in videoExtensions:
+        for i in audioVideoExtensions:
             extensions = extensions + i + ", "
         raise ValidationError("Unsupported filetype. The supported file types are " + extensions + " .")
     else:

@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from . import models
 from .models import *
 from django.utils.translation import gettext_lazy as _
-from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,battleofbandsSizeLimit,videoFileSupportMessage
+from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,battleofbandsSizeLimit,videoFileSupportMessage,audioVideoFileSupportMessage
 
 class SignUpForm(forms.Form):
     full_name = forms.CharField(label='Full Name', min_length=3, max_length=127)
@@ -101,7 +101,7 @@ class ProsceniumForm(forms.ModelForm):
 class BattleOfBandsForm(forms.ModelForm):
     class Meta:
         model = BattleOfBandsRegistration
-        fields = ('teamName', 'teamLeader','institution','city','email','contact1','contact2','participantList','videoFile','videoFileLink')
+        fields = ('teamName', 'teamLeader','institution','city','email','contact1','contact2','participantList','audioVideoFile','audioVideoFileLink')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
@@ -111,8 +111,8 @@ class BattleOfBandsForm(forms.ModelForm):
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
-            "videoFile": videoFileSupportMessage(battleofbandsSizeLimit),
-            "videoFileLink":"Link to Video (Only if you do not upload the video file)"
+            "audioVideoFile": audioVideoFileSupportMessage(battleofbandsSizeLimit),
+            "audioVideoFileLink": "Link to Audio/Video (Only if you do not upload the file)"
         }
 
 class FootprintsForm(forms.ModelForm):

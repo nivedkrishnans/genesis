@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Update
-from registration.field_helpers import videoFileSupportMessage,lasyaSizeLimit,battleofbandsSizeLimit,prosceniumSizeLimit
+from registration.field_helpers import videoFileSupportMessage,audioVideoFileSupportMessage,lasyaSizeLimit,battleofbandsSizeLimit,prosceniumSizeLimit
 from registration.models import AdminEvent
 
 def home(request):
@@ -44,7 +44,7 @@ def proscenium(request):
 	return render(request, 'essentials/proscenium.html', {'file_info' : videoFileSupportMessage(prosceniumSizeLimit),})
 
 def battleofbands(request):
-	return render(request, 'essentials/battleofbands.html', {'file_info' : videoFileSupportMessage(battleofbandsSizeLimit),})
+	return render(request, 'essentials/battleofbands.html', {'file_info' : audioVideoFileSupportMessage(battleofbandsSizeLimit),})
 
 def decoherence(request):
 	return render(request, 'essentials/comingsoon.html', {})

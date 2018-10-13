@@ -142,15 +142,15 @@ class BattleOfBandsRegistration(models.Model):
     contact1 = models.CharField(max_length=20)
     contact2 = models.CharField(max_length=20,blank=False)
     participantList =  models.TextField()
-    videoFileLink = models.URLField(max_length=300, null=False, blank=True)
+    audioVideoFileLink = models.URLField(max_length=300, null=False, blank=True)
     #function to generate a path to upload the file
     def filePathGenerate(instance,filename):
-        temp = 'private/battleofbands/' + str(instance.language) + '/' + str(instance.teamName) + '_' + str(instance.user) + '_' + str(instance.institution) + '/'
+        temp = 'private/battleofbands/' + '/' + str(instance.teamName) + '_' + str(instance.user) + '_' + str(instance.institution) + '/'
         temp2 = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
         temp3 = '/' + os.path.split(filename)[1]
         temp = temp + temp2 + temp3
         return temp
-    videoFile = models.FileField(validators=[battleofbands_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
+    audioVideoFile = models.FileField(validators=[battleofbands_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)

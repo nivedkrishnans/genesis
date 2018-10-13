@@ -21,10 +21,32 @@ def seeVideoFile(self, obj):    #for showings uploaded video link in the list of
     return format_html(temp)
 
 
+def seeAudioVideoFile(self, obj):    #for showings uploaded video link in the list of model instances
+    try:
+        if obj.audioVideoFile:
+            temp = '<a href="%s/%s">%s</a>' % (settings.MEDIA_URL,obj.audioVideoFile, "Audio/Video")
+        else:
+            temp = '-'
+    except:
+        temp = '-'
+    return format_html(temp)
+
+
 def seeVideoLink(self, obj):     #for showings external video link in the list of model instances
     try:
         if obj.videoFileLink:
             temp = '<a href="%s">%s</a>' % (obj.videoFileLink, "Link")
+        else:
+            temp = '-'
+    except:
+        temp = '-'
+    return format_html(temp)
+
+
+def seeAudioVideoLink(self, obj):     #for showings external video link in the list of model instances
+    try:
+        if obj.audioVideoFileLink:
+            temp = '<a href="%s">%s</a>' % (obj.audioVideoFileLink, "Link")
         else:
             temp = '-'
     except:

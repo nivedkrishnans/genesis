@@ -70,16 +70,16 @@ class ProsceniumRegistrationResource(ImportExportModelAdmin):
 
 
 class BattleOfBandsRegistrationResource(ImportExportModelAdmin):
-    list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeVideoFile','seeVideoLink')
+    list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeAudioVideoFile','seeAudioVideoLink')
     list_filter = ('submit_date','institution','city',)
-    readonly_fields = ('videoFile','videoFileLink',)
+    readonly_fields = ('audioVideoFile','audioVideoFileLink',)
 
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj)
-    def seeVideoFile(self, obj):                        #shows uploaded video link in the list of model instances`
-        return adminResources.seeVideoFile(self, obj)
-    def seeVideoLink(self, obj):                         #shows external video link in the list of model instances
-        return adminResources.seeVideoLink(self, obj)
+    def seeAudioVideoFile(self, obj):                        #shows uploaded video link in the list of model instances`
+        return adminResources.seeAudioVideoFile(self, obj)
+    def seeAudioVideoLink(self, obj):                         #shows external video link in the list of model instances
+        return adminResources.seeAudioVideoLink(self, obj)
 
     class Meta:
         model = BattleOfBandsRegistration
