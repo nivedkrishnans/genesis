@@ -12,4 +12,5 @@ urlpatterns = [
 	url(r'^inotherwords/$', originals.views.InOtherWords , name="inotherwords"),
 	url(r'^inotherwords/ch01$', originals.views.IOW_challenge01 , name="iow_challenge01"),
 	url(r'^inotherwords/ch02$', originals.views.IOW_challenge02 , name="iow_challenge02"),
+	url(r'^inotherwords/ch03$', originals.views.IOW_challenge03 , name="iow_challenge03"),
 ]
