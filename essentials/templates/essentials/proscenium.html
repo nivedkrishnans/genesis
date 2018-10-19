@@ -10,7 +10,7 @@
     <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
     <title>Proscenium | Pravega 2019, IISc Bangalore</title>
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700|Lato:300,400|Overlock+SC|Roboto:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
 	<link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
 
@@ -29,10 +29,25 @@
         <div class="main-section">
             <p>
                 Proscenium is the Thespian Extravaganza of Pravega, in which some of our country’s most talented student theatre groups argue for a debatable statement presented a-priori. The plays can be in English, Hindi, or Kannada.
-            </p>
+            </p><div class="event-essentials">
+                <a href="{% url 'prosceniumRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
+            </div>
 		</div>
 		</div>
 		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+        <div class="slide">
+            <div class="main-section">
+                <div class="section-heading">Prizes</div>
+                <div class="horizontal-line"></div>
+                <p style="margin-top: 12px;">
+                    The Winner of the gets a prize INR 20,000 and the runner up gets a prize of INR 12,000.
+                </p>
+
+            </div>
+        </div>
+
+        </section >
 			<section style="background-color:rgba(8,8,8,0.5);">
 		<div class="slide">
         <div class="main-section">
@@ -40,12 +55,12 @@
             <div class="horizontal-line"></div>
             <div class="section-subheading">Video Preliminaries:</div>
             <p>
-                The preliminaries will be held during October and November. The camera must remain stationary and the recording must be a single take. The duration of the video must not exceed 20 minutes.
-            </p>
-			<div class="part2">
-            <p>
+                The preliminaries will be held during October and November. Video must be uploaded to the website portal or YouTube / Vimeo / Google Drive link must be provided at time of registration.  The camera must remain stationary and the recording must be a single take. The duration of the video must not exceed 20 minutes.
+
                  Type of file : {{ file_info }}.
              </p>
+			<div class="part2">
+
             <p>
                 The results of the preliminaries will be declared by the second week of November. 6-8 teams will be selected from the entries pool for the final event. The prelims video can be of any topic of your choice.
             </p>
@@ -81,7 +96,7 @@
                     Registrations will be accepted online through the website prior to the event. No spot registrations will be allowed.
                 </p>
                 <div class="event-essentials">
-                    <a href="{% url 'prosceniumRegistration' %}"><div class="yellow-status">&#10010; Register Now</div></a>
+                    <a href="{% url 'prosceniumRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
                 </div>
         </div>
 		</div>

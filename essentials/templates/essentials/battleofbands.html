@@ -10,7 +10,7 @@
     <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
     <title>Battle of Bands | Pravega 2019, IISc Bangalore</title>
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Roboto:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
 
 	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
@@ -21,7 +21,7 @@
 
 {% block content %}
 <div id="main" class="main" >
-		<section >
+		<section  style="background-color:rgba(8,8,8,0.5);">
 		<div class="slide">
 
         <div class="heading">Battle of Bands</div>
@@ -31,67 +31,64 @@
                 Battle of Bands is the annual band competition of Pravega.
             </p>
             <p>
-                The event will comprise of two primary levels followed by the finals which will be held at IISc during Pravega:
+                The event will comprise of a regional online preliminary round followed by Regional Finals and culminate in the Grand Finale which will be held at IISc during Pravega.
             </p>
+            <div class="event-essentials">
+                <a href="{% url 'battleofbandsRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+            </div>
 		</div>
 		</div>
 		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Prizes</div>
+            <div class="horizontal-line"></div>
+            <p>
+                The winners from each Regional Finals will be given exciting cash prizes and will get to participate in the Pravega Grand Finale. The regional winners will receive a prize of INR 15,000 and the Grand Finale winner will receive a generous cash prize of INR 50,000, with additional prizes TBA.
+            </p>
+			</div>
+        </div>
+
+		</section  style="background-color:rgba(8,8,8,0.5);">
 			<section >
 		<div class="slide">
         <div class="main-section">
-            <div class="section-heading">Preliminaries</div>
+            <div class="section-heading">Preliminary Round</div>
             <div class="horizontal-line"></div>
 
 
-            <div class="section-subheading">Online Preliminaries:</div>
+            <div class="section-subheading">Regional Online Prelims:</div>
             <p>
-                Audio/Video must be uploaded to the website portal or YouTube/Vimeo/SoundCloud link must be provided at time of registration. The camera must remain stationary and the recording must be a single take.
+                Audio/Video must be uploaded to the website portal or YouTube / Vimeo / SoundCloud / Google Drive link must be provided at time of registration. The camera must remain stationary and the recording must be a single take.
             </p>
             <p>
-                The duration of audio/video must not exceed 3 minutes. Type of file : {{ file_info }}.
+                Type of file : {{ file_info }}.
             </p>
 
 
         </div>
 		</div>
 		</section >
-		<section >
+		<section  style="background-color:rgba(8,8,8,0.5);">
 		<div class="slide">
         <div class="main-section">
-            <div class="section-heading">Preliminaries</div>
+            <div class="section-heading">Regional Finals</div>
             <div class="horizontal-line"></div>
 
-            <div class="section-subheading">2<sup>nd</sup> Round</div>
             <p>
                 The 2nd round of preliminaries will be held live in the following cities- Bangalore, Chennai, Kochi, Mumbai, Hyderabad.
             </p>
 
+            <p>
+                6 teams selected from each Regional Online Prelims will participate in the Regional Finals which will be held at pubs, jam pads and studios in the cities mentioned above tentatively in the months of November and December.
+            </p>
 			</div>
         </div>
 
 		</section >
-		<section >
-		<div class="slide">
-        <div class="main-section">
-            <div class="section-heading">Preliminaries</div>
-            <div class="horizontal-line"></div>
 
-            <div class="section-subheading">2<sup>nd</sup> Round</div>
-          <div class="part1">
-            <p>
-                6 teams selected from each region from the 1st Prelims pool will participate in the 2nd Prelims which will be held at pubs, jam pads and studios in the cities mentioned above tentatively in the months of October and November.
-            </p>
-			</div>
-			<div class="part2">
-            <p>
-                The winners from each region will be given exciting cash prizes and will get to participate in the Pravega finals. The finale winners receive a generous cash prize, amount TBA.
-            </p>
-			</div>
-			</div>
-        </div>
-
-		</section >
-<section>
+<section style="background-color:rgba(8,8,8,0.5);">
 			<div class="slide">
         <div class="main-section">
             <div class="section-heading">General Rules of the Event:</div>
@@ -99,11 +96,11 @@
 
             <ul>
 			<div class="part1list">
-                <li>	In the preliminaries, the performances (including set-up time) should not exceed a duration of 30 minutes. </li>
+                <li>	In the Regional Finals, the performances (including set-up time) should not exceed a duration of 30 minutes. </li>
 
 			</div>
 			<div class="part2list">
-   <li>	In the finals, the maximum duration of performance can be 45 minutes (inclusive of a 5 minutes set-up time).</li>
+   <li>	In the Grand Finale, the maximum duration of performance can be 45 minutes (inclusive of a 5 minutes set-up time).</li>
                 <li>	Teams exceeding the stipulated time limit will be penalized and those crossing 10 minutes extra time will be disqualified.</li>
 			</div>
             </ul>
@@ -112,7 +109,7 @@
 		</div>
 		</section>
 
-		<section>
+		<section style="background-color:rgba(8,8,8,0.5);">
 
 		<!--The id "last" is imoprtant to handle the footer during reizes-->
 		<div class="slide" id="last">
@@ -123,7 +120,7 @@
                     Registrations will be accepted online through the website prior to the event. No spot registrations are allowed.
                 </p>
 				<div class="event-essentials">
-                    <a href="{% url 'battleofbandsRegistration' %}"><div class="yellow-status">&#10010; Register Now</div></a>
+                    <a href="{% url 'battleofbandsRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
                 </div>
         </div>
 

@@ -163,29 +163,59 @@ a.disabled{
 #navBar a .big{
     display: block;
     font-family: 'Montserrat', 'Helvetica', sans-serif;
-    font-size: 48px;
-    height: 48px;
+    font-size: 40px;
+    height: 40px;
     font-weight: 300;
         /* transition: font-size 0.23s ease; */
     order: 1;
 }
 
 #navBar a .small{
-    padding-top: 12px;
-    font-size: 15px;
+    padding-top: 11px;
+    font-size: 13px;
     order: 2;
         /* transition: font-size 0.13s ease; */
 }
 
 #navBar a img{
-    height: 48px;
+    height: 40px;
     vertical-align: baseline;
 }
 
 #logo{
     display: none !important;
     order: 0;
-    height: 48px;
+    height: 40px;
+}
+
+@media(min-width: 340px){
+    #navBar a .big{
+        display: block;
+        font-family: 'Montserrat', 'Helvetica', sans-serif;
+        font-size: 48px;
+        height: 48px;
+        font-weight: 300;
+            /* transition: font-size 0.23s ease; */
+        order: 1;
+    }
+
+    #navBar a .small{
+        padding-top: 12px;
+        font-size: 15px;
+        order: 2;
+            /* transition: font-size 0.13s ease; */
+    }
+
+    #navBar a img{
+        height: 48px;
+        vertical-align: baseline;
+    }
+
+    #logo{
+        display: none !important;
+        order: 0;
+        height: 48px;
+    }
 }
 
 .navLinkSet{
