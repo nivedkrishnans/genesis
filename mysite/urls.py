@@ -22,6 +22,7 @@ urlpatterns = [
 	url(r'^partners/$', essentials.views.partners , name="partners"),
     url(r'^originals/$', originals.views.originals , name="originals"),
 	url(r'^archive/$', originals.views.archive , name="archive"),
+    url(r'^faq/$', essentials.views.FaqListView.as_view(), name="help"),
 	url(r'^policy/$', essentials.views.policy , name="policy"),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain'), name="robots"),
 	url(r'^sitemap\.xml$', TemplateView.as_view(template_name='sitemap.xml', content_type='text/plain'), name="sitemap"),

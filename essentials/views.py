@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Update
+from .models import Update,Faq
 from registration.field_helpers import videoFileSupportMessage,audioVideoFileSupportMessage,lasyaSizeLimit,battleofbandsSizeLimit,prosceniumSizeLimit
 from registration.models import AdminEvent
+from django.views import generic
 
 def home(request):
 	allAdminEvents = AdminEvent.objects.all()
@@ -57,6 +58,14 @@ def lasya(request):
 
 def partners(request):
 	return render(request, 'essentials/partners.html', {})
+
+
+class FaqListView(generic.ListView):
+	faqInfo=Faq
+	context_object_name = 'faq_list'
+	queryset=faqInfo.objects.all().order_by('-priority')
+	template_name = 'essentials/faq.html'
+
 
 def comingsoon(request):
 	return render(request, 'essentials/comingsoon.html', {})

@@ -14,3 +14,14 @@ class Update(models.Model):
 
     def __str__(self):
         return self.title
+
+class Faq(models.Model):
+    question= models.TextField()
+    answer= models.TextField()
+    priority= models.IntegerField(default=0)
+    def return_question(self):
+        return self.question
+    def return_answer(self):
+        return self.answer
+    def return_priority(self):
+        return self.priority

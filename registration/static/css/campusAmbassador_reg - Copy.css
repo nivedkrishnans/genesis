@@ -18,25 +18,9 @@
     margin-bottom: 14px;
 }
 
-.heading{
-    text-align: center;
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 32px;
-    color: #ffee9c;
-}
-
 .incentives{
     margin-top: 24px;
     list-style-type: square;
-}
-.incentives li{
-    color: #ffee9c;
-    list-style: none;
-}
-.incentives img {
-    height: 8%;
-    width: 6%;
-    vertical-align: bottom;
 }
 .tandc{
     margin-left: 10px;
@@ -45,36 +29,6 @@
 .tandc li{
     margin-left: 0;
     padding-left: 8px;
-    text-align: 'justify';
-}
-
-.first {
-    text-align: center;
-}
-
-p {
-    text-align: justify;
-}
-
-.login {
-    list-style: none;
-    text-align: center;
-}
-
-.txt {
-    color: #ffffff;
-}
-
-.ambassador_txt {
-    text-align: center;
-}
-
-hr {
-    margin-top: 2%;
-    height: 1px;
-    color: #ffee9c;
-    background-color: #ffee9c;
-    border: none;
 }
 
 @media (min-width: 760px){

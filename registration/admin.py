@@ -1,13 +1,13 @@
 from django.contrib import admin
 from .models import *
 from . import adminResources
-from import_export.admin import ImportExportModelAdmin
+from import_export.admin import ExportMixin
 from django.utils.html import format_html
 from django.conf import settings
 
 
 
-class UserDataResource(ImportExportModelAdmin):
+class UserDataResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','institution','city',)
     list_filter = ('email_validated','institution','city',)
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
@@ -15,7 +15,7 @@ class UserDataResource(ImportExportModelAdmin):
     class Meta:
         model = UserData
 
-class AdminEventResource(ImportExportModelAdmin):
+class AdminEventResource(ExportMixin,admin.ModelAdmin):
     fields = ('title','registrationStatus','description','registrationLink')    #for showing the fields in this order
     list_display = ('title','registrationStatus')
     list_filter = ('registrationStatus',)
@@ -29,7 +29,7 @@ class AdminEventResource(ImportExportModelAdmin):
         model = AdminEvent
 
 
-class CampusAmbassadorResource(ImportExportModelAdmin):
+class CampusAmbassadorResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','institution','city','submit_date',)
     list_filter = ('submit_date','institution','city',)
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
@@ -39,7 +39,7 @@ class CampusAmbassadorResource(ImportExportModelAdmin):
 
 
 
-class LasyaRegistrationResource(ImportExportModelAdmin):
+class LasyaRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeVideoFile','seeVideoLink',)
     list_filter = ('submit_date','institution','city',)
 
@@ -53,7 +53,7 @@ class LasyaRegistrationResource(ImportExportModelAdmin):
     class Meta:
         model = LasyaRegistration
 
-class ProsceniumRegistrationResource(ImportExportModelAdmin):
+class ProsceniumRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeVideoFile','seeVideoLink')
     list_filter = ('submit_date','institution','city',)
     readonly_fields = ('videoFile','videoFileLink',)
@@ -69,7 +69,7 @@ class ProsceniumRegistrationResource(ImportExportModelAdmin):
         model = ProsceniumRegistration
 
 
-class BattleOfBandsRegistrationResource(ImportExportModelAdmin):
+class BattleOfBandsRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeAudioVideoFile','seeAudioVideoLink')
     list_filter = ('submit_date','institution','city',)
     readonly_fields = ('audioVideoFile','audioVideoFileLink',)
@@ -85,7 +85,7 @@ class BattleOfBandsRegistrationResource(ImportExportModelAdmin):
         model = BattleOfBandsRegistration
 
 
-class FootprintsRegistrationResource(ImportExportModelAdmin):
+class FootprintsRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','teamLeader','email','institution','city','submit_date')
     list_filter = ('submit_date','institution','city',)
 
@@ -96,7 +96,7 @@ class FootprintsRegistrationResource(ImportExportModelAdmin):
         model = FootprintsRegistration
 
 
-class DecoherenceRegistrationResource(ImportExportModelAdmin):
+class DecoherenceRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('teamName','institution','city','submit_date')
     list_filter = ('submit_date','institution','city',)
 

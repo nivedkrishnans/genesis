@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+{% block head %}
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+    		<title>Help | Pravega 2019, IISc Bangalore</title>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+            <link href='https://fonts.googleapis.com/css?family=Lato:300,400|Overlock+SC|Raleway:300,400|Titillium+Web:300,400,600,700|Belgrano' rel='stylesheet'>
+            <link rel="stylesheet" href="{%static 'css/style.css'%}">
+            <link rel="stylesheet" href="{%static 'css/landing.css'%}">
+			<link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+            <link rel="stylesheet" href="{%static 'css/faqstyle.css'%}">
+            <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+{% endblock %}
+{% block content %}
+        <div id='main-container'>
+        <div id='heading'>Frequently Asked Questions</div>
+        <div id='introduction'>Have any doubts about Pravega? Well, you have come to the right place. Browse through the frequently asked questions to see if your doubts have already been asked by other people. If you dont find your required answers here, feel free to contact us.</div>
+
+		{% if faq_list %}
+        <ul class="questionList">
+        	{% for faq in faq_list %}
+            <li>
+        		<div class='question'>
+                    <div class='qhead'>{{ faq.question|safe }}
+                        <div class='plus' id='{{"q"}}{{forloop.counter|stringformat:"i"}}'>
+                            <i class='arrow down'></i>
+                        </div>
+                    </div>
+                    <div class='answer' id='{{"a"}}{{forloop.counter|stringformat:"i"}}'>{{ faq.answer|safe }}
+                    </div>
+                </div>
+            </li>
+        	{% endfor %}
+        </ul>
+		{% endif %}
+        </div>
+	    <script src="{%static 'js/navBar.js'%}"> </script>
+        <script>
+
+//            JS for FAQ page
+            $(document).ready(function(){
+            $('div.qhead').click(function(){
+                $(this).siblings('div.answer').slideToggle('fast');
+                $(this).children('div.plus').children('i.down').toggleClass('up');
+                });
+            });
+
+        </script>
+{% endblock %}
