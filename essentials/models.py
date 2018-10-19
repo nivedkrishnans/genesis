@@ -19,6 +19,8 @@ class Faq(models.Model):
     question= models.TextField()
     answer= models.TextField()
     priority= models.IntegerField(default=0)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+
     def return_question(self):
         return self.question
     def return_answer(self):

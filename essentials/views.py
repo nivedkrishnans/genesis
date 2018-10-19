@@ -63,7 +63,7 @@ def partners(request):
 class FaqListView(generic.ListView):
 	faqInfo=Faq
 	context_object_name = 'faq_list'
-	queryset=faqInfo.objects.all().order_by('-priority')
+	queryset=faqInfo.objects.all().order_by('-create_date').order_by('-priority')
 	template_name = 'essentials/faq.html'
 
 
