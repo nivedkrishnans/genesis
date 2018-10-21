@@ -27,3 +27,5 @@ class Faq(models.Model):
         return self.answer
     def return_priority(self):
         return self.priority
+    def __str__(self):
+        return self.question
