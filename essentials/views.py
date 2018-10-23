@@ -48,7 +48,7 @@ def battleofbands(request):
 	return render(request, 'essentials/battleofbands.html', {'file_info' : audioVideoFileSupportMessage(battleofbandsSizeLimit),})
 
 def decoherence(request):
-	return render(request, 'essentials/comingsoon.html', {})
+	return render(request, 'essentials/decoherence.html', {})
 
 def footprints(request):
 	return render(request, 'essentials/footprints.html', {})
