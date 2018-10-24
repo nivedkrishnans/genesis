@@ -417,7 +417,7 @@ def decoherenceRegistration(request):
                             if request.POST.get("submit"):
                                 thisInstance.isSubmit = True
                                 thisInstance.submit_date = timezone.now()
-                                if event_confirmation_mail('Decoherence',request.POST['email'],request):
+                                if event_confirmation_mail('Decoherence',request.POST['email1'],request,request.POST['email2']):
                                     thisInstance.confirmation_email_sent = True
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your Decoherence Registration Form')
@@ -437,7 +437,7 @@ def decoherenceRegistration(request):
                         if request.POST.get("submit"):
                             reg.isSubmit = True
                             reg.submit_date = timezone.now()
-                            if event_confirmation_mail('Decoherence',request.POST['email'],request):
+                            if event_confirmation_mail('Decoherence',request.POST['email1'],request,request.POST['email2']):
                                 reg.confirmation_email_sent = True
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully submitted your Decoherence Registration Form')
