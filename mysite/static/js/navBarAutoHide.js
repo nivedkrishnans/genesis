@@ -76,7 +76,7 @@ function toggleNavMobile(disp){         //shows nav menu for mobile if argument 
         ham.classList.add('is-active');
         homeNav.style.opacity= "1";
     }
-    navDisplay = !navDisplay;
+    navDisplay = disp;
 }
 
 
