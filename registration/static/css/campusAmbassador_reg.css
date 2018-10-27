@@ -31,7 +31,8 @@
 }
 .incentives li{
     color: #ffee9c;
-    list-style: none;
+    list-style-image: url('../img/logo-gold-listbullet.png');
+    padding-left: 12px;
 }
 .incentives img {
     height: 8%;
