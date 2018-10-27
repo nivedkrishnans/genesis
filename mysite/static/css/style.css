@@ -8,6 +8,9 @@
     Disabled Colour: #787460
 */
 
+@import url('https://fonts.googleapis.com/css?family=Abel');
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+
 html{
     font-family: 'Lato', 'Helvetica', sans-serif;
     font-size: 12px;
@@ -347,5 +350,36 @@ footer img{
     }
     #navBar a .small{
         font-size: 20px;
+    }
+}
+
+/*   Updated navbar styles  */
+@media (min-width:760px){
+
+
+    #navBar a .big{
+        display: none;
+    }
+    #navBar a .small{
+        padding-top: 2px;
+        padding: 4px;
+        transition: all 0.3s;
+        border-radius: 4px;
+    }
+    #navBar a .small:hover{
+        transform: scale(1,1);
+        background-color: rgba(50,50,50,0.3);
+    }
+    #navBar a:hover{
+        transform: scale(1,1);
+    }
+    /* the home link */
+    #navBar .curr{
+        color: #baa956 !important;
+    }
+    #navBar{
+        height: 42px;
+        font-family: 'Abel', sans-serif;
+        letter-spacing: 0.5px;
     }
 }
