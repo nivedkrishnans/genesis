@@ -101,12 +101,13 @@ class ProsceniumForm(forms.ModelForm):
 class BattleOfBandsForm(forms.ModelForm):
     class Meta:
         model = BattleOfBandsRegistration
-        fields = ('teamName', 'teamLeader','institution','city','email','contact1','contact2','participantList','audioVideoFile','audioVideoFileLink')
+        fields = ('teamName', 'teamLeader','institution','city','regionalfinalscity','email','contact1','contact2','participantList','audioVideoFile','audioVideoFileLink')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
             "institution": "Institution",
             "city": "City",
+            "regionalfinalscity": "Regional Finals City Preference",
             "email": "Email",
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",

@@ -70,7 +70,7 @@ class ProsceniumRegistrationResource(ExportMixin,admin.ModelAdmin):
 
 
 class BattleOfBandsRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeAudioVideoFile','seeAudioVideoLink')
+    list_display = ('user','teamName','teamLeader','email','institution','city','regionalfinalscity','submit_date','seeAudioVideoFile','seeAudioVideoLink')
     list_filter = ('submit_date','institution','city',)
     readonly_fields = ('audioVideoFile','audioVideoFileLink',)
 

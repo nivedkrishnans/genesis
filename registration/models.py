@@ -138,6 +138,14 @@ class BattleOfBandsRegistration(models.Model):
     teamLeader = models.CharField(max_length=144)
     institution = models.CharField(max_length=144)
     city = models.CharField(max_length=144)
+    REGIONAL_FINALS_CITY_CHOICES=(
+        ('BANGALORE','BANGALORE'),
+        ('CHENNAI','CHENNAI'),
+        ('HYDERABAD','HYDERABAD'),
+        ('KOCHI','KOCHI'),
+        ('MUMBAI','MUMBAI'),
+    )
+    regionalfinalscity = models.CharField(default="BANGALORE", null=False, blank=False, max_length=20, choices=REGIONAL_FINALS_CITY_CHOICES)
     email = models.EmailField(max_length=144, null=False, blank=False)
     contact1 = models.CharField(max_length=20)
     contact2 = models.CharField(max_length=20,blank=False)
