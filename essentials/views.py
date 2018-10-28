@@ -56,6 +56,9 @@ def footprints(request):
 def lasya(request):
 	return render(request, 'essentials/lasya.html', {'file_info' : videoFileSupportMessage(lasyaSizeLimit),})
 
+def wikimediaphotography(request):
+	return render(request, 'essentials/wikimediaphotography.html', {})
+
 def partners(request):
 	return render(request, 'essentials/partners.html', {})
 

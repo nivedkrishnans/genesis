@@ -49,7 +49,9 @@ class AdminEvent(models.Model):
     )
     registrationStatus = models.CharField(default="notyet", max_length=200, choices=REGISTRATION_STATUS_CHOICES)
     title = models.CharField(max_length=200)
+    displayTitle = models.CharField(blank=True, null=False, max_length=200)
     description = models.TextField()
+    priority = models.IntegerField(default=0)
     registrationLink = models.CharField(max_length=200, default="#")
 
     def __str__(self):
@@ -208,6 +210,30 @@ class DecoherenceRegistration(models.Model):
     contact2 = models.CharField(max_length=20, blank=True)
     institution = models.CharField(max_length=144)
     city = models.CharField(max_length=144)
+    confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
+    def __str__(self):
+        return self.teamName
+
+
+class WikimediaPhotographyRegistration(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    #form details
+    wikimediaUserID = models.CharField(max_length=200)
+    submission1 = models.URLField(max_length=300, null=False, blank=True)
+    submission2 = models.URLField(max_length=300, null=False, blank=True)
+    submission3 = models.URLField(max_length=300, null=False, blank=True)
+    submission4 = models.URLField(max_length=300, null=False, blank=True)
+    submission5 = models.URLField(max_length=300, null=False, blank=True)
+    #user details
+    institution = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200, null=False, blank=False)
+    contact = models.CharField(max_length=20)
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)

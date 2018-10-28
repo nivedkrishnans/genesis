@@ -35,15 +35,16 @@ def registration_index(request):
         'footprints':FootprintsRegistration,
         'battle of bands':BattleOfBandsRegistration,
         'decoherence':DecoherenceRegistration,
+        'wikimediaphotography':WikimediaPhotographyRegistration,
     }
 
     #inotherwords
     iow_isactive = list(InOtherWord.objects.filter(active=True))
 
     # converting the following querysets to list so that remove function  can be called
-    openedEvents = list(AdminEvent.objects.filter(registrationStatus='opened'))
-    closedEvents = list(AdminEvent.objects.filter(registrationStatus='closed'))
-    notyetEvents = list(AdminEvent.objects.filter(registrationStatus='notyet'))
+    openedEvents = list(AdminEvent.objects.filter(registrationStatus='opened').order_by('-priority'))
+    closedEvents = list(AdminEvent.objects.filter(registrationStatus='closed').order_by('-priority'))
+    notyetEvents = list(AdminEvent.objects.filter(registrationStatus='notyet').order_by('-priority'))
 
     #removes the campusAmbassador from the lists of Events
     if campusAmbassadorEvent in openedEvents :openedEvents.remove(campusAmbassadorEvent)
@@ -628,3 +629,76 @@ def campusambassadors(request):
         return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit,'isOpen':isOpen, 'form':f})
 
     return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit, 'isOpen':isOpen, 'form':f})
+
+
+
+def wikimediaphotographyRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='wikimediaphotography')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations = WikimediaPhotographyRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            thisInstance = False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = WikimediaPhotographyForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = WikimediaPhotographyForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('Wikimedia Photography Event',request.POST['email'],request):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Wikimedia Photography Event Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Wikimedia Photography Event Registration Form')
+                                f =WikimediaPhotographyForm(instance=thisInstance)
+                                return render(request, 'registration/wikimediaPhotographyRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = WikimediaPhotographyForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        reg.institution = thisUserData.institution
+                        reg.city = thisUserData.city
+                        reg.email = thisUserData.email
+                        reg.contact = thisUserData.contact
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('Wikimedia Photography Event',request.POST['email'],request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Wikimedia Photography Event Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Wikimedia Photography Event Registration Form')
+                            return render(request, 'registration/wikimediaPhotographyRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = WikimediaPhotographyForm()
+            return render(request, 'registration/wikimediaPhotographyRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for the Wikimedia Photography Event')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})

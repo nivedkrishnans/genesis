@@ -97,7 +97,6 @@ p > a:hover{
 
 .event-title{
     font-family: 'Titillium Web', sans-serif;
-    text-transform: capitalize;
     font-size: 32px;
     color: #ffee9c;
 }

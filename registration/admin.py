@@ -16,7 +16,7 @@ class UserDataResource(ExportMixin,admin.ModelAdmin):
         model = UserData
 
 class AdminEventResource(ExportMixin,admin.ModelAdmin):
-    fields = ('title','registrationStatus','description','registrationLink')    #for showing the fields in this order
+    fields = ('title','displayTitle','registrationStatus','description','priority','registrationLink')    #for showing the fields in this order
     list_display = ('title','registrationStatus')
     list_filter = ('registrationStatus',)
     def get_readonly_fields(self, request, obj=None):
