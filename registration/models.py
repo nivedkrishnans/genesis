@@ -66,6 +66,8 @@ class CampusAmbassador(models.Model):
     email = models.EmailField(max_length=144, null=False, blank=False)
     contactForCalls = models.CharField(max_length=20)
     contactForWhatsapp = models.CharField(max_length=20)
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
     isSubmit = models.BooleanField(default=False)
     last_modify_date = models.DateTimeField( null=True, blank=True)
     submit_date = models.DateTimeField( null=True, blank=True)
@@ -73,13 +75,19 @@ class CampusAmbassador(models.Model):
 class LasyaRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-    teamName = models.CharField(max_length=144)
-    teamLeader = models.CharField(max_length=144)
+    teamName = models.CharField(blank=True, max_length=144)
+    teamLeader = models.CharField(blank=True, max_length=144)
     institution = models.CharField(max_length=144)
     city = models.CharField(max_length=144)
     email = models.EmailField(max_length=144, null=False, blank=False)
     contact1 = models.CharField(max_length=20)
     contact2 = models.CharField(max_length=20,blank=False)
+    CATEGORY_CHOICES=(
+        ('solo','SOLO'),
+        ('duet','DUET'),
+        ('group','GROUP'),
+    )
+    category = models.CharField(default="GROUP", max_length=10, choices=CATEGORY_CHOICES)
     participantList =  models.TextField(blank=True)
     videoFileLink = models.URLField(max_length=300, null=False, blank=True)
     #function to generate a path to upload the file
@@ -90,6 +98,8 @@ class LasyaRegistration(models.Model):
         temp = temp + temp2 + temp3
         return temp
     videoFile = models.FileField(validators=[lasya_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)
@@ -124,6 +134,8 @@ class ProsceniumRegistration(models.Model):
         temp = temp + temp2 + temp3
         return temp
     videoFile = models.FileField(validators=[proscenium_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)
@@ -161,6 +173,8 @@ class BattleOfBandsRegistration(models.Model):
         temp = temp + temp2 + temp3
         return temp
     audioVideoFile = models.FileField(validators=[battleofbands_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)
@@ -186,6 +200,8 @@ class FootprintsRegistration(models.Model):
     contact1 = models.CharField(max_length=20)
     contact2 = models.CharField(max_length=20,blank=False)
     participantList =  models.TextField()
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)
@@ -210,6 +226,8 @@ class DecoherenceRegistration(models.Model):
     contact2 = models.CharField(max_length=20, blank=True)
     institution = models.CharField(max_length=144)
     city = models.CharField(max_length=144)
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)
@@ -234,6 +252,8 @@ class WikimediaPhotographyRegistration(models.Model):
     city = models.CharField(max_length=200)
     email = models.EmailField(max_length=200, null=False, blank=False)
     contact = models.CharField(max_length=20)
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)

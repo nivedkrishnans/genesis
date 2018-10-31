@@ -30,6 +30,7 @@ def registration_index(request):
 
     #distionary of events and their models
     eventDictionary={
+        'Campus Ambassadors':CampusAmbassador,
         'lasya':LasyaRegistration,
         'proscenium':ProsceniumRegistration,
         'footprints':FootprintsRegistration,
@@ -45,11 +46,6 @@ def registration_index(request):
     openedEvents = list(AdminEvent.objects.filter(registrationStatus='opened').order_by('-priority'))
     closedEvents = list(AdminEvent.objects.filter(registrationStatus='closed').order_by('-priority'))
     notyetEvents = list(AdminEvent.objects.filter(registrationStatus='notyet').order_by('-priority'))
-
-    #removes the campusAmbassador from the lists of Events
-    if campusAmbassadorEvent in openedEvents :openedEvents.remove(campusAmbassadorEvent)
-    if campusAmbassadorEvent in closedEvents :closedEvents.remove(campusAmbassadorEvent)
-    if campusAmbassadorEvent in notyetEvents :notyetEvents.remove(campusAmbassadorEvent)
 
     #showing which events where Registered
     registeredEvents = []
@@ -85,11 +81,11 @@ def registration_index(request):
 
         if len(registeredEvents) != 0:
             if len(registeredEvents) == 1:
-                registeredEventsString = registeredEventsString + (registeredEvents[0].title).capitalize()
+                registeredEventsString = registeredEventsString + (registeredEvents[0].displayTitle)
             else:
                 j = 1       #loop variable
                 for i in registeredEvents:
-                    registeredEventsString = registeredEventsString + (i.title).capitalize()
+                    registeredEventsString = registeredEventsString + (i.displayTitle)
                     if j == (len(registeredEvents) - 1):
                         registeredEventsString = registeredEventsString + " and "
                     elif j == len(registeredEvents):
@@ -98,6 +94,11 @@ def registration_index(request):
                         registeredEventsString = registeredEventsString + ", "
                     j+=1
             registeredEventsString = "<p class='center'> You have successfully registered for " +  registeredEventsString + "</p>"
+
+    #removes the campusAmbassador from the lists of Events
+    if campusAmbassadorEvent in openedEvents :openedEvents.remove(campusAmbassadorEvent)
+    if campusAmbassadorEvent in closedEvents :closedEvents.remove(campusAmbassadorEvent)
+    if campusAmbassadorEvent in notyetEvents :notyetEvents.remove(campusAmbassadorEvent)
 
     return render(request, 'registration/registration_index.html', {'iow_isactive':iow_isactive,'campusAmbassadorEvent':campusAmbassadorEvent,'registeredEventsString':registeredEventsString, 'openedEvents':openedEvents, 'closedEvents':closedEvents, 'notyetEvents':notyetEvents })
 
@@ -660,7 +661,7 @@ def wikimediaphotographyRegistration(request):
                             if request.POST.get("submit"):
                                 thisInstance.isSubmit = True
                                 thisInstance.submit_date = timezone.now()
-                                if event_confirmation_mail('Wikimedia Photography Event',request.POST['email'],request):
+                                if event_confirmation_mail('Wikimedia Photography Event',thisUserData.email,request):
                                     thisInstance.confirmation_email_sent = True
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your Wikimedia Photography Event Registration Form')
@@ -684,7 +685,7 @@ def wikimediaphotographyRegistration(request):
                         if request.POST.get("submit"):
                             reg.isSubmit = True
                             reg.submit_date = timezone.now()
-                            if event_confirmation_mail('Wikimedia Photography Event',request.POST['email'],request):
+                            if event_confirmation_mail('Wikimedia Photography Event',thisUserData.email,request):
                                 reg.confirmation_email_sent = True
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully submitted your Wikimedia Photography Event Registration Form')

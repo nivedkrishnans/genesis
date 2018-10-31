@@ -52,7 +52,7 @@ class SignUpForm(forms.Form):
 class CampusAmbassadorForm(forms.ModelForm):
     class Meta:
         model = CampusAmbassador
-        fields = ('full_name', 'institution','city','email','contactForCalls','contactForWhatsapp',)
+        fields = ('full_name', 'institution','city','email','contactForCalls','contactForWhatsapp','howyouknow')
         labels = {
             "full_name": "Full Name",
             "institution": "Institution",
@@ -60,29 +60,32 @@ class CampusAmbassadorForm(forms.ModelForm):
             "email": "Email",
             "contactForCalls": "Mobile Number",
             "contactForWhatsapp": "Mobile Number (WhatsApp)",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
 class LasyaForm(forms.ModelForm):
     class Meta:
         model = LasyaRegistration
-        fields = ('teamName', 'teamLeader','institution','city','email','contact1','contact2','participantList','videoFile','videoFileLink')
+        fields = ('teamName', 'teamLeader','institution','city','email','contact1','contact2','category','participantList','videoFile','videoFileLink','howyouknow')
         labels = {
-            "teamName": "Team Name",
-            "teamLeader": "Team Leader",
+            "teamName": "Team Name (Mandatory only for group dance category)",
+            "teamLeader": "Team Leader (Mandatory only for group dance category)",
             "institution": "Institution",
             "city": "City",
             "email": "Email",
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",
+            "category": "Category",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
             "videoFile": videoFileSupportMessage(lasyaSizeLimit),
-            "videoFileLink":"Link to Video (Only if you do not upload the video file)"
+            "videoFileLink":"Link to Video (Only if you do not upload the video file)",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
 class ProsceniumForm(forms.ModelForm):
     class Meta:
         model = ProsceniumRegistration
-        fields = ('teamName', 'teamLeader','language','institution','city','email','contact1','contact2','participantList','videoFile','videoFileLink')
+        fields = ('teamName', 'teamLeader','language','institution','city','email','contact1','contact2','participantList','videoFile','videoFileLink','howyouknow')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
@@ -94,14 +97,15 @@ class ProsceniumForm(forms.ModelForm):
             "contact2": "Another Mobile Number",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
             "videoFile": videoFileSupportMessage(prosceniumSizeLimit),
-            "videoFileLink":"Link to Video (Only if you do not upload the video file)"
+            "videoFileLink":"Link to Video (Only if you do not upload the video file)",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
 
 class BattleOfBandsForm(forms.ModelForm):
     class Meta:
         model = BattleOfBandsRegistration
-        fields = ('teamName', 'teamLeader','institution','city','regionalfinalscity','email','contact1','contact2','participantList','audioVideoFile','audioVideoFileLink')
+        fields = ('teamName', 'teamLeader','institution','city','regionalfinalscity','email','contact1','contact2','participantList','audioVideoFile','audioVideoFileLink','howyouknow')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
@@ -113,13 +117,14 @@ class BattleOfBandsForm(forms.ModelForm):
             "contact2": "Another Mobile Number",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
             "audioVideoFile": audioVideoFileSupportMessage(battleofbandsSizeLimit),
-            "audioVideoFileLink": "Link to Audio/Video (Only if you do not upload the file)"
+            "audioVideoFileLink": "Link to Audio/Video (Only if you do not upload the file)",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
 class FootprintsForm(forms.ModelForm):
     class Meta:
         model = FootprintsRegistration
-        fields = ('teamName', 'teamLeader','language','institution','city','email','contact1','contact2','participantList')
+        fields = ('teamName', 'teamLeader','language','institution','city','email','contact1','contact2','participantList','howyouknow')
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
@@ -130,12 +135,13 @@ class FootprintsForm(forms.ModelForm):
             "contact1": "Mobile Number",
             "contact2": "Another Mobile Number",
             "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
 class DecoherenceForm(forms.ModelForm):
     class Meta:
         model = DecoherenceRegistration
-        fields = ('teamName', 'institution','city', 'participant1', 'qualification1', 'email1', 'contact1', 'participant2', 'qualification2', 'email2', 'contact2', )
+        fields = ('teamName', 'institution','city', 'participant1', 'qualification1', 'email1', 'contact1', 'participant2', 'qualification2', 'email2', 'contact2','howyouknow')
         labels = {
             "teamName": "Team Name",
             "institution": "Institution",
@@ -148,6 +154,7 @@ class DecoherenceForm(forms.ModelForm):
             "email2": 'Email',
             "contact2": "Mobile Number",
             "city": "City",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
 
@@ -155,7 +162,7 @@ class DecoherenceForm(forms.ModelForm):
 class WikimediaPhotographyForm(forms.ModelForm):
     class Meta:
         model = WikimediaPhotographyRegistration
-        fields = ('wikimediaUserID', 'submission1','submission2','submission3','submission4','submission5',)
+        fields = ('wikimediaUserID', 'submission1','submission2','submission3','submission4','submission5','howyouknow')
         labels = {
             "wikimediaUserID": "Wikimedia User ID",
             "submission1": "Submission Link 1",
@@ -163,4 +170,5 @@ class WikimediaPhotographyForm(forms.ModelForm):
             "submission3": "Submission Link 3 (Optional)",
             "submission4": "Submission Link 4 (Optional)",
             "submission5": "Submission Link 5 (Optional)",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }

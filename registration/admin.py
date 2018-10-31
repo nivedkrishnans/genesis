@@ -40,7 +40,7 @@ class CampusAmbassadorResource(ExportMixin,admin.ModelAdmin):
 
 
 class LasyaRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeVideoFile','seeVideoLink',)
+    list_display = ('user','category','teamName','teamLeader','email','institution','city','submit_date','seeVideoFile','seeVideoLink',)
     list_filter = ('submit_date','institution','city',)
 
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
