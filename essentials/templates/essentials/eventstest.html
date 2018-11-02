@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.js"></script>
+    <noscript>
+        <style>
+        [data-simplebar] {
+            overflow: auto;
+        }
+        </style>
+    </noscript>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Events | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Cookie|Fredericka+the+Great|Oleo+Script|Carter+One|Marck+Script|Notable|Oleo+Script|Quantico" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventstest.css'%}">
+
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <div id="categories">
+      <section class="main-category" id="category1">
+        <div class="category-display"><h2>SCIENCE</h2>
+        </div>
+        <div data-simplebar class="category-content">
+            <div class="events-container">
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+            </div>
+        </div>
+      </section>
+      <section class="main-category" id="category2">
+        <div class="category-display"><h2>CULTURAL</h2>
+        </div>
+        <div data-simplebar class="category-content">
+            <div class="events-container">
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+            </div>
+        </div>
+      </section>
+      <section class="main-category" id="category3">
+        <div class="category-display"><h2>FUN</h2>
+        </div>
+        <div data-simplebar class="category-content">
+            <div class="events-container">
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+                <div class="event-area"></div>
+            </div>
+        </div>
+      </section>
+    </div>
+
+
+  </div>
+  <script src="{%static 'js/navBar.js'%}"> </script>
+  <script>
+    var category1 = $("#category1");
+    var category2 = $("#category2");
+    var category3 = $("#category3");
+    var allCategories = document.getElementsByClassName("main-category");
+    var categoryOpenStatus = [false, false, false];
+    var anyCategoryOpen = false;
+    var fadeTransitionLength = 200;
+    var flexRatio = 8;
+    var categoryOpenCloseDelay = 800;
+    //open category on hovering
+    category1.click(function(){categoryOpenClose(1);});
+    category2.click(function(){categoryOpenClose(2);});
+    category3.click(function(){categoryOpenClose(3);});
+    $(document).ready(function(){
+        $(".category-content").fadeOut(0);
+    });
+
+
+    function categoryOpenClose(n){
+      for(var i=1; i<= allCategories.length; i++){
+        currentCategory = $("#category" + i);
+        if (i==n){
+            currentCategory.find(".category-display").delay(800).fadeOut(300);
+            currentCategory.find(".category-display h2").removeClass("rotateACW");
+            currentCategory.find(".category-content").delay(900).fadeIn(300);
+                currentCategory.css("flex-grow",flexRatio);
+                currentCategory.css("flex-shrink",flexRatio);
+            categoryOpenStatus[i] = true;
+            console.log("opened category" + i);
+        }
+        else{
+            currentCategory.find(".category-display").delay(0).fadeIn(300);
+            currentCategory.find(".category-display h2").addClass("rotateACW");
+            currentCategory.find(".category-content").delay(0).fadeOut(300);
+                currentCategory.css("flex-grow",1);
+                currentCategory.css("flex-shrink",1);
+            categoryOpenStatus[i] = false;
+            console.log("closed category" + i);
+        }
+      }
+      console.log("Category Open-Close Complete");
+
+    }
+
+
+  </script>
+{% endblock %}

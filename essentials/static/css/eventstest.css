@@ -1,0 +1,125 @@
+.main{
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(10,10,10,0.9);
+  background-image: none;
+}
+
+.displayNone{
+  display: none !important;
+  opacity: 0 !important;
+}
+.rotateACW{
+  transform: rotate(-90deg);
+}
+.inactiveFilter{
+    filter: grayscale(70%) brightness(0.7);
+}
+
+#categories h2{
+    font-size: inherit;
+    transition: all 0.4s;
+}
+
+.main-category{
+    transform: translate3d(0,0,0);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Comfortaa', cursive;
+    filter: grayscale(70%) brightness(0.8);
+}
+.main-category:hover{
+    filter: grayscale(0) brightness(1);
+}
+
+
+#category1{
+    background-image: url(../img/events/science.jpg);
+}
+
+#category2{
+    background-image: url(../img/events/cultural.jpg);
+}
+
+#category3{
+    background-image: url(../img/events/fun.jpg);
+}
+
+@media(min-width:760px){
+  #navBar{
+      height: 40px;
+  }
+  #navBar a .small{
+      padding: 0;
+  }
+  #navBar a .big{
+      display: none;
+  }
+  #categories{
+    position: absolute;
+    top: 56px;
+    left: 14px;
+    right: 14px;
+    bottom: 40px;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+  .main-category{
+      box-sizing: border-box;
+    position: relative;
+    border: none;
+    margin: 14px;
+    box-shadow: 2px 2px 2px rgba(8,8,8,0.9);
+    background-color: rgba(200,20,20,0.6);
+    min-height: 100%;
+    height: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    transition: flex-grow 0.6s, flex-shrink 0.6s, filter 0.2s;
+  }
+  .category-display{
+    font-size: 44px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .category-content{
+    font-size: 44px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .events-container{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+  }
+
+  .event-area{
+      display: flex;
+      background-color: rgba(150,150,150,0.7);
+      margin: 24px;
+      height: 22vw;
+      width: 18vw;
+  }
+}
