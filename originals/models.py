@@ -164,3 +164,36 @@ class InOtherWordsChallenge04(models.Model):
 	isSubmit = models.BooleanField(default=False)
 	def __str__(self):
 		return self.name
+
+
+class InOtherWordsChallenge05(models.Model):
+	#The answers:
+	question1 = models.CharField(max_length=50, blank=True, null=True)
+	question2 = models.CharField(max_length=50, blank=True, null=True)
+	question3 = models.CharField(max_length=50, blank=True, null=True)
+	question4 = models.CharField(max_length=50, blank=True, null=True)
+	question5 = models.CharField(max_length=50, blank=True, null=True)
+	question6 = models.CharField(max_length=50, blank=True, null=True)
+	question7 = models.CharField(max_length=50, blank=True, null=True)
+	question8 = models.CharField(max_length=50, blank=True, null=True)
+	question9 = models.CharField(max_length=50, blank=True, null=True)
+	question10 = models.CharField(max_length=50, blank=True, null=True)
+	question11 = models.CharField(max_length=50, blank=True, null=True)
+	question12 = models.CharField(max_length=50, blank=True, null=True)
+	question13 = models.CharField(max_length=50, blank=True, null=True)
+	question14 = models.CharField(max_length=50, blank=True, null=True)
+	question15 = models.CharField(max_length=50, blank=True, null=True)
+	#user info:
+	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+	create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+	last_modify_date = models.DateTimeField( null=True, blank=True)
+	submit_date = models.DateTimeField( null=True, blank=True)
+	name = models.CharField(max_length=200)
+	institution = models.CharField(max_length=200)
+	city = models.CharField(max_length=200)
+	email = models.EmailField(max_length=200, null=False, blank=False)
+	contact = models.CharField(max_length=20)
+	confirmation_email_sent = models.BooleanField(default=False)
+	isSubmit = models.BooleanField(default=False)
+	def __str__(self):
+		return self.name

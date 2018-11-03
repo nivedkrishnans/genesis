@@ -241,7 +241,7 @@ class WikimediaPhotographyRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     #form details
-    wikimediaUserID = models.CharField(max_length=200)
+    wikimediaUsername = models.CharField(max_length=200)
     submission1 = models.URLField(max_length=300, null=False, blank=True)
     submission2 = models.URLField(max_length=300, null=False, blank=True)
     submission3 = models.URLField(max_length=300, null=False, blank=True)
@@ -260,4 +260,4 @@ class WikimediaPhotographyRegistration(models.Model):
     last_modify_date = models.DateTimeField( null=True, blank=True)
     submit_date = models.DateTimeField( null=True, blank=True)
     def __str__(self):
-        return self.teamName
+        return str(self.user)

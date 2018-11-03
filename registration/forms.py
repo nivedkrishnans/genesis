@@ -162,9 +162,9 @@ class DecoherenceForm(forms.ModelForm):
 class WikimediaPhotographyForm(forms.ModelForm):
     class Meta:
         model = WikimediaPhotographyRegistration
-        fields = ('wikimediaUserID', 'submission1','submission2','submission3','submission4','submission5','howyouknow')
+        fields = ('wikimediaUsername', 'submission1','submission2','submission3','submission4','submission5','howyouknow')
         labels = {
-            "wikimediaUserID": "Wikimedia User ID",
+            "wikimediaUsername": "Wikimedia Username",
             "submission1": "Submission Link 1",
             "submission2": "Submission Link 2 (Optional)",
             "submission3": "Submission Link 3 (Optional)",

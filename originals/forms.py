@@ -59,3 +59,26 @@ class InOtherWordsChallengeForm04(forms.ModelForm):
 			"question4": "Question 4",
 			"question5": "Question 5",
         }
+
+
+class InOtherWordsChallengeForm05(forms.ModelForm):
+    class Meta:
+        model = InOtherWordsChallenge05
+        fields = ('question1','question2','question3','question4','question5','question6','question7','question8','question9','question10','question11','question12','question13','question14','question15',)
+        labels = {
+			"question1": "1",
+			"question2": "2",
+			"question3": "3",
+			"question4": "4",
+			"question5": "5",
+            "question6": "6",
+			"question7": "7",
+			"question8": "8",
+			"question9": "9",
+			"question10": "10",
+            "question11": "11",
+			"question12": "12",
+			"question13": "13",
+			"question14": "14",
+			"question15": "15",
+        }

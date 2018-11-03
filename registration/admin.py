@@ -106,6 +106,14 @@ class DecoherenceRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = DecoherenceRegistration
 
+
+class WikimediaPhotographyRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user','wikimediaUsername','institution','city','submit_date')
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+    class Meta:
+        model = WikimediaPhotographyRegistration
+
 admin.site.register(UserData,UserDataResource)
 admin.site.register(AdminEvent,AdminEventResource)
 admin.site.register(CampusAmbassador,CampusAmbassadorResource)
@@ -114,3 +122,4 @@ admin.site.register(ProsceniumRegistration,ProsceniumRegistrationResource)
 admin.site.register(BattleOfBandsRegistration,BattleOfBandsRegistrationResource)
 admin.site.register(FootprintsRegistration,FootprintsRegistrationResource)
 admin.site.register(DecoherenceRegistration,DecoherenceRegistrationResource)
+admin.site.register(WikimediaPhotographyRegistration,WikimediaPhotographyRegistrationResource)
