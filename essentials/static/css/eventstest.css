@@ -6,19 +6,18 @@
   background-image: none;
 }
 
-.displayNone{
-  display: none !important;
-  opacity: 0 !important;
-}
 .rotateACW{
   transform: rotate(-90deg);
+  font-size:inherit;
+  font-size: 24px !important;
 }
 .inactiveFilter{
     filter: grayscale(70%) brightness(0.7);
 }
 
 #categories h2{
-    font-size: inherit;
+    text-align: center;
+    font-size: 36px;
     transition: all 0.4s;
 }
 
@@ -35,7 +34,6 @@
     filter: grayscale(0) brightness(1);
 }
 
-
 #category1{
     background-image: url(../img/events/science.jpg);
 }
@@ -46,6 +44,70 @@
 
 #category3{
     background-image: url(../img/events/fun.jpg);
+}
+
+#category4{
+    background-image: url(../img/events/science.jpg);
+}
+
+#category5{
+    background-image: url(../img/events/cultural.jpg);
+}
+
+#categories{
+  margin: 60px 0 0 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.category-content{
+  font-size: 44px;
+  width: 100%;
+}
+
+.category-content-contents{
+    height: 100%;
+    width: 100%;
+}
+
+
+.main-category{
+    box-sizing: border-box;
+    position: relative;
+    border: none;
+    margin: 14px;
+    box-shadow: 2px 2px 2px rgba(8,8,8,0.9);
+    background-color: rgba(200,20,20,0.6);
+    min-height: 20px;;
+    height: auto;
+    transition: flex-grow 0.6s, flex-shrink 0.6s, filter 0.2s;
+  }
+  .events-container{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .event-area{
+      display: flex;
+      background-color: rgba(150,150,150,0.7);
+      margin: 24px;
+      min-height: 200px;
+      height: auto;
+      width: 80%;
+  }
+
+@media(max-width:759px){
+    .simplebar-offset{
+        right: 0 !important;
+    }
+    .simplebar-content{
+        padding: 0 !important;
+    }
 }
 
 @media(min-width:760px){
@@ -60,6 +122,7 @@
   }
   #categories{
     position: absolute;
+    margin-top: 0;
     top: 56px;
     left: 14px;
     right: 14px;
@@ -84,7 +147,6 @@
     transition: flex-grow 0.6s, flex-shrink 0.6s, filter 0.2s;
   }
   .category-display{
-    font-size: 44px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
