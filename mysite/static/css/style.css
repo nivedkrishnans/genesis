@@ -10,6 +10,9 @@
 
 @import url('https://fonts.googleapis.com/css?family=Abel');
 @import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('https://fonts.googleapis.com/css?family=Unica+One');
+@import url('https://fonts.googleapis.com/css?family=Coda');
+
 
 html{
     font-family: 'Lato', 'Helvetica', sans-serif;
@@ -365,21 +368,27 @@ footer img{
         padding: 4px;
         transition: all 0.3s;
         border-radius: 4px;
+        color: rgb(255, 238, 165);
     }
     #navBar a .small:hover{
         transform: scale(1,1);
-        background-color: rgba(50,50,50,0.3);
+        background-color: rgba(0, 0, 0, 1);
+        color: rgb(255, 226, 102);
+        transform: translateY(-1px);
     }
     #navBar a:hover{
         transform: scale(1,1);
     }
     /* the home link */
     #navBar .curr{
-        color: #baa956 !important;
+        color: inherit !important;
     }
     #navBar{
         height: 42px;
-        font-family: 'Abel', sans-serif;
+        font-family: 'Unica One', cursive;
+        font-weight: 400;
+        text-transform: uppercase;
         letter-spacing: 0.5px;
+        border-bottom: rgb(255, 238, 165) 1px solid;
     }
 }
