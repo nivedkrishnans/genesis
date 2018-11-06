@@ -53,6 +53,7 @@
                 </div>
             </div>
         </div>
+        <button class="closeButton" onclick=closeAllCategories();>&times;</button>
       </section>
       <section class="main-category" id="category2">
         <div class="category-display"><h2>TECHNICAL</h2>
@@ -75,6 +76,7 @@
                 </div>
             </div>
         </div>
+        <button class="closeButton" onclick=closeAllCategories();>&times;</button>
       </section>
       <section class="main-category" id="category3">
         <div class="category-display"><h2>SCIENCE</h2>
@@ -97,6 +99,7 @@
                 </div>
             </div>
         </div>
+        <button class="closeButton" onclick=closeAllCategories();>&times;</button>
       </section>
       <section class="main-category" id="category4">
         <div class="category-display"><h2>QUIZ</h2>
@@ -119,6 +122,7 @@
                 </div>
             </div>
         </div>
+        <button class="closeButton" onclick=closeAllCategories();>&times;</button>
       </section>
       <section class="main-category" id="category5">
         <div class="category-display"><h2>CULTURAL</h2>
@@ -141,6 +145,7 @@
                 </div>
             </div>
         </div>
+        <button class="closeButton" onclick=closeAllCategories();>&times;</button>
       </section>
     </div>
 
@@ -194,12 +199,24 @@
         closeAllCategories();
     });
     $(window).resize(function(){
-        mobileContentHeight();
-        closeAllCategories();
+        var width1,width2;
+        width1= $(window).width();
+        setTimeout(function(){
+            width2= $(window).width();
+        }, 5);
+        setTimeout(function(){
+            if(width1 != width2){
+                console.log("Width resize "+width1+ " " +width2);
+                mobileContentHeight();
+                closeAllCategories();
+                }
+        }, 5);
+
     });
 
 
     function closeAllCategories(){
+        $(".closeButton").delay(0).fadeOut(100);
         if(isMobile()){
             $(".category-content").slideUp(200);
             $(".category-display h2").removeClass("rotateACW");
@@ -220,7 +237,8 @@
             for(var i=1; i<= allCategories.length; i++){
               currentCategory = $("#category" + i);
               if (i==n){
-                  currentCategory.find(".category-content").delay(0).slideToggle(300);
+                  currentCategory.find(".category-content").delay(0).slideDown(300);
+                  currentCategory.find(".closeButton").delay(0).fadeIn(100);
                       currentCategory.css("flex-grow",flexRatio);
                       currentCategory.css("flex-shrink",flexRatio);
                   categoryOpenStatus[i] = true;
@@ -228,6 +246,7 @@
               }
               else{
                   currentCategory.find(".category-content").delay(0).slideUp(300);
+                  currentCategory.find(".closeButton").delay(0).fadeOut(100);
                       currentCategory.css("flex-grow",1);
                       currentCategory.css("flex-shrink",1);
                   categoryOpenStatus[i] = false;
@@ -241,6 +260,7 @@
               currentCategory = $("#category" + i);
               if (i==n){
                   currentCategory.find(".category-display").delay(800).fadeOut(300);
+                  currentCategory.find(".closeButton").delay(0).fadeIn(100);
                   currentCategory.find(".category-display h2").removeClass("rotateACW");
                   currentCategory.find(".category-content").delay(900).fadeIn(300);
                       currentCategory.css("flex-grow",flexRatio);
@@ -250,6 +270,7 @@
               }
               else{
                   currentCategory.find(".category-display").delay(0).fadeIn(300);
+                  currentCategory.find(".closeButton").delay(0).fadeOut(100);
                   currentCategory.find(".category-display h2").addClass("rotateACW");
                   currentCategory.find(".category-content").delay(0).fadeOut(300);
                       currentCategory.css("flex-grow",1);
