@@ -2,8 +2,23 @@
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: rgba(10,10,10,0.9);
+  background-color: rgba(17,17,17,0.9);
   background-image: none;
+}
+
+#categories a{
+    align-self: center;
+    color: inherit !important;
+    padding: 0 !important;
+    margin: 8px 2px !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100px;
+    max-height: 40px;
+    display: inline-block;
+}
+#categories a:hover{
+    color: rgb(255,255,240) !important;
 }
 
 .rotateACW{
@@ -21,15 +36,36 @@
     text-align: center;
     font-size: 36px;
     transition: all 0.4s;
+    font-family: 'Voces', cursive, script;
+    font-weight: 400;
+}
+
+.subcategory_title{
+    padding: 4px;
+    margin: 4px;
+    text-align: center;
+    font-size: 36px;
+    transition: all 0.4s;
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 400;
+}
+.event_title{
+    padding: 0;
+    margin: 2px auto;
+    text-align: center;
+    font-size: 28px;
+    transition: all 0.4s;
+    font-family: 'Coda', cursive;
+    font-weight: 400;
+    text-transform: none;
 }
 
 .main-category{
     transform: translate3d(0,0,0);
-    background-size: 100% 100%;
-    background-position: center;
+    background-size: 100% auto;
+    background-position: top;
     background-attachment: fixed;
-    background-repeat: no-repeat;
-    /* font-family: 'Comfortaa', cursive;    */
+    background-repeat: repeat;
 }
 
 #category1{
@@ -53,7 +89,7 @@
 }
 
 #categories{
-  margin: 60px 0 0 0;
+  margin: 50px 0 0 0;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -70,14 +106,14 @@
 
 .category-display{
   min-height: 40px;
+  cursor: pointer;
 }
 .main-category{
-    cursor: pointer;
     box-sizing: border-box;
     position: relative;
     border: none;
     margin: 14px;
-    box-shadow: 2px 2px 2px rgba(8,8,8,0.9);
+    box-shadow: 8px 8px 14px rgba(8,8,8,0.9);
     background-color: rgba(200,20,20,0.6);
     min-height: 20px;
     height: auto;
@@ -95,11 +131,46 @@
 
   .event-area{
       display: flex;
-      background-color: rgba(150,150,150,0.7);
-      margin: 24px;
+      flex-direction: column;
+      align-content: center;
+      justify-content: flex-start;
+      background-color: rgba(8,8,8,0.4);
+      border-radius: 2px;
+      margin: 18px;
       min-height: 200px;
       height: auto;
       width: 80%;
+      padding: 12px;
+  }
+
+  .event_logo{
+      width: 50%;
+      margin: 2px auto;
+  }
+
+  .event_text{
+      padding: 0;
+      margin: 2px auto;
+      font-size: 24px;
+      font-family: 'Coda', cursive;
+      text-align: center;
+      min-height: 80px;
+  }
+
+  .seeMore{
+      font-size: 16px;
+      width: auto;
+      height:auto;
+      padding: 8px 14px;
+      border: 2px solid rgba(255,255,240,1);
+      display: block;
+      margin: 0;
+      color: rgba(255,255,240,1);
+  }
+  .seeMore:hover{
+      border: 2px solid rgba(255,255,240,1);
+      color: rgba(255,0,240,1) !important;
+      background-color: rgba(255,255,240,0.9);
   }
 
   .closeButton{
@@ -127,6 +198,7 @@
       color: rgb(180,180,180,0.9);
   }
 
+
 @media(max-width:759px){
     .simplebar-offset{
         right: 0 !important;
@@ -140,6 +212,20 @@
 }
 
 @media(min-width:760px){
+    .closeButton{
+        top: 14px;
+        right: 14px;
+    }
+    #categories h2{
+        padding: 14px;
+        margin: 0;
+        text-align: center;
+        font-size: 2.5vw;
+        transition: all 0.4s;
+    }
+    .rotateACW{
+      font-size: 1.8vw !important;
+    }
   #navBar{
       height: 40px;
   }
@@ -163,11 +249,12 @@
   }
   .main-category{
       background-size: cover;
+      background-position:center;
       box-sizing: border-box;
     position: relative;
     border: none;
     margin: 14px;
-    box-shadow: 2px 2px 2px rgba(8,8,8,0.9);
+    box-shadow: 8px 8px 40px rgba(8,8,8,0.9);
     background-color: rgba(200,20,20,0.6);
     min-height: 100%;
     height: auto;
@@ -207,15 +294,19 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
   }
 
   .event-area{
       display: flex;
-      background-color: rgba(150,150,150,0.7);
       margin: 24px;
-      height: 320px;
+      min-height: 320px;
       width: 240px;
+  }
+
+  .coming-soon-event{
+      margin-top: 100px;
+       min-height: 220px;
   }
 }
