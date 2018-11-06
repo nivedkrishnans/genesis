@@ -4,6 +4,7 @@ import  originals.views
 
 urlpatterns = [
 	url(r'^$', views.events , name="events"),
+	url(r'^test$', views.eventstest , name="eventstest"),
 	url(r'^proscenium/$', views.proscenium , name="proscenium"),
 	url(r'^lasya/$', views.lasya , name="lasya"),
 	url(r'^footprints/$', views.footprints , name="footprints"),
