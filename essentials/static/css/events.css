@@ -73,7 +73,7 @@
 }
 
 #category2{
-    background-image: url(../img/events/cultural.jpg);
+    background-image: url(../img/events/technical.jpg);
 }
 
 #category3{
@@ -127,6 +127,7 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
+      padding-bottom: 30px;
   }
 
   .event-area{

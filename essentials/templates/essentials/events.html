@@ -197,6 +197,7 @@
         closeAllCategories();
     });
     $(window).resize(function(){
+        mobileContentHeight();
         var width1,width2;
         width1= $(window).width();
         setTimeout(function(){
@@ -205,7 +206,6 @@
         setTimeout(function(){
             if(width1 != width2){
                 console.log("Width resize "+width1+ " " +width2);
-                mobileContentHeight();
                 closeAllCategories();
                 }
         }, 5);
