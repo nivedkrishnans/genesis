@@ -30,11 +30,6 @@
     background-attachment: fixed;
     background-repeat: no-repeat;
     /* font-family: 'Comfortaa', cursive;    */
-
-    filter: grayscale(70%) brightness(0.8);
-}
-.main-category:hover{
-    filter: grayscale(0) brightness(1);
 }
 
 #category1{
@@ -180,6 +175,10 @@
     flex-shrink: 1;
     flex-basis: 0;
     transition: flex-grow 0.6s, flex-shrink 0.6s, filter 0.2s;
+    filter: grayscale(70%) brightness(0.8);
+  }
+  .main-category:hover{
+      filter: grayscale(0) brightness(1);
   }
   .category-display{
     display: flex;
