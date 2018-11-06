@@ -1,508 +1,328 @@
-body{
-    margin:0px;
-    height: auto;
-    background-image: none;
+.main{
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(17,17,17,0.9);
+  background-image: none;
 }
 
-.content{
-    min-height:100vh;
+#categories a{
+    align-self: center;
+    color: inherit !important;
+    padding: 0 !important;
+    margin: 8px 2px !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100px;
+    max-height: 40px;
+    display: inline-block;
+}
+#categories a:hover{
+    color: rgb(255,255,240) !important;
+}
+
+.rotateACW{
+  transform: rotate(-90deg);
+  font-size:inherit;
+  font-size: 24px !important;
+}
+.inactiveFilter{
+    filter: grayscale(70%) brightness(0.7);
+}
+
+#categories h2{
+    padding: 14px;
     margin: 0;
+    text-align: center;
+    font-size: 36px;
+    transition: all 0.4s;
+    font-family: 'Voces', cursive, script;
+    font-weight: 400;
 }
 
-
-
-
-.partitions-container{
-    min-height:100vh;
-    width:100%;
+.subcategory_title{
+    padding: 4px;
+    margin: 4px;
+    text-align: center;
+    font-size: 36px;
+    transition: all 0.4s;
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 400;
+}
+.event_title{
+    padding: 0;
+    margin: 2px auto;
+    text-align: center;
+    font-size: 28px;
+    transition: all 0.4s;
+    font-family: 'Coda', cursive;
+    font-weight: 400;
+    text-transform: none;
 }
 
-.partitions-container > div {
-    min-height: 100vh;
+.main-category{
+    transform: translate3d(0,0,0);
+    background-size: 100% auto;
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: repeat;
 }
 
-/*partititons for mobile version*/
-    .partition1{
-        background-image:url(../img/backgrounds/linguistics-background.jpg);
-        background-size:cover;
-        background-repeat:no-repeat;
-        height:100%;
-        width:100%%;
-    }
+#category1{
+    background-image: url(../img/events/science.jpg);
+}
 
-    .partition2{
-        margin:0px;
-        top:0px;;
-        background-image:url(../img/backgrounds/proscenium-b.jpg);
-        background-size:cover;
-        background-repeat:no-repeat;
-        height:100%;
-        width:100%;
-    }
+#category2{
+    background-image: url(../img/events/cultural.jpg);
+}
 
-    .partition3{
-        background-image:url(../img/backgrounds/footprints-c.jpg);
-        background-size:cover;
-        background-position: center;
-        height:100%;
-        width:100%;
-    }
+#category3{
+    background-image: url(../img/events/fun.jpg);
+}
 
-    .partition4{
-        background-image:url(../img/backgrounds/lasya-b.jpg);
-        background-size:cover;
-        background-position: center;
-        font-size:60px;
-        font-weight:200;
-        height:100%;
-        width:100%;
-    }
+#category4{
+    background-image: url(../img/events/science.jpg);
+}
 
-    .partition5{
-        width:100%;
-        height:100%;
-        background-image: url(../img/backgrounds/more.jpg);
-        background-size:cover;
-        background-repeat:no-repeat;
-    }
+#category5{
+    background-image: url(../img/events/cultural.jpg);
+}
 
-    .partition6{
-        width:100%;
-        height:100%;
-        background-image:url(../img/backgrounds/bob-b.jpeg);
-        background-size:cover;
-        background-repeat:no-repeat;
-    }
+#categories{
+  margin: 50px 0 0 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.category-content{
+  font-size: 44px;
+  width: 100%;
+}
 
-    .partition7{
-        width:100%;
-        height:100%;
-        background-image: url(../img/backgrounds/decoherence2.jpeg);
-        background-size:cover;
-        background-repeat:no-repeat;
-    }
+.category-content-contents{
+    height: 100%;
+    width: 100%;
+}
 
- #bob-title{
-        /* padding-top:40%;
-        */
-        font-size:32px;
-        font-family: 'Oleo Script', cursive;
-    }
+.category-display{
+  min-height: 40px;
+  cursor: pointer;
+}
+.main-category{
+    box-sizing: border-box;
+    position: relative;
+    border: none;
+    margin: 14px;
+    box-shadow: 8px 8px 14px rgba(8,8,8,0.9);
+    background-color: rgba(200,20,20,0.6);
+    min-height: 20px;
+    height: auto;
+    transition: flex-grow 0.6s, flex-shrink 0.6s, filter 0.2s;
+  }
+  .events-container{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
 
-    #lasya-title{
-        padding-top:40%;
-        font-family:"cookie",cursive;
-    }
+  .event-area{
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: flex-start;
+      background-color: rgba(8,8,8,0.4);
+      border-radius: 2px;
+      margin: 18px;
+      min-height: 200px;
+      height: auto;
+      width: 80%;
+      padding: 12px;
+  }
 
-    #more-title{
-        padding-top:40%;
-        font-size:35px;
-        font-family: 'Carter One', cursive;
-        width:60%;
-        margin: 0px auto 0px auto;
-    }
+  .event_logo{
+      width: 50%;
+      margin: 2px auto;
+  }
 
-    .event-title{
-        width:100%;
+  .event_text{
+      padding: 0;
+      margin: 2px auto;
+      font-size: 24px;
+      font-family: 'Coda', cursive;
+      text-align: center;
+      min-height: 80px;
+  }
+
+  .seeMore{
+      font-size: 16px;
+      width: auto;
+      height:auto;
+      padding: 8px 14px;
+      border: 2px solid rgba(255,255,240,1);
+      display: block;
+      margin: 0;
+      color: rgba(255,255,240,1);
+  }
+  .seeMore:hover{
+      border: 2px solid rgba(255,255,240,1);
+      background-color: rgba(255,255,240,0.9);
+  }
+
+  #category1 .seeMore:hover{
+      color: rgba(100,100,255,1);
+  }
+  #category2 .seeMore:hover{
+      color: rgba(100,225,100,1);
+  }
+  #category3 .seeMore:hover{
+      color: rgba(255,100,100,1);
+  }
+  #category4 .seeMore:hover{
+      color: rgba(100,100,255,1);
+  }
+  #category5 .seeMore:hover{
+      color: rgba(100,225,100,1);
+  }
+
+
+  .closeButton{
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: transparent !important;
+      border: none;
+      font-size: 40px;
+      cursor: pointer;
+      color: rgb(255,255,240,0.9);
+      transition: color 0.3s;
+      display: none;
+  }
+  .closeButton:hover{
+      outline: none;
+      color: rgb(255,255,255,0.9);
+  }
+  .closeButton:focus{
+      outline: none;
+      color: rgb(180,180,180,0.9);
+  }
+  .closeButton:active{
+      outline: none;
+      color: rgb(180,180,180,0.9);
+  }
+
+
+@media(max-width:759px){
+    .simplebar-offset{
+        right: 0 !important;
+    }
+    .simplebar-content{
+        padding: 0 !important;
+    }
+    .category-content-contents{
+        overflow: hidden;
+    }
+}
+
+@media(min-width:760px){
+    .closeButton{
+        top: 14px;
+        right: 14px;
+    }
+    #categories h2{
+        padding: 14px;
+        margin: 0;
         text-align: center;
+        font-size: 2.5vw;
+        transition: all 0.4s;
     }
-
-    #proscenium-title{
-        padding-top:40%;
-        font-size:32px;
-        font-family: 'Fredericka the Great', cursive;
+    .rotateACW{
+      font-size: 1.8vw !important;
     }
+  #navBar{
+      height: 40px;
+  }
+  #navBar a .small{
+      padding: 0;
+  }
+  #navBar a .big{
+      display: none;
+  }
+  #categories{
+    position: absolute;
+    margin-top: 0;
+    top: 56px;
+    left: 14px;
+    right: 14px;
+    bottom: 40px;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+  .main-category{
+      background-size: cover;
+      background-position:center;
+      box-sizing: border-box;
+    position: relative;
+    border: none;
+    margin: 14px;
+    box-shadow: 8px 8px 40px rgba(8,8,8,0.9);
+    background-color: rgba(200,20,20,0.6);
+    min-height: 100%;
+    height: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    transition: flex-grow 0.6s, flex-shrink 0.6s, filter 0.2s;
+    filter: grayscale(70%) brightness(0.8);
+  }
+  .main-category:hover{
+      filter: grayscale(0) brightness(1);
+  }
+  .category-display{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .category-content{
+    font-size: 44px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-    #footprints-title{
-        padding-top:40%;
-        font-family: 'Marck Script', cursive;
-        font-size:45px;
-    }
-    #linguistics-title{
-        padding-top:40%;
-        font-family: "Notable",sans-serif;
-        font-size:32px;
-    }
+  .events-container{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
 
-    #decoherence-title{
-        font-family:"Quantico";
-        font-size: 32px;
-    }
+  .event-area{
+      display: flex;
+      margin: 24px;
+      min-height: 320px;
+      width: 240px;
+  }
 
-    @media(max-width:759px){
-
-            #decoherence-title{
-                padding-top:40%;
-            }
-            #bob-title{
-                padding-top:40%;
-            }
-    }
-
-    .event-logo{
-        margin:0px auto;
-        height:150px;
-        width:150px;
-    }
-
-    #linguistics-logo{
-        margin:20px auto;
-        height:80px;
-        width:80px;
-        background-image:url(../img/linguistics.svg);
-        background-size:cover;
-        background-repeat: none;
-        background-position: 0px 30%;
-    }
-
-    #decoherence-logo{
-        background-image:url(../img/decoherence-logo.svg);
-        background-size:contain;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    #proscenium-logo{
-        background-image: url("../img/mask2.svg");
-        background-size:cover;
-        background-position: 45%;
-        background-repeat: no-repeat;
-    }
-
-    #footprints-logo{
-        background-image: url(../img/footprint2.svg);
-        background-size:contain;
-        background-repeat: no-repeat;
-    }
-
-    #lasya-logo{
-        background-image:url(../img/lasya.svg);
-        background-size:cover;
-        background-repeat: none;
-        background-position: 0px 30%;
-    }
-
-    #hourglass-logo{
-        height:80px;
-        width:80px;
-        background-image:url(../img/hourglass.svg);
-        background-repeat: no-repeat;
-        background-position:50%;
-    }
-
-    #bob-logo{
-        background-image: url(../img/boblogo2.svg);
-        background-size:cover;
-        background-repeat: no-repeat;
-        background-position: 50%;
-    }
-
-    .event-description{
-        font-size:18px;
-        font-family: 'Jua', sans-serif;
-        text-align: center;
-        width:70%;
-        margin:10px auto 0px auto;
-    }
-
-    .see-more{
-        padding-top:0.3em;
-        margin:20px auto 0px auto;
-        text-align: center;
-        height:30px;
-        width:50%;
-        font-size:18px;
-        border:2px solid white;
-        color: white;
-    }
-
-    .see-more:active{
-        background-color:white;
-    }
-
-    #bob-see:active{
-        color:orangered;
-    }
-
-    .see-more:active{
-        background-color:white;
-    }
-
-    #pro-see:active{
-        color:red;
-    }
-
-    #pro-see:active{
-        color:red;
-    }
-
-    #foot-see:active{
-        color:green;
-    }
-
-    #lasya-see:active{
-        color:blue;
-    }
-    #linguistics-see:active{
-    color:#442828
-    }
-
-    #decoherence-see:active{
-        color:#2d5699;
-    }
-
-.collapsible-item{
-    display:none;
-    height:200px;
-}
-
-/*so that the bar becomes smaller when  selected*/
-.active{
-    height:10%;
-}
-
-@keyframes pan{
-    from {background-position:0% 0%;}
-    to {background-position:100% 0% ;}
-}
-
-@keyframes half-pan{
-    from {background-position:40% 0%;}
-    to {background-position:100% 0% ;}
-}
-
-@keyframes rot{
-    transform: rotate(90deg);
-}
-
-@media screen and (min-width:760px){
-    .container{
-        margin-top: 84px;
-    }
-
-    .partitions-container{
-        display: block;
-        width:100%;
-        height:100vh;
-    }
-
-    .partition1{
-        display: inline-block;
-        float:left;
-        background-image:url(../img/backgrounds/linguistics-background.jpg);
-        background-size:cover;
-        background-repeat:no-repeat;
-        background-position: 50%;
-        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(100%);
-        height:100%;
-        width:17%;
-    }
-
-    .event-title{
-        margin-top:60%;
-    }
-    #linguistics-title{
-        padding-top:0px;
-    }
-
-     #bob-title{
-        font-size:32px;
-        font-family: 'Oleo Script', cursive;
-    }
-
-    #lasya-title{
-        padding-top:0px;
-    }
-
-    #more-title{
-        padding-top:0px;
-    }
-
-    #proscenium-title{
-        padding-top:0px
-    }
-
-    #footprints-title{
-        padding-top:0px;
-    }
-
-    #decoherence-title{
-        font-family:"Quantico";
-        font-size: 35px;
-        /* padding-top: 30%;
-        */
-    }
-
-    #bob-see:hover{
-        color:orangered;
-    }
-
-    .see-more:hover{
-        background-color:white;
-    }
-
-    #pro-see:hover{
-        color:red;
-    }
-
-    #pro-see:hover{
-        color:red;
-    }
-
-    #foot-see:hover{
-        color:green;
-    }
-
-    #lasya-see:hover{
-        color:blue;
-    }
-
-    #decoherence-see:hover{
-        color:#2d5699;
-    }
-
-    #more-title{
-        font-size:35px;
-        font-family: 'Carter One', cursive;
-        width:60%;
-        margin: 60% auto 0px auto;
-    }
-
-
-
-    .partition2{
-        margin:0px;
-        display:inline-block;
-        top:0px;
-        left:0px;
-        float:left;
-        background-image:url(../img/backgrounds/proscenium-b.jpg);
-        background-size:cover;
-        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(100%);
-        background-repeat:no-repeat;
-        height:100%;
-        width:17%;
-    }
-
-    .partition3{
-        display:inline-block;
-        background-image:url(../img/backgrounds/footprints-c.jpg);
-        background-size:cover;
-        float:left;
-        background-position: center;
-        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(100%);
-        height:100%;
-        width:16%;
-    }
-
-    .partition4{
-        display:inline-block;
-        float:left;
-        background-image:url(../img/backgrounds/lasya-b.jpg);
-        background-size:cover;
-        background-position: center;
-        font-size:60px;
-        font-weight:200;
-        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(100%);
-        height:100%;
-        width:16%;
-    }
-
-    .partition5{
-        /*invisible on pc version for now due to width considerations*/
-        display:none;
-        float:left;
-        width:16%;
-        height:100%;
-        background-image: url(../img/backgrounds/more.jpg);
-        background-size:cover;
-        background-repeat:no-repeat;
-        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(100%);
-    }
-
-    .partition6{
-        display:inline-block;
-        float:left;
-        width:17%;
-        height:100%;
-        background-image: url(../img/backgrounds/bob-b.jpeg);
-        background-size:cover;
-        background-repeat:no-repeat;
-        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(100%);
-    }
-
-    .partition7{
-        display:inline-block;
-        float:left;
-        width:17%;
-        height:100%;
-        background-image: url(../img/backgrounds/decoherence2.jpeg);
-        background-position: 20%;
-        background-size:cover;
-        background-repeat:no-repeat;
-        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(100%);
-    }
-
-    .collapsible-item{
-        display: none;
-    }
-
-    .partition1:hover{
-        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(0%);
-        animation-name: half-pan;
-        animation-duration: 12s;
-    }
-
-    .partition2:hover{
-        background-color:green;
-        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(0%);
-        animation-name: pan;
-        animation-duration: 12s;
-    }
-
-    .partition3:hover{
-        background-image:url(../img/backgrounds/footprints-c.jpg);
-        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(0%);
-        animation-name: half-pan;
-        animation-duration: 12s;
-    }
-
-    .partition4:hover{
-        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(0%);
-        animation-name: half-pan;
-        animation-duration: 12s;
-    }
-
-    .partition5:hover{
-        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(0%);
-        animation-name: pan;
-        animation-duration: 12s;
-    }
-
-    .partition6:hover{
-        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(0%);
-        animation-name: half-pan;
-        animation-duration: 12s;
-    }
-
-
-    .partition7:hover{
-        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-        filter: grayscale(0%);
-        animation-name: pan;
-        animation-duration: 12s;
-    }
+  .coming-soon-event{
+      margin-top: 100px;
+       min-height: 220px;
+  }
 }

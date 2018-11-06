@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Events | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Cookie|Fredericka+the+Great|Oleo+Script|Carter+One|Marck+Script|Notable|Oleo+Script|Quantico" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/events.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+        <!--the collapsible items collapse down in the mobile implementation-->
+
+
+        <div class="partitions-container">
+            <div class="partition6 collapsible">
+                <div class="event-title" id="bob-title">Battle of Bands</div>
+                <div class="event-logo" id="bob-logo"></div>
+                <div class="event-description">Rock on with the Battle of Bands</div>
+                <a href="{%url 'battleofbands'%}"><div class="see-more" id="bob-see">See More</div></a>
+            </div>
+            <div class="partition4 collapsible">
+                <div class="event-title" id="lasya-title">Lasya</div>
+                <div class="event-logo" id="lasya-logo"></div>
+                <div class="event-description">The Dance Exposition</div>
+                <a href="{%url 'lasya'%}"><div class="see-more" id="lasya-see">See More</div></a>
+            </div>
+            <div class="partition2 collapsible">
+                <div class="event-title" id="proscenium-title">Proscenium</div>
+                <div class="event-logo" id="proscenium-logo"></div>
+                <div class="event-description">The Thespian Extravaganza</div>
+                <a href="{%url 'proscenium'%}"><div class="see-more" id="pro-see">See More</div></a>
+            </div>
+            <div class="partition3 collapsible">
+                <div class="event-title" id="footprints-title">Footprints</div>
+                <div class="event-logo" id="footprints-logo"></div>
+                <div class="event-description">Reviving Street Play</div>
+                <a href="{%url 'footprints'%}"><div class="see-more" id="foot-see">See More</div></a>
+            </div>
+            <div class="partition7 collapsible">
+                <div class="event-title" id="decoherence-title">Decoherence</div>
+                <div class="event-logo" id="decoherence-logo"></div>
+                <div class="event-description">Apply your knowledge in Physics</div>
+                <a href="{%url 'decoherence'%}"><div class="see-more" id="decoherence-see">See More</div></a>
+            </div>
+            <div class="partition1 collapsible">
+                <div class="event-title" id="linguistics-title">In other words</div>
+                <div class="event-logo" id="linguistics-logo"></div>
+                <div class="event-description">The Linguistic Puzzling Marathon</div>
+                <a href="{%url 'inotherwords'%}"><div class="see-more" id="linguistics-see">See More</div></a>
+            </div>
+            <div class="partition5 collapsible">
+                <div class="event-title" id="more-title">More on the way</div>
+                <div class="event-logo" id="hourglass-logo"></div>
+                <div class="event-description">That's not all, plenty more fun events are on the way. Stay Tuned!</div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{%static 'js/navBar.js'%}"> </script>
+{% endblock %}

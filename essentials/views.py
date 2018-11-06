@@ -32,10 +32,6 @@ def help(request):
 def events(request):
 	return render(request, 'essentials/events.html', {})
 
-
-def eventstest(request):
-	return render(request, 'essentials/eventstest.html', {})
-
 def contact(request):
 	return render(request, 'essentials/contact.html', {})
 

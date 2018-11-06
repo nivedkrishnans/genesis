@@ -3,6 +3,17 @@
 {% load staticfiles %}
 
 {% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.js"></script>
+    <noscript>
+        <style>
+        [data-simplebar] {
+            overflow: auto;
+        }
+        </style>
+    </noscript>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{%static 'js/jquery.actual.min.js'%}"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{%static 'css/style.css'%}">
@@ -10,60 +21,266 @@
     <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
     <title>Events | Pravega 2019, IISc Bangalore</title>
-    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Cookie|Fredericka+the+Great|Oleo+Script|Carter+One|Marck+Script|Notable|Oleo+Script|Quantico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Voces|Cinzel+Decorative:400,700|Coda|Salsa" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/events.css'%}">
+
+
 {% endblock %}
 
 {% block content %}
-<div class="content">
-        <!--the collapsible items collapse down in the mobile implementation-->
-
-
-        <div class="partitions-container">
-            <div class="partition6 collapsible">
-                <div class="event-title" id="bob-title">Battle of Bands</div>
-                <div class="event-logo" id="bob-logo"></div>
-                <div class="event-description">Rock on with the Battle of Bands</div>
-                <a href="{%url 'battleofbands'%}"><div class="see-more" id="bob-see">See More</div></a>
-            </div>
-            <div class="partition4 collapsible">
-                <div class="event-title" id="lasya-title">Lasya</div>
-                <div class="event-logo" id="lasya-logo"></div>
-                <div class="event-description">The Dance Exposition</div>
-                <a href="{%url 'lasya'%}"><div class="see-more" id="lasya-see">See More</div></a>
-            </div>
-            <div class="partition2 collapsible">
-                <div class="event-title" id="proscenium-title">Proscenium</div>
-                <div class="event-logo" id="proscenium-logo"></div>
-                <div class="event-description">The Thespian Extravaganza</div>
-                <a href="{%url 'proscenium'%}"><div class="see-more" id="pro-see">See More</div></a>
-            </div>
-            <div class="partition3 collapsible">
-                <div class="event-title" id="footprints-title">Footprints</div>
-                <div class="event-logo" id="footprints-logo"></div>
-                <div class="event-description">Reviving Street Play</div>
-                <a href="{%url 'footprints'%}"><div class="see-more" id="foot-see">See More</div></a>
-            </div>
-            <div class="partition7 collapsible">
-                <div class="event-title" id="decoherence-title">Decoherence</div>
-                <div class="event-logo" id="decoherence-logo"></div>
-                <div class="event-description">Apply your knowledge in Physics</div>
-                <a href="{%url 'decoherence'%}"><div class="see-more" id="decoherence-see">See More</div></a>
-            </div>
-            <div class="partition1 collapsible">
-                <div class="event-title" id="linguistics-title">In other words</div>
-                <div class="event-logo" id="linguistics-logo"></div>
-                <div class="event-description">The Linguistic Puzzling Marathon</div>
-                <a href="{%url 'inotherwords'%}"><div class="see-more" id="linguistics-see">See More</div></a>
-            </div>
-            <div class="partition5 collapsible">
-                <div class="event-title" id="more-title">More on the way</div>
-                <div class="event-logo" id="hourglass-logo"></div>
-                <div class="event-description">That's not all, plenty more fun events are on the way. Stay Tuned!</div>
+  <div class="main">
+    <div id="categories">
+      <section class="main-category" id="category1">
+        <div class="category-display"><h2>P.I.S.</h2>
+        </div>
+        <div class="category-content">
+            <div data-simplebar class="category-content-contents">
+                <div class="events-container">
+                    <div class="event-area coming-soon-event">
+                        <h4 class="event_title">Coming Soon</h4>
+                        <img class="event_logo" src="{%static 'img/events/hourglass.png'%}" alt="coming soon" />
+                        <p class="event_text">This section will be updated soon.</p>
+                    </div>
+                </div>
             </div>
         </div>
+        <button class="closeButton" onclick=closeAllCategories();>&times;</button>
+      </section>
+      <section class="main-category" id="category2">
+        <div class="category-display"><h2>TECHNICAL</h2>
+        </div>
+        <div class="category-content">
+            <div data-simplebar class="category-content-contents">
+                <div class="events-container">
+                    <div class="event-area coming-soon-event">
+                        <h4 class="event_title">Coming Soon</h4>
+                        <img class="event_logo" src="{%static 'img/events/hourglass.png'%}" alt="coming soon" />
+                        <p class="event_text">This section will be updated soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="closeButton" onclick=closeAllCategories();>&times;</button>
+      </section>
+      <section class="main-category" id="category3">
+        <div class="category-display"><h2>SCIENCE</h2>
+        </div>
+        <div class="category-content">
+            <div data-simplebar class="category-content-contents">
+                <div>
+                    <h3 class="subcategory_title">Physics</h3>
+                    <div class="events-container">
+                        <div class="event-area">
+                            <h4 class="event_title">Decoherence</h4>
+                            <img class="event_logo" src="{%static 'img/events/decoherence_logo.png'%}" alt="decoherence" />
+                            <p class="event_text">Apply your knowledge in Physics</p>
+                            <a href="{%url 'decoherence'%}"><div class="seeMore"> See More </div></a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="subcategory_title">Linguistics</h3>
+                    <div class="events-container">
+                        <div class="event-area">
+                            <h4 class="event_title">In Other Words</h4>
+                            <img class="event_logo" src="{%static 'img/events/inotherwords_logo.png'%}" alt="in other words" />
+                            <p class="event_text">The Linguistic Puzzling Marathon</p>
+                            <a href="{%url 'inotherwords'%}"><div class="seeMore"> See More </div></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="closeButton" onclick=closeAllCategories();>&times;</button>
+      </section>
+      <section class="main-category" id="category4">
+        <div class="category-display"><h2>QUIZ</h2>
+        </div>
+        <div class="category-content">
+            <div data-simplebar class="category-content-contents">
+                <div class="events-container">
+                    <div class="event-area coming-soon-event">
+                        <h4 class="event_title">Coming Soon</h4>
+                        <img class="event_logo" src="{%static 'img/events/hourglass.png'%}" alt="coming soon" />
+                        <p class="event_text">This section will be updated soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="closeButton" onclick=closeAllCategories();>&times;</button>
+      </section>
+      <section class="main-category" id="category5">
+        <div class="category-display"><h2>CULTURAL</h2>
+        </div>
+        <div class="category-content">
+            <div data-simplebar class="category-content-contents">
+                <div class="events-container">
+                    <div>
+                        <h3 class="subcategory_title">Culturals</h3>
+                        <div class="events-container">
+                            <div class="event-area">
+                                <h4 class="event_title">Battle of Bands</h4>
+                                <img class="event_logo" src="{%static 'img/events/bob_logo.png'%}" alt="battle of bands" />
+                                <p class="event_text">Rock on with the Battle of Bands</p>
+                                <a href="{%url 'battleofbands'%}"><div class="seeMore"> See More </div></a>
+                            </div>
+                            <div class="event-area">
+                                <h4 class="event_title">Lasya</h4>
+                                <img class="event_logo" src="{%static 'img/events/lasya_logo.png'%}" alt="lasya" />
+                                <p class="event_text">The Dance Exposition</p>
+                                <a href="{%url 'lasya'%}"><div class="seeMore"> See More </div></a>
+                            </div>
+                            <div class="event-area">
+                                <h4 class="event_title">Proscenium</h4>
+                                <img class="event_logo" src="{%static 'img/events/proscenium_logo.png'%}" alt="decoherence" />
+                                <p class="event_text">TThe Thespian Extravaganza</p>
+                                <a href="{%url 'proscenium'%}"><div class="seeMore"> See More </div></a>
+                            </div>
+                            <div class="event-area">
+                                <h4 class="event_title">Footprints</h4>
+                                <img class="event_logo" src="{%static 'img/events/footprints_logo.png'%}" alt="decoherence" />
+                                <p class="event_text">Reviving Street Play</p>
+                                <a href="{%url 'footprints'%}"><div class="seeMore"> See More </div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="closeButton" onclick=closeAllCategories();>&times;</button>
+      </section>
     </div>
 
+  </div>
+  <script src="{%static 'js/navBar.js'%}"> </script>
+  <script>
+    var category1 = $("#category1");
+    var category2 = $("#category2");
+    var category3 = $("#category3");
+    var category4 = $("#category4");
+    var category5 = $("#category5");
+    var allCategories = document.getElementsByClassName("main-category");
+    var categoryOpenStatus = [false, false, false];
+    var anyCategoryOpen = false;
+    var fadeTransitionLength = 200;
+    var flexRatio = 8;
+    var categoryOpenCloseDelay = 800;
+    //returns whether or not the device is a mobile
+    function isMobile(){
+        return ($(window).width() < 760);
+    }
+    //calculates the height of the category content using jquery.actual.min.js for smooth slideDown()
+    function mobileContentHeight(){
+        if(isMobile()){
+            strtemp = " meta  ";
+            for(var i=1; i<= allCategories.length; i++){
+                currentCategoryContent = $("#category" + i + " .category-content");
+                temp = currentCategoryContent.actual('height');
+                strtemp = strtemp + temp + " ";
+                currentCategoryContent.css('height',temp);
+            }
+            console.log(strtemp);
+        }
+        else{
+            $("main-category .category-content").css('height','none');
+        }
+        console.log("\tmobileContentHeight ready");
+    }
+    //open category on hovering
+    category1.find(".category-display").click(function(){categoryOpenClose(1);});
+    category2.find(".category-display").click(function(){categoryOpenClose(2);});
+    category3.find(".category-display").click(function(){categoryOpenClose(3);});
+    category4.find(".category-display").click(function(){categoryOpenClose(4);});
+    category5.find(".category-display").click(function(){categoryOpenClose(5);});
+    $(document).ready(function(){
+        mobileContentHeight();
+        closeAllCategories();
+    });
+    $(window).resize(function(){
+        var width1,width2;
+        width1= $(window).width();
+        setTimeout(function(){
+            width2= $(window).width();
+        }, 5);
+        setTimeout(function(){
+            if(width1 != width2){
+                console.log("Width resize "+width1+ " " +width2);
+                mobileContentHeight();
+                closeAllCategories();
+                }
+        }, 5);
 
-    <script src="{%static 'js/navBar.js'%}"> </script>
+    });
+
+
+    function closeAllCategories(){
+        $(".closeButton").delay(0).fadeOut(100);
+        if(isMobile()){
+            $(".category-content").slideUp(200);
+            $(".category-display h2").removeClass("rotateACW");
+        }
+        else{
+            $(".category-display").delay(200).fadeIn(200);
+            $(".category-content").fadeOut(200);
+            $(".main-category").css("flex-grow",1);
+            $(".main-category").css("flex-shrink",1);
+            $(".category-display h2").removeClass("rotateACW");
+        }
+        console.log("CLOSED ALL CATEGORIES");
+    }
+
+
+    function categoryOpenClose(n){
+        if(isMobile()){
+            for(var i=1; i<= allCategories.length; i++){
+              currentCategory = $("#category" + i);
+              if (i==n){
+                  currentCategory.find(".category-content").delay(0).slideDown(300);
+                  currentCategory.find(".closeButton").delay(0).fadeIn(100);
+                      currentCategory.css("flex-grow",flexRatio);
+                      currentCategory.css("flex-shrink",flexRatio);
+                  categoryOpenStatus[i] = true;
+                  console.log("opened category" + i);
+              }
+              else{
+                  currentCategory.find(".category-content").delay(0).slideUp(300);
+                  currentCategory.find(".closeButton").delay(0).fadeOut(100);
+                      currentCategory.css("flex-grow",1);
+                      currentCategory.css("flex-shrink",1);
+                  categoryOpenStatus[i] = false;
+                  console.log("closed category" + i);
+              }
+            }
+            console.log("Category Open-Close Complete");
+        }
+        else{
+            for(var i=1; i<= allCategories.length; i++){
+              currentCategory = $("#category" + i);
+              if (i==n){
+                  currentCategory.find(".category-display").delay(800).fadeOut(300);
+                  currentCategory.find(".closeButton").delay(0).fadeIn(100);
+                  currentCategory.find(".category-display h2").removeClass("rotateACW");
+                  currentCategory.find(".category-content").delay(900).fadeIn(300);
+                      currentCategory.css("flex-grow",flexRatio);
+                      currentCategory.css("flex-shrink",flexRatio);
+                  categoryOpenStatus[i] = true;
+                  console.log("opened category" + i);
+              }
+              else{
+                  currentCategory.find(".category-display").delay(0).fadeIn(300);
+                  currentCategory.find(".closeButton").delay(0).fadeOut(100);
+                  currentCategory.find(".category-display h2").addClass("rotateACW");
+                  currentCategory.find(".category-content").delay(0).fadeOut(300);
+                      currentCategory.css("flex-grow",1);
+                      currentCategory.css("flex-shrink",1);
+                  categoryOpenStatus[i] = false;
+                  console.log("closed category" + i);
+              }
+            }
+            console.log("Category Open-Close Complete");
+        }
+    }
+
+
+  </script>
 {% endblock %}

@@ -1,0 +1,508 @@
+body{
+    margin:0px;
+    height: auto;
+    background-image: none;
+}
+
+.content{
+    min-height:100vh;
+    margin: 0;
+}
+
+
+
+
+.partitions-container{
+    min-height:100vh;
+    width:100%;
+}
+
+.partitions-container > div {
+    min-height: 100vh;
+}
+
+/*partititons for mobile version*/
+    .partition1{
+        background-image:url(../img/backgrounds/linguistics-background.jpg);
+        background-size:cover;
+        background-repeat:no-repeat;
+        height:100%;
+        width:100%%;
+    }
+
+    .partition2{
+        margin:0px;
+        top:0px;;
+        background-image:url(../img/backgrounds/proscenium-b.jpg);
+        background-size:cover;
+        background-repeat:no-repeat;
+        height:100%;
+        width:100%;
+    }
+
+    .partition3{
+        background-image:url(../img/backgrounds/footprints-c.jpg);
+        background-size:cover;
+        background-position: center;
+        height:100%;
+        width:100%;
+    }
+
+    .partition4{
+        background-image:url(../img/backgrounds/lasya-b.jpg);
+        background-size:cover;
+        background-position: center;
+        font-size:60px;
+        font-weight:200;
+        height:100%;
+        width:100%;
+    }
+
+    .partition5{
+        width:100%;
+        height:100%;
+        background-image: url(../img/backgrounds/more.jpg);
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+
+    .partition6{
+        width:100%;
+        height:100%;
+        background-image:url(../img/backgrounds/bob-b.jpeg);
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+
+    .partition7{
+        width:100%;
+        height:100%;
+        background-image: url(../img/backgrounds/decoherence2.jpeg);
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+
+ #bob-title{
+        /* padding-top:40%;
+        */
+        font-size:32px;
+        font-family: 'Oleo Script', cursive;
+    }
+
+    #lasya-title{
+        padding-top:40%;
+        font-family:"cookie",cursive;
+    }
+
+    #more-title{
+        padding-top:40%;
+        font-size:35px;
+        font-family: 'Carter One', cursive;
+        width:60%;
+        margin: 0px auto 0px auto;
+    }
+
+    .event-title{
+        width:100%;
+        text-align: center;
+    }
+
+    #proscenium-title{
+        padding-top:40%;
+        font-size:32px;
+        font-family: 'Fredericka the Great', cursive;
+    }
+
+    #footprints-title{
+        padding-top:40%;
+        font-family: 'Marck Script', cursive;
+        font-size:45px;
+    }
+    #linguistics-title{
+        padding-top:40%;
+        font-family: "Notable",sans-serif;
+        font-size:32px;
+    }
+
+    #decoherence-title{
+        font-family:"Quantico";
+        font-size: 32px;
+    }
+
+    @media(max-width:759px){
+
+            #decoherence-title{
+                padding-top:40%;
+            }
+            #bob-title{
+                padding-top:40%;
+            }
+    }
+
+    .event-logo{
+        margin:0px auto;
+        height:150px;
+        width:150px;
+    }
+
+    #linguistics-logo{
+        margin:20px auto;
+        height:80px;
+        width:80px;
+        background-image:url(../img/linguistics.svg);
+        background-size:cover;
+        background-repeat: none;
+        background-position: 0px 30%;
+    }
+
+    #decoherence-logo{
+        background-image:url(../img/decoherence-logo.svg);
+        background-size:contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    #proscenium-logo{
+        background-image: url("../img/mask2.svg");
+        background-size:cover;
+        background-position: 45%;
+        background-repeat: no-repeat;
+    }
+
+    #footprints-logo{
+        background-image: url(../img/footprint2.svg);
+        background-size:contain;
+        background-repeat: no-repeat;
+    }
+
+    #lasya-logo{
+        background-image:url(../img/lasya.svg);
+        background-size:cover;
+        background-repeat: none;
+        background-position: 0px 30%;
+    }
+
+    #hourglass-logo{
+        height:80px;
+        width:80px;
+        background-image:url(../img/hourglass.svg);
+        background-repeat: no-repeat;
+        background-position:50%;
+    }
+
+    #bob-logo{
+        background-image: url(../img/boblogo2.svg);
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position: 50%;
+    }
+
+    .event-description{
+        font-size:18px;
+        font-family: 'Jua', sans-serif;
+        text-align: center;
+        width:70%;
+        margin:10px auto 0px auto;
+    }
+
+    .see-more{
+        padding-top:0.3em;
+        margin:20px auto 0px auto;
+        text-align: center;
+        height:30px;
+        width:50%;
+        font-size:18px;
+        border:2px solid white;
+        color: white;
+    }
+
+    .see-more:active{
+        background-color:white;
+    }
+
+    #bob-see:active{
+        color:orangered;
+    }
+
+    .see-more:active{
+        background-color:white;
+    }
+
+    #pro-see:active{
+        color:red;
+    }
+
+    #pro-see:active{
+        color:red;
+    }
+
+    #foot-see:active{
+        color:green;
+    }
+
+    #lasya-see:active{
+        color:blue;
+    }
+    #linguistics-see:active{
+    color:#442828
+    }
+
+    #decoherence-see:active{
+        color:#2d5699;
+    }
+
+.collapsible-item{
+    display:none;
+    height:200px;
+}
+
+/*so that the bar becomes smaller when  selected*/
+.active{
+    height:10%;
+}
+
+@keyframes pan{
+    from {background-position:0% 0%;}
+    to {background-position:100% 0% ;}
+}
+
+@keyframes half-pan{
+    from {background-position:40% 0%;}
+    to {background-position:100% 0% ;}
+}
+
+@keyframes rot{
+    transform: rotate(90deg);
+}
+
+@media screen and (min-width:760px){
+    .container{
+        margin-top: 84px;
+    }
+
+    .partitions-container{
+        display: block;
+        width:100%;
+        height:100vh;
+    }
+
+    .partition1{
+        display: inline-block;
+        float:left;
+        background-image:url(../img/backgrounds/linguistics-background.jpg);
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position: 50%;
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+        height:100%;
+        width:17%;
+    }
+
+    .event-title{
+        margin-top:60%;
+    }
+    #linguistics-title{
+        padding-top:0px;
+    }
+
+     #bob-title{
+        font-size:32px;
+        font-family: 'Oleo Script', cursive;
+    }
+
+    #lasya-title{
+        padding-top:0px;
+    }
+
+    #more-title{
+        padding-top:0px;
+    }
+
+    #proscenium-title{
+        padding-top:0px
+    }
+
+    #footprints-title{
+        padding-top:0px;
+    }
+
+    #decoherence-title{
+        font-family:"Quantico";
+        font-size: 35px;
+        /* padding-top: 30%;
+        */
+    }
+
+    #bob-see:hover{
+        color:orangered;
+    }
+
+    .see-more:hover{
+        background-color:white;
+    }
+
+    #pro-see:hover{
+        color:red;
+    }
+
+    #pro-see:hover{
+        color:red;
+    }
+
+    #foot-see:hover{
+        color:green;
+    }
+
+    #lasya-see:hover{
+        color:blue;
+    }
+
+    #decoherence-see:hover{
+        color:#2d5699;
+    }
+
+    #more-title{
+        font-size:35px;
+        font-family: 'Carter One', cursive;
+        width:60%;
+        margin: 60% auto 0px auto;
+    }
+
+
+
+    .partition2{
+        margin:0px;
+        display:inline-block;
+        top:0px;
+        left:0px;
+        float:left;
+        background-image:url(../img/backgrounds/proscenium-b.jpg);
+        background-size:cover;
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+        background-repeat:no-repeat;
+        height:100%;
+        width:17%;
+    }
+
+    .partition3{
+        display:inline-block;
+        background-image:url(../img/backgrounds/footprints-c.jpg);
+        background-size:cover;
+        float:left;
+        background-position: center;
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+        height:100%;
+        width:16%;
+    }
+
+    .partition4{
+        display:inline-block;
+        float:left;
+        background-image:url(../img/backgrounds/lasya-b.jpg);
+        background-size:cover;
+        background-position: center;
+        font-size:60px;
+        font-weight:200;
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+        height:100%;
+        width:16%;
+    }
+
+    .partition5{
+        /*invisible on pc version for now due to width considerations*/
+        display:none;
+        float:left;
+        width:16%;
+        height:100%;
+        background-image: url(../img/backgrounds/more.jpg);
+        background-size:cover;
+        background-repeat:no-repeat;
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+    }
+
+    .partition6{
+        display:inline-block;
+        float:left;
+        width:17%;
+        height:100%;
+        background-image: url(../img/backgrounds/bob-b.jpeg);
+        background-size:cover;
+        background-repeat:no-repeat;
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+    }
+
+    .partition7{
+        display:inline-block;
+        float:left;
+        width:17%;
+        height:100%;
+        background-image: url(../img/backgrounds/decoherence2.jpeg);
+        background-position: 20%;
+        background-size:cover;
+        background-repeat:no-repeat;
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+    }
+
+    .collapsible-item{
+        display: none;
+    }
+
+    .partition1:hover{
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+        animation-name: half-pan;
+        animation-duration: 12s;
+    }
+
+    .partition2:hover{
+        background-color:green;
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+        animation-name: pan;
+        animation-duration: 12s;
+    }
+
+    .partition3:hover{
+        background-image:url(../img/backgrounds/footprints-c.jpg);
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+        animation-name: half-pan;
+        animation-duration: 12s;
+    }
+
+    .partition4:hover{
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+        animation-name: half-pan;
+        animation-duration: 12s;
+    }
+
+    .partition5:hover{
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+        animation-name: pan;
+        animation-duration: 12s;
+    }
+
+    .partition6:hover{
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+        animation-name: half-pan;
+        animation-duration: 12s;
+    }
+
+
+    .partition7:hover{
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+        animation-name: pan;
+        animation-duration: 12s;
+    }
+}
