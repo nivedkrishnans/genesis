@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Pravega Innovation Summit | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Pravega Innovation Summit</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      Pravega Innovation Summit (PIS) is the flagship event of Pravega 2019.
+    </p>
+    <p>
+       It is an initiative to bring the pillars of scientific growth and innovation i.e. researchers, students, corporates and investors together and provide a platform for networking, exchanging of ideas and fostering collaboration.
+         PIS also aims to promote and provide support to budding innovations and ideas by young students all over the country.
+    </p>
+    <p>Students come up with innovations and get an opportunity to present them in front of potential investors.
+    Very young start-ups are also invited to participate.
+    </p>
+            <div class="event-essentials">
+                <a href="{% url 'pisRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+            </div>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Events</div>
+            <div class="horizontal-line"></div>
+            <p>
+              The Summit will have 3 events:
+            </p>
+            <ul>
+                <li>Symposium</li>
+                <li>SINEC (Student Innovation and Entrepreneurship Conclave)</li>
+                <li> RIC (Research Innovation Convention)</li>
+            </ul>
+		</div>
+        </div>
+
+		</section  >
+			<section style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Symposium</div>
+            <div class="horizontal-line"></div>
+            <p>
+              The symposium will consist of talks by industrial leaders, researchers and professors followed by a panel discussion on science-backed innovations and start-ups and how to incorporate them into the corporate world.
+            </p>
+
+        </div>
+		</div>
+		</section >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">SINEC (Student Innovation and Entrepreneurship Conclave)</div>
+            <div class="horizontal-line"></div>
+
+            <p>
+                Designed to bring out the best innovations of the country and provide support to budding entrepreneurs. The event will have two parts, prelims and the summit.
+            </p>
+
+            <p>
+              For the prelims, the students send a description, documentation of their innovation. The shortlisted students will be invited to attend PIS and present their innovations in front of the panel of judges and potential investors. The best as decided by the judge/award sponsor will be presented the award and prize money.
+            </p>
+            <p>
+              15th December 2018 - Registrations closes <br>
+              20th December 2018 - Announcement of finalists <br>
+              18th and 19th January 2019 - Final round and presentation during PIS <br>
+</p>
+
+			</div>
+        </div>
+
+		</section >
+    <section  style="background-color:rgba(8,8,8,0.5);">
+    <div class="slide">
+        <div class="main-section">
+            <div class="section-heading">RIC (Research Innovation Convention):</div>
+            <div class="horizontal-line"></div>
+            <p>
+              Researchers from IISc will present their work, patents and future plans for possible collaboration and investments.
+            </p>
+
+      </div>
+        </div>
+
+    </section >
+
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Corporate Registration</div>
+            <div class="horizontal-line"></div>
+                <p>
+If you are interested in participating as a corporate representative, please send a mail to <a href="mailto:jpraveen@iisc.ac.in">jpraveen@iisc.ac.in</a> .
+                </p>
+				<div class="event-essentials">
+                    <a href="{% url 'pisRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
+                </div>
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

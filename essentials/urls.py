@@ -10,6 +10,7 @@ urlpatterns = [
 	url(r'^battleofbands/$', views.battleofbands , name="battleofbands"),
 	url(r'^decoherence/$', views.decoherence , name="decoherence"),
 	url(r'^wikimediaphotography/$', views.wikimediaphotography , name="wikimediaphotography"),
+	url(r'^pravega_innovation_summit/$', views.pis , name="pis"),
 	url(r'^inotherwords/$', originals.views.InOtherWords , name="inotherwords"),
 	url(r'^inotherwords/ch01$', originals.views.IOW_challenge01 , name="iow_challenge01"),
 	url(r'^inotherwords/ch02$', originals.views.IOW_challenge02 , name="iow_challenge02"),

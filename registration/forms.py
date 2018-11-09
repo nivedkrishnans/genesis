@@ -172,3 +172,26 @@ class WikimediaPhotographyForm(forms.ModelForm):
             "submission5": "Submission Link 5 (Optional)",
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
+
+
+class PISForm(forms.ModelForm):
+    class Meta:
+        model = PISRegistration
+        fields = ('teamName', 'member1name','member1mobile','member1email','member2name','member2mobile','member2email','member3name','member3mobile','member3email','ideaAbstract','motivation','prospects','marketResearch','prototyping',)
+        labels = {
+            "teamName": "Team Name",
+            "member1name": "Name",
+            "member1mobile": "Mobile Number",
+            "member1email": "Email",
+            "member2name": "Name",
+            "member2mobile": "Mobile Number",
+            "member2email": "Email",
+            "member3name": "Name",
+            "member3mobile": "Mobile Number",
+            "member3email": "Email",
+            "ideaAbstract": "Tell us about your idea (Max 250 words)",
+            "motivation": "Tell us why you want to do this. What motivates you? (Max 500 words)",
+            "prospects": "How do you think your idea will make an impact?",
+            "marketResearch": "Market Research (Target customers, potential sposors)",
+            "prototyping": "Prototyping (Product feasibility, scalability, and current progress)",
+            }

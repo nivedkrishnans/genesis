@@ -21,6 +21,8 @@ urlpatterns = [
 	url(r'^battleofbands/$', views.battleofbandsRegistration, name='battleofbandsRegistration'),
 	url(r'^wikimediaphotography$', views.wikimediaphotographyRegistration, name='wikimediaphotographyRegistration'),
 	url(r'^wikimediaphotography/$', views.wikimediaphotographyRegistration, name='wikimediaphotographyRegistration'),
+	url(r'^pravega_innovation_summit$', views.pisRegistration, name='pisRegistration'),
+	url(r'^pravega_innovation_summit/$', views.pisRegistration, name='pisRegistration'),
 	url(r'^signup$', views.signup, name='signup'),	url(r'^signup$', views.signup, name='signup'),
 	url(r'^signup/$', views.signup, name='signup'),	url(r'^signup$', views.signup, name='signup'),
 	url(r'^activate/account/$', views.activateAccount),

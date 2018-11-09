@@ -144,7 +144,8 @@
   }
 
   .event_logo{
-      width: 50%;
+      width: 120px;
+      height: 120px;
       margin: 2px auto;
   }
 
@@ -228,6 +229,13 @@
 }
 
 @media(min-width:760px){
+    .event_text{
+        font-size: 18px;
+    }
+    .event_title{
+        font-size: 22px;
+        min-height: 3em;
+    }
     .closeButton{
         top: 14px;
         right: 14px;
@@ -254,10 +262,10 @@
   #categories{
     position: absolute;
     margin-top: 0;
-    top: 56px;
-    left: 14px;
-    right: 14px;
-    bottom: 40px;
+    top: 50px;
+    left: 4px;
+    right: 4px;
+    bottom: 10px;
     height: auto;
     display: flex;
     flex-wrap: nowrap;
@@ -266,11 +274,11 @@
   .main-category{
       background-size: cover;
       background-attachment: fixed;
-      background-position:center;
+      background-position: 0 0;
       box-sizing: border-box;
     position: relative;
     border: none;
-    margin: 14px;
+    margin: 4px;
     box-shadow: 8px 8px 40px rgba(8,8,8,0.9);
     background-color: rgba(200,20,20,0.6);
     min-height: 100%;

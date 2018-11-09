@@ -37,6 +37,7 @@ def registration_index(request):
         'battle of bands':BattleOfBandsRegistration,
         'decoherence':DecoherenceRegistration,
         'wikimediaphotography':WikimediaPhotographyRegistration,
+        'pis':PISRegistration,
     }
 
     #inotherwords
@@ -700,6 +701,78 @@ def wikimediaphotographyRegistration(request):
             return render(request, 'registration/wikimediaPhotographyRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for the Wikimedia Photography Event')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+
+def pisRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='pis')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations = PISRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            thisInstance = False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = PISForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = PISForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('Pravega Innovation Summit',thisUserData.email,request,thisInstance.member1email,thisInstance.member2email,thisInstance.member3email,thisInstance.member1name,thisInstance.member2name,thisInstance.member3name,):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Pravega Innovation Summit Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Pravega Innovation Summit Registration Form')
+                                f =PISForm(instance=thisInstance)
+                                return render(request, 'registration/pisRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = PISForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        reg.institution = thisUserData.institution
+                        reg.city = thisUserData.city
+                        reg.email = thisUserData.email
+                        reg.contact = thisUserData.contact
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('Pravega Innovation Summit',thisUserData.email,request,reg.member1email,reg.member2email,reg.member3email,reg.member1name,reg.member2name,reg.member3name,):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Pravega Innovation Summit Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Pravega Innovation Summit Registration Form')
+                            return render(request, 'registration/pisRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = PISForm()
+            return render(request, 'registration/pisRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for the Pravega Innovation Summit')
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})

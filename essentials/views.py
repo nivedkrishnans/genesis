@@ -59,6 +59,10 @@ def lasya(request):
 def wikimediaphotography(request):
 	return render(request, 'essentials/wikimediaphotography.html', {})
 
+
+def pis(request):
+	return render(request, 'essentials/pis.html', {})
+
 def partners(request):
 	return render(request, 'essentials/partners.html', {})
 

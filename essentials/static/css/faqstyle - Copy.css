@@ -4,14 +4,14 @@ body{
 }
 #main-container{
     min-height: 100vh;
-    background-color: rgba(8,8,8,0.4);
+    background-color: rgba(8,8,8,0.8);
     width:100%;
     margin: 0;
     padding: 24px;
 }
 #heading{
     margin-top: 60px;
-    color: #ffe999;
+
     font-size: 25px;
     text-align: center;
     vertical-align: middle;
@@ -26,17 +26,6 @@ body{
     word-break: normal;
     word-wrap: break-word;
     font-size: 14px;
-}
-
-.answer a:hover{
-    color: #ffe999;
-}
-.answer a:visited{
-    color: #ffe999;
-}
-
-.answer li a:link{
-    transition: color 0.2s;
 }
 
 .questionList{
@@ -67,11 +56,6 @@ body{
     font-size: 18px;
     font-weight: 400;
     cursor: pointer;
-    transition: color 0.2s ;
-}
-
-.qhead:hover {
-    color: #ffe999;
 }
 .triangle-down{
     width: 0;
@@ -97,10 +81,6 @@ i{
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transition: 0.5s;
-}
-
-.arrow: hover {
-    color: #ffffff;
 }
 .up{
     transform: rotate(-135deg);

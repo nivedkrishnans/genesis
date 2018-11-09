@@ -261,3 +261,41 @@ class WikimediaPhotographyRegistration(models.Model):
     submit_date = models.DateTimeField( null=True, blank=True)
     def __str__(self):
         return str(self.user)
+
+
+
+class PISRegistration(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    #form details
+    #team details
+    teamName = models.CharField(max_length=200)
+    member1name = models.CharField(max_length=200)
+    member1mobile = models.CharField(max_length=20, null=False, blank=False)
+    member1email = models.EmailField(max_length=200, null=False, blank=False)
+    member2name = models.CharField(max_length=200, null=False, blank=True)
+    member2mobile = models.CharField(max_length=20, null=False, blank=True)
+    member2email = models.EmailField(max_length=200, null=False, blank=True)
+    member3name = models.CharField(max_length=200, null=False, blank=True)
+    member3mobile = models.CharField(max_length=20, null=False, blank=True)
+    member3email = models.EmailField(max_length=200, null=False, blank=True)
+    #project details
+    ideaAbstract = models.TextField(null=False, blank=True)
+    motivation = models.TextField(null=False, blank=True)
+    prospects = models.TextField(null=False, blank=True)
+    marketResearch = models.TextField(null=False, blank=True)
+    prototyping = models.TextField(null=False, blank=True)
+    #user details
+    institution = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200, null=False, blank=False)
+    contact = models.CharField(max_length=20)
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
+    confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
+    def __str__(self):
+        return str(self.user)
