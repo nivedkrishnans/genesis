@@ -22,19 +22,18 @@
 {% block content %}
 <div id="main" class="main" >
 		<section  style="background-color:rgba(8,8,8,0.5);">
-		<div class="slide">
+		<div class="slide large-slide">
 
         <div class="heading">Pravega Innovation Summit</div>
         <div class="horizontal-line"></div>
         <div class="main-section">
 		<p>
       Pravega Innovation Summit (PIS) is the flagship event of Pravega 2019.
-    </p>
-    <p>
        It is an initiative to bring the pillars of scientific growth and innovation i.e. researchers, students, corporates and investors together and provide a platform for networking, exchanging of ideas and fostering collaboration.
+   </p>
+   <p>
          PIS also aims to promote and provide support to budding innovations and ideas by young students all over the country.
-    </p>
-    <p>Students come up with innovations and get an opportunity to present them in front of potential investors.
+Students come up with innovations and get an opportunity to present them in front of potential investors.
     Very young start-ups are also invited to participate.
     </p>
             <div class="event-essentials">
@@ -73,9 +72,9 @@
 		</div>
 		</section >
 		<section  style="background-color:rgba(8,8,8,0.5);">
-		<div class="slide">
+		<div class="slide large-slide">
         <div class="main-section">
-            <div class="section-heading">SINEC (Student Innovation and Entrepreneurship Conclave)</div>
+            <div class="section-heading long-section-heading">SINEC (Student Innovation and Entrepreneurship Conclave)</div>
             <div class="horizontal-line"></div>
 
             <p>
@@ -135,6 +134,35 @@ If you are interested in participating as a corporate representative, please sen
 		</div>
 		</section>
 </div>
+
+    <style>
+        @media(max-width:759px){
+            .large-slide{
+                top:66px;
+                left: 24px;
+                right: 10%;
+                width: auto;
+            }
+            .heading{
+                font-size: 24px;
+                padding-left: 0;
+                padding-right: 0;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .yellow-status{
+                margin-top: 0px;
+            }
+            .section-heading{
+                font-size: 20px;
+                padding-left: 0;
+                padding-right: 0;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+
 <script src="{%static 'js/navBar.js'%}"> </script>
 <script src="{%static 'js/slideScroll.js'%}"></script>
 {%endblock %}
