@@ -36,6 +36,11 @@ class InOtherWordsChallenge05Resource(ExportMixin,admin.ModelAdmin):
         model = InOtherWordsChallenge05
 
 
+class InOtherWordsChallenge06Resource(ExportMixin,admin.ModelAdmin):
+    class Meta:
+        model = InOtherWordsChallenge06
+
+
 admin.site.register(ArchiveImage)
 admin.site.register(ScienceQuizzine)
 admin.site.register(LetsTalkScience)
@@ -45,3 +50,4 @@ admin.site.register(InOtherWordsChallenge02,InOtherWordsChallenge02Resource)
 admin.site.register(InOtherWordsChallenge03,InOtherWordsChallenge03Resource)
 admin.site.register(InOtherWordsChallenge04,InOtherWordsChallenge04Resource)
 admin.site.register(InOtherWordsChallenge05,InOtherWordsChallenge05Resource)
+admin.site.register(InOtherWordsChallenge06,InOtherWordsChallenge06Resource)

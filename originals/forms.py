@@ -82,3 +82,15 @@ class InOtherWordsChallengeForm05(forms.ModelForm):
 			"question14": "14",
 			"question15": "15",
         }
+
+class InOtherWordsChallengeForm06(forms.ModelForm):
+    class Meta:
+        model = InOtherWordsChallenge06
+        fields = ('question1','question2a','question2b','question2c',)
+        labels = {
+			"question1": "Question 1",
+			"question2": "Question 2a",
+			"question3": "Question 2b",
+			"question4": "Question 2c",
+
+        }
