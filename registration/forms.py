@@ -109,7 +109,7 @@ class BattleOfBandsForm(forms.ModelForm):
         labels = {
             "teamName": "Team Name",
             "teamLeader": "Team Leader",
-            "institution": "Institution",
+            "institution": "Institution (If not applicable, feel free to amuse us!)",
             "city": "City",
             "regionalfinalscity": "Regional Finals City Preference",
             "email": "Email",
