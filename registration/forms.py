@@ -192,6 +192,6 @@ class PISForm(forms.ModelForm):
             "ideaAbstract": "Tell us about your idea (Max 250 words)",
             "motivation": "Tell us why you want to do this. What motivates you? (Max 500 words)",
             "prospects": "How do you think your idea will make an impact?",
-            "marketResearch": "Market Research (Target customers, potential sposors)",
-            "prototyping": "Prototyping (Product feasibility, scalability, and current progress)",
+            "marketResearch": "Market Research (Target customers, potential sposors) (optional)",
+            "prototyping": "Prototyping (Product feasibility, scalability, and current progress) (optional)",
             }
