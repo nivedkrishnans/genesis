@@ -27,4 +27,5 @@ urlpatterns = [
 	url(r'^sitemap\.xml$', TemplateView.as_view(template_name='sitemap.xml', content_type='text/plain'), name="sitemap"),
 	url(r'^2018/$', views.pravega2018 , name="pravega2018"),
 	url(r'^2017/$', views.pravega2017 , name="pravega2017"),
+    url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

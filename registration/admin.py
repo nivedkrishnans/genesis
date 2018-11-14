@@ -114,6 +114,26 @@ class WikimediaPhotographyRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = WikimediaPhotographyRegistration
 
+class VignettoraRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user', 'email','institution','city','submit_date')
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+    class Meta:
+        model = VignettoraRegistration
+
+class PPPRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user', 'email','institution','city','submit_date')
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+    class Meta:
+        model = PPPRegistration
+
+class ImpromptooRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user', 'email','institution','city','submit_date')
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+    class Meta:
+        model = ImpromptooRegistration
 
 class PISRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','institution','city','submit_date')
@@ -131,4 +151,7 @@ admin.site.register(BattleOfBandsRegistration,BattleOfBandsRegistrationResource)
 admin.site.register(FootprintsRegistration,FootprintsRegistrationResource)
 admin.site.register(DecoherenceRegistration,DecoherenceRegistrationResource)
 admin.site.register(WikimediaPhotographyRegistration,WikimediaPhotographyRegistrationResource)
+admin.site.register(PPPRegistration,PPPRegistrationResource)
+admin.site.register(VignettoraRegistration,VignettoraRegistrationResource)
 admin.site.register(PISRegistration,PISRegistrationResource)
+admin.site.register(ImpromptooRegistration,ImpromptooRegistrationResource)

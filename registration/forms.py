@@ -173,6 +173,41 @@ class WikimediaPhotographyForm(forms.ModelForm):
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
+class VignettoraForm(forms.ModelForm):
+    class Meta:
+        model = VignettoraRegistration
+        fields = ('institution','city','email','contact')
+        labels = {
+
+            "institution": "Institution",
+            "city": "City",
+            "email": "Email",
+            "contact": "Mobile Number",
+        }
+
+class ImpromptooForm(forms.ModelForm):
+    class Meta:
+        model = PPPRegistration
+        fields = ('institution','city','email','contact')
+        labels = {
+
+            "institution": "Institution",
+            "city": "City",
+            "email": "Email",
+            "contact": "Mobile Number",
+        }
+
+class PPPForm(forms.ModelForm):
+    class Meta:
+        model = PPPRegistration
+        fields = ('institution','city','email','contact')
+        labels = {
+
+            "institution": "Institution",
+            "city": "City",
+            "email": "Email",
+            "contact": "Mobile Number",
+        }
 
 class PISForm(forms.ModelForm):
     class Meta:
