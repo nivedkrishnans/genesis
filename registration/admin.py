@@ -128,6 +128,13 @@ class PPPRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = PPPRegistration
 
+class ETCRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user','name','year','major', 'email','institution','city','subjects','submit_date')
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+    class Meta:
+        model = ETCRegistration
+
 class ImpromptooRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user', 'email','institution','city','submit_date')
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
@@ -152,6 +159,7 @@ admin.site.register(FootprintsRegistration,FootprintsRegistrationResource)
 admin.site.register(DecoherenceRegistration,DecoherenceRegistrationResource)
 admin.site.register(WikimediaPhotographyRegistration,WikimediaPhotographyRegistrationResource)
 admin.site.register(PPPRegistration,PPPRegistrationResource)
+admin.site.register(ETCRegistration,ETCRegistrationResource)
 admin.site.register(VignettoraRegistration,VignettoraRegistrationResource)
 admin.site.register(PISRegistration,PISRegistrationResource)
 admin.site.register(ImpromptooRegistration,ImpromptooRegistrationResource)
