@@ -712,8 +712,11 @@ def wikimediaphotographyRegistration(request):
 
 def vignettoraRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='ppp')
+    initialValues={}
+
     if thisEvent.registrationStatus == 'opened':
         if request.user.is_authenticated:
+
             allRegistrations =VignettoraRegistration.objects.all()
             allUserData = UserData.objects.all()
             isRegistered = False
@@ -726,13 +729,18 @@ def vignettoraRegistration(request):
             for i in allUserData:
                 if (request.user == i.user):
                     thisUserData = i
+            if thisUserData:
+                initialValues={"institution": thisUserData.institution,
+                "city":thisUserData.city ,
+                "email": thisUserData.email,
+                "contact": thisUserData.contact}
             if isRegistered:
                 if thisInstance.isSubmit:
                     return render(request, 'registration/registered.html',{})
                 else:
-                    f = VignettoraForm(instance=thisInstance)
+                    f = VignettoraForm(initial=initialValues,instance=thisInstance)
                     if request.method == "POST":
-                        f =  VignettoraForm(request.POST, request.FILES,instance=thisInstance)
+                        f =  VignettoraForm(request.POST, request.FILES,instance=thisInstance,initial=initialValues)
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
@@ -747,11 +755,11 @@ def vignettoraRegistration(request):
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your Vignettora Event Registration Form')
-                                f =WikimediaPhotographyForm(instance=thisInstance)
+                                f =VignettoraForm(initial=initialValues,instance=thisInstance)
                                 return render(request, 'registration/vignettoraRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f = PPPForm(request.POST, request.FILES)
+                    f =VignettoraForm(request.POST, request.FILES,initial=initialValues )
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -769,7 +777,7 @@ def vignettoraRegistration(request):
                             return render(request, 'registration/vignettoraRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
-                    f = PPPForm()
+                    f = VignettoraForm(initial=initialValues)
             return render(request, 'registration/pppRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for the Vignettora Event')
@@ -779,9 +787,10 @@ def vignettoraRegistration(request):
 
 def impromptooRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='ppp')
+    initialValues={}
     if thisEvent.registrationStatus == 'opened':
         if request.user.is_authenticated:
-            allRegistrations =PPPRegistration.objects.all()
+            allRegistrations =ImpromptooRegistration.objects.all()
             allUserData = UserData.objects.all()
             isRegistered = False
             thisInstance = False
@@ -793,13 +802,18 @@ def impromptooRegistration(request):
             for i in allUserData:
                 if (request.user == i.user):
                     thisUserData = i
+            if thisUserData:
+                initialValues={"institution": thisUserData.institution,
+                "city":thisUserData.city ,
+                "email": thisUserData.email,
+                "contact": thisUserData.contact}
             if isRegistered:
                 if thisInstance.isSubmit:
                     return render(request, 'registration/registered.html',{})
                 else:
-                    f = PPPForm(instance=thisInstance)
+                    f = ImpromptooForm(initial=initialValues,instance=thisInstance)
                     if request.method == "POST":
-                        f = PPPForm(request.POST, request.FILES,instance=thisInstance)
+                        f = ImpromptooForm(request.POST, request.FILES,instance=thisInstance,initial=initialValues )
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
@@ -814,11 +828,11 @@ def impromptooRegistration(request):
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your I’Mpromptoo Event Registration Form')
-                                f =WikimediaPhotographyForm(instance=thisInstance)
+                                f =ImpromptooForm(initial=initialValues,instance=thisInstance)
                                 return render(request, 'registration/impromptooRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f = ImpromptooForm(request.POST, request.FILES)
+                    f = ImpromptooForm(request.POST, request.FILES,initial=initialValues )
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -837,15 +851,18 @@ def impromptooRegistration(request):
                             return render(request, 'registration/impromptooRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
-                    f = PPPForm()
+                    f = ImpromptooForm(initial=initialValues)
             return render(request, 'registration/impromptooRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for the I’Mpromptoo Event')
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
+
 def pppRegistration(request):
+
     thisEvent = get_object_or_404(AdminEvent, title='ppp')
+    initialValues={}
     if thisEvent.registrationStatus == 'opened':
         if request.user.is_authenticated:
             allRegistrations =PPPRegistration.objects.all()
@@ -860,13 +877,18 @@ def pppRegistration(request):
             for i in allUserData:
                 if (request.user == i.user):
                     thisUserData = i
+            if thisUserData:
+                initialValues={"institution": thisUserData.institution,
+                "city":thisUserData.city ,
+                "email": thisUserData.email,
+                "contact": thisUserData.contact}
             if isRegistered:
                 if thisInstance.isSubmit:
                     return render(request, 'registration/registered.html',{})
                 else:
-                    f = PPPForm(instance=thisInstance)
+                    f = PPPForm(initial=initialValues,instance=thisInstance)
                     if request.method == "POST":
-                        f = PPPForm(request.POST, request.FILES,instance=thisInstance)
+                        f = PPPForm(request.POST, request.FILES,instance=thisInstance,initial=initialValues )
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
@@ -881,11 +903,11 @@ def pppRegistration(request):
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your Painstakingly Petite Proses Event Registration Form')
-                                f =WikimediaPhotographyForm(instance=thisInstance)
+                                f =PPPForm(initial=initialValues,instance=thisInstance)
                                 return render(request, 'registration/pppRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f = PPPForm(request.POST, request.FILES)
+                    f = PPPForm(request.POST, request.FILES,initial=initialValues )
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -904,7 +926,7 @@ def pppRegistration(request):
                             return render(request, 'registration/pppRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
-                    f = PPPForm()
+                    f = PPPForm(initial=initialValues)
             return render(request, 'registration/pppRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for the Painstakingly Petite Proses Event')

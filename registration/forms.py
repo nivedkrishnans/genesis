@@ -178,7 +178,6 @@ class VignettoraForm(forms.ModelForm):
         model = VignettoraRegistration
         fields = ('institution','city','email','contact')
         labels = {
-
             "institution": "Institution",
             "city": "City",
             "email": "Email",
