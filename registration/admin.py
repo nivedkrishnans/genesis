@@ -9,7 +9,7 @@ from django.conf import settings
 
 class UserDataResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','institution','city',)
-    list_filter = ('email_validated','institution','city',)
+    list_filter = ('email_validated','city',)
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj)
     class Meta:
@@ -31,7 +31,7 @@ class AdminEventResource(ExportMixin,admin.ModelAdmin):
 
 class CampusAmbassadorResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','institution','city','submit_date',)
-    list_filter = ('submit_date','institution','city',)
+    list_filter = ('submit_date','city',)
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj,)
     class Meta:
@@ -41,7 +41,7 @@ class CampusAmbassadorResource(ExportMixin,admin.ModelAdmin):
 
 class LasyaRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','category','teamName','teamLeader','email','institution','city','submit_date','seeVideoFile','seeVideoLink',)
-    list_filter = ('submit_date','institution','city',)
+    list_filter = ('submit_date','city',)
 
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj,)
@@ -55,7 +55,7 @@ class LasyaRegistrationResource(ExportMixin,admin.ModelAdmin):
 
 class ProsceniumRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeVideoFile','seeVideoLink')
-    list_filter = ('submit_date','institution','city',)
+    list_filter = ('submit_date','city',)
     readonly_fields = ('videoFile','videoFileLink',)
 
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
@@ -71,7 +71,7 @@ class ProsceniumRegistrationResource(ExportMixin,admin.ModelAdmin):
 
 class BattleOfBandsRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','teamLeader','email','institution','city','regionalfinalscity','submit_date','seeAudioVideoFile','seeAudioVideoLink')
-    list_filter = ('submit_date','institution','city',)
+    list_filter = ('submit_date','city',)
     readonly_fields = ('audioVideoFile','audioVideoFileLink',)
 
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
@@ -87,7 +87,7 @@ class BattleOfBandsRegistrationResource(ExportMixin,admin.ModelAdmin):
 
 class FootprintsRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','teamLeader','email','institution','city','submit_date')
-    list_filter = ('submit_date','institution','city',)
+    list_filter = ('submit_date','city',)
 
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj)
@@ -98,7 +98,7 @@ class FootprintsRegistrationResource(ExportMixin,admin.ModelAdmin):
 
 class DecoherenceRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('teamName','institution','city','submit_date')
-    list_filter = ('submit_date','institution','city',)
+    list_filter = ('submit_date','city',)
 
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj)
