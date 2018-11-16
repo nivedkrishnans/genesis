@@ -102,7 +102,7 @@ select,input,textarea{
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
     padding: 4px 8px;
-    color: rgba(255,255,240) !important;
+    color: rgba(255,255,240);
     display: block;
     background-color: rgba(8,8,8,0.3);
     margin: 8px 8px 8px 16px;
