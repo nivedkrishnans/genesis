@@ -71,7 +71,7 @@ class ProsceniumRegistrationResource(ExportMixin,admin.ModelAdmin):
 
 class BattleOfBandsRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','teamLeader','email','institution','city','regionalfinalscity','submit_date','seeAudioVideoFile','seeAudioVideoLink')
-    list_filter = ('submit_date','city',)
+    list_filter = ('submit_date','regionalfinalscity',)
     readonly_fields = ('audioVideoFile','audioVideoFileLink',)
 
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
