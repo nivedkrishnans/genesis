@@ -100,7 +100,7 @@ body{
 #sponsorLogo,#iiscLogo{
     width: 30vw;
     position: absolute;
-    bottom: 20vw;
+    bottom: 14vw;
 }
 
 #sponsorLogo{
@@ -170,11 +170,12 @@ body{
     background-size: cover;
     margin: 0;
     border: 0;
-    padding-top: 36px;
+    padding: 34px;
+    padding-top: 24px;
     filter: none;
     transform: none;
     min-height: 100vh;
-    padding: 40px;
+
 }
 
 .home-section:first-of-type > div{
