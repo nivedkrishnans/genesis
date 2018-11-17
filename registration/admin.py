@@ -122,6 +122,27 @@ class PISRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = PISRegistration
 
+class StatusDatesResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('title','dtValue','description')
+    class Meta:
+        model = StatusDates
+
+class DecoherencePrelimResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user','decoherenceRegistration','submit_date','teamName','institution','city')
+    class Meta:
+        model = DecoherencePrelim
+
+
+class DecoherenceObjectiveQuestionResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('qNo','title','text')
+    class Meta:
+        model = DecoherenceObjectiveQuestion
+
+class DecoherenceSubjectiveQuestionResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('qNo','title','text')
+    class Meta:
+        model = DecoherenceSubjectiveQuestion
+
 admin.site.register(UserData,UserDataResource)
 admin.site.register(AdminEvent,AdminEventResource)
 admin.site.register(CampusAmbassador,CampusAmbassadorResource)
@@ -132,3 +153,7 @@ admin.site.register(FootprintsRegistration,FootprintsRegistrationResource)
 admin.site.register(DecoherenceRegistration,DecoherenceRegistrationResource)
 admin.site.register(WikimediaPhotographyRegistration,WikimediaPhotographyRegistrationResource)
 admin.site.register(PISRegistration,PISRegistrationResource)
+admin.site.register(StatusDates,StatusDatesResource)
+admin.site.register(DecoherencePrelim,DecoherencePrelimResource)
+admin.site.register(DecoherenceObjectiveQuestion,DecoherenceObjectiveQuestionResource)
+admin.site.register(DecoherenceSubjectiveQuestion,DecoherenceSubjectiveQuestionResource)

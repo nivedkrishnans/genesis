@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load index %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Decoherence Prelims | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway:300,400|Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/reg.css'%}">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <style>
+            @media (min-width: 760px){
+                #main{
+                    width: 100%;
+                }
+            }
+            @media (min-width: 992px){
+                #main{
+                    width: 800px;
+                }
+            }
+
+        .questionImage{
+            width: 90%;
+            height: 360px;
+            object-fit: contain;
+        }
+        input[type=radio]{
+            display: inline-block;
+            color: white;
+            cursor: pointer;
+            width: auto;
+            margin: 14px 8px 20px 8px;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            top: 4px;
+        }
+        #timeF{
+            padding: 14px;
+            font-size: 24px;
+            font-family: 'Titillium Web', sans-serif;
+            position: fixed;
+            right:0;
+            top: 200px;
+            background-color: rgba(20,20,20,0.7);
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,240,0.3);
+        }
+        #time{
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div id="main">
+        <div class="heading">Decoherence Prelims</div>
+        {% if user.is_authenticated %}
+          <p>Hi {{ user }}!</p>
+          {% if form.errors %}
+              <div class="errors">
+                  <p>Please fix the following errors</p>
+                  <ul>
+                      {% for field in form %}
+                          {% if field.errors %}
+                              {% for error in field.errors %}
+                                  <li>{{ error|escape }}</li>
+                              {% endfor %}
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+                  {% if form.non_field_errors %}
+                      {{ form.non_field_errors }}
+                  {% endif %}
+              </div>
+          {% endif %}
+          {% if messages %}
+              <div class="messages">
+                  <ul>
+                  {% for message in messages %}
+                      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                  {% endfor %}
+                  </ul>
+              </div>
+          {% endif %}
+          <p>View the complete details of this event <a href="{% url 'decoherence'%}">here</a>.</p>
+          {% if examStarted and not examEnded %}
+          <p style="font-family: 'Titillium Web', sans-serif;">Duration:  {{startTime}} to {{endTime}}. </p>
+
+                      <form id="decoherenceForm" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            {% if forloop.counter == 26 %}
+                            <div class="field-space">
+                                {% for subjectiveQuestion in subjectiveQuestions %}
+                                    <div>
+                                    {{subjectiveQuestion.qNo}}.  {{subjectiveQuestion.text|safe}}<br>
+                                    {% if subjectiveQuestion.image %}
+                                     <img class="questionImage" src="{{ MEDIA_URL }}{{ subjectiveQuestion.image.url }}" alt="Image">
+                                     {% endif %}
+                                     </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            <div class="field-space">
+                                {{ field.errors }}
+                                {% if forloop.counter <= 25 %}{{forloop.counter}}. {% endif %}
+                                {{ field.label_tag|safe }}
+                                {% if objectiveQuestionsImages|index:forloop.counter0 %}
+                                 <img class="questionImage" src="{{ MEDIA_URL }}{{ objectiveQuestionsImages|index:forloop.counter0 }}" alt="Image">
+                                 {% endif %}
+                                {{ field }}
+
+                            </div>
+                        {% endfor %}
+                        <div class="messages">
+                            <p style="margin-bottom:14px;">Important:</p>
+                            <ul>
+                                <li>You have two options, 'save' and 'submit'.</li>
+                                <li>If you click save, you will be able to edit the form until you click submit or until the portal closes, WHICHEVER COMES FIRST.</li>
+                                <li>Once you click submit, YOU WILL NOT BE ABLE TO EDIT THE FORM.</li>
+                            </ul>
+                        </div>
+                        <div class="buttonCollection">
+                            <button id="saveButton" type="submit" name="save" value="save">Save</button>
+                            <button type="submit" name="submit" value="submit">Submit</button>
+                        </div>
+                      </form>
+                      <script>
+
+                          function clearRadio(element){
+                              parentId = element.parentElement;
+                              parentId.querySelector('li').checked = true;
+                              console.log(parentId.querySelector("input[type='radio']").innerHTML + " cleared");
+                          }
+                      </script>
+                      <script>
+                                function startTimer(duration, display) {
+                              var timer = duration;
+                              interval=setInterval(function () {
+
+                                  seconds = parseInt(timer % 60, 10);
+                                  minutes = parseInt(((timer % 3600)-seconds)/60, 10);
+                                  hours=parseInt(timer/3600,10);
+
+                                  minutes = minutes < 10 ? "0" + minutes : minutes;
+                                  seconds = seconds < 10 ? "0" + seconds : seconds;
+                                  hours = hours < 10 ? "0" + hours : hours;
+                                  display.textContent = hours+":"+minutes + ":" + seconds;
+
+                                  if (--timer < 0) {
+                                      clearInterval(interval);
+
+                                      alert("Time Up! Submit your responses immediately to retain them.");
+                                      document.getElementById("saveButton").click();
+                                      setTimeout(function(){
+                                          document.getElementById("saveButton").click();
+                                      }, 600000);
+                                  }
+                              }, 1000);
+                          }
+                          $( document ).ready(function() {
+                              var date1=new Date({{dateBegin| safe}});
+                              var date2=new Date({{dateEnd| safe}});
+
+                              $.ajax({
+                                  url: "{% url 'servertime' %}",
+                                  dataType: 'json',
+                                  success: function (data) {
+                                    var date=new Date(data.serverTime);
+                                    var duration = (date2.getTime()-date.getTime())/1000;
+                                    display = document.querySelector('#time');
+                                    startTimer(duration, display);
+                                  }
+                                });
+                            });
+                      </script>
+                      <div id="timeF">
+                            <div id="time">Timer</div>
+                      </div>
+
+          {% elif examEnded %}
+            <p>The Decoherence Online Prelims is over.</p>
+          {% else %}
+            <p>The Decoherence Prelims has not started. Please reload the page at {{startTime}} to participate.</p>
+            <script>
+                      function startTimer(duration, display) {
+                    var timer = duration;
+                    interval=setInterval(function () {
+
+                        seconds = parseInt(timer % 60, 10);
+                        minutes = parseInt(((timer % 3600)-seconds)/60, 10);
+                        hours=parseInt(timer/3600,10);
+
+                        minutes = minutes < 10 ? "0" + minutes : minutes;
+                        seconds = seconds < 10 ? "0" + seconds : seconds;
+                        hours = hours < 10 ? "0" + hours : hours;
+                        display.textContent = hours+":"+minutes + ":" + seconds;
+                        if (--timer < 0) {
+                            clearInterval(interval);
+                            location.reload(true);
+                            setTimeout(function(){
+                                location.reload(true);
+                            }, 60000);
+                        }
+                    }, 1000);
+                }
+                $( document ).ready(function() {
+                    var date1=new Date({{dateBegin| safe}});
+                    var date2=new Date({{dateEnd| safe}});
+
+                    $.ajax({
+                        url: "{% url 'servertime' %}",
+                        dataType: 'json',
+                        success: function (data) {
+                          var date=new Date(data.serverTime);
+                          var duration = (date1.getTime()-date.getTime())/1000;
+                          display = document.querySelector('#time');
+                          startTimer(duration, display);
+                        }
+                      });
+                  });
+            </script>
+            <div id="timeF">
+                    <p>Prelims Starts in:</p>
+                  <div id="time">Timer</div>
+            </div>
+          {% endif %}
+        {% else %}
+            <p>You have to log in to participate in the Decoherence Prelims</p><br>
+            Have an account? <a href="{% url 'login' %}">Click here to Log in</a><br>
+            Don't have an account? <a href="{% url 'signup' %}">Click here to sign up</a><br>
+
+        {% endif %}
+
+
+    </div>
+
+    <script src="{%static 'js/navBar.js'%}"> </script>
+{% endblock %}
+
+{% block postfooter%}
+
+{% endblock %}

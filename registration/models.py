@@ -9,6 +9,8 @@ import random
 import string
 import os.path
 
+from django import forms
+from django.utils import timezone
 
 def get_first_name(self):
     name='friend'
@@ -297,5 +299,109 @@ class PISRegistration(models.Model):
     isSubmit = models.BooleanField(default=False)
     last_modify_date = models.DateTimeField( null=True, blank=True)
     submit_date = models.DateTimeField( null=True, blank=True)
+    def __str__(self):
+        return str(self.user)
+
+
+
+
+
+
+
+
+class DecoherenceObjectiveQuestion(models.Model):
+    qNo = models.IntegerField(unique=True, null=False, blank=True, default=-1)
+    title = models.CharField(null=False, blank=True, max_length=400)
+    fakeText =  models.TextField(default="Please wait", null=False, blank=True)
+    text =  models.TextField(null=False, blank=True)
+    choice1 = models.CharField(null=False, blank=True, max_length=600)
+    choice2 = models.CharField(null=False, blank=True, max_length=600)
+    choice3 = models.CharField(null=False, blank=True, max_length=600)
+    choice4 = models.CharField(null=False, blank=True, max_length=600)
+    def filePathGenerate(instance,filename):
+        temp = 'private/decoherence/questions/' + str(instance.qNo) + ' ' + str(instance.title)  + '/'
+        temp2 = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
+        temp3 = '/' + os.path.split(filename)[1]
+        temp = temp + temp2 + temp3
+        return temp
+    image = models.ImageField(null=False, blank=True, upload_to=filePathGenerate)
+    def __str__(self):
+        return str(self.qNo) + str(self.title) + str(self.text)
+
+
+class DecoherenceSubjectiveQuestion(models.Model):
+    qNo = models.IntegerField(unique=True, null=False, blank=True, default=-1)
+    title = models.CharField(null=False, blank=True, max_length=400)
+    fakeText =  models.TextField(default="Please wait", null=False, blank=True)
+    text =  models.TextField(null=False, blank=True)
+    def filePathGenerate(instance,filename):
+        temp = 'private/decoherence/questions/' + str(instance.qNo) + ' ' + str(instance.title)  + '/'
+        temp2 = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
+        temp3 = '/' + os.path.split(filename)[1]
+        temp = temp + temp2 + temp3
+        return temp
+    image = models.ImageField(null=False, blank=True, upload_to=filePathGenerate)
+    def __str__(self):
+        return str(self.qNo) + str(self.title) + str(self.text)
+
+#used for daatetime like the opening of decoherence prelims portal
+class StatusDates(models.Model):
+    title = models.CharField(null=False, blank=True, max_length=400)
+    description =  models.TextField(null=False, blank=True)
+    dtValue = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return str(self.title) + str(self.dtValue) + str(self.description)
+
+
+
+import registration.decoherence_helpers as decoherence_helpers
+
+class DecoherencePrelim(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    decoherenceRegistration = models.ForeignKey(DecoherenceRegistration, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
+    #form details
+    question01 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(1))
+    question02 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(2))
+    question03 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(3))
+    question04 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(4))
+    question05 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(5))
+    question06 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(6))
+    question07 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(7))
+    question08 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(8))
+    question09 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(9))
+    question10 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(10))
+    question11 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(11))
+    question12 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(12))
+    question13 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(13))
+    question14 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(14))
+    question15 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(15))
+    question16 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(16))
+    question17 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(17))
+    question18 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(18))
+    question19 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(19))
+    question20 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(20))
+    question21 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(21))
+    question22 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(22))
+    question23 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(23))
+    question24 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(24))
+    question25 = models.CharField(default='S', null=True, blank=False, max_length=600, choices=decoherence_helpers.getDecoherenceObjectiveOptions(25))
+    def filePathGenerate(instance,filename):
+        temp = 'private/decoherence/responses/' + str(instance.teamName) + '_' + str(instance.user) + '_' + str(instance.institution) + '/'
+        temp2 = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
+        temp3 = '/' + os.path.split(filename)[1]
+        temp = temp + temp2 + temp3
+        return temp
+    subjectiveAnswers = models.FileField(validators=[FileExtensionValidator(allowed_extensions=['pdf','zip'])], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
+    #team details
+    teamName = models.CharField(max_length=144)
+    institution = models.CharField(max_length=144)
+    city = models.CharField(max_length=144)
+    confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
+    modifyTimes = models.TextField(default=" ", null=False, blank=True)
+    email = models.EmailField(max_length=200, null=False, blank=False)
     def __str__(self):
         return str(self.user)

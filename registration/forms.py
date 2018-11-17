@@ -6,6 +6,7 @@ from . import models
 from .models import *
 from django.utils.translation import gettext_lazy as _
 from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,battleofbandsSizeLimit,videoFileSupportMessage,audioVideoFileSupportMessage
+from .decoherence_helpers import *
 
 class SignUpForm(forms.Form):
     full_name = forms.CharField(label='Full Name', min_length=3, max_length=127)
@@ -195,3 +196,66 @@ class PISForm(forms.ModelForm):
             "marketResearch": "Market Research (Target customers, potential sposors) (optional)",
             "prototyping": "Prototyping (Product feasibility, scalability, and current progress) (optional)",
             }
+
+DecoherencePrelim
+
+
+class DecoherencePrelimsForm(forms.ModelForm):
+    class Meta:
+        model = DecoherencePrelim
+        fields = ('question01', 'question02', 'question03', 'question04', 'question05', 'question06', 'question07', 'question08', 'question09', 'question10', 'question11', 'question12', 'question13', 'question14', 'question15', 'question16', 'question17', 'question18', 'question19', 'question20', 'question21', 'question22', 'question23', 'question24', 'question25','subjectiveAnswers')
+        labels = {
+            'question01':getDecoherenceObjectiveQuestions(1),
+            'question02':getDecoherenceObjectiveQuestions(2),
+            'question03':getDecoherenceObjectiveQuestions(3),
+            'question04':getDecoherenceObjectiveQuestions(4),
+            'question05':getDecoherenceObjectiveQuestions(5),
+            'question06':getDecoherenceObjectiveQuestions(6),
+            'question07':getDecoherenceObjectiveQuestions(7),
+            'question08':getDecoherenceObjectiveQuestions(8),
+            'question09':getDecoherenceObjectiveQuestions(9),
+            'question10':getDecoherenceObjectiveQuestions(10),
+            'question11':getDecoherenceObjectiveQuestions(11),
+            'question12':getDecoherenceObjectiveQuestions(12),
+            'question13':getDecoherenceObjectiveQuestions(13),
+            'question14':getDecoherenceObjectiveQuestions(14),
+            'question15':getDecoherenceObjectiveQuestions(15),
+            'question16':getDecoherenceObjectiveQuestions(16),
+            'question17':getDecoherenceObjectiveQuestions(17),
+            'question18':getDecoherenceObjectiveQuestions(18),
+            'question19':getDecoherenceObjectiveQuestions(19),
+            'question20':getDecoherenceObjectiveQuestions(20),
+            'question21':getDecoherenceObjectiveQuestions(21),
+            'question22':getDecoherenceObjectiveQuestions(22),
+            'question23':getDecoherenceObjectiveQuestions(23),
+            'question24':getDecoherenceObjectiveQuestions(24),
+            'question25':getDecoherenceObjectiveQuestions(25),
+            'subjectiveAnswers': "Upload answers for the subjective questions (single file, PDF or ZIP only)",
+        }
+        widgets = {
+            'question01':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question02':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question03':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question04':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question05':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question06':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question07':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question08':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question09':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question10':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question11':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question12':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question13':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question14':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question15':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question16':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question17':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question18':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question19':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question20':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question21':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question22':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question23':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question24':forms.RadioSelect(attrs={'class':'radioS'}),
+            'question25':forms.RadioSelect(attrs={'class':'radioS'}),
+        }

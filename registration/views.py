@@ -14,6 +14,9 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from .event_confirmation_mails import event_confirmation_mail
+from django.http import JsonResponse
+from datetime import datetime
+import json
 
 def closed(request):
     return render(request, 'registration/closed.html', {})
@@ -776,3 +779,146 @@ def pisRegistration(request):
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
+
+
+
+
+
+
+
+def decoherencePrelims(request):
+    try:
+        startTime = list(StatusDates.objects.filter(title='decoherencePrelimsStart'))[0].dtValue
+    except:
+        startTime = 0
+    try:
+        endTime = list(StatusDates.objects.filter(title='decoherencePrelimsEnd'))[0].dtValue
+    except:
+        endTime = 0
+    currentTime = timezone.now();
+    subjectiveQuestions = list(DecoherenceSubjectiveQuestion.objects.order_by('qNo'))
+
+    # we want objectiveQuestions[25] with false if the qNo is absent
+    objectiveQuestions = [False]*25
+    for i in range(0,24):
+        try:
+            objectiveQuestions[i] = list(DecoherenceObjectiveQuestion.objects.filter(qNo = (i+1)))[0]
+        except:
+            objectiveQuestions[i] = False
+
+    objectiveQuestionsImages = [False] * 26     #so that in the 26th loop, ie., subjective question, no error occurs
+    for i in range(0,24):
+        if objectiveQuestions[i]:
+            if objectiveQuestions[i].image:
+                objectiveQuestionsImages[i] = (objectiveQuestions[i].image.url)
+
+    #whether or not the exam is activate
+    examStarted = False
+    examEnded = False
+    if startTime<=currentTime:
+        examStarted = True
+    if endTime<=currentTime:
+        examEnded = True
+    dateBegin=json.dumps(startTime.isoformat())
+    dateEnd=json.dumps(endTime.isoformat())
+    f = DecoherencePrelimsForm()        #keeping this line here to maintain f as an iterable
+    if examStarted:
+        if request.user.is_authenticated:
+            allResponses = DecoherencePrelim.objects.all()
+            allUserData = UserData.objects.all()
+            allDecoherenceRegistrations = DecoherenceRegistration.objects.all()
+            isResponded = False
+            isDecoherenceRegistered = False
+            thisInstance = False
+            thisDecoherenceRegistration = False
+            thisUserData = False
+            for i in allDecoherenceRegistrations:
+                if (request.user == i.user):
+                    isDecoherenceRegistered = True
+                    thisDecoherenceRegistration = i
+            if isDecoherenceRegistered:
+                for i in allResponses:
+                    if (request.user == i.user):
+                        isResponded = True
+                        thisInstance = i
+                for i in allUserData:
+                    if (request.user == i.user):
+                        thisUserData = i
+                if isResponded:
+                    if thisInstance.isSubmit:
+                        return render(request, 'registration/decoherencePrelimsSubmitted.html',{})
+                    else:
+                        f = DecoherencePrelimsForm(instance=thisInstance)
+                        if request.method == "POST":
+                            f = DecoherencePrelimsForm(request.POST, request.FILES,instance=thisInstance)
+                            if f.is_valid():
+                                thisInstance = f.save(commit=False)
+                                if request.POST.get("submit"):
+                                    thisInstance.isSubmit = True
+                                    thisInstance.submit_date = timezone.now()
+                                    #if event_confirmation_mail('Pravega Innovation Summit',thisUserData.email,request,thisInstance.member1email,thisInstance.member2email,thisInstance.member3email,thisInstance.member1name,thisInstance.member2name,thisInstance.member3name,):
+                                    #    thisInstance.confirmation_email_sent = True
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your Decoherence Prelims Responses')
+                                    return redirect('registration')
+                                else:
+                                    thisInstance.modifyTimes = thisInstance.modifyTimes + "\n" + str(timezone.now())
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully saved your Decoherence Prelims Responses')
+                                    f = DecoherencePrelimsForm(instance=thisInstance)
+                                    return render(request, 'registration/decoherencePrelims.html', {'form': f,'dateBegin':dateBegin,'dateEnd':dateEnd, 'examEnded':examEnded, 'examStarted':examStarted, 'startTime':startTime, 'endTime':endTime, 'currentTime':currentTime, 'objectiveQuestions':objectiveQuestions, 'subjectiveQuestions':subjectiveQuestions, 'objectiveQuestionsImages':objectiveQuestionsImages})
+                else:
+                    if request.method == "POST":
+                        f = DecoherencePrelimsForm(request.POST, request.FILES)
+                        if f.is_valid():
+                            reg = f.save(commit=False)
+                            reg.user = request.user
+                            reg.institution = thisUserData.institution
+                            reg.city = thisUserData.city
+                            reg.email = thisUserData.email
+                            reg.decoherenceRegistration = thisDecoherenceRegistration
+                            reg.teamName = thisDecoherenceRegistration.teamName
+                            if request.POST.get("submit"):
+                                reg.isSubmit = True
+                                reg.submit_date = timezone.now()
+                                #if event_confirmation_mail('Pravega Innovation Summit',thisUserData.email,request,reg.member1email,reg.member2email,reg.member3email,reg.member1name,reg.member2name,reg.member3name,):
+                                #    reg.confirmation_email_sent = True
+                                reg.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Decoherence Prelims Responses')
+                            else:
+                                reg.modifyTimes = reg.modifyTimes + "\n" + str(timezone.now())
+                                reg.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully saved your Decoherence Prelims Responses')
+                                return render(request, 'registration/decoherencePrelims.html', {'form': f,'dateBegin':dateBegin,'dateEnd':dateEnd, 'examEnded':examEnded, 'examStarted':examStarted, 'startTime':startTime, 'endTime':endTime, 'currentTime':currentTime, 'objectiveQuestions':objectiveQuestions, 'subjectiveQuestions':subjectiveQuestions, 'objectiveQuestionsImages':objectiveQuestionsImages})
+                            return redirect('registration')
+                    else:
+                        f = DecoherencePrelimsForm()
+                return render(request, 'registration/decoherencePrelims.html', {'form': f,'dateBegin':dateBegin,'dateEnd':dateEnd, 'examEnded':examEnded, 'examStarted':examStarted, 'startTime':startTime, 'endTime':endTime, 'currentTime':currentTime, 'objectiveQuestions':objectiveQuestions, 'subjectiveQuestions':subjectiveQuestions, 'objectiveQuestionsImages':objectiveQuestionsImages})
+            else:
+                return render(request, 'registration/decoherenceNotRegistered.html',{})
+
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to participate in the Decoherence Prelims')
+            return redirect('login')
+    else:
+        if request.user.is_authenticated:
+            return render(request, 'registration/decoherencePrelims.html',{'form': f,'dateBegin':dateBegin,'dateEnd':dateEnd, 'examEnded':examEnded, 'examStarted':examStarted, 'startTime':startTime, 'endTime':endTime, 'currentTime':currentTime, 'objectiveQuestions':objectiveQuestions, 'subjectiveQuestions':subjectiveQuestions, 'objectiveQuestionsImages':objectiveQuestionsImages})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to participate in the Decoherence Prelims')
+            return redirect('login')
+
+def time(request):
+    try:
+        startTime = list(StatusDates.objects.filter(title='decoherencePrelimsStart'))[0].dtValue
+    except:
+        startTime = 0
+    try:
+        endTime = list(StatusDates.objects.filter(title='decoherencePrelimsEnd'))[0].dtValue
+    except:
+        endTime = 0
+    dateBegin=json.dumps(startTime.isoformat())
+    dateEnd=json.dumps(endTime.isoformat())
+    return render(request,'registration/time.html',{'dateBegin':dateBegin,'dateEnd':dateEnd})
+
+def getServerTime(request):
+    return JsonResponse({'serverTime': timezone.now().isoformat()})
