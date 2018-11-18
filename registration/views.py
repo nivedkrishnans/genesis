@@ -21,6 +21,9 @@ import json
 def closed(request):
     return render(request, 'registration/closed.html', {})
 
+def decoherencePrelimsCrashed(request):
+    return render(request, 'registration/decoherencePrelimsCrashed.html', {})
+
 def registered(request):
     return render(request, 'registration/registered.html', {})
 
