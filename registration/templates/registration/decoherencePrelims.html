@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="{%static 'css/reg.css'%}">
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <style>
+        form *{
+            font-family: 'Lato';
+        }
             @media (min-width: 760px){
                 #main{
                     width: 100%;
@@ -27,6 +30,7 @@
             }
 
         .questionImage{
+            margin: 12px auto;
             width: 90%;
             height: 360px;
             object-fit: contain;
@@ -42,19 +46,26 @@
             position: relative;
             top: 4px;
         }
+        #time{
+            text-align: center;
+        }
         #timeF{
-            padding: 14px;
-            font-size: 24px;
+            padding: 8px;
+            font-size: 14px;
             font-family: 'Titillium Web', sans-serif;
             position: fixed;
             right:0;
-            top: 200px;
+            top: 60px;
             background-color: rgba(20,20,20,0.7);
             border-radius: 4px;
             border: 1px solid rgba(255,255,240,0.3);
         }
-        #time{
-            text-align: center;
+        @media(min-width:760px){
+            #timeF{
+                padding: 14px;
+                font-size: 24px;
+                top: 200px;
+            }
         }
     </style>
 {% endblock %}
@@ -64,6 +75,20 @@
         <div class="heading">Decoherence Prelims</div>
         {% if user.is_authenticated %}
           <p>Hi {{ user }}!</p>
+          <div class="messages">
+              <p style="margin-bottom:14px;">Important:</p>
+              <ul>
+                  <li>You are supposed to attempt the Decoherence Prelims ONLY FROM ONE DEVICE AT A TIME.</li>
+                  <li>At 12:30 PM, the form will try to save itself from all devices. This means that if you have the portal open in two different devices, the responses from one will overwrite the other, depending on the speed of your connections. </li>
+                  <li>Do not try to upload the answers to the subjective questions at the last moment.</li>
+              </ul>
+          </div>
+          <div>
+              <p style="margin-bottom:14px;">Marking Scheme:</p>
+              <ul>
+                  <li>All objective questions carry 1 mark each. The marks for each subjective question is mentioned along with each question.</li>
+              </ul>
+          </div>
           {% if form.errors %}
               <div class="errors">
                   <p>Please fix the following errors</p>
@@ -90,7 +115,7 @@
                   </ul>
               </div>
           {% endif %}
-          <p>View the complete details of this event <a href="{% url 'decoherence'%}">here</a>.</p>
+          <p>View the details of this event <a href="{% url 'decoherence'%}">here</a>.</p>
           {% if examStarted and not examEnded %}
           <p style="font-family: 'Titillium Web', sans-serif;">Duration:  {{startTime}} to {{endTime}}. </p>
 

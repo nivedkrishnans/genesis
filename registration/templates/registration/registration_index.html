@@ -14,6 +14,28 @@
     <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway:300,400|Titillium+Web" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/comingsoon.css'%}">
     <link rel="stylesheet" href="{%static 'css/reg_index.css'%}">
+    <style>
+            .event-area-highlighted{
+                background-color: rgba(12,12,12,0.9);
+                border: 1px solid rgba(255,255,240);
+                transition: transform 0.2s;
+                animation-name: eventHighlight;
+                animation-duration: 0.8s;
+                animation-iteration-count: infinite;
+            }
+            @keyframes eventHighlight {
+                0%{
+                    transform: scale(1,1);
+                }
+                50%{
+                    transform: scale(1.01,1.01);
+                }
+                100%{
+                    transform: scale(1,1);
+                }
+
+            }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -48,6 +70,13 @@
                     </ul>
                 </div>
             {% endif %}
+        </div>
+        <div class="event-area event-area-highlighted">
+            <div class="event-title">Decoherence Prelims</div>
+            <div class="event-description">Decoherence Prelims from 10:30 AM to 12:30 AM (IST) on 18th November,2018. Only Registered Teams can participate.</div>
+            <div class="event-essentials">
+                <a href="{% url 'decoherencePrelims' %}"><div class="green-status"> &#10004; Participate Now</div></a>
+            </div>
         </div>
         {%if iow_isactive %}
             <div class="event-area">
