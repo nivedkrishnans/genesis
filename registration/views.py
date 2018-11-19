@@ -14,6 +14,9 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from .event_confirmation_mails import event_confirmation_mail
+from django.http import JsonResponse
+from datetime import datetime
+import json
 
 def closed(request):
     return render(request, 'registration/closed.html', {})
@@ -322,8 +325,6 @@ def footprintsRegistration(request):
         return render(request, 'registration/closed.html',{})
 
 
-
-
 def battleofbandsRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='battle of bands')
     if thisEvent.registrationStatus == 'opened':
@@ -462,12 +463,6 @@ def decoherenceRegistration(request):
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
-
-
-
-
-
-
 
 
 
@@ -709,7 +704,13 @@ def wikimediaphotographyRegistration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
+def time(request):
+    dateBegin=json.dumps(datetime(2018, 11, 17, 1, 56).isoformat())
+    dateEnd=json.dumps(datetime(2018, 11, 18, 1, 58).isoformat())
+    return render(request,'registration/time.html',{'dateBegin':dateBegin,'dateEnd':dateEnd})
 
+def getServerTime(request):
+    return JsonResponse({'serverTime': timezone.now().isoformat()})
 
 def vignettoraRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='ppp')

@@ -337,7 +337,8 @@ class ETCRegistration(models.Model):
         ('Psychology','Psychology'),
         ('Economics','Economics'),
     )
-    subjects = models.CharField(default="English", max_length=200)
+
+    subjects = models.CharField(max_length=800)
     topic = models.CharField(max_length=800)
 
     #user details
