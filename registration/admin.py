@@ -114,26 +114,6 @@ class WikimediaPhotographyRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = WikimediaPhotographyRegistration
 
-class VignettoraRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user', 'email','institution','city','submit_date')
-    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
-        return adminResources.superuser_fields(self, request, obj)
-    class Meta:
-        model = VignettoraRegistration
-
-class PPPRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user', 'email','institution','city','submit_date')
-    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
-        return adminResources.superuser_fields(self, request, obj)
-    class Meta:
-        model = PPPRegistration
-
-class ImpromptooRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user', 'email','institution','city','submit_date')
-    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
-        return adminResources.superuser_fields(self, request, obj)
-    class Meta:
-        model = ImpromptooRegistration
 
 class PISRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','institution','city','submit_date')
@@ -141,6 +121,27 @@ class PISRegistrationResource(ExportMixin,admin.ModelAdmin):
         return adminResources.superuser_fields(self, request, obj)
     class Meta:
         model = PISRegistration
+
+class StatusDatesResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('title','dtValue','description')
+    class Meta:
+        model = StatusDates
+
+class DecoherencePrelimResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user','decoherenceRegistration','submit_date','teamName','institution','city')
+    class Meta:
+        model = DecoherencePrelim
+
+
+class DecoherenceObjectiveQuestionResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('qNo','title','text')
+    class Meta:
+        model = DecoherenceObjectiveQuestion
+
+class DecoherenceSubjectiveQuestionResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('qNo','title','text')
+    class Meta:
+        model = DecoherenceSubjectiveQuestion
 
 admin.site.register(UserData,UserDataResource)
 admin.site.register(AdminEvent,AdminEventResource)
@@ -151,7 +152,8 @@ admin.site.register(BattleOfBandsRegistration,BattleOfBandsRegistrationResource)
 admin.site.register(FootprintsRegistration,FootprintsRegistrationResource)
 admin.site.register(DecoherenceRegistration,DecoherenceRegistrationResource)
 admin.site.register(WikimediaPhotographyRegistration,WikimediaPhotographyRegistrationResource)
-admin.site.register(PPPRegistration,PPPRegistrationResource)
-admin.site.register(VignettoraRegistration,VignettoraRegistrationResource)
 admin.site.register(PISRegistration,PISRegistrationResource)
-admin.site.register(ImpromptooRegistration,ImpromptooRegistrationResource)
+admin.site.register(StatusDates,StatusDatesResource)
+admin.site.register(DecoherencePrelim,DecoherencePrelimResource)
+admin.site.register(DecoherenceObjectiveQuestion,DecoherenceObjectiveQuestionResource)
+admin.site.register(DecoherenceSubjectiveQuestion,DecoherenceSubjectiveQuestionResource)

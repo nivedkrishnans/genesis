@@ -48,4 +48,10 @@ urlpatterns = [
 		subject_template_name='registration/email_templates/password_reset_subject.txt'
 	),name='password_reset'),
 	url(r'^', include('django.contrib.auth.urls')),
+	url(r'^decoherence/prelims$', views.decoherencePrelimsCrashed, name='decoherencePrelims'),
+	url(r'^decoherence/prelims/$', views.decoherencePrelimsCrashed, name='decoherencePrelims'),
+	url(r'^time$', views.time, name='time'),
+	url(r'^time/$', views.time, name='time'),
+	url(r'^servertime$', views.getServerTime, name='servertime'),
+	url(r'^servertime/$', views.getServerTime, name='servertime'),
 ]
