@@ -46,6 +46,7 @@ def registration_index(request):
         'pis':PISRegistration,
         'ppp':PPPRegistration,
         'vignettora':VignettoraRegistration,
+        'etc':ETCRegistration,
         'impromptoo':ImpromptooRegistration,
     }
 
@@ -706,14 +707,6 @@ def wikimediaphotographyRegistration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
-def time(request):
-    dateBegin=json.dumps(datetime(2018, 11, 17, 1, 56).isoformat())
-    dateEnd=json.dumps(datetime(2018, 11, 18, 1, 58).isoformat())
-    return render(request,'registration/time.html',{'dateBegin':dateBegin,'dateEnd':dateEnd})
-
-def getServerTime(request):
-    return JsonResponse({'serverTime': timezone.now().isoformat()})
-
 def vignettoraRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='ppp')
     initialValues={}
@@ -937,6 +930,83 @@ def pppRegistration(request):
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
+
+
+def etcRegistration(request):
+
+    thisEvent = get_object_or_404(AdminEvent, title='ppp')
+    initialValues={}
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations =ETCRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            thisInstance = False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+            if thisUserData:
+                initialValues={"institution": thisUserData.institution,
+                "city":thisUserData.city ,
+                "email": thisUserData.email,
+                "contact": thisUserData.contact}
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = ETCForm(initial=initialValues,instance=thisInstance)
+                    if request.method == "POST":
+                        f = ETCForm(request.POST, request.FILES,instance=thisInstance,initial=initialValues )
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('Explain The Concept Event',request.POST['email'],request):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Explain The Concept Event Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Explain The Concept Event Registration Form')
+                                f =ETCForm(initial=initialValues,instance=thisInstance)
+                                return render(request, 'registration/etcRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = ETCForm(request.POST, request.FILES,initial=initialValues )
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('Explain The Concept Event',thisUserData.email,request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Explain The Concept Event Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Explain The Concept Event Registration Form')
+                            return render(request, 'registration/etcRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = ETCForm(initial=initialValues)
+            return render(request, 'registration/etcRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for the Explain The Concept Event')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
 
 def pisRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='pis')

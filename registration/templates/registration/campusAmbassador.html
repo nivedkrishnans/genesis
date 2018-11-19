@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Campus Ambassador Registration | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway:300,400|Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/reg.css'%}">
+    <link rel="stylesheet" href="{%static 'css/campusAmbassador_reg.css'%}">
+{% endblock %}
+
+{% block content %}
+    <div id="main-data">
+        <div class="heading">The Campus Ambassador Program</div>
+        <p> Hello friends, </p>
+        <p>
+            We are glad to invite you to be a part of IISc’s three day Science and Culture fest, Pravega, to be held on 18th, 19th, and 20th January, 2019 at the Indian Institute of Science, Bangalore by being one of our Campus Ambassadors. Pravega is a three-day fest organized by the Undergraduate community of the Indian Institute of Science. Pravega accurately describes the sentiment of the work culture in the scientific and student community of accelerating in life. Being an eclectic mixture of numerous Scientific and Cultural events, you are invited to join us during the pleasant winter days from 18th to 20th January 2019, and take part in the biggest science fest in India, and the fastest growing science fest in the World. We hope to reignite the fire of curiosity, which separates a child from an adult, and enrich the thinking of all people visiting us.
+        </p>
+        <p>
+             As a part of the fest, we shall be hosting a variety of science based events, both on the fun and the technical side. The fest also has an assortment of various highly coveted workshops to offer, which provide a certificate of participation carrying our name, upon completion. It is the ideal event for the students of your college to learn, relax from a regular schedule, and come out better than before.
+         </p>
+         <p>
+             What we're hoping from you, as a Campus Ambassador, would be to be a representative for Pravega in your college. You, being an integrated member of Pravega, would be provided a certificate from Pravega, IISc along with other prizes and incentives including cash prizes, official Pravega merchandise, exclusive discounts for Pravega workshops and Pronites
+        </p>
+        <p class="txt">
+            This is what you're looking at if you help make pravega a grand success:
+            <hr>
+            <ol class="incentives">
+                <li>Certificate from Pravega, IISc</li>
+                <li>Official Pravega 2019 merchandise</li>
+                <li>Discounts and free tickets to Pronites</li>
+                <li>Opportunity to meet Pronites headliners</li>
+                <li>Discounts and free exclusive Pravega workshop access</li>
+                <li>Exclusive VIP tour of Pravega and IISc</li>
+                <li>Other exciting prizes</li>
+            </ol>
+            <hr>
+       </p>
+       <p>
+           Terms and conditions:
+           <ol class="tandc">
+               <li>Prizes are awarded based on a point based system and points are rewarded when CAs successfully perform various tasks and provides screenshots/photos of the same.</li>
+               <li>Points will be rewarded when CAs like and follow Pravega FB page and share posts and stick posters on college public notice boards. </li>
+               <li>Each campus ambassador will have a unique code. Points are also rewarded when participants from CAs respective colleges come to attend Pravega once they provide the CAs code at the registration desk, so make sure participants from your college know your code.</li>
+               <li>Certificates will be mailed to CAs even if they are unable to attend the fest but other prizes will be provided only if/when CAs attend the fest.</li>
+               <li>Changes in the reward scheme before or after the selection of Campus Ambassadors is under the sole discretion of Pravega, however changes would be notified to the CAs as soon as possible.</li>
+           </ol>
+      </p>
+    </div>
+    <div id="main">
+        <div class="heading">Campus Ambassador Registration</div>
+        {% if isOpen %}
+            {% if user.is_authenticated %}
+              <p>Hi {{ user }}!</p>
+              {% if form.errors %}
+                  <div class="errors">
+                      <p>Please fix the following errors</p>
+                      <ul>
+                          {% for field in form %}
+                              {% if field.errors %}
+                                  {% for error in field.errors %}
+                                      <li>{{ error|escape }}</li>
+                                  {% endfor %}
+                              {% endif %}
+                          {% endfor %}
+                      </ul>
+                      {% if form.non_field_errors %}
+                          {{ form.non_field_errors }}
+                      {% endif %}
+                  </div>
+              {% endif %}
+              {% if messages %}
+                  <div class="messages">
+                      <ul>
+                      {% for message in messages %}
+                          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                      {% endfor %}
+                      </ul>
+                  </div>
+              {% endif %}
+
+                {% if isSubmit %}
+                    <p>You are already Registered as a Campus Ambassador</p>
+                {% else %}
+                  <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="field-space">
+                            {{ field.errors }}
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <div class="messages">
+                        <p style="margin-bottom:14px;">Important:</p>
+                        <ul>
+                            <li>You have two options, 'save' and 'submit'.</li>
+                            <li>If you click save, you will be able to edit the form until you click submit or until the registration closes, WHICHEVER COMES FIRST.</li>
+                            <li>Once you click submit, YOU WILL NOT BE ABLE TO EDIT THE FORM.</li>
+                        </ul>
+                    </div>
+                    <div class="buttonCollection">
+                        <button type="submit" name="save" value="save">Save</button>
+                        <button type="submit" name="submit" value="submit">Submit</button>
+                    </div>
+                  </form>
+                 {% endif %}
+            {% else %}
+                <div>
+                    <ul>
+                        <li>You have to log in to register as a Campus Ambassador.</li>
+                    </ul>
+                </div>
+                <div class="buttonCollection">
+                    <a href="{% url 'login' %}"><div class="divButton">Log In</div></a>
+                    <a href="{% url 'signup' %}"><div class="divButton">Sign Up</div></a>
+                </div>
+            {% endif %}
+        {% else %}
+            <p>The Campus Ambassador Registration Portal is closed.</p>
+        {% endif %}
+    </div>
+
+    <script src="{%static 'js/navBar.js'%}"> </script>
+{% endblock %}

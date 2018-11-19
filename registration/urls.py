@@ -25,15 +25,12 @@ urlpatterns = [
 	url(r'^vignettora/$', views.vignettoraRegistration, name='vignettoraRegistration'),
 	url(r'^impromptoo$', views.impromptooRegistration, name='impromptooRegistration'),
 	url(r'^impromptoo/$', views.impromptooRegistration, name='impromptooRegistration'),
-<<<<<<< HEAD
 	url(r'^etc$', views.etcRegistration, name='etcRegistration'),
 	url(r'^etc/$', views.etcRegistration, name='etcRegistration'),
 	url(r'^time$', views.time, name='time'),
 	url(r'^time/$', views.time, name='time'),
 	url(r'^servertime$', views.getServerTime, name='servertime'),
 	url(r'^servertime/$', views.getServerTime, name='servertime'),
-=======
->>>>>>> parent of 72e17c5... Added ETC, and auto complete o
 	url(r'^wikimediaphotography$', views.pppRegistration, name='wikimediaphotographyRegistration'),
 	url(r'^wikimediaphotography/$', views.pppRegistration, name='wikimediaphotographyRegistration'),
 	url(r'^pravega_innovation_summit$', views.pisRegistration, name='pisRegistration'),

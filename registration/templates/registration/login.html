@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Login | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Overlock+SC|Raleway:300,400|Abel|Dosis:300,400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/reg.css'%}">
+
+{% endblock %}
+
+{% block content %}
+    <div id="main">
+
+        <div class="heading">Login</div>
+
+        {% if user.is_authenticated %}
+          <p> Hi {{ user }}! You are logged in!</p>
+          <p> Check out our events on the <a href="{% url 'events'%}"> events </a> page.</p>
+          <p> Go to the <a href="{% url 'registration'%}"> registrations </a> page to register to our events.</p>
+          <div class="buttonCollection">
+              <a href="{% url 'logout' %}"><div class="divButton">Log Out</div></a>
+              <a href="{% url 'password_change' %}"><div class="divButton">Change Password</div></a>
+        </div>
+        {% else %}
+            <div class="buttonCollection">
+                <a href="{% url 'signup' %}"><div class="divButton">Sign Up</div></a>
+                <a href="{% url 'password_reset' %}"><div class="divButton">Reset Password</div></a>
+            </div>
+            {% if form.errors %}
+                <div class="errors">
+                    <p>Please fix the following errors</p>
+                    <ul>
+                        {% for field in form %}
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <li><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% if form.non_field_errors %}
+                        {{ form.non_field_errors }}
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if messages %}
+                <div class="messages">
+                    <ul>
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <div class="messages">
+                <ul>
+                    <li>You can log in only after you click on the confirmation link sent to your mail during sign up.</li>
+                </ul>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="field-space">
+                        {% if field.errors %}
+                            <div class="errors">
+                                <ul>
+                                    {% for error in field.errors %}
+                                        <li>{{ error|escape }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                        <!-- For changing 'username' field to 'email'-->
+                                    {% if forloop.counter0 %} {{ field.label_tag }}
+                                    {% else %}  Email:
+                                    {% endif %}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button type="submit">Log In</button>
+            </form>
+        {% endif %}
+
+
+    </div>
+
+    <script src="{%static 'js/navBar.js'%}"> </script>
+{% endblock %}
