@@ -208,21 +208,6 @@ class PPPForm(forms.ModelForm):
             "contact": "Mobile Number",
         }
 
-class ETCForm(forms.ModelForm):
-    class Meta:
-        model = ETCRegistration
-        fields = ('name','year','major','institution','city','email','contact','subjects','topic')
-        labels = {
-            "name":"Name",
-            "year":"Year in School/College",
-            "institution": "Institution",
-            "city": "City",
-            "email": "Email",
-            "contact": "Mobile Number",
-            "subjects":"Subjects of Interest",
-            "topic":"Briefly describe your tentative ideas/choice of topic/general field you will pick from",
-        }
-
 class PISForm(forms.ModelForm):
     class Meta:
         model = PISRegistration

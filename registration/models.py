@@ -305,30 +305,12 @@ class ImpromptooRegistration(models.Model):
     def __str__(self):
         return str(self.user)
 
+
 class PPPRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     #form details
-
-    #user details
-    institution = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200, null=False, blank=False)
-    contact = models.CharField(max_length=20)
-    #how you got to know about this program/event
-
-    confirmation_email_sent = models.BooleanField(default=False)
-    #whether or not the form was submitted
-    isSubmit = models.BooleanField(default=False)
-    last_modify_date = models.DateTimeField( null=True, blank=True)
-    submit_date = models.DateTimeField( null=True, blank=True)
-    def __str__(self):
-        return str(self.user)
-
-class ETCRegistration(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-    #form details
+<<<<<<< HEAD
     SUBJECT_CHOICES=(
         ('Physics','Physics'),
         ('Mathematics','Mathematics'),
@@ -340,16 +322,14 @@ class ETCRegistration(models.Model):
 
     subjects = models.CharField(max_length=800)
     topic = models.CharField(max_length=800)
+=======
+>>>>>>> parent of 72e17c5... Added ETC, and auto complete o
 
     #user details
     institution = models.CharField(max_length=200)
-    year = models.CharField(max_length=200)
-    name = models.CharField(max_length=200)
-    major = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     email = models.EmailField(max_length=200, null=False, blank=False)
     contact = models.CharField(max_length=20)
-
 
     #how you got to know about this program/event
 
@@ -360,6 +340,7 @@ class ETCRegistration(models.Model):
     submit_date = models.DateTimeField( null=True, blank=True)
     def __str__(self):
         return str(self.user)
+
 
 
 class PISRegistration(models.Model):
