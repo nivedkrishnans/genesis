@@ -213,7 +213,8 @@ class PPPForm(forms.ModelForm):
 class ETCForm(forms.ModelForm):
     class Meta:
         model = ETCRegistration
-        fields = ('name','year','major','institution','city','email','contact','subjects','topic')
+        fields = ('name','year','major','institution','city','email','contact',
+        'physics','mathematics','chemistry','biology','psychology','economics','topic')
         labels = {
             "name":"Name",
             "year":"Year in School/College",
@@ -221,7 +222,12 @@ class ETCForm(forms.ModelForm):
             "city": "City",
             "email": "Email",
             "contact": "Mobile Number",
-            "subjects":"Subjects of Interest",
+            "physics":"Physics",
+            "mathematics":"Mathematics",
+            "chemistry":"Chemistry",
+            "biology":"Biology",
+            "psychology":"Psychology",
+            "economics":"Economics",
             "topic":"Briefly describe your tentative ideas/choice of topic/general field you will pick from",
         }
 

@@ -52,7 +52,8 @@ class PPPRegistrationResource(ExportMixin,admin.ModelAdmin):
         model = PPPRegistration
 
 class ETCRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user','name','year','major', 'email','institution','city','subjects','submit_date')
+    list_display = ('user','name','year','major', 'email','institution','city',
+    'physics','mathematics','chemistry','biology','psychology','economics','submit_date')
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj)
     class Meta:

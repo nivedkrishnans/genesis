@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
 from .field_helpers import PhoneNumberField,lasya_file_validation,proscenium_file_validation,battleofbands_file_validation
+
 #for user full name or username display
 from django.contrib.auth.models import User
 import random
@@ -341,7 +342,13 @@ class ETCRegistration(models.Model):
         ('Economics','Economics'),
     )
 
-    subjects = models.CharField(max_length=800)
+    physics=models.BooleanField(default=False)
+    mathematics=models.BooleanField(default=False)
+    chemistry=models.BooleanField(default=False)
+    biology=models.BooleanField(default=False)
+    psychology=models.BooleanField(default=False)
+    economics=models.BooleanField(default=False)
+
     topic = models.CharField(max_length=800)
 
     #user details

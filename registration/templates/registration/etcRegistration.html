@@ -50,6 +50,8 @@
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
+                {% if forloop.counter is 8 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Subjects of Interest: </p>  {% endif %}
+
                 <div class="field-space">
                     {{ field.errors }}
                     {{ field.label_tag }}

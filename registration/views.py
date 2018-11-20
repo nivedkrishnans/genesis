@@ -327,7 +327,6 @@ def footprintsRegistration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
-
 def battleofbandsRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='battle of bands')
     if thisEvent.registrationStatus == 'opened':
@@ -404,7 +403,6 @@ def battleofbandsRegistration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
-
 def decoherenceRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='decoherence')
     if thisEvent.registrationStatus == 'opened':
@@ -467,11 +465,8 @@ def decoherenceRegistration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
-
-
 def redirectLogin(request):
     return redirect(to="login")
-
 
 def signup(request):
     if request.method == 'POST':
@@ -565,8 +560,6 @@ def activateAccount(request):
 
     return redirect('login')
 
-
-
 def campusambassadors(request):
     thisEvent = get_object_or_404(AdminEvent, title='Campus Ambassadors')
     isRegistered = False
@@ -633,8 +626,6 @@ def campusambassadors(request):
         return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit,'isOpen':isOpen, 'form':f})
 
     return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit, 'isOpen':isOpen, 'form':f})
-
-
 
 def wikimediaphotographyRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='wikimediaphotography')
@@ -931,7 +922,6 @@ def pppRegistration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
-
 def etcRegistration(request):
 
     thisEvent = get_object_or_404(AdminEvent, title='ppp')
@@ -1007,7 +997,6 @@ def etcRegistration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
-
 def pisRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='pis')
     if thisEvent.registrationStatus == 'opened':
@@ -1078,12 +1067,6 @@ def pisRegistration(request):
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
-
-
-
-
-
-
 
 def decoherencePrelims(request):
     try:
