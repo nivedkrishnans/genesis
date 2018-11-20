@@ -42,12 +42,14 @@ def registration_index(request):
         'footprints':FootprintsRegistration,
         'battle of bands':BattleOfBandsRegistration,
         'decoherence':DecoherenceRegistration,
+        'debubulary':DebubularyRegistration,
         'wikimediaphotography':WikimediaPhotographyRegistration,
         'pis':PISRegistration,
         'ppp':PPPRegistration,
         'vignettora':VignettoraRegistration,
         'etc':ETCRegistration,
         'impromptoo':ImpromptooRegistration,
+        'cryptothlon':CryptothlonRegistration,
     }
 
     #inotherwords
@@ -461,6 +463,130 @@ def decoherenceRegistration(request):
             return render(request, 'registration/decoherenceRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for Decoherence')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+def debubularyRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='debubulary')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations = DebubularyRegistration.objects.all()
+            isRegistered = False
+            thisInstance = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = DebubularyForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = DebubularyForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('Debubulary',request.POST['email1'],request,request.POST['email2']):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Debubulary Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Debubulary Registration Form')
+                                f =DebubularyForm(instance=thisInstance)
+                                return render(request, 'registration/debubularyRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = DebubularyForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('Debubulary',request.POST['email1'],request,request.POST['email2']):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Debubulary Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Debubulary Registration Form')
+                            return render(request, 'registration/debubularyRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = DebubularyForm()
+            return render(request, 'registration/debubularyRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Debubulary')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+def cryptothlonRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='cryptothlon')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations = CryptothlonRegistration.objects.all()
+            isRegistered = False
+            thisInstance = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = CryptothlonForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = CryptothlonForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('Cryptothlon',request.POST['email1'],request,request.POST['email2']):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Cryptothlon Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Cryptothlon Registration Form')
+                                f =CryptothlonForm(instance=thisInstance)
+                                return render(request, 'registration/cryptothlonRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = CryptothlonForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('Cryptothlon',request.POST['email1'],request,request.POST['email2']):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Cryptothlon Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Cryptothlon Registration Form')
+                            return render(request, 'registration/cryptothlonRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = CryptothlonForm()
+            return render(request, 'registration/cryptothlonRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Debubulary')
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
