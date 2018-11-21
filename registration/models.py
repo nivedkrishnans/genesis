@@ -311,54 +311,14 @@ class VignettoraRegistration(models.Model):
     #form details
 
     #user details
+    full_name =  models.CharField(max_length=127)
     institution = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     email = models.EmailField(max_length=200, null=False, blank=False)
     contact = models.CharField(max_length=20)
 
     #how you got to know about this program/event
-
-    confirmation_email_sent = models.BooleanField(default=False)
-    #whether or not the form was submitted
-    isSubmit = models.BooleanField(default=False)
-    last_modify_date = models.DateTimeField( null=True, blank=True)
-    submit_date = models.DateTimeField( null=True, blank=True)
-    def __str__(self):
-        return str(self.user)
-
-class ImpromptooRegistration(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-    #form details
-
-    #user details
-    institution = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200, null=False, blank=False)
-    contact = models.CharField(max_length=20)
-
-    #how you got to know about this program/event
-
-    confirmation_email_sent = models.BooleanField(default=False)
-    #whether or not the form was submitted
-    isSubmit = models.BooleanField(default=False)
-    last_modify_date = models.DateTimeField( null=True, blank=True)
-    submit_date = models.DateTimeField( null=True, blank=True)
-    def __str__(self):
-        return str(self.user)
-
-class PPPRegistration(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-    #form details
-
-    #user details
-    institution = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200, null=False, blank=False)
-    contact = models.CharField(max_length=20)
-    #how you got to know about this program/event
-
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)
@@ -370,15 +330,15 @@ class PPPRegistration(models.Model):
 class ETCRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    #user details
+    institution = models.CharField(max_length=200)
+    year = models.CharField(max_length=200)
+    full_name = models.CharField(max_length=200)
+    major = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200, null=False, blank=False)
+    contact = models.CharField(max_length=20)
     #form details
-    SUBJECT_CHOICES=(
-        ('Physics','Physics'),
-        ('Mathematics','Mathematics'),
-        ('Chemistry','Chemistry'),
-        ('Biology','Biology'),
-        ('Psychology','Psychology'),
-        ('Economics','Economics'),
-    )
 
     physics=models.BooleanField(default=False)
     mathematics=models.BooleanField(default=False)
@@ -386,21 +346,11 @@ class ETCRegistration(models.Model):
     biology=models.BooleanField(default=False)
     psychology=models.BooleanField(default=False)
     economics=models.BooleanField(default=False)
-
-    topic = models.CharField(max_length=800)
-
-    #user details
-    institution = models.CharField(max_length=200)
-    year = models.CharField(max_length=200)
-    name = models.CharField(max_length=200)
-    major = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200, null=False, blank=False)
-    contact = models.CharField(max_length=20)
-
-
+    other_subjects = models.CharField(max_length=200,blank=True, null=False)
+    topic = models.CharField(max_length=800,blank=True, null=False)
+    
     #how you got to know about this program/event
-
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
     isSubmit = models.BooleanField(default=False)

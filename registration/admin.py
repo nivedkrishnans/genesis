@@ -37,33 +37,18 @@ class CampusAmbassadorResource(ExportMixin,admin.ModelAdmin):
         model = CampusAmbassador
 
 class VignettoraRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user', 'email','institution','city','submit_date')
+    list_display = ('user', 'full_name' ,'email','institution','city','submit_date')
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj)
     class Meta:
         model = VignettoraRegistration
 
-class PPPRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user', 'email','institution','city','submit_date')
-    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
-        return adminResources.superuser_fields(self, request, obj)
-    class Meta:
-        model = PPPRegistration
-
 class ETCRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user','name','year','major', 'email','institution','city',
-    'physics','mathematics','chemistry','biology','psychology','economics','submit_date')
+    list_display = ('user','full_name','year','major', 'email','institution','city','submit_date')
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj)
     class Meta:
         model = ETCRegistration
-
-class ImpromptooRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user', 'email','institution','city','submit_date')
-    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
-        return adminResources.superuser_fields(self, request, obj)
-    class Meta:
-        model = ImpromptooRegistration
 
 
 class LasyaRegistrationResource(ExportMixin,admin.ModelAdmin):
@@ -204,7 +189,5 @@ admin.site.register(StatusDates,StatusDatesResource)
 admin.site.register(DecoherencePrelim,DecoherencePrelimResource)
 admin.site.register(DecoherenceObjectiveQuestion,DecoherenceObjectiveQuestionResource)
 admin.site.register(DecoherenceSubjectiveQuestion,DecoherenceSubjectiveQuestionResource)
-admin.site.register(PPPRegistration,PPPRegistrationResource)
 admin.site.register(ETCRegistration,ETCRegistrationResource)
 admin.site.register(VignettoraRegistration,VignettoraRegistrationResource)
-admin.site.register(ImpromptooRegistration,ImpromptooRegistrationResource)

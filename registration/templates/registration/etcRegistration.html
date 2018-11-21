@@ -12,6 +12,11 @@
     <title>ETC Registration | Pravega 2019, IISc Bangalore</title>
     <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway:300,400|Titillium+Web" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/reg.css'%}">
+    <style>
+        label{
+            display: inline-block;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -45,7 +50,7 @@
                   </ul>
               </div>
           {% endif %}
-          <p>View the complete details of this event <a href="{% url 'etcRegistration'%}">here</a>.</p>
+          <p>View the complete details of this event <a href="{% url 'etc'%}">here</a>.</p>
           <p><a href="{% url 'registration'%}">Click here</a> to go back to the registrations index page.</p>
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}

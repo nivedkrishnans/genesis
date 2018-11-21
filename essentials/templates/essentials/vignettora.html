@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Vignettora | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Vignettora</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      Pride yourself on your ability to concoct vivid tales out of thin air? Fancy your gift of being able
+to wing spectacular tales out of the blue, or that of being able to compose a riveting narrative?
+</p>
+<p>
+Pick a prompt, and let your mind wander.
+</p>
+            <div class="event-essentials">
+                <a href="{% url 'vignettoraRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+            </div>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">About</div>
+            <div class="horizontal-line"></div>
+          <p>Choose a prompt. Express. Inspire. Mesmerise. Bewilder. Confound.</p>
+          <p>
+This event invites entries under 1500 words, subject to the chosen prompt, and a given set of
+constraints, for the preliminaries, to be held in mid-December
+</p>
+<p>The Finale? Surprise, surprise!</p>
+			</div>
+        </div>
+
+		</section>
+    <section style="background-color:rgba(8,8,8,0.5);">
+    			<div class="slide">
+            <div class="main-section">
+                <div class="section-heading">Guidelines</div>
+                <div class="horizontal-line"></div>
+
+                <ul>
+                  <li>
+                    One entry per participant will be allowed. Please note that this must strictly be
+an original work by the participant.
+                  </li>
+                  <li>
+                     The story must be strictly below 1500 words, adhering to the prompt given.t to participants.
+                  </li>
+                  <li>
+                    The competition proceeds in two rounds, the prelims, and the final round.
+Topics and deadlines for each of the rounds will be announced shortly (CHECK
+FOR UPDATES ON THE WEBSITE!)
+                  </li>
+                  <li>
+                    The entries may be submitted online through the submission portal, following
+registrations.
+                  </li>
+                  <li>
+                    Late submissions will NOT be considered at ANY cost.
+                  </li>
+                  <li>
+                    The decision of the panel of judges is binding in terms of choice of the
+winners.
+                  </li>
+                </ul>
+
+            </div>
+    		</div>
+    		</section>
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Prizes</div>
+            <div class="horizontal-line"></div>
+            <p>
+              To Be Announced
+            </p>
+				<div class="event-essentials">
+                    <a href="{% url 'vignettoraRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
+                </div>
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

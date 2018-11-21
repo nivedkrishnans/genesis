@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Explain The Concept | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Explain The Concept</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      Insert Description.
+    </p>
+            <div class="event-essentials">
+                <a href="{% url 'etcRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+            </div>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Prelims</div>
+            <div class="horizontal-line"></div>
+          <ul>
+            <li>
+              Participants are required to make videos pertaining to subjects studied in high school.
+            </li>
+            <li>
+              Multiple video submissions per participant are allowed, and are welcome.
+            </li>
+            <li>
+              Although the syllabus is derived from high school material, participants are <b>strongly encouraged</b> to delve deeper into the topics in their videos and talk about interesting related ideas.
+            </li>
+            <li>
+              Submissions will be graded on originality and novelty (of the topic, format and approach), lucidity, depth of the content, audio-visual appeal, coherence, and some more rubrics.
+            </li>
+          </ul>
+			</div>
+        </div>
+
+		</section>
+			<section   style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Finals</div>
+            <div class="horizontal-line"></div>
+            <ul>
+              <li>
+                Selected participants will be invited to attend the eventful on-campus finals, wherein they will interact (in groups) with a committee of IISc professors and representatives from event partners to spend their time at the fest working on making preliminary video content for the (possibly college-level, though with sufficient provision of resources) topics assigned to their group.
+              </li>
+              <li>
+                The judgement will be based in the participant's performance in the team-based creation round as well as the intermittent events, to pick a winner as well as a winning team.
+              </li>
+            </ul>
+        </div>
+		</div>
+		</section >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Finals</div>
+            <div class="horizontal-line"></div>
+              There will be some intermittent events, for example:
+              <ul>
+                <li>
+              Technically charged group discussions before the groups are formed for each topic, as an ideation round where finalists will be closely evaluated for their contributions
+                </li>
+                <li>
+                   In the form of "flash talks", wherein participants will get about 2 hours to read up on and present for about 10-15 minutes a part of their topic.
+                 </li>
+                 <li>
+                   and more
+                 </li>
+            </ul>
+			</div>
+        </div>
+
+		</section >
+
+<section style="background-color:rgba(8,8,8,0.5);">
+			<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Important Information</div>
+            <div class="horizontal-line"></div>
+
+            <ul>
+              <li>
+                If you plan to send us a video in the future, sign up ASAP with your details, subjects of interest and tentative topic/ideas so that we can make arrangements for the volume of entries, as well as check for significant overlap (there is a heavy emphasis on originality).
+              </li>
+              <li>
+                If possible, briefly describe your intended approach and try to highlight what will be unique about it. This will help us keep a tab on your submission when it comes. Do note, this is absolutely optional.
+              </li>
+            </ul>
+
+        </div>
+		</div>
+		</section>
+    <section> <style="background-color:rgba(8,8,8,0.5);">
+    			<div class="slide">
+            <div class="main-section">
+                <div class="section-heading">Important Information</div>
+                <div class="horizontal-line"></div>
+
+                <ul>
+                  <li>
+                    You can then start working on your video. Based on the collective submissions, we will note the oversubscribed topics and notify the relevant participants that they have chosen an oversubscribed topic, allowing them to better decide whether they want to proceed with that topic or not. If you will have already started on your  video, don't worry - the suggestions will be completely optional and doing something original with an oversubscribed topic is also welcome (and will be noticed).
+                  </li>
+                  <li>
+                     We will also suggest under-subscribed subjects that may be of interest to participants.
+                  </li>
+                </ul>
+
+            </div>
+    		</div>
+    		</section>
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Important Information</div>
+            <div class="horizontal-line"></div>
+              <ul>
+                <li>
+                   Additionally, we will maintain a frequency distribution of the general topic categories (split by subject or branch of subject) on our webpage for participants to keep track.
+                </li>
+                <li>
+                  Make your video(s) and upload them on our ETC page, with a brief description of your approach, any novel methods you have incorporated and things to watch out for.
+                </li>
+                <li>
+                  Selected participants will be informed by (insert date)
+                </li>
+                <li>
+                  Participants will be asked for some details of their background in college level material, to allow us to better choose the topics and committee professors for the finals.
+                </li>
+              </ul>
+				<div class="event-essentials">
+                    <a href="{% url 'etcRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
+                </div>
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

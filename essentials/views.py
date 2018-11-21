@@ -63,6 +63,22 @@ def wikimediaphotography(request):
 def pis(request):
 	return render(request, 'essentials/pis.html', {})
 
+def debubulary(request):
+	#return render(request, 'essentials/debubulary.html', {})
+	return render(request, 'essentials/comingsoon.html', {})
+
+def cryptothlon(request):
+	#return render(request, 'essentials/cryptothlon.html', {})
+	return render(request, 'essentials/comingsoon.html', {})
+
+def vignettora(request):
+	return render(request, 'essentials/vignettora.html', {})
+
+def etc(request):
+	return render(request, 'essentials/etc.html', {})
+
+
+
 def partners(request):
 	return render(request, 'essentials/partners.html', {})
 

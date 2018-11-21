@@ -209,45 +209,24 @@ class WikimediaPhotographyForm(forms.ModelForm):
 class VignettoraForm(forms.ModelForm):
     class Meta:
         model = VignettoraRegistration
-        fields = ('institution','city','email','contact')
+        fields = ('full_name','institution','city','email','contact','howyouknow')
         labels = {
+            "full_name": "Full Name",
             "institution": "Institution",
             "city": "City",
             "email": "Email",
             "contact": "Mobile Number",
-        }
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
 
-class ImpromptooForm(forms.ModelForm):
-    class Meta:
-        model = PPPRegistration
-        fields = ('institution','city','email','contact')
-        labels = {
-
-            "institution": "Institution",
-            "city": "City",
-            "email": "Email",
-            "contact": "Mobile Number",
-        }
-
-class PPPForm(forms.ModelForm):
-    class Meta:
-        model = PPPRegistration
-        fields = ('institution','city','email','contact')
-        labels = {
-
-            "institution": "Institution",
-            "city": "City",
-            "email": "Email",
-            "contact": "Mobile Number",
         }
 
 class ETCForm(forms.ModelForm):
     class Meta:
         model = ETCRegistration
-        fields = ('name','year','major','institution','city','email','contact',
-        'physics','mathematics','chemistry','biology','psychology','economics','topic')
+        fields = ('full_name','year','major','institution','city','email','contact',
+        'physics','mathematics','chemistry','biology','psychology','economics','other_subjects','topic','howyouknow')
         labels = {
-            "name":"Name",
+            "full_name":"Full Name",
             "year":"Year in School/College",
             "institution": "Institution",
             "city": "City",
@@ -259,13 +238,15 @@ class ETCForm(forms.ModelForm):
             "biology":"Biology",
             "psychology":"Psychology",
             "economics":"Economics",
+            'other_subjects': 'Others (optional)',
             "topic":"Briefly describe your tentative ideas/choice of topic/general field you will pick from",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
 class PISForm(forms.ModelForm):
     class Meta:
         model = PISRegistration
-        fields = ('teamName', 'member1name','member1mobile','member1email','member2name','member2mobile','member2email','member3name','member3mobile','member3email','ideaAbstract','motivation','prospects','marketResearch','prototyping',)
+        fields = ('teamName', 'member1name','member1mobile','member1email','member2name','member2mobile','member2email','member3name','member3mobile','member3email','ideaAbstract','motivation','prospects','marketResearch','prototyping','howyouknow')
         labels = {
             "teamName": "Team Name",
             "member1name": "Name",
@@ -282,6 +263,7 @@ class PISForm(forms.ModelForm):
             "prospects": "How do you think your idea will make an impact?",
             "marketResearch": "Market Research (Target customers, potential sposors) (optional)",
             "prototyping": "Prototyping (Product feasibility, scalability, and current progress) (optional)",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
             }
 
 class DecoherencePrelimsForm(forms.ModelForm):
