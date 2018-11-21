@@ -1,0 +1,13 @@
+@media(min-width: 760px){
+    #navBar{
+        height: 40px;
+        border-bottom: 1px #c0c0c0 solid;
+    }
+    #navBar a .small{
+        padding: 0;
+        color: #c0c0c0;
+    }
+    #navBar a .big{
+        display: none;
+    }
+}

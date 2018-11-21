@@ -31,7 +31,16 @@
   <div class="main">
     <div id="categories">
       <section class="main-category" id="category1">
-        <div class="category-display"><h2>P.I.S.</h2>
+        <div class="category-display">
+            <div class="category-display-content">
+                <div class="category-display-content-1">
+                    <img class="category-logo" src="{%static 'img/events/pis_logo.png'%}" alt="pravega innovation summit" />
+                    <h2>P.I.S.</h2>
+                </div>
+                <div class="category-display-content-2">
+                    <p class="category_text">Bringing together the pillars of scientific growth and innovation.</p>
+                </div>
+            </div>
         </div>
         <div class="category-content">
             <div data-simplebar class="category-content-contents">
@@ -39,7 +48,7 @@
                     <div class="events-container">
                         <div class="event-area coming-soon-event">
                             <h4 class="event_title">Pravega Innovation Summit</h4>
-                            <img class="event_logo" src="{%static 'img/events/pis_logo.png'%}" alt="coming soon" />
+                            <img class="event_logo" src="{%static 'img/events/pis_logo.png'%}" alt="pravega innovation summit" />
                             <p class="event_text">Bringing together the pillars of scientific growth and innovation.</p>
                             <a href="{%url 'pis'%}"><div class="seeMore"> See More </div></a>
                         </div>
@@ -50,7 +59,16 @@
         <button class="closeButton" onclick=closeAllCategories();>&times;</button>
       </section>
       <section class="main-category" id="category2">
-        <div class="category-display"><h2>TECHNICAL</h2>
+        <div class="category-display">
+            <div class="category-display-content">
+                <div class="category-display-content-1">
+                    <img class="category-logo" src="{%static 'img/events/technical_logo.png'%}" alt="pravega innovation summit" />
+                    <h2>TECHNICAL</h2>
+                </div>
+                <div class="category-display-content-2">
+                    <p class="category_text">Bringing together the pillars of scientific growth and innovation.</p>
+                </div>
+            </div>
         </div>
         <div class="category-content">
             <div data-simplebar class="category-content-contents">
@@ -68,7 +86,16 @@
         <button class="closeButton" onclick=closeAllCategories();>&times;</button>
       </section>
       <section class="main-category" id="category3">
-        <div class="category-display"><h2>SCIENCE</h2>
+        <div class="category-display">
+            <div class="category-display-content">
+                <div class="category-display-content-1">
+                    <img class="category-logo" src="{%static 'img/events/science_logo.png'%}" alt="pravega innovation summit" />
+                    <h2>SCIENCE</h2>
+                </div>
+                <div class="category-display-content-2">
+                    <p class="category_text">Bringing together the pillars of scientific growth and innovation.</p>
+                </div>
+            </div>
         </div>
         <div class="category-content">
             <div data-simplebar class="category-content-contents">
@@ -97,7 +124,16 @@
         <button class="closeButton" onclick=closeAllCategories();>&times;</button>
       </section>
       <section class="main-category" id="category4">
-        <div class="category-display"><h2>QUIZ</h2>
+        <div class="category-display">
+            <div class="category-display-content">
+                <div class="category-display-content-1">
+                    <img class="category-logo" src="{%static 'img/events/quiz_logo.png'%}" alt="pravega innovation summit" />
+                    <h2>QUIZ</h2>
+                </div>
+                <div class="category-display-content-2">
+                    <p class="category_text">Bringing together the pillars of scientific growth and innovation.</p>
+                </div>
+            </div>
         </div>
         <div class="category-content">
             <div data-simplebar class="category-content-contents">
@@ -115,7 +151,16 @@
         <button class="closeButton" onclick=closeAllCategories();>&times;</button>
       </section>
       <section class="main-category" id="category5">
-        <div class="category-display"><h2>CULTURE</h2>
+        <div class="category-display">
+            <div class="category-display-content">
+                <div class="category-display-content-1">
+                    <img class="category-logo" src="{%static 'img/events/culture_logo.png'%}" alt="pravega innovation summit" />
+                    <h2>CULTURE</h2>
+                </div>
+                <div class="category-display-content-2">
+                    <p class="category_text">Bringing together the pillars of scientific growth and innovation.</p>
+                </div>
+            </div>
         </div>
         <div class="category-content">
             <div data-simplebar class="category-content-contents">
@@ -242,7 +287,9 @@
             $(".category-content").fadeOut(200);
             $(".main-category").css("flex-grow",1);
             $(".main-category").css("flex-shrink",1);
-            $(".category-display h2").removeClass("rotateACW");
+            $(".category-display-content-1").removeClass("rotateACW");
+            $(".category-logo").removeClass("rotatedLogo");
+            $(".category-display .category_text").delay(300).slideDown(200);
         }
         console.log("CLOSED ALL CATEGORIES");
     }
@@ -275,9 +322,11 @@
             for(var i=1; i<= allCategories.length; i++){
               currentCategory = $("#category" + i);
               if (i==n){
-                  currentCategory.find(".category-display").delay(800).fadeOut(300);
+                  currentCategory.find(".category-display").delay(1000).fadeOut(300);
                   currentCategory.find(".closeButton").delay(0).fadeIn(100);
-                  currentCategory.find(".category-display h2").removeClass("rotateACW");
+                  currentCategory.find(".category-display-content-1").removeClass("rotateACW");
+                  currentCategory.find(".category-display .category_text").delay(400).slideDown(200);
+                  currentCategory.find(".category-logo").removeClass("rotatedLogo");
                   currentCategory.find(".category-content").delay(900).fadeIn(300);
                       currentCategory.css("flex-grow",flexRatio);
                       currentCategory.css("flex-shrink",flexRatio);
@@ -287,7 +336,9 @@
               else{
                   currentCategory.find(".category-display").delay(0).fadeIn(300);
                   currentCategory.find(".closeButton").delay(0).fadeOut(100);
-                  currentCategory.find(".category-display h2").addClass("rotateACW");
+                  currentCategory.find(".category-display-content-1").addClass("rotateACW");
+                  currentCategory.find(".category-display .category_text").slideUp(30);
+                  currentCategory.find(".category-logo").addClass("rotatedLogo");
                   currentCategory.find(".category-content").delay(0).fadeOut(300);
                       currentCategory.css("flex-grow",1);
                       currentCategory.css("flex-shrink",1);
