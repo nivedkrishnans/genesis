@@ -261,6 +261,15 @@
 }
 
 @media(min-width:760px){
+    #navBar a .big{
+        display: none;
+    }
+    #navBar a .small{
+        padding: 0;
+    }
+    #navBar{
+        height: 40px;
+    }
     .event_text{
         font-size: 18px;
     }
@@ -282,7 +291,7 @@
     .rotateACW{
       font-size: 1.8vw !important;
     }
- 
+
   #categories{
     position: absolute;
     margin-top: 0;
