@@ -65,12 +65,10 @@ def pis(request):
 	return render(request, 'essentials/pis.html', {})
 
 def debubulary(request):
-	#return render(request, 'essentials/debubulary.html', {})
-	return render(request, 'essentials/comingsoon.html', {})
+	return render(request, 'essentials/debubulary.html', {})
 
 def cryptothlon(request):
-	#return render(request, 'essentials/cryptothlon.html', {})
-	return render(request, 'essentials/comingsoon.html', {})
+	return render(request, 'essentials/cryptothlon.html', {})
 
 def vignettora(request):
 	return render(request, 'essentials/vignettora.html', {})

@@ -66,6 +66,36 @@ class LasyaRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = LasyaRegistration
 
+
+class LasyaSoloRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user','full_name','institution','city','submit_date','seeVideoFile','seeVideoLink',)
+    list_filter = ('submit_date',)
+
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj,)
+    def seeVideoFile(self, obj):                        #shows uploaded video link in the list of model instances`
+        return adminResources.seeVideoFile(self, obj)
+    def seeVideoLink(self, obj):                         #shows external video link in the list of model instances
+        return adminResources.seeVideoLink(self, obj)
+
+    class Meta:
+        model = LasyaSoloRegistration
+
+
+class LasyaGroupRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user','teamName','teamLeader','institution','city','submit_date','seeVideoFile','seeVideoLink',)
+    list_filter = ('submit_date',)
+
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj,)
+    def seeVideoFile(self, obj):                        #shows uploaded video link in the list of model instances`
+        return adminResources.seeVideoFile(self, obj)
+    def seeVideoLink(self, obj):                         #shows external video link in the list of model instances
+        return adminResources.seeVideoLink(self, obj)
+
+    class Meta:
+        model = LasyaGroupRegistration
+
 class ProsceniumRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','teamLeader','email','institution','city','submit_date','seeVideoFile','seeVideoLink')
     list_filter = ('submit_date','city',)
@@ -178,6 +208,8 @@ admin.site.register(UserData,UserDataResource)
 admin.site.register(AdminEvent,AdminEventResource)
 admin.site.register(CampusAmbassador,CampusAmbassadorResource)
 admin.site.register(LasyaRegistration,LasyaRegistrationResource)
+admin.site.register(LasyaSoloRegistration,LasyaSoloRegistrationResource)
+admin.site.register(LasyaGroupRegistration,LasyaGroupRegistrationResource)
 admin.site.register(ProsceniumRegistration,ProsceniumRegistrationResource)
 admin.site.register(BattleOfBandsRegistration,BattleOfBandsRegistrationResource)
 admin.site.register(FootprintsRegistration,FootprintsRegistrationResource)

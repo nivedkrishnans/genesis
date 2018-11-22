@@ -17,6 +17,11 @@
 	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
 	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
 	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+    <style>
+        section{
+            background-color:rgba(8,8,8,0.5);
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -27,9 +32,8 @@
         <div class="heading">Explain The Concept</div>
         <div class="horizontal-line"></div>
         <div class="main-section">
-		<p>
-      Insert Description.
-    </p>
+		<p>Pravega is thrilled to announce its one-of-a-kind science communication event, Explain The Concept, which aims to bring together some of the best expository video makers in the country along with illustrious professors and leading edutech companies to discuss, work on, collaborate and produce novel and high quality explanatory video content at both the high school and collegiate level.
+        </p>
             <div class="event-essentials">
                 <a href="{% url 'etcRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
             </div>
@@ -133,27 +137,40 @@
             </div>
     		</div>
     		</section>
+
+            <section> <style="background-color:rgba(8,8,8,0.5);">
+            			<div class="slide">
+                    <div class="main-section">
+                        <div class="section-heading">Important Information</div>
+                        <div class="horizontal-line"></div>
+                        <ul>
+                          <li>
+                             Additionally, we will maintain a frequency distribution of the general topic categories (split by subject or branch of subject) on our webpage for participants to keep track.
+                          </li>
+                          <li>
+                            Make your video(s) and upload them on our ETC page, with a brief description of your approach, any novel methods you have incorporated and things to watch out for.
+                          </li>
+                          <li>
+                            Selected participants will be informed by (insert date)
+                          </li>
+                          <li>
+                            Participants will be asked for some details of their background in college level material, to allow us to better choose the topics and committee professors for the finals.
+                          </li>
+                        </ul>
+                    </div>
+            		</div>
+            		</section>
+
+
+
 		<section style="background-color:rgba(8,8,8,0.5);">
 
 		<!--The id "last" is imoprtant to handle the footer during reizes-->
 		<div class="slide" id="last">
         <div class="main-section">
-            <div class="section-heading">Important Information</div>
+            <div class="section-heading">Registrations</div>
             <div class="horizontal-line"></div>
-              <ul>
-                <li>
-                   Additionally, we will maintain a frequency distribution of the general topic categories (split by subject or branch of subject) on our webpage for participants to keep track.
-                </li>
-                <li>
-                  Make your video(s) and upload them on our ETC page, with a brief description of your approach, any novel methods you have incorporated and things to watch out for.
-                </li>
-                <li>
-                  Selected participants will be informed by (insert date)
-                </li>
-                <li>
-                  Participants will be asked for some details of their background in college level material, to allow us to better choose the topics and committee professors for the finals.
-                </li>
-              </ul>
+
 				<div class="event-essentials">
                     <a href="{% url 'etcRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
                 </div>

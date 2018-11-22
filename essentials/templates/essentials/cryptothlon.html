@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Cryptothlon | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+    <style>
+        section{
+            background-color:rgba(8,8,8,0.5);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Cryptothlon</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      Believe you're a language expert? Believe you're up to date with worldly events? With Cryptothlon, be prepared to rack your brains, as you attempt to make your way through absurd and seemingly senseless clues, to crack the puzzle in a terrific race against time, to become the Cryptic Crossword Champ.
+</p>
+            <div class="event-essentials">
+                <a href="{% url 'cryptothlonRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+            </div>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">About</div>
+            <div class="horizontal-line"></div>
+          <p>
+          A typical Cryptic Crosswords event, we invite participants in groups of two, to battle it out in our online prelims. Represent your institute on the grand stage for the much coveted Championship Trophy, as a part of the finale.
+        </p>
+			</div>
+        </div>
+
+		</section>
+    <section> <style="background-color:rgba(8,8,8,0.5);">
+    			<div class="slide">
+            <div class="main-section">
+                <div class="section-heading">Guidelines</div>
+                <div class="horizontal-line"></div>
+
+                <ul>
+                    <li>
+                          3 member team per school.
+                    </li>
+                    <li>
+                        Any number of teams can register for prelims from the same school.
+                    </li>
+                  <li>
+                     Standard cryptic crossword techniques and rules to be followed. However
+famous proper nouns might be the answer to the clues. General knowledge
+will be essential in solving the crossword.
+                  </li>
+                  <li>
+                      Registrations will be open till December 11th, 11:59 PM.
+
+                  </li>
+                </ul>
+
+            </div>
+    		</div>
+    		</section>
+
+      </section>
+      <section> <style="background-color:rgba(8,8,8,0.5);">
+      			<div class="slide">
+              <div class="main-section">
+                  <div class="section-heading">Rules: Online Prelims</div>
+                  <div class="horizontal-line"></div>
+                  <ul>
+                    <li>1 cryptic crossword to be solved in 30 minutes.</li>
+                    <li>Clues will be non-googleable.</li>
+                    <li>Correct spelling is required for full points.</li>
+                    <li>Points will be awarded based on accuracy and time taken to solve the
+      crossword [for example, total points will be {total no. of correct clues solved} x
+      {points for each correct answer} + remaining time (in seconds).</li>
+                  </ul>
+              </div>
+      		</div>
+      		</section>
+
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Finals</div>
+            <div class="horizontal-line"></div>
+            <ul>
+              <li>Stage Round</li>
+              <li>Points system will be explained on stage.</li>
+              <li>Multiple rounds with various scoring systems will decide the winner.</li>
+            </ul>
+				<div class="event-essentials">
+                    <a href="{% url 'cryptothlonRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
+                </div>
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

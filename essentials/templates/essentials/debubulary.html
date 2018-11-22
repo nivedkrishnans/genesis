@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Debubulary | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+    <style>
+        section{
+            background-color:rgba(8,8,8,0.5);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Debubulary</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      Do the very simple notions pose the most notorious questions for you? Pride your ability to pitch the most convincing arguments to win over the opposing party? </p>
+<p>Presenting, Debubulary. </p>
+<p>Express. Impress. Triumph. </p>
+            <div class="event-essentials">
+                <a href="{% url 'debubularyRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+            </div>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">About</div>
+            <div class="horizontal-line"></div>
+          <p>
+            Battle it out with the finest in the country, debate on the up and coming scientific topics, with the sharpest logic and the most articulate English.
+          </p>
+            <p>
+  Are you up for the challenge?
+        </p>
+			</div>
+        </div>
+
+		</section>
+    <section> <style="background-color:rgba(8,8,8,0.5);">
+    			<div class="slide">
+            <div class="main-section">
+                <div class="section-heading">Guidelines</div>
+                <div class="horizontal-line"></div>
+
+                <ul>
+                  <li>
+                    The speakers will be judged on their vocabulary, voice modulation,
+pronunciation, clear conveyance of ideas, quality of arguments and answers
+and their adherence to the time limit.
+                  </li>
+                  <li>
+                     No unparliamentary language will be allowed.
+                  </li>
+                </ul>
+
+            </div>
+    		</div>
+    		</section>
+
+      </section>
+      <section> <style="background-color:rgba(8,8,8,0.5);">
+      			<div class="slide">
+              <div class="main-section">
+                  <div class="section-heading">Prelims</div>
+                  <div class="horizontal-line"></div>
+                  <ul>
+                    <li>Speakers get to choose their stances (for/against).</li>
+                    <li>The topic shall be made public 24 hours before the debate.</li>
+                    <li>Each speaker gets 2 minutes to present their arguments, followed by
+interjections (1 questions) by the judge. A question must be answered in
+under 45 seconds.</li>
+                    <li>After the prelims, the best speakers will move to the finals.</li>
+                    <li>The results of the prelims will be declared at 9PM. The topic for the finals, to be
+held the next day, will also be made known at that time.</li>
+                  </ul>
+              </div>
+      		</div>
+      		</section>
+
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Finals</div>
+            <div class="horizontal-line"></div>
+            Each speaker gets 5 minutes to present their arguments, followed by
+interjections (2 questions). A question must be answered in under 3 minutes.
+				<div class="event-essentials">
+                    <a href="{% url 'debubularyRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
+                </div>
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

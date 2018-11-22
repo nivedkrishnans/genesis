@@ -100,11 +100,19 @@
         <div class="category-content">
             <div data-simplebar class="category-content-contents">
                 <div class="category-allContent">
+                    <div class="events-container">
+                        <div class="event-area">
+                            <h4 class="event_title">Explain The Concept (ETC)</h4>
+                            <img class="event_logo" src="{%static 'img/events/etc_logo.png'%}" alt="explain the concept logo" />
+                            <p class="event_text">One-of-a-kind science communication event</p>
+                            <a href="{%url 'etc'%}"><div class="seeMore"> See More </div></a>
+                        </div>
+                    </div>
                     <h3 class="subcategory_title">Physics</h3>
                     <div class="events-container">
                         <div class="event-area">
                             <h4 class="event_title">Decoherence</h4>
-                            <img class="event_logo" src="{%static 'img/events/decoherence_logo.png'%}" alt="decoherence" />
+                            <img class="event_logo" src="{%static 'img/events/decoherence_logo.png'%}" alt="decoherence logo" />
                             <p class="event_text">Apply your knowledge in Physics</p>
                             <a href="{%url 'decoherence'%}"><div class="seeMore"> See More </div></a>
                         </div>
@@ -113,7 +121,7 @@
                     <div class="events-container">
                         <div class="event-area">
                             <h4 class="event_title">In Other Words</h4>
-                            <img class="event_logo" src="{%static 'img/events/inotherwords_logo.png'%}" alt="in other words" />
+                            <img class="event_logo" src="{%static 'img/events/inotherwords_logo.png'%}" alt="in other words logo" />
                             <p class="event_text">The Linguistic Puzzling Marathon</p>
                             <a href="{%url 'inotherwords'%}"><div class="seeMore"> See More </div></a>
                         </div>
@@ -127,7 +135,7 @@
         <div class="category-display">
             <div class="category-display-content">
                 <div class="category-display-content-1">
-                    <img class="category-logo" src="{%static 'img/events/quiz_logo.png'%}" alt="pravega innovation summit" />
+                    <img class="category-logo" src="{%static 'img/events/quiz_logo.png'%}" alt="quiz logo" />
                     <h2>QUIZ</h2>
                 </div>
                 <div class="category-display-content-2">
@@ -154,7 +162,7 @@
         <div class="category-display">
             <div class="category-display-content">
                 <div class="category-display-content-1">
-                    <img class="category-logo" src="{%static 'img/events/culture_logo.png'%}" alt="pravega innovation summit" />
+                    <img class="category-logo" src="{%static 'img/events/culture_logo.png'%}" alt="culture logo" />
                     <h2>CULTURE</h2>
                 </div>
                 <div class="category-display-content-2">
@@ -169,39 +177,54 @@
                     <div class="events-container">
                         <div class="event-area">
                             <h4 class="event_title">Wikimedia India Photography Contest</h4>
-                            <img class="event_logo" src="{%static 'img/events/wikimediaphotography_logo.png'%}" alt="battle of bands" />
+                            <img class="event_logo" src="{%static 'img/events/wikimediaphotography_logo.png'%}" alt="wikimedia india photography contest logo" />
                             <p class="event_text">Contribute to Wikimedia Commons and win!</p>
                             <a href="{%url 'wikimediaphotography'%}"><div class="seeMore"> See More </div></a>
                         </div>
                         <div class="event-area">
                             <h4 class="event_title">Battle of Bands</h4>
-                            <img class="event_logo" src="{%static 'img/events/bob_logo.png'%}" alt="battle of bands" />
+                            <img class="event_logo" src="{%static 'img/events/bob_logo.png'%}" alt="battle of bands logo" />
                             <p class="event_text">Rock on with the Battle of Bands</p>
                             <a href="{%url 'battleofbands'%}"><div class="seeMore"> See More </div></a>
                         </div>
                         <div class="event-area">
                             <h4 class="event_title">Lasya</h4>
-                            <img class="event_logo" src="{%static 'img/events/lasya_logo.png'%}" alt="lasya" />
+                            <img class="event_logo" src="{%static 'img/events/lasya_logo.png'%}" alt="lasya logo" />
                             <p class="event_text">The Dance Exposition</p>
                             <a href="{%url 'lasya'%}"><div class="seeMore"> See More </div></a>
                         </div>
                         <div class="event-area">
                             <h4 class="event_title">Proscenium</h4>
-                            <img class="event_logo" src="{%static 'img/events/proscenium_logo.png'%}" alt="decoherence" />
+                            <img class="event_logo" src="{%static 'img/events/proscenium_logo.png'%}" alt="proscenium logo" />
                             <p class="event_text">TThe Thespian Extravaganza</p>
                             <a href="{%url 'proscenium'%}"><div class="seeMore"> See More </div></a>
                         </div>
                         <div class="event-area">
                             <h4 class="event_title">Footprints</h4>
-                            <img class="event_logo" src="{%static 'img/events/footprints_logo.png'%}" alt="decoherence" />
+                            <img class="event_logo" src="{%static 'img/events/footprints_logo.png'%}" alt="footprints logo" />
                             <p class="event_text">Reviving Street Play</p>
                             <a href="{%url 'footprints'%}"><div class="seeMore"> See More </div></a>
                         </div>
+                    </div>
+                    <h3 class="subcategory_title">Literature</h3>
+                    <div class="events-container">
                         <div class="event-area">
                             <h4 class="event_title">Vignettora</h4>
-                            <img class="event_logo" src="{%static 'img/events/vignettora_logo.png'%}" alt="decoherence" />
+                            <img class="event_logo" src="{%static 'img/events/vignettora_logo.png'%}" alt="vignettora logo" />
                             <p class="event_text">Pick a prompt, let your mind wander</p>
                             <a href="{%url 'vignettora'%}"><div class="seeMore"> See More </div></a>
+                        </div>
+                        <div class="event-area">
+                            <h4 class="event_title">Debubulary</h4>
+                            <img class="event_logo" src="{%static 'img/events/debubulary_logo.png'%}" alt="debubulary logo" />
+                            <p class="event_text">Pitch the most convincing arguments</p>
+                            <a href="{%url 'debubulary'%}"><div class="seeMore"> See More </div></a>
+                        </div>
+                        <div class="event-area">
+                            <h4 class="event_title">Cryptothlon</h4>
+                            <img class="event_logo" src="{%static 'img/events/cryptothlon_logo.png'%}" alt="cryptothlon logo" />
+                            <p class="event_text">Become the Cryptic Crossword Champ</p>
+                            <a href="{%url 'cryptothlon'%}"><div class="seeMore"> See More </div></a>
                         </div>
                     </div>
                 </div>

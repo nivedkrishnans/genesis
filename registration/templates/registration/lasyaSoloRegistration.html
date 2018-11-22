@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Lasya (Solo) Registration | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway:300,400|Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/reg.css'%}">
+{% endblock %}
+
+{% block content %}
+    <div id="main">
+        <div class="heading">Lasya (Solo) Registration</div>
+        {% if user.is_authenticated %}
+          <p>Hi {{ user }}!</p>
+          {% if form.errors %}
+              <div class="errors">
+                  <p>Please fix the following errors</p>
+                  <ul>
+                      {% for field in form %}
+                          {% if field.errors %}
+                              {% for error in field.errors %}
+                                  <li>{{ error|escape }}</li>
+                              {% endfor %}
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+                  {% if form.non_field_errors %}
+                      {{ form.non_field_errors }}
+                  {% endif %}
+              </div>
+          {% endif %}
+          {% if messages %}
+              <div class="messages">
+                  <ul>
+                  {% for message in messages %}
+                      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                  {% endfor %}
+                  </ul>
+              </div>
+          {% endif %}
+          <p>View the complete details of this event <a href="{% url 'lasya'%}">here</a>.</p>
+          <p><a href="{% url 'registration'%}">Click here</a> to go back to the registrations index page.</p>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="field-space">
+                    {{ field.errors }}
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <div class="messages">
+                <p style="margin-bottom:14px;">Important:</p>
+                <ul>
+                    <li>You have two options, 'save' and 'submit'.</li>
+                    <li>If you click save, you will be able to edit the form until you click submit or until the event registration closes, WHICHEVER COMES FIRST.</li>
+                    <li>Once you click submit, YOU WILL NOT BE ABLE TO EDIT THE FORM.</li>
+                    <li>You will be able to submit the form ONLY AFTER YOU PROVIDE A VIDEO OR A LINK for the video prelims.</li>
+                </ul>
+            </div>
+            <div class="buttonCollection">
+                <button type="submit" name="save" value="save">Save</button>
+                <button type="submit" name="submit" value="submit">Submit</button>
+            </div>
+          </form>
+        {% else %}
+            <p>You have to log in to register for Lasya (Solo)</p><br>
+            Have an account? <a href="{% url 'login' %}">Click here to Log in</a><br>
+            Don't have an account? <a href="{% url 'signup' %}">Click here to sign up</a><br>
+
+        {% endif %}
+
+
+    </div>
+
+    <script src="{%static 'js/navBar.js'%}"> </script>
+{% endblock %}

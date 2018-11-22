@@ -83,6 +83,40 @@ class LasyaForm(forms.ModelForm):
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
+class LasyaSoloForm(forms.ModelForm):
+    class Meta:
+        model = LasyaSoloRegistration
+        fields = ('full_name','institution','city','email','contact','videoFile','videoFileLink','howyouknow')
+        labels = {
+            "full_name" : "Full Name",
+            "institution": "Institution",
+            "city": "City",
+            "email": "Email",
+            "contact": "Contact",
+            "videoFile": videoFileSupportMessage(lasyaSizeLimit),
+            "videoFileLink":"Link to Video (Only if you do not upload the video file)",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
+        }
+
+class LasyaGroupForm(forms.ModelForm):
+    class Meta:
+        model = LasyaGroupRegistration
+        fields = ('teamName', 'teamLeader','institution','city','email','contact1','contact2','participantList','videoFile','videoFileLink','howyouknow')
+        labels = {
+            "teamName": "Team Name",
+            "teamLeader": "Team Leader",
+            "institution": "Institution",
+            "city": "City",
+            "email": "Email",
+            "contact1": "Mobile Number",
+            "contact2": "Another Mobile Number",
+            "participantList": "List of Participants (Enter each participant in a new line or seperated by comma)",
+            "videoFile": videoFileSupportMessage(lasyaSizeLimit),
+            "videoFileLink":"Link to Video (Only if you do not upload the video file)",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
+        }
+
+
 class ProsceniumForm(forms.ModelForm):
     class Meta:
         model = ProsceniumRegistration

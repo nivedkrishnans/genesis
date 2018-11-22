@@ -38,6 +38,8 @@ def registration_index(request):
     eventDictionary={
         'Campus Ambassadors':CampusAmbassador,
         'lasya':LasyaRegistration,
+        'lasyaSolo':LasyaSoloRegistration,
+        'lasyaGroup':LasyaGroupRegistration,
         'proscenium':ProsceniumRegistration,
         'footprints':FootprintsRegistration,
         'battle of bands':BattleOfBandsRegistration,
@@ -112,6 +114,9 @@ def registration_index(request):
     if campusAmbassadorEvent in notyetEvents :notyetEvents.remove(campusAmbassadorEvent)
 
     return render(request, 'registration/registration_index.html', {'iow_isactive':iow_isactive,'campusAmbassadorEvent':campusAmbassadorEvent,'registeredEventsString':registeredEventsString, 'openedEvents':openedEvents, 'closedEvents':closedEvents, 'notyetEvents':notyetEvents })
+
+def lasyaRegistrationRedirect(request):
+    return redirect('lasya')
 
 def lasyaRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='lasya')
@@ -188,6 +193,177 @@ def lasyaRegistration(request):
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
+
+def lasyaSoloRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='lasyaSolo')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            initialValues={}
+            allRegistrations = LasyaSoloRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            thisInstance = False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+            if thisUserData:
+                initialValues={"full_name": thisUserData.full_name,
+                "institution": thisUserData.institution,
+                "city":thisUserData.city ,
+                "email": thisUserData.email,
+                "contact": thisUserData.contact}
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = LasyaSoloForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = LasyaSoloForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                #checking if the video file was uploaded.
+                                if f["videoFileLink"].value() or f["videoFile"].value() :
+                                    thisInstance.isSubmit = True
+                                    thisInstance.submit_date = timezone.now()
+                                    if event_confirmation_mail('Lasya (Solo)',request.POST['email'],request):
+                                        thisInstance.confirmation_email_sent = True
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your Lasya (Solo) Registration Form')
+                                    return redirect('registration')
+                                else:
+                                    thisInstance.last_modify_date = timezone.now()
+                                    thisInstance.save()
+                                    f = LasyaSoloForm(instance=thisInstance)
+                                    messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
+                                    return render(request, 'registration/lasyaSoloRegistration.html', {'form': f})
+
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Lasya (Solo) Registration Form')
+                                f = LasyaSoloForm(instance=thisInstance)
+                                return render(request, 'registration/lasyaSoloRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = LasyaSoloForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        if request.POST.get("submit"):
+                            #checking if either the video file or the link was obtained
+                            if f["videoFileLink"].value() or f["videoFile"].value():
+                                reg.isSubmit = True
+                                reg.submit_date = timezone.now()
+                                if event_confirmation_mail('Lasya (Solo)',request.POST['email'],request):
+                                    reg.confirmation_email_sent = True
+                                reg.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Lasya (Solo) Registration Form')
+                            else:
+                                messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
+                                return render(request, 'registration/lasyaSoloRegistration.html', {'form': f})
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Lasya (Solo) Registration Form')
+                            return render(request, 'registration/lasyaSoloRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = LasyaSoloForm(initial=initialValues)
+            return render(request, 'registration/lasyaSoloRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Lasya')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+
+def lasyaGroupRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='lasyaGroup')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations = LasyaGroupRegistration.objects.all()
+            isRegistered = False
+            thisInstance = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = LasyaGroupForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = LasyaGroupForm(request.POST, request.FILES,instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                #checking if the video file was uploaded.
+                                if f["videoFileLink"].value() or f["videoFile"].value() :
+                                    thisInstance.isSubmit = True
+                                    thisInstance.submit_date = timezone.now()
+                                    if event_confirmation_mail('Lasya (Group)',request.POST['email'],request):
+                                        thisInstance.confirmation_email_sent = True
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your Lasya (Group) Registration Form')
+                                    return redirect('registration')
+                                else:
+                                    thisInstance.last_modify_date = timezone.now()
+                                    thisInstance.save()
+                                    f = LasyaGroupForm(instance=thisInstance)
+                                    messages.add_message(request, messages.INFO, 'Please upload video file or enter video link')
+                                    return render(request, 'registration/lasyaGroupRegistration.html', {'form': f})
+
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Lasya (Group) Registration Form')
+                                f = LasyaGroupForm(instance=thisInstance)
+                                return render(request, 'registration/lasyaGroupRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = LasyaGroupForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        if request.POST.get("submit"):
+                            #checking if either the video file or the link was obtained
+                            if f["videoFileLink"].value() or f["videoFile"].value():
+                                reg.isSubmit = True
+                                reg.submit_date = timezone.now()
+                                if event_confirmation_mail('Lasya (Group)',request.POST['email'],request):
+                                    reg.confirmation_email_sent = True
+                                reg.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Lasya (Group) Registration Form')
+                            else:
+                                messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
+                                return render(request, 'registration/lasyaGroupRegistration.html', {'form': f})
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Lasya (Group) Registration Form')
+                            return render(request, 'registration/lasyaGroupRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = LasyaGroupForm()
+            return render(request, 'registration/lasyaGroupRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Lasya')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+
+
+
+
+
 
 def prosceniumRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='proscenium')
@@ -851,9 +1027,9 @@ def vignettoraRegistration(request):
                 if thisInstance.isSubmit:
                     return render(request, 'registration/registered.html',{})
                 else:
-                    f = VignettoraForm(initial=initialValues,instance=thisInstance)
+                    f = VignettoraForm(instance=thisInstance)
                     if request.method == "POST":
-                        f =  VignettoraForm(request.POST, request.FILES,instance=thisInstance,initial=initialValues)
+                        f =  VignettoraForm(request.POST, request.FILES,instance=thisInstance)
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
@@ -868,11 +1044,11 @@ def vignettoraRegistration(request):
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your Vignettora Registration Form')
-                                f =VignettoraForm(initial=initialValues,instance=thisInstance)
+                                f =VignettoraForm(instance=thisInstance)
                                 return render(request, 'registration/vignettoraRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f =VignettoraForm(request.POST, request.FILES,initial=initialValues )
+                    f =VignettoraForm(request.POST, request.FILES)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -927,9 +1103,9 @@ def etcRegistration(request):
                 if thisInstance.isSubmit:
                     return render(request, 'registration/registered.html',{})
                 else:
-                    f = ETCForm(initial=initialValues,instance=thisInstance)
+                    f = ETCForm(instance=thisInstance)
                     if request.method == "POST":
-                        f = ETCForm(request.POST, request.FILES,instance=thisInstance,initial=initialValues )
+                        f = ETCForm(request.POST, request.FILES,instance=thisInstance)
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
@@ -944,11 +1120,11 @@ def etcRegistration(request):
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your Explain The Concept Event Registration Form')
-                                f =ETCForm(initial=initialValues,instance=thisInstance)
+                                f =ETCForm(instance=thisInstance)
                                 return render(request, 'registration/etcRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f = ETCForm(request.POST, request.FILES,initial=initialValues )
+                    f = ETCForm(request.POST, request.FILES)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user

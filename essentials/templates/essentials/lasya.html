@@ -17,6 +17,11 @@
 	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" rel="text/javascript" ></script>
 	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+    <style>
+        section{
+            background-color:rgba(8,8,8,0.5);
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -34,11 +39,12 @@
 		</div>
 		<div class="part2">
             <p>
-                It comprises of 3 events – Solo Dance, Duet Dance and Group Dance.
+                It comprises of 2 categories – Solo Dance and Group Dance.
                 The group event will have teams comprising of a minimum of 3 and a maximum of 25 members.
             </p>
             <div class="event-essentials">
-                <a href="{% url 'lasyaRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
+                <a href="{% url 'lasyaSoloRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Solo</div></a>
+                <a href="{% url 'lasyaGroupRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Group</div></a>
             </div>
 		</div>
 		</div>
@@ -52,10 +58,6 @@
                 <div class="section-subheading" style="margin-top: 14px; margin-bottom: -8px;">Solo:</div>
                 <p style="margin-top: 12px;">
                     The Winner of the Solo category gets a prize INR 7,000 and the runner up gets a prize of INR 5,000.
-                </p>
-                <div class="section-subheading" style="margin-top: 14px; margin-bottom: -8px;">Duet:</div>
-                <p style="margin-top: 12px;">
-                    The Winners of the Duet category gets a prize INR 10,000 and the runner up gets a prize of INR 7,000.
                 </p>
                 <div class="section-subheading" style="margin-top: 14px; margin-bottom: -8px;">Group:</div>
                 <p style="margin-top: 12px;">
@@ -82,7 +84,7 @@
                 The duration of video must not exceed 3 minutes. Type of file : {{ file_info }}.
             </p>
             <p>
-                <!-- The results of prelims will be declared latest by 1st November.--> 6 teams will be selected from the entries pool for Lasya finals in each event, i.e. a total of 18 teams.
+                <!-- The results of prelims will be declared latest by 1st November.--> 6 teams/individuals will be selected from the entries pool for Lasya finals in each event, i.e. a total of 12 teams.
             </p>
 			</div>
         </div>
@@ -119,7 +121,8 @@
                     <!-- <em>Registrations close on 15th October.</em>  -->
                 </p>
                 <div class="event-essentials">
-                    <a href="{% url 'lasyaRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
+                    <a href="{% url 'lasyaSoloRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Solo</div></a>
+                    <a href="{% url 'lasyaGroupRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Group</div></a>
                 </div>
         </div>
 		</div>
