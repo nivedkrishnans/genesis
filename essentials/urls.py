@@ -15,6 +15,7 @@ urlpatterns = [
 	url(r'^debubulary/$', views.debubulary , name="debubulary"),
 	url(r'^cryptothlon/$', views.cryptothlon , name="cryptothlon"),
 	url(r'^vignettora/$', views.vignettora , name="vignettora"),
+	url(r'^notify_pronites/$', views.notify_pronites , name="notify_pronites"),
 	url(r'^inotherwords/$', originals.views.InOtherWords , name="inotherwords"),
 	url(r'^inotherwords/ch01$', originals.views.IOW_challenge01 , name="iow_challenge01"),
 	url(r'^inotherwords/ch02$', originals.views.IOW_challenge02 , name="iow_challenge02"),

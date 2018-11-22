@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Update,Faq
 from registration.field_helpers import videoFileSupportMessage,audioVideoFileSupportMessage,lasyaSizeLimit,battleofbandsSizeLimit,prosceniumSizeLimit
 from registration.models import AdminEvent
 from django.views import generic
+from django.contrib import messages
 
 def home(request):
 	allAdminEvents = AdminEvent.objects.all()
@@ -96,3 +97,10 @@ def comingsoon(request):
 
 def policy(request):
 	return render(request, 'essentials/privacypolicy.html', {})
+
+def notify_pronites(request):
+	if request.user.is_authenticated:
+		messages.add_message(request, messages.INFO, 'You will receive updates about TesseracT\'s concert at Pravega')
+	else:
+		messages.add_message(request, messages.INFO, 'Please Sign Up (if you haven\'t already) to get updates about TesseracT\'s concert at Pravega')
+	return redirect('registration')
