@@ -8,8 +8,9 @@ from django.conf import settings
 
 
 class UserDataResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user','institution','city',)
-    list_filter = ('email_validated','city',)
+    list_display = ('user','institution','city','create_date')
+    list_filter = ('email_validated','city','create_date')
+    search_fields = ('full_name','institution','city','create_date','email','contact')
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj)
     class Meta:
