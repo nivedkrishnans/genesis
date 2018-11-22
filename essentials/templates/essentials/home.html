@@ -160,6 +160,8 @@
 
             function closeAnnouncementModal(){
                 announcementModal.style.display = 'none';
+                document.body.style.overflow="auto";
+                onloadAnimation();
             }
 
             function onloadAnimation(){
@@ -219,7 +221,6 @@
             };
 
             window.onload = function(){
-                onloadAnimation();
                 toggleNavMobile(false);
                 if(document.documentElement.clientWidth >= 760){
                     navSets[0].style.flex = "4 0 0";
