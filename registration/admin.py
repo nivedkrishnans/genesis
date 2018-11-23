@@ -149,6 +149,16 @@ class DecoherenceRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = DecoherenceRegistration
 
+class ChemisticonRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('teamName','institution','city','submit_date')
+    list_filter = ('submit_date','city',)
+
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+
+    class Meta:
+        model = ChemisticonRegistration
+
 class DebubularyRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('teamName','institution','city','submit_date')
     list_filter = ('submit_date','city',)
@@ -214,6 +224,7 @@ admin.site.register(ProsceniumRegistration,ProsceniumRegistrationResource)
 admin.site.register(BattleOfBandsRegistration,BattleOfBandsRegistrationResource)
 admin.site.register(FootprintsRegistration,FootprintsRegistrationResource)
 admin.site.register(DecoherenceRegistration,DecoherenceRegistrationResource)
+admin.site.register(ChemisticonRegistration,ChemisticonRegistrationResource)
 admin.site.register(WikimediaPhotographyRegistration,WikimediaPhotographyRegistrationResource)
 admin.site.register(PISRegistration,PISRegistrationResource)
 admin.site.register(DebubularyRegistration,DebubularyRegistrationResource)

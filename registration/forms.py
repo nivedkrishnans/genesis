@@ -192,6 +192,31 @@ class DecoherenceForm(forms.ModelForm):
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
+class ChemisticonForm(forms.ModelForm):
+    class Meta:
+        model = ChemisticonRegistration
+        fields = ('teamName', 'institution','city', 'participant1', 'qualification1', 'email1', 'contact1',
+        'participant2', 'qualification2', 'email2', 'contact2',
+        'participant3', 'qualification3', 'email3', 'contact3','howyouknow')
+        labels = {
+            "teamName": "Team Name",
+            "institution": "Institution",
+            "participant1": "Full Name",
+            "qualification1": "Qualification",
+            "email1": 'Email',
+            "contact1": "Mobile Number",
+            "participant2": "Full Name",
+            "qualification2": "Qualification",
+            "email2": 'Email',
+            "contact2": "Mobile Number",
+            "participant3": "Full Name",
+            "qualification3": "Qualification",
+            "email3": 'Email',
+            "contact3": "Mobile Number",
+            "city": "City",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
+        }
+
 class DebubularyForm(forms.ModelForm):
     class Meta:
         model = DebubularyRegistration

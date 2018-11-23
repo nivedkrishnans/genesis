@@ -298,6 +298,34 @@ class DecoherenceRegistration(models.Model):
     def __str__(self):
         return self.teamName
 
+class ChemisticonRegistration(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    teamName = models.CharField(max_length=144)
+    participant1 = models.CharField(max_length=200, blank=False)
+    qualification1 = models.CharField(max_length=200, blank=False)
+    email1 = models.EmailField(max_length=144, null=False, blank=False)
+    contact1 = models.CharField(max_length=20, blank=False)
+    participant2 = models.CharField(max_length=200, blank=True)
+    qualification2 = models.CharField(max_length=200, blank=True)
+    email2 = models.EmailField(max_length=144, null=False, blank=True)
+    contact2 = models.CharField(max_length=20, blank=True)
+    participant3 = models.CharField(max_length=200, blank=True)
+    qualification3 = models.CharField(max_length=200, blank=True)
+    email3 = models.EmailField(max_length=144, null=False, blank=True)
+    contact3 = models.CharField(max_length=20, blank=True)
+    institution = models.CharField(max_length=144)
+    city = models.CharField(max_length=144)
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
+    confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
+    def __str__(self):
+        return self.teamName
+
 class DebubularyRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
