@@ -9,6 +9,7 @@ urlpatterns = [
 	url(r'^footprints/$', views.footprints , name="footprints"),
 	url(r'^battleofbands/$', views.battleofbands , name="battleofbands"),
 	url(r'^decoherence/$', views.decoherence , name="decoherence"),
+	url(r'^decoherence/prelimsresult/$', views.decoherenceprelimsresult , name="decoherenceprelimsresult"),
 	url(r'^wikimediaphotography/$', views.wikimediaphotography , name="wikimediaphotography"),
 	url(r'^pravega_innovation_summit/$', views.pis , name="pis"),
 	url(r'^explain_the_concept/$', views.etc , name="etc"),

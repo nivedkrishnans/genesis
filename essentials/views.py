@@ -51,6 +51,10 @@ def battleofbands(request):
 def decoherence(request):
 	return render(request, 'essentials/decoherence.html', {})
 
+def decoherenceprelimsresult(request):
+	return render(request, 'essentials/decoherencePrelimsResult.html', {})
+
+
 def footprints(request):
 	return render(request, 'essentials/footprints.html', {})
 
