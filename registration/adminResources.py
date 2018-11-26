@@ -20,6 +20,16 @@ def seeVideoFile(self, obj):    #for showings uploaded video link in the list of
         temp = '-'
     return format_html(temp)
 
+def seeArticleFile(self, obj):    #for showings uploaded video link in the list of model instances
+    try:
+        if obj.articleFile:
+            temp = '<a href="%s/%s">%s</a>' % (settings.MEDIA_URL,obj.articleFile, "Article")
+        else:
+            temp = '-'
+    except:
+        temp = '-'
+    return format_html(temp)
+
 
 def seeAudioVideoFile(self, obj):    #for showings uploaded video link in the list of model instances
     try:

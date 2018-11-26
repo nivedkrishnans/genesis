@@ -45,9 +45,11 @@ class VignettoraRegistrationResource(ExportMixin,admin.ModelAdmin):
         model = VignettoraRegistration
 
 class ScienceJournalismRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user', 'full_name' ,'email','institution','city','submit_date')
+    list_display = ('user', 'full_name' ,'email','institution','city','submit_date','seeArticleFile')
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj)
+    def seeArticleFile(self, obj):                        #shows uploaded video link in the list of model instances`
+        return adminResources.seeArticleFile(self, obj)
     class Meta:
         model = ScienceJournalismRegistration
 

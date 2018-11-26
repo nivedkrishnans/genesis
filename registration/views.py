@@ -468,13 +468,17 @@ def sciencejournalismRegistration(request):
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
-                                thisInstance.isSubmit = True
-                                thisInstance.submit_date = timezone.now()
-                                if event_confirmation_mail('Science Journalism',request.POST['email'],request):
-                                    thisInstance.confirmation_email_sent = True
-                                thisInstance.save()
-                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Science Journalism Event Registration Form')
-                                return redirect('registration')
+                                if f['articleFile'].value():
+                                    thisInstance.isSubmit = True
+                                    thisInstance.submit_date = timezone.now()
+                                    if event_confirmation_mail('Science Journalism',request.POST['email'],request):
+                                        thisInstance.confirmation_email_sent = True
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your Science Journalism Event Registration Form')
+                                    return redirect('registration')
+                                else:
+                                    messages.add_message(request, messages.INFO, 'Please upload an article' )
+                                    return render(request, 'registration/sciencejournalismRegistration.html', {'form': f})
                             else:
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
@@ -489,12 +493,16 @@ def sciencejournalismRegistration(request):
                         reg.user = request.user
 
                         if request.POST.get("submit"):
-                            reg.isSubmit = True
-                            reg.submit_date = timezone.now()
-                            if event_confirmation_mail('Science Journalism',thisUserData.email,request):
-                                reg.confirmation_email_sent = True
-                            reg.save()
-                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Science Journalism Event Registration Form')
+                            if f['articleFile'].value():
+                                reg.isSubmit = True
+                                reg.submit_date = timezone.now()
+                                if event_confirmation_mail('Science Journalism',thisUserData.email,request):
+                                    reg.confirmation_email_sent = True
+                                reg.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Science Journalism Event Registration Form')
+                            else:
+                                messages.add_message(request, messages.INFO, 'Please upload an article' )
+                                return render(request, 'registration/sciencejournalismRegistration.html', {'form': f})
                         else:
                             reg.last_modify_date = timezone.now()
                             reg.save()

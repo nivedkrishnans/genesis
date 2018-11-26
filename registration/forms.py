@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from . import models
 from .models import *
 from django.utils.translation import gettext_lazy as _
-from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,battleofbandsSizeLimit,videoFileSupportMessage,audioVideoFileSupportMessage
+from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,battleofbandsSizeLimit,videoFileSupportMessage,articleFileSupportMessage,audioVideoFileSupportMessage
 from .decoherence_helpers import *
 
 class SignUpForm(forms.Form):
@@ -283,13 +283,14 @@ class VignettoraForm(forms.ModelForm):
 class ScienceJournalismForm(forms.ModelForm):
     class Meta:
         model = ScienceJournalismRegistration
-        fields = ('full_name','institution','city','email','contact','howyouknow')
+        fields = ('full_name','institution','city','email','contact','articleFile','howyouknow')
         labels = {
             "full_name": "Full Name",
             "institution": "Institution",
             "city": "City",
             "email": "Email",
             "contact": "Mobile Number",
+            "articleFile": articleFileSupportMessage(),
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
 
         }

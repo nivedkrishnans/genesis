@@ -10,6 +10,7 @@ prosceniumSizeLimit = 1073741824
 battleofbandsSizeLimit = 419430400
 videoExtensions = ['.mp4', '.avi', '.mov', '.mkv']
 audioVideoExtensions = ['.mp3', '.aac', '.wav', '.mp4', '.avi', '.mov', '.mkv']
+articleExtensions=['.doc','.docx','.pdf','.txt']
 
 def videoFileSupportMessage(size):
     extensions = ""
@@ -20,6 +21,26 @@ def videoFileSupportMessage(size):
     temp = "Video File (Maximum file size: " + fileSizeText(size) + ". Supported file types: "+ extensions+ ")"
     return temp
 
+def articleFileSupportMessage():
+    extensions = ""
+    for i in articleExtensions:
+        extensions = extensions + i + ", "
+    if len(articleExtensions):
+        extensions = extensions[0:(len(extensions)-2)]
+    temp = "Supported file types: "+ extensions+ ")"
+    return temp
+
+
+def sciencejournalism_file_validation(value):
+    extension = os.path.splitext( value.name)[1]
+    filesize= value.size
+    if  (extension not in articleExtensions):
+        extensions = ""
+        for i in articleExtensions:
+            extensions = extensions + i + ", "
+        raise ValidationError("Invalid file type. The supported file types are " + extensions + " .")
+    else:
+        return value
 
 def audioVideoFileSupportMessage(size):
     extensions = ""

@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
-from .field_helpers import PhoneNumberField,lasya_file_validation,proscenium_file_validation,battleofbands_file_validation
+from .field_helpers import PhoneNumberField,sciencejournalism_file_validation,lasya_file_validation,proscenium_file_validation,battleofbands_file_validation
 
 #for user full name or username display
 from django.contrib.auth.models import User
@@ -430,6 +430,13 @@ class ScienceJournalismRegistration(models.Model):
     email = models.EmailField(max_length=200, null=False, blank=False)
     contact = models.CharField(max_length=20)
 
+    def filePathGenerate(instance,filename):
+        temp = 'private/sciencejournalism/' + str(instance.full_name) + '_' + str(instance.user) + '_' + str(instance.institution) + '/'
+        temp2 = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
+        temp3 = '/' + os.path.split(filename)[1]
+        temp = temp + temp2 + temp3
+        return temp
+    articleFile = models.FileField(validators=[sciencejournalism_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
     #how you got to know about this program/event
     howyouknow = models.CharField(blank=True, null=False, max_length=200)
     confirmation_email_sent = models.BooleanField(default=False)
