@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Science Journalism | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Science Journalism</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+
+            <p>
+                Awareness with a flavour of immersive science concept and a dash of intricate development of ideas is a science-lover’s favourite diet. In this age of highly accelerated scientific and technological growth, mainstream journalism fails to catch the eye of the masses; yet just about everyone knows the importance of Science Journalism . Here can be your endeavour to promote Science Journalism among the school and the college youth.
+            </p>
+
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Brief Rules</div>
+            <div class="horizontal-line"></div>
+            <ul>
+                <li>
+                    The participants are required to submit self-written articles which preferably can be reports of some recent scientific event or a general article on any interesting topic.
+                </li>
+                <li>
+                    One participant can submit more than one entry.
+                </li>
+                <li>
+                    Entries will be accepted till 4th January, 2019; 11:59pm.
+                </li>
+                <li>
+                    There is no upper or lower limit on the number of words.
+                </li>
+            </ul>
+			</div>
+        </div>
+
+		</section  >
+
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Prizes to be WON</div>
+            <div class="horizontal-line"></div>
+                <ul>
+                <li>
+                    1st prize: ₹5000
+                </li>
+                <li>
+                    2nd prize: ₹3000
+                </li>
+                <li>
+                    3rd prize: ₹1000
+                </li>
+                <li>
+                    2 Consolation prizes: ₹500 each
+                </li>
+            </ul>
+            <p>
+                Note: In the occasion of multiple entries, an individual can win prizes for their best entry only.
+            </p>
+
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

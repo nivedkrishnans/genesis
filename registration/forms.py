@@ -217,6 +217,7 @@ class ChemisticonForm(forms.ModelForm):
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
+
 class DebubularyForm(forms.ModelForm):
     class Meta:
         model = DebubularyRegistration
@@ -268,6 +269,20 @@ class WikimediaPhotographyForm(forms.ModelForm):
 class VignettoraForm(forms.ModelForm):
     class Meta:
         model = VignettoraRegistration
+        fields = ('full_name','institution','city','email','contact','howyouknow')
+        labels = {
+            "full_name": "Full Name",
+            "institution": "Institution",
+            "city": "City",
+            "email": "Email",
+            "contact": "Mobile Number",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
+
+        }
+
+class ScienceJournalismForm(forms.ModelForm):
+    class Meta:
+        model = ScienceJournalismRegistration
         fields = ('full_name','institution','city','email','contact','howyouknow')
         labels = {
             "full_name": "Full Name",
