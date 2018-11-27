@@ -266,6 +266,7 @@ class WikimediaPhotographyForm(forms.ModelForm):
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
+
 class VignettoraForm(forms.ModelForm):
     class Meta:
         model = VignettoraRegistration
@@ -317,6 +318,19 @@ class ETCForm(forms.ModelForm):
             "topic":"Briefly describe your tentative ideas/choice of topic/general field you will pick from",
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
+
+class ISCForm(forms.ModelForm):
+    class Meta:
+        model = ISCRegistration
+        fields = ('full_name','institution','city','email','contact','howyouknow')
+        labels = {
+            "full_name": "Full Name",
+            "institution": "Institution",
+            "city": "City",
+            "email": "Email",
+            "contact": "Mobile Number",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
+            }
 
 class PISForm(forms.ModelForm):
     class Meta:

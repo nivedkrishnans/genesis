@@ -36,6 +36,7 @@ def registration_index(request):
 
     #distionary of events and their models
     eventDictionary={
+      'isc':ISCRegistration,
         'Campus Ambassadors':CampusAmbassador,
         'lasya':LasyaRegistration,
         'lasyaSolo':LasyaSoloRegistration,
@@ -1302,6 +1303,81 @@ def etcRegistration(request):
             return render(request, 'registration/etcRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for the Explain The Concept Event')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+def iscRegistration(request):
+
+    thisEvent = get_object_or_404(AdminEvent, title='isc')
+    initialValues={}
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allRegistrations =ISCRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            thisInstance = False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+            if thisUserData:
+                initialValues={"institution": thisUserData.institution,
+                "city":thisUserData.city ,
+                "email": thisUserData.email,
+                "contact": thisUserData.contact}
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{})
+                else:
+                    f = ISCForm(initial=initialValues,instance=thisInstance)
+                    if request.method == "POST":
+                        f = ISCForm(request.POST, request.FILES,instance=thisInstance,initial=initialValues )
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('Inter-School Talent Contest',request.POST['email'],request):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Inter-School Talent Contest Event Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Inter-School Talent Contest Event Registration Form')
+                                f =ISCForm(initial=initialValues,instance=thisInstance)
+                                return render(request, 'registration/iscRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = ISCForm(request.POST, request.FILES,initial=initialValues )
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('Inter-School Talent Contest',thisUserData.email,request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Inter-School Talent Contest Event Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Inter-School Talent Contest Event Registration Form')
+                            return render(request, 'registration/iscRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = ISCForm(initial=initialValues)
+            return render(request, 'registration/iscRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for the Inter-School Talent Contest')
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})

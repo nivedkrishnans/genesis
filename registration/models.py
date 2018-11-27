@@ -479,6 +479,28 @@ class ETCRegistration(models.Model):
     def __str__(self):
         return str(self.user)
 
+class ISCRegistration(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    #form details
+
+    #user details
+    full_name =  models.CharField(max_length=127)
+    institution = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200, null=False, blank=False)
+    contact = models.CharField(max_length=20)
+
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
+    confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
+    def __str__(self):
+        return str(self.user)
+
 class PISRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
