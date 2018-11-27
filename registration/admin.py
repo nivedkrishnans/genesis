@@ -196,16 +196,6 @@ class WikimediaPhotographyRegistrationResource(ExportMixin,admin.ModelAdmin):
         model = WikimediaPhotographyRegistration
 
 
-class ISCRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user', 'full_name' ,'email','institution','city','submit_date')
-    list_filter = ('submit_date','city',)
-
-    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
-        return adminResources.superuser_fields(self, request, obj)
-
-    class Meta:
-        model = ISCRegistration
-
 class PISRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','institution','city','submit_date')
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
@@ -255,4 +245,3 @@ admin.site.register(DecoherenceObjectiveQuestion,DecoherenceObjectiveQuestionRes
 admin.site.register(DecoherenceSubjectiveQuestion,DecoherenceSubjectiveQuestionResource)
 admin.site.register(ETCRegistration,ETCRegistrationResource)
 admin.site.register(VignettoraRegistration,VignettoraRegistrationResource)
-admin.site.register(ISCRegistration,ISCRegistrationResource)

@@ -3,8 +3,6 @@ from . import views
 import django.contrib.auth.views
 
 urlpatterns = [
-    url(r'^isc$', views.iscRegistration, name='iscRegistration'),
-    url(r'^isc/$', views.iscRegistration, name='iscRegistration'),
 	url(r'^closed$', views.closed, name='closed'),
 	url(r'^closed/$', views.closed, name='closed'),
 	url(r'^registered$', views.registered, name='registered'),
@@ -29,7 +27,7 @@ urlpatterns = [
 	url(r'^vignettora/$', views.vignettoraRegistration, name='vignettoraRegistration'),
 	url(r'^explain_the_concept$', views.etcRegistration, name='etcRegistration'),
 	url(r'^explain_the_concept/$', views.etcRegistration, name='etcRegistration'),
-    url(r'^chemisticon$', views.chemisticonRegistration, name='chemisticonRegistration'),
+	url(r'^chemisticon$', views.chemisticonRegistration, name='chemisticonRegistration'),
 	url(r'^chemisticon/$',views.chemisticonRegistration, name='chemisticonRegistration'),
 	url(r'^sciencejournalism/$',views.sciencejournalismRegistration, name='sciencejournalismRegistration'),
 	url(r'^sciencejournalism$',views.sciencejournalismRegistration, name='sciencejournalismRegistration'),
