@@ -170,7 +170,7 @@ class LasyaSoloRegistration(models.Model):
     last_modify_date = models.DateTimeField( null=True, blank=True)
     submit_date = models.DateTimeField( null=True, blank=True)
     def __str__(self):
-        return self.teamName
+        return self.full_name + self.institution
 
 
 class ProsceniumRegistration(models.Model):
