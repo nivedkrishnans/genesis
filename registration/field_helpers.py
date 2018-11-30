@@ -27,7 +27,7 @@ def articleFileSupportMessage():
         extensions = extensions + i + ", "
     if len(articleExtensions):
         extensions = extensions[0:(len(extensions)-2)]
-    temp = "Supported file types: "+ extensions+ ")"
+    temp = "Supported file types: "+ extensions
     return temp
 
 
