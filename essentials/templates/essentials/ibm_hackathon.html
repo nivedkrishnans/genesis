@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>IBM Hackathon | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+    <style>
+        section{
+            background-color:rgba(8,8,8,0.5);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">IBM Hackathon</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+     Distribution of knowledge when done right leads the way to revolutionary progress in just about any field of the society. However, with increasing fake articles and news circulating on various forms of social media, the time and energy to sort between the true and the made-up simply seems not worth it. We invite you to align your problem solving and coding skills to tackle this situation. In this IBM hackathon, the participants are required to come up with strategies to scrape, structure and clean data from the web, identify a feature set that has a correlation with reliability, change their code on the fly to suit new test cases and provide a finished product capable of being deployed. Get a chance to attend an online workshop by Pravega and interact with eminent researchers from the Indian Institute of Science in this year’s IBM Hackathon at Pravega!</p>
+            <div class="event-essentials">
+                <a href="{% url 'registration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+            </div>
+		</div>
+		</div>
+		</section >
+
+      <section> <style="background-color:rgba(8,8,8,0.5);">
+      			<div class="slide">
+              <div class="main-section">
+                  <div class="section-heading">Brief Rules</div>
+                  <div class="horizontal-line"></div>
+                  <ol>
+                    <li>The participants are required to register and submit their solutions to a set of questions online before December 25, 2018. Participants may participate in teams of four.</li>
+                    <li>Ten finalists will be chosen on the basis of their solutions and will be invited for an online workshop.</li>
+                    <li>The finals will be held at the Indian Institute of Science. It will be a five-round event with 3 hrs per round. </li>
+                    <li style="list-style-type:none; text-align:right;">
+                      <br>(See next slide)
+                    </li>
+                 </ol>
+              </div>
+      		</div>
+      		</section>
+
+            <section> <style="background-color:rgba(8,8,8,0.5);">
+            			<div class="slide">
+                    <div class="main-section">
+                        <div class="section-heading">Brief Rules</div>
+                        <div class="horizontal-line"></div>
+                        <ol>
+                          <li>At the beginning of each round, participants will be provided with a set of test articles. The code has to be run on these articles and modifications are to be made in the code. The code is to be submitted to get the labels for first data set. Repeat. </li>
+                          <li>The judgement will be on the basis of error rate, time complexity and space complexity. Scores of all rounds will be combined to decide the winner.</li>
+                        </ol>
+                    </div>
+            		</div>
+            		</section>
+
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is important to handle the footer during resizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Registration</div>
+            <div class="horizontal-line"></div>
+        </div>
+        <div class="event-essentials">
+            <a href="{% url 'registration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+        </div>
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

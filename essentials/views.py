@@ -71,6 +71,15 @@ def pis(request):
 def sciencejournalism(request):
 	return render(request, 'essentials/sciencejournalism.html', {})
 
+def molecularmurals(request):
+	return render(request, 'essentials/molecularmurals.html', {})
+
+def chemisticon(request):
+	return render(request, 'essentials/chemisticon.html', {})
+
+def interschool(request):
+	return render(request, 'essentials/interschool.html', {})
+
 def debubulary(request):
 	return render(request, 'essentials/debubulary.html', {})
 
@@ -82,6 +91,9 @@ def vignettora(request):
 
 def etc(request):
 	return render(request, 'essentials/etc.html', {})
+
+def ibm_hackathon(request):
+	return render(request, 'essentials/ibm_hackathon.html', {})
 
 
 

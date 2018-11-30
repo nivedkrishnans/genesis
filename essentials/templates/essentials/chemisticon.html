@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Chemisticon | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+    <style>
+        section{
+            background-color:rgba(8,8,8,0.5);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Chemisticon</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      A chemistry competition that will
+put the depth of one’s chemistry
+knowledge to the test.
+        </p>
+        <p>
+             Teams of
+two will write the preliminary
+quiz, wherein six top-scoring teams will compete for the prize by battling immersive problems, experimenting in the lab and challenging each others’ solutions like in the real world of Scientific research.
+        </p>
+        <div class="event-essentials">
+                <a href="{% url 'chemisticonRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+        </div>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Brief Rules:</div>
+            <div class="horizontal-line"></div>
+          <ul>
+              <li>
+                Each team will have 3 participants.
+              </li>
+              <li>
+                There will be 2 rounds for the contest. The first round will involve answering MCQ type questions. The second round will be based on lab work on given problems.
+              </li>
+              <li>
+                Teams will be given 2 hours for the first round with about 30 questions to answer. There are negative marks for an incorrect attempt. If a team finish the question paper early, they will be provided with bonus questions.
+              </li>
+          </ul>
+			</div>
+        </div>
+
+		</section>
+    <section> <style="background-color:rgba(8,8,8,0.5);">
+    			<div class="slide">
+            <div class="main-section">
+                <div class="section-heading">Brief Rules:</div>
+                <div class="horizontal-line"></div>
+
+                <ul>
+                    <li>
+                        For the second round, the participants will get to work in the lab on some practical, real-life problems.
+                    </li>
+                    <li>
+                        All the required materials for experiments, including the labs for final round will be provided by Pravega, IISc.
+                    </li>
+                    <li>
+                        The decision of the judges will be deemed final.
+                    </li>
+                </ul>
+
+            </div>
+    		</div>
+    		</section>
+
+      </section>
+
+      </section>
+        <section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Brief Rules:</div>
+            <div class="horizontal-line"></div>
+            <ul>
+                    <li>
+                        People must register online.
+                    </li>
+                    <li>
+                        There is no participation fee to strongly encourage everyone to try their hand at getting to know science better.
+                    </li>
+            </ul>
+        <div class="event-essentials">
+                <a href="{% url 'chemisticonRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+        </div>
+        </div>
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

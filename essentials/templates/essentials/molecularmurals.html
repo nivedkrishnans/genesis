@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Molecular Murals | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+    <style>
+        section{
+            background-color:rgba(8,8,8,0.5);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Molecular Murals</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      Molecular Murals is a unique
+fusion of sciences and art. Participants will use their knowledge of coloured chemical compounds, to create the colours they require for completing a painting.
+        </p>
+        <p>
+            The paintings will be done on T-shirts, with the best T-shirt design winning.
+        </p>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Brief Guide:</div>
+            <div class="horizontal-line"></div>
+          <ul>
+              <li>
+                Each team will have 2 participants.
+              </li>
+              <li>
+                There will be no prelims for this contest
+              </li>
+              <li>
+                Each team will be given a plain white t-shirt along with inorganic chemicals like acids, dyes, bases and salts.
+              </li>
+              <li style="list-style-type:none; text-align:right;">
+                <br>(See next slide)
+              </li>
+          </ul>
+			</div>
+        </div>
+
+		</section>
+    <section> <style="background-color:rgba(8,8,8,0.5);">
+    			<div class="slide">
+            <div class="main-section">
+                <div class="section-heading">Brief Guide:</div>
+                <div class="horizontal-line"></div>
+
+                <ul>
+                    <li>
+                        Participants are free to produce the colour of their choice by mixing different chemicals, and use it in their paintings.
+                    </li>
+                    <li>
+                        This event is free for IISc PhD. and int. PhD. students.
+                    </li>
+                    <li>
+                        All the required materials for the designing will be provided by Pravega, IISc.
+                    </li>
+                    <li style="list-style-type:none; text-align:right;">
+                      <br>(See next slide)
+                    </li>
+                </ul>
+
+            </div>
+    		</div>
+    		</section>
+
+      </section>
+
+		<section> <style="background-color:rgba(8,8,8,0.5);">
+    			<div class="slide">
+            <div class="main-section">
+                <div class="section-heading">Brief Guide:</div>
+                <div class="horizontal-line"></div>
+
+                <ul>
+                    <li>
+                        The judgement will primarily be based on the creativity and quality of art work. Credit will also be given for an explanation of chemistry behind the same.</li>
+                    <li>
+                        Participants are supposed to use only the stipulated quantity of chemicals (which will be conveyed to the participants before they start working). Wastage of chemicals will lead to deducted points.
+                    </li>
+                    <li>
+                        The contest will be three hours long.
+                    </li>
+                    <li style="list-style-type:none; text-align:right;">
+                      <br>(See next slide)
+                    </li>
+                </ul>
+
+            </div>
+    		</div>
+    		</section>
+
+      </section>
+        <section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Brief Guide:</div>
+            <div class="horizontal-line"></div>
+            <ul>
+                    <li>
+                        The decision of the judges will be deemed final.
+                    </li>
+                    <li>
+                        Participants are allowed to take the T-shirt with them, given the consent of the judges on the grounds of safety
+                    </li>
+            </ul>
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

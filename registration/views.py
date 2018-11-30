@@ -36,7 +36,7 @@ def registration_index(request):
 
     #distionary of events and their models
     eventDictionary={
-      'isc':ISCRegistration,
+        'isc':ISCRegistration,
         'Campus Ambassadors':CampusAmbassador,
         'lasya':LasyaRegistration,
         'lasyaSolo':LasyaSoloRegistration,
@@ -458,6 +458,7 @@ def sciencejournalismRegistration(request):
                 initialValues={"institution": thisUserData.institution,
                 "city":thisUserData.city ,
                 "email": thisUserData.email,
+                "full_name": thisUserData.full_name,
                 "contact": thisUserData.contact}
             if isRegistered:
                 if thisInstance.isSubmit:

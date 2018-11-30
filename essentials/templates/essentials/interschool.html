@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Inter School Event | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+    <style>
+        section{
+            background-color:rgba(8,8,8,0.5);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Interschools</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      		Feel the tingling sensation of excitement as you represent your school in a thinking-based science quiz at the Indian Institute of Science. The quiz aims to instill scientific aptitude among schoolers, and to inspire them to pursue careers in the pure and applied Sciences.
+		</p>
+            <div class="event-essentials">
+                <a href="{% url 'iscRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+            </div>
+		</div>
+		</div>
+		</section >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Interschools</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      		The general structure will include a preliminary quiz with conceptual questions, followed by a lecture by an eminent scientist. After a break, five on-stage rounds of questions for the top 4-5 teams will take place in the form of the finals; with jackpot questions for the audience.
+		</p>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Brief Rules</div>
+            <div class="horizontal-line"></div>
+          <ul>
+                <li>
+                    Three students from each school are to represent for the quiz. Two of these must be from classes 9 or 10, and one from classes 11 or 12.
+                </li>
+                <li>
+                    It will be a one day event.
+                </li>
+                <li>
+                    The preliminary quiz will have MCQ with single correct answers as the format. It will be conducted on paper. The may be subjective slide based on phenomenological experiences, or designing of experiments.
+                </li>
+                <li>
+                   There will be one or two lectures after the prelims.
+                </li>
+                <li>
+                   The final buzzer quiz will have 5 rounds, with jackpot questions for audience.
+                </li>
+            </ul>
+			</div>
+        </div>
+
+		</section>
+
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Register NOW</div>
+            <div class="horizontal-line"></div>
+            <p>
+            	Click here to Register Now
+            </p>
+				<div class="event-essentials">
+                    <a href="{% url 'iscRegistration' %}"><div class="yellow-status"><!-- &#10010; --> Register Now</div></a>
+                </div>
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}
