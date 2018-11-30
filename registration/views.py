@@ -18,6 +18,8 @@ from django.http import JsonResponse
 from datetime import datetime
 import json
 
+
+
 def closed(request):
     return render(request, 'registration/closed.html', {})
 
@@ -435,6 +437,7 @@ def chemisticonRegistration(request):
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
+
 
 def sciencejournalismRegistration(request):
 
