@@ -42,6 +42,14 @@ def sciencejournalism_file_validation(value):
     else:
         return value
 
+def ibmhackathon_file_validation(value):
+    extension = os.path.splitext( value.name)[1]
+    filesize= value.size
+    if extension !='.pdf' :
+        raise ValidationError("Invalid file type. The supported file type is .pdf .")
+    else:
+        return value
+
 def audioVideoFileSupportMessage(size):
     extensions = ""
     for i in audioVideoExtensions:

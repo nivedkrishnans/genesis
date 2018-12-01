@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from . import models
 from .models import *
 from django.utils.translation import gettext_lazy as _
-from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,battleofbandsSizeLimit,videoFileSupportMessage,articleFileSupportMessage,audioVideoFileSupportMessage
+from .field_helpers import PhoneNumberField,lasyaSizeLimit,prosceniumSizeLimit,battleofbandsSizeLimit,videoFileSupportMessage,articleFileSupportMessage,audioVideoFileSupportMessage,ibmhackathon_file_validation
 from .decoherence_helpers import *
 
 class SignUpForm(forms.Form):
@@ -331,6 +331,28 @@ class ISCForm(forms.ModelForm):
             "contact": "Mobile Number",
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
             }
+
+class IBMHackathonForm(forms.ModelForm):
+    class Meta:
+        model = IBMHackathonRegistration
+        fields = ('full_name','institution','city','email','contact','question1','question2','question3','question4','responseFile','howyouknow',)
+        labels = {
+            "full_name": "Full Name",
+            "institution": "Institution",
+            "city": "City",
+            "email": "Email",
+            "contact": "Mobile Number",
+            "question1":"1. What factors do you think contribute to the reliability of news articles?",
+            "question2":"2. Provide a detailed approach to mining and cleaning news articles.",
+            "question3":"3. What IBM APIs you plan to use and how?",
+            "question4":"4. (Optional) Do you have any previous experience working in ML, NLP and related fields?",
+            "responseFile": "You can also submit your responses in a pdf file",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
+            }
+
+    #widgets = {
+    #        'question1': Textarea(attrs={'class': 'IBM', 'rows': 5}),
+    #    }
 
 class PISForm(forms.ModelForm):
     class Meta:
