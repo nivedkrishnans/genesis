@@ -438,6 +438,7 @@ class ScienceJournalismRegistration(models.Model):
         temp = temp + temp2 + temp3
         return temp
     articleFile = models.FileField(validators=[sciencejournalism_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
+
     #how you got to know about this program/event
     howyouknow = models.CharField(blank=True, null=False, max_length=200)
     confirmation_email_sent = models.BooleanField(default=False)
@@ -447,6 +448,8 @@ class ScienceJournalismRegistration(models.Model):
     submit_date = models.DateTimeField( null=True, blank=True)
     def __str__(self):
         return str(self.user)
+
+
 
 class ETCRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)

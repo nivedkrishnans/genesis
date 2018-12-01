@@ -367,7 +367,7 @@ def lasyaGroupRegistration(request):
 
 def chemisticonRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='chemisticon')
-    initialValues={}
+
     if thisEvent.registrationStatus == 'opened':
         if request.user.is_authenticated:
             allRegistrations =ChemisticonRegistration.objects.all()
@@ -382,17 +382,12 @@ def chemisticonRegistration(request):
             for i in allUserData:
                 if (request.user == i.user):
                     thisUserData = i
-            if thisUserData:
-                initialValues={
-                "institution": thisUserData.institution,
-                "city":thisUserData.city ,
-                "email": thisUserData.email,
-                "contact": thisUserData.contact}
+
             if isRegistered:
                 if thisInstance.isSubmit:
-                    return render(request, 'registration/registered.html',{})
+                    return render(request, 'registration/registered.html',{'form':f})
                 else:
-                    f = ChemisticonForm(initial=initialValues,instance=thisInstance)
+                    f = ChemisticonForm(instance=thisInstance)
                     if request.method == "POST":
                         f = ChemisticonForm(request.POST, request.FILES,instance=thisInstance )
                         if f.is_valid():
@@ -413,7 +408,7 @@ def chemisticonRegistration(request):
                                 return render(request, 'registration/chemisticonRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f = ChemisticonForm(request.POST, request.FILES,initial=initialValues )
+                    f = ChemisticonForm(request.POST, request.FILES)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -432,7 +427,11 @@ def chemisticonRegistration(request):
                             return render(request, 'registration/chemisticonRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
-                    f = ChemisticonForm(initial=initialValues)
+                    f = ChemisticonForm(initial={
+                    "institution": thisUserData.institution,
+                    "city":thisUserData.city ,
+                    "email": thisUserData.email,
+                    "contact": thisUserData.contact})
             return render(request, 'registration/chemisticonRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for the Chemisticon')
@@ -442,14 +441,15 @@ def chemisticonRegistration(request):
 
 
 def sciencejournalismRegistration(request):
-
     thisEvent = get_object_or_404(AdminEvent, title='sciencejournalism')
-    initialValues={}
+
     if thisEvent.registrationStatus == 'opened':
+        f = ScienceJournalismForm()
         if request.user.is_authenticated:
-            allRegistrations =ScienceJournalismRegistration.objects.all()
+            allRegistrations = ScienceJournalismRegistration.objects.all()
             allUserData = UserData.objects.all()
             isRegistered = False
+            isSubmit = False
             thisInstance = False
             thisUserData = False
             for i in allRegistrations:
@@ -459,20 +459,14 @@ def sciencejournalismRegistration(request):
             for i in allUserData:
                 if (request.user == i.user):
                     thisUserData = i
-            if thisUserData:
-                initialValues={
-                "institution": thisUserData.institution,
-                "city":thisUserData.city ,
-                "email": thisUserData.email,
-                "full_name": thisUserData.full_name,
-                "contact": thisUserData.contact}
             if isRegistered:
                 if thisInstance.isSubmit:
-                    return render(request, 'registration/registered.html',{})
+                    isSubmit = True
+                    return render(request, 'registration/registered.html',{ 'form':f})
                 else:
                     f = ScienceJournalismForm(instance=thisInstance)
                     if request.method == "POST":
-                        f = ScienceJournalismForm(request.POST, request.FILES )
+                        f = ScienceJournalismForm(request.POST, instance=thisInstance)
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
@@ -482,7 +476,7 @@ def sciencejournalismRegistration(request):
                                     if event_confirmation_mail('Science Journalism',request.POST['email'],request):
                                         thisInstance.confirmation_email_sent = True
                                     thisInstance.save()
-                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your Science Journalism Event Registration Form')
+                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your Science Journalism Registration Form')
                                     return redirect('registration')
                                 else:
                                     messages.add_message(request, messages.INFO, 'Please upload an article' )
@@ -490,42 +484,35 @@ def sciencejournalismRegistration(request):
                             else:
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
-                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Science Journalism Event Registration Form')
-                                f =ScienceJournalismForm(instance=thisInstance)
-                                return render(request, 'registration/sciencejournalismRegistration.html', {'form': f})
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Science Journalism Registration Form')
+                                f = ScienceJournalismForm(instance=thisInstance)
+                                return render(request, 'registration/sciencejournalismRegistration.html',{'form':f})
             else:
                 if request.method == "POST":
-                    f = ScienceJournalismForm(request.POST, request.FILES,initial=initialValues )
+                    f = ScienceJournalismForm(request.POST)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
-
                         if request.POST.get("submit"):
-                            if f['articleFile'].value():
-                                reg.isSubmit = True
-                                reg.submit_date = timezone.now()
-                                if event_confirmation_mail('Science Journalism',thisUserData.email,request):
-                                    reg.confirmation_email_sent = True
-                                reg.save()
-                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Science Journalism Event Registration Form')
-                            else:
-                                messages.add_message(request, messages.INFO, 'Please upload an article' )
-                                return render(request, 'registration/sciencejournalismRegistration.html', {'form': f})
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('Science Journalism',request.POST['email'],request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Science Journalism Registration Form')
                         else:
                             reg.last_modify_date = timezone.now()
                             reg.save()
-                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Science Journalism Event Registration Form')
-                            return render(request, 'registration/sciencejournalismRegistration.html', {'form': f})
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Science Journalism Registration Form')
+                            return render(request, 'registration/sciencejournalismRegistration.html',{'form':f})
                         return redirect('registration')
                 else:
-                    f = ScienceJournalismForm(initial=initialValues)
-            return render(request, 'registration/sciencejournalismRegistration.html', {'form': f})
-        else:
-            messages.add_message(request, messages.INFO, 'Please log in to register for the Science Journalism')
-            return redirect('login')
+                    f = ScienceJournalismForm(initial = {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email})
+            return render(request, 'registration/ScienceJournalismRegistration.html',{'form':f})
+
+        return render(request, 'registration/ScienceJournalismRegistration.html',{'form':f})
     else:
         return render(request, 'registration/closed.html',{})
-
 
 
 def prosceniumRegistration(request):
@@ -806,8 +793,9 @@ def decoherenceRegistration(request):
 
 def debubularyRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='debubulary')
-    initialValues={}
+
     if thisEvent.registrationStatus == 'opened':
+        f=DebubularyForm()
         if request.user.is_authenticated:
             allRegistrations = DebubularyRegistration.objects.all()
             isRegistered = False
@@ -816,16 +804,13 @@ def debubularyRegistration(request):
                 if (request.user == i.user):
                     isRegistered = True
                     thisInstance = i
-            if thisUserData:
-                initialValues={
-                "institution": thisUserData.institution,
-                "city":thisUserData.city ,
-                "email": thisUserData.email,
-                "full_name": thisUserData.full_name,
-                "contact": thisUserData.contact}
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+
             if isRegistered:
                 if thisInstance.isSubmit:
-                    return render(request, 'registration/registered.html',{})
+                    return render(request, 'registration/registered.html',{'form':f})
                 else:
                     f = DebubularyForm(instance=thisInstance)
                     if request.method == "POST":
@@ -848,7 +833,7 @@ def debubularyRegistration(request):
                                 return render(request, 'registration/debubularyRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f = DebubularyForm(request.POST, request.FILES,initial=initialValues)
+                    f = DebubularyForm(request.POST, request.FILES)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -866,7 +851,11 @@ def debubularyRegistration(request):
                             return render(request, 'registration/debubularyRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
-                    f = DebubularyForm(initial=initialValues)
+                    f = DebubularyForm(initial={
+                    "institution": thisUserData.institution,
+                    "city":thisUserData.city ,
+                    "email": thisUserData.email,
+                    "contact": thisUserData.contact})
             return render(request, 'registration/debubularyRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for Debubulary')
@@ -876,8 +865,8 @@ def debubularyRegistration(request):
 
 def cryptothlonRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='cryptothlon')
-    initialValues={}
     if thisEvent.registrationStatus == 'opened':
+        f=CryptothlonForm()
         if request.user.is_authenticated:
             allRegistrations = CryptothlonRegistration.objects.all()
             allUserData = UserData.objects.all()
@@ -890,16 +879,10 @@ def cryptothlonRegistration(request):
             for i in allUserData:
                 if (request.user == i.user):
                     thisUserData = i
-            if thisUserData:
-                initialValues={
-                "institution": thisUserData.institution,
-                "city":thisUserData.city ,
-                "email": thisUserData.email,
-                "full_name": thisUserData.full_name,
-                "contact": thisUserData.contact}
+
             if isRegistered:
                 if thisInstance.isSubmit:
-                    return render(request, 'registration/registered.html',{})
+                    return render(request, 'registration/registered.html',{'form':f})
                 else:
                     f = CryptothlonForm(instance=thisInstance)
                     if request.method == "POST":
@@ -922,7 +905,7 @@ def cryptothlonRegistration(request):
                                 return render(request, 'registration/cryptothlonRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f = CryptothlonForm(request.POST, request.FILES,initial=initialValues)
+                    f = CryptothlonForm(request.POST, request.FILES)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -940,7 +923,7 @@ def cryptothlonRegistration(request):
                             return render(request, 'registration/cryptothlonRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
-                    f = CryptothlonForm(initial=initialValues)
+                    f = CryptothlonForm(initial={})
             return render(request, 'registration/cryptothlonRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for Debubulary')
@@ -1110,73 +1093,6 @@ def campusambassadors(request):
 
     return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit, 'isOpen':isOpen, 'form':f})
 
-def ibmhackathonRegistration(request):
-    thisEvent = get_object_or_404(AdminEvent, title='ibmhackathon')
-    isRegistered = False
-    isSubmit = False
-    isOpen = thisEvent.registrationStatus == 'opened'
-    f = IBMHackathonForm()
-    if request.user.is_authenticated:
-        allRegistrations = IBMHackathonRegistration.objects.all()
-        allUserData = UserData.objects.all()
-        thisInstance = False
-        thisUserData = False
-        for i in allRegistrations:
-            if (request.user == i.user):
-                isRegistered = True
-                thisInstance = i
-        for i in allUserData:
-            if (request.user == i.user):
-                thisUserData = i
-        if isRegistered:
-            if thisInstance.isSubmit:
-                isSubmit = True
-                return render(request, 'registration/ibmhackathonRegistration.html',{'form':f})
-            else:
-                f = IBMHackathonForm(instance=thisInstance)
-                if request.method == "POST":
-                    f = IBMHackathonForm(request.POST, instance=thisInstance)
-                    if f.is_valid():
-                        thisInstance = f.save(commit=False)
-                        if request.POST.get("submit"):
-                            thisInstance.isSubmit = True
-                            thisInstance.submit_date = timezone.now()
-                            if event_confirmation_mail('IBM Hackathon',request.POST['email'],request):
-                                thisInstance.confirmation_email_sent = True
-                            thisInstance.save()
-                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Registration Form')
-                            return redirect('registration')
-                        else:
-                            thisInstance.last_modify_date = timezone.now()
-                            thisInstance.save()
-                            messages.add_message(request, messages.INFO, 'You have succesfully modified your IBM Hackathon Registration Form')
-                            f = IBMHackathonForm(instance=thisInstance)
-                            return render(request, 'registration/ibmhackathonRegistration.html',{'form':f})
-        else:
-            if request.method == "POST":
-                f = IBMHackathonForm(request.POST)
-                if f.is_valid():
-                    reg = f.save(commit=False)
-                    reg.user = request.user
-                    if request.POST.get("submit"):
-                        reg.isSubmit = True
-                        reg.submit_date = timezone.now()
-                        if event_confirmation_mail('IBM Hackathon',request.POST['email'],request):
-                            reg.confirmation_email_sent = True
-                        reg.save()
-                        messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Registration Form')
-                    else:
-                        reg.last_modify_date = timezone.now()
-                        reg.save()
-                        messages.add_message(request, messages.INFO, 'You have succesfully saved your IBM Hackathon Registration Form')
-                        return render(request, 'registration/ibmhackathonRegistration.html',{'form':f})
-                    return redirect('registration')
-            else:
-                f = IBMHackathonForm(initial = {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email,"contactForCalls":thisUserData.contact,})
-        return render(request, 'registration/ibmhackathonRegistration.html',{ 'form':f})
-
-    return render(request, 'registration/ibmhackathonRegistration.html',{ 'form':f})
-
 def wikimediaphotographyRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='wikimediaphotography')
     if thisEvent.registrationStatus == 'opened':
@@ -1250,16 +1166,16 @@ def wikimediaphotographyRegistration(request):
 
 def vignettoraRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='vignettora')
-    initialValues={}
 
     if thisEvent.registrationStatus == 'opened':
+        f=VignettoraForm()
         if request.user.is_authenticated:
 
             allRegistrations =VignettoraRegistration.objects.all()
             allUserData = UserData.objects.all()
             isRegistered = False
             thisInstance = False
-            thisUserData = False
+            thisUserData=False
             for i in allRegistrations:
                 if (request.user == i.user):
                     isRegistered = True
@@ -1267,16 +1183,10 @@ def vignettoraRegistration(request):
             for i in allUserData:
                 if (request.user == i.user):
                     thisUserData = i
-            if thisUserData:
-                initialValues={
-                "full_name": thisUserData.full_name,
-                "institution": thisUserData.institution,
-                "city":thisUserData.city ,
-                "email": thisUserData.email,
-                "contact": thisUserData.contact}
+
             if isRegistered:
                 if thisInstance.isSubmit:
-                    return render(request, 'registration/registered.html',{})
+                    return render(request, 'registration/registered.html',{'form':f})
                 else:
                     f = VignettoraForm(instance=thisInstance)
                     if request.method == "POST":
@@ -1299,7 +1209,7 @@ def vignettoraRegistration(request):
                                 return render(request, 'registration/vignettoraRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f =VignettoraForm(request.POST, request.FILES,initial=initialValues)
+                    f =VignettoraForm(request.POST, request.FILES)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -1317,7 +1227,7 @@ def vignettoraRegistration(request):
                             return render(request, 'registration/vignettoraRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
-                    f = VignettoraForm(initial=initialValues)
+                    f = VignettoraForm(initial= {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email,"contactForCalls":thisUserData.contact,})
             return render(request, 'registration/vignettoraRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for the Vignettora Event')
@@ -1327,8 +1237,8 @@ def vignettoraRegistration(request):
 
 def etcRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='etc')
-    initialValues={}
     if thisEvent.registrationStatus == 'opened':
+        f=ETCForm()
         if request.user.is_authenticated:
             allRegistrations =ETCRegistration.objects.all()
             allUserData = UserData.objects.all()
@@ -1342,16 +1252,9 @@ def etcRegistration(request):
             for i in allUserData:
                 if (request.user == i.user):
                     thisUserData = i
-            if thisUserData:
-                initialValues={
-                "full_name": thisUserData.full_name,
-                "institution": thisUserData.institution,
-                "city":thisUserData.city ,
-                "email": thisUserData.email,
-                "contact": thisUserData.contact}
             if isRegistered:
                 if thisInstance.isSubmit:
-                    return render(request, 'registration/registered.html',{})
+                    return render(request, 'registration/registered.html',{'form':f})
                 else:
                     f = ETCForm(instance=thisInstance)
                     if request.method == "POST":
@@ -1374,7 +1277,7 @@ def etcRegistration(request):
                                 return render(request, 'registration/etcRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f = ETCForm(request.POST, request.FILES,initial=initialValues)
+                    f = ETCForm(request.POST, request.FILES)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -1393,7 +1296,7 @@ def etcRegistration(request):
                             return render(request, 'registration/etcRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
-                    f = ETCForm(initial=initialValues)
+                    f = ETCForm(initial= {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email,"contactForCalls":thisUserData.contact,})
             return render(request, 'registration/etcRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for the Explain The Concept Event')
@@ -1404,8 +1307,8 @@ def etcRegistration(request):
 def iscRegistration(request):
 
     thisEvent = get_object_or_404(AdminEvent, title='isc')
-    initialValues={}
     if thisEvent.registrationStatus == 'opened':
+        f=ISCForm()
         if request.user.is_authenticated:
             allRegistrations =ISCRegistration.objects.all()
             allUserData = UserData.objects.all()
@@ -1419,18 +1322,11 @@ def iscRegistration(request):
             for i in allUserData:
                 if (request.user == i.user):
                     thisUserData = i
-            if thisUserData:
-                initialValues={
-                "institution": thisUserData.institution,
-                "city":thisUserData.city ,
-                "email": thisUserData.email,
-                "contact": thisUserData.contact
-                }
             if isRegistered:
                 if thisInstance.isSubmit:
-                    return render(request, 'registration/registered.html',{})
+                    return render(request, 'registration/registered.html',{'form':f})
                 else:
-                    f = ISCForm(initial=initialValues,instance=thisInstance)
+                    f = ISCForm(instance=thisInstance)
                     if request.method == "POST":
                         f = ISCForm(request.POST, request.FILES,instance=thisInstance )
                         if f.is_valid():
@@ -1451,7 +1347,7 @@ def iscRegistration(request):
                                 return render(request, 'registration/iscRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f = ISCForm(request.POST, request.FILES,initial=initialValues )
+                    f = ISCForm(request.POST, request.FILES)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -1470,10 +1366,83 @@ def iscRegistration(request):
                             return render(request, 'registration/iscRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
-                    f = ISCForm(initial=initialValues)
+                    f = ISCForm(initial= {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email,"contactForCalls":thisUserData.contact,})
             return render(request, 'registration/iscRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for the Inter-School Talent Contest')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+def ibmhackathonRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='ibmhackathon')
+
+    if thisEvent.registrationStatus == 'opened':
+        f = IBMHackathonForm()
+        if request.user.is_authenticated:
+            allRegistrations = IBMHackathonRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            isSubmit = False
+            thisInstance = False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    isSubmit = True
+                    return render(request, 'registration/registered.html',{'form':f})
+                else:
+                    f = IBMHackathonForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = IBMHackathonForm(request.POST, instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('IBM Hackathon',request.POST['email'],request):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your IBM Hackathon Registration Form')
+                                f = IBMHackathonForm(instance=thisInstance)
+                                return render(request, 'registration/ibmhackathonRegistration.html',{'form':f})
+            else:
+                if request.method == "POST":
+                    f = IBMHackathonForm(request.POST)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('IBM Hackathon',request.POST['email'],request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your IBM Hackathon Registration Form')
+                            return render(request, 'registration/ibmhackathonRegistration.html',{'form':f})
+                        return redirect('registration')
+                else:
+                    f = IBMHackathonForm(initial = {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email,"contactForCalls":thisUserData.contact,})
+            return render(request, 'registration/ibmhackathonRegistration.html',{ 'form':f})
+
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for the IBM Hackathon')
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
@@ -1497,7 +1466,7 @@ def pisRegistration(request):
                     thisUserData = i
             if isRegistered:
                 if thisInstance.isSubmit:
-                    return render(request, 'registration/registered.html',{})
+                    return render(request, 'registration/registered.html',{'form':f})
                 else:
                     f = PISForm(instance=thisInstance)
                     if request.method == "POST":
