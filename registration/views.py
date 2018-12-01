@@ -369,6 +369,7 @@ def chemisticonRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='chemisticon')
 
     if thisEvent.registrationStatus == 'opened':
+        f=ChemisticonForm()
         if request.user.is_authenticated:
             allRegistrations =ChemisticonRegistration.objects.all()
             allUserData = UserData.objects.all()
@@ -395,7 +396,7 @@ def chemisticonRegistration(request):
                             if request.POST.get("submit"):
                                 thisInstance.isSubmit = True
                                 thisInstance.submit_date = timezone.now()
-                                if event_confirmation_mail('Chemisticon',request.POST['email'],request):
+                                if event_confirmation_mail('Chemisticon',request.POST['email1'],request,request.POST['email2'],request.POST['email3']):
                                     thisInstance.confirmation_email_sent = True
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your Chemisticon Event Registration Form')
@@ -416,7 +417,7 @@ def chemisticonRegistration(request):
                         if request.POST.get("submit"):
                             reg.isSubmit = True
                             reg.submit_date = timezone.now()
-                            if event_confirmation_mail('Chemisticon',thisUserData.email,request):
+                            if event_confirmation_mail('Chemisticon',request.POST['email1'],request.POST['email2'],request.POST['email3'],request):
                                 reg.confirmation_email_sent = True
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully submitted your Chemisticon Event Registration Form')
@@ -1466,7 +1467,7 @@ def pisRegistration(request):
                     thisUserData = i
             if isRegistered:
                 if thisInstance.isSubmit:
-                    return render(request, 'registration/registered.html',{'form':f})
+                    return render(request, 'registration/registered.html',{})
                 else:
                     f = PISForm(instance=thisInstance)
                     if request.method == "POST":
