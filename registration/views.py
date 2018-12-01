@@ -799,6 +799,7 @@ def debubularyRegistration(request):
         f=DebubularyForm()
         if request.user.is_authenticated:
             allRegistrations = DebubularyRegistration.objects.all()
+            allUserData = UserData.objects.all()
             isRegistered = False
             thisInstance = False
             for i in allRegistrations:
