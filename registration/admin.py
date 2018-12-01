@@ -212,7 +212,8 @@ class IBMHackathonRegistrationResource(ExportMixin,admin.ModelAdmin):
 
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
         return adminResources.superuser_fields(self, request, obj)
-
+    def seeArticleFile(self, obj):                        #shows uploaded video link in the list of model instances`
+        return adminResources.seeArticleFile(self, obj)
     class Meta:
         model = IBMHackathonRegistration
 

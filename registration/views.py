@@ -383,7 +383,8 @@ def chemisticonRegistration(request):
                 if (request.user == i.user):
                     thisUserData = i
             if thisUserData:
-                initialValues={"institution": thisUserData.institution,
+                initialValues={
+                "institution": thisUserData.institution,
                 "city":thisUserData.city ,
                 "email": thisUserData.email,
                 "contact": thisUserData.contact}
@@ -393,7 +394,7 @@ def chemisticonRegistration(request):
                 else:
                     f = ChemisticonForm(initial=initialValues,instance=thisInstance)
                     if request.method == "POST":
-                        f = ChemisticonForm(request.POST, request.FILES,instance=thisInstance,initial=initialValues )
+                        f = ChemisticonForm(request.POST, request.FILES,instance=thisInstance )
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
@@ -408,7 +409,7 @@ def chemisticonRegistration(request):
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your Chemisticon Event Registration Form')
-                                f =ChemisticonForm(initial=initialValues,instance=thisInstance)
+                                f =ChemisticonForm(instance=thisInstance)
                                 return render(request, 'registration/chemisticonRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
@@ -875,16 +876,20 @@ def debubularyRegistration(request):
 
 def cryptothlonRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='cryptothlon')
-    initialValues
+    initialValues={}
     if thisEvent.registrationStatus == 'opened':
         if request.user.is_authenticated:
             allRegistrations = CryptothlonRegistration.objects.all()
+            allUserData = UserData.objects.all()
             isRegistered = False
             thisInstance = False
             for i in allRegistrations:
                 if (request.user == i.user):
                     isRegistered = True
                     thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
             if thisUserData:
                 initialValues={
                 "institution": thisUserData.institution,
@@ -935,7 +940,7 @@ def cryptothlonRegistration(request):
                             return render(request, 'registration/cryptothlonRegistration.html', {'form': f})
                         return redirect('registration')
                 else:
-                    f = CryptothlonForm(initial=initialValuess)
+                    f = CryptothlonForm(initial=initialValues)
             return render(request, 'registration/cryptothlonRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for Debubulary')
@@ -1104,6 +1109,73 @@ def campusambassadors(request):
         return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit,'isOpen':isOpen, 'form':f})
 
     return render(request, 'registration/campusAmbassador.html',{'isSubmit':isSubmit, 'isOpen':isOpen, 'form':f})
+
+def ibmhackathonRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='ibmhackathon')
+    isRegistered = False
+    isSubmit = False
+    isOpen = thisEvent.registrationStatus == 'opened'
+    f = IBMHackathonForm()
+    if request.user.is_authenticated:
+        allRegistrations = IBMHackathonRegistration.objects.all()
+        allUserData = UserData.objects.all()
+        thisInstance = False
+        thisUserData = False
+        for i in allRegistrations:
+            if (request.user == i.user):
+                isRegistered = True
+                thisInstance = i
+        for i in allUserData:
+            if (request.user == i.user):
+                thisUserData = i
+        if isRegistered:
+            if thisInstance.isSubmit:
+                isSubmit = True
+                return render(request, 'registration/ibmhackathonRegistration.html',{'form':f})
+            else:
+                f = IBMHackathonForm(instance=thisInstance)
+                if request.method == "POST":
+                    f = IBMHackathonForm(request.POST, instance=thisInstance)
+                    if f.is_valid():
+                        thisInstance = f.save(commit=False)
+                        if request.POST.get("submit"):
+                            thisInstance.isSubmit = True
+                            thisInstance.submit_date = timezone.now()
+                            if event_confirmation_mail('IBM Hackathon',request.POST['email'],request):
+                                thisInstance.confirmation_email_sent = True
+                            thisInstance.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Registration Form')
+                            return redirect('registration')
+                        else:
+                            thisInstance.last_modify_date = timezone.now()
+                            thisInstance.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully modified your IBM Hackathon Registration Form')
+                            f = IBMHackathonForm(instance=thisInstance)
+                            return render(request, 'registration/ibmhackathonRegistration.html',{'form':f})
+        else:
+            if request.method == "POST":
+                f = IBMHackathonForm(request.POST)
+                if f.is_valid():
+                    reg = f.save(commit=False)
+                    reg.user = request.user
+                    if request.POST.get("submit"):
+                        reg.isSubmit = True
+                        reg.submit_date = timezone.now()
+                        if event_confirmation_mail('IBM Hackathon',request.POST['email'],request):
+                            reg.confirmation_email_sent = True
+                        reg.save()
+                        messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Registration Form')
+                    else:
+                        reg.last_modify_date = timezone.now()
+                        reg.save()
+                        messages.add_message(request, messages.INFO, 'You have succesfully saved your IBM Hackathon Registration Form')
+                        return render(request, 'registration/ibmhackathonRegistration.html',{'form':f})
+                    return redirect('registration')
+            else:
+                f = IBMHackathonForm(initial = {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email,"contactForCalls":thisUserData.contact,})
+        return render(request, 'registration/ibmhackathonRegistration.html',{ 'form':f})
+
+    return render(request, 'registration/ibmhackathonRegistration.html',{ 'form':f})
 
 def wikimediaphotographyRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='wikimediaphotography')
@@ -1350,7 +1422,6 @@ def iscRegistration(request):
             if thisUserData:
                 initialValues={
                 "institution": thisUserData.institution,
-                "full_name": thisUserData.full_name,
                 "city":thisUserData.city ,
                 "email": thisUserData.email,
                 "contact": thisUserData.contact
@@ -1361,7 +1432,7 @@ def iscRegistration(request):
                 else:
                     f = ISCForm(initial=initialValues,instance=thisInstance)
                     if request.method == "POST":
-                        f = ISCForm(request.POST, request.FILES,instance=thisInstance,initial=initialValues )
+                        f = ISCForm(request.POST, request.FILES,instance=thisInstance )
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
@@ -1376,7 +1447,7 @@ def iscRegistration(request):
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your Inter-School Talent Contest Event Registration Form')
-                                f =ISCForm(initial=initialValues,instance=thisInstance)
+                                f =ISCForm(instance=thisInstance)
                                 return render(request, 'registration/iscRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
@@ -1407,84 +1478,6 @@ def iscRegistration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
-def ibmhackathonRegistration(request):
-
-    thisEvent = get_object_or_404(AdminEvent, title='ibmhackathon')
-    initialValues={}
-    if thisEvent.registrationStatus == 'opened':
-        if request.user.is_authenticated:
-            allRegistrations =IBMHackathonRegistration.objects.all()
-            allUserData = UserData.objects.all()
-            isRegistered = False
-            thisInstance = False
-            thisUserData = False
-            for i in allRegistrations:
-                if (request.user == i.user):
-                    isRegistered = True
-                    thisInstance = i
-            for i in allUserData:
-                if (request.user == i.user):
-                    thisUserData = i
-            if thisUserData:
-                initialValues={
-                "institution": thisUserData.institution,
-                "full_name": thisUserData.full_name,
-                "city":thisUserData.city ,
-                "email": thisUserData.email,
-                "contact": thisUserData.contact
-                }
-            if isRegistered:
-                
-                if thisInstance.isSubmit:
-                    return render(request, 'registration/registered.html',{})
-                else:
-                    f = IBMHackathonForm(instance=thisInstance)
-                    if request.method == "POST":
-                        f = IBMHackathonForm(request.POST, request.FILES, )
-                        if f.is_valid():
-                            thisInstance = f.save(commit=False)
-                            if request.POST.get("submit"):
-                                thisInstance.isSubmit = True
-                                thisInstance.submit_date = timezone.now()
-                                if event_confirmation_mail('IBM Hackathon',request.POST['email'],request):
-                                    thisInstance.confirmation_email_sent = True
-                                thisInstance.save()
-                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Event Registration Form')
-                                return redirect('registration')
-                            else:
-                                thisInstance.last_modify_date = timezone.now()
-                                thisInstance.save()
-                                messages.add_message(request, messages.INFO, 'You have succesfully modified your IBM Hackathon Event Registration Form')
-                                f =IBMHackathonForm(instance=thisInstance)
-                                return render(request, 'registration/ibmhackathonRegistration.html', {'form': f})
-            else:
-                if request.method == "POST":
-                    f = IBMHackathonForm(request.POST, request.FILES,initial=initialValues )
-                    if f.is_valid():
-                        reg = f.save(commit=False)
-                        reg.user = request.user
-
-                        if request.POST.get("submit"):
-                            reg.isSubmit = True
-                            reg.submit_date = timezone.now()
-                            if event_confirmation_mail('IBM Hackathon',thisUserData.email,request):
-                                reg.confirmation_email_sent = True
-                            reg.save()
-                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Event Registration Form')
-                        else:
-                            reg.last_modify_date = timezone.now()
-                            reg.save()
-                            messages.add_message(request, messages.INFO, 'You have succesfully saved your IBM Hackathon Event Registration Form')
-                            return render(request, 'registration/ibmhackathonRegistration.html', {'form': f})
-                        return redirect('registration')
-                else:
-                    f = IBMHackathonForm(initial=initialValues)
-            return render(request, 'registration/ibmhackathonRegistration.html', {'form': f})
-        else:
-            messages.add_message(request, messages.INFO, 'Please log in to register for the IBM Hackathon')
-            return redirect('login')
-    else:
-        return render(request, 'registration/closed.html',{})
 
 def pisRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='pis')
