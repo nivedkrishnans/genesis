@@ -509,9 +509,9 @@ def sciencejournalismRegistration(request):
                         return redirect('registration')
                 else:
                     f = ScienceJournalismForm(initial = {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email})
-            return render(request, 'registration/ScienceJournalismRegistration.html',{'form':f})
+            return render(request, 'registration/sciencejournalismRegistration.html',{'form':f})
 
-        return render(request, 'registration/ScienceJournalismRegistration.html',{'form':f})
+        return render(request, 'registration/sciencejournalismRegistration.html',{'form':f})
     else:
         return render(request, 'registration/closed.html',{})
 
