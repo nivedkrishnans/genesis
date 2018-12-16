@@ -335,9 +335,30 @@ class ISCForm(forms.ModelForm):
 class IBMHackathonForm(forms.ModelForm):
     class Meta:
         model = IBMHackathonRegistration
-        fields = ('full_name','institution','city','email','contact','question1','question2','question3','question4','responseFile','howyouknow',)
+        fields = ('teamName','institution','city','email','contact',
+        'member1', 'qualification1', 'email1', 'contact1',
+        'member2', 'qualification2', 'email2', 'contact2',
+        'member3', 'qualification3', 'email3', 'contact3',
+        'member4', 'qualification4', 'email4', 'contact4',
+        'question1','question2','question3','question4','responseFile','howyouknow',)
         labels = {
-            "full_name": "Full Name",
+            "teamName": "Team Name",
+            "member1": "Full Name",
+            "qualification1": "Qualification",
+            "email1": 'Email',
+            "contact1": "Mobile Number",
+            "member2": "Full Name",
+            "qualification2": "Qualification",
+            "email2": 'Email',
+            "contact2": "Mobile Number",
+            "member3": "Full Name",
+            "qualification3": "Qualification",
+            "email3": 'Email',
+            "contact3": "Mobile Number",
+            "member4": "Full Name",
+            "qualification4": "Qualification",
+            "email4": 'Email',
+            "contact4": "Mobile Number",
             "institution": "Institution",
             "city": "City",
             "email": "Email",

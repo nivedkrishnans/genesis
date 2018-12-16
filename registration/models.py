@@ -157,7 +157,7 @@ class LasyaSoloRegistration(models.Model):
     videoFileLink = models.URLField(max_length=300, null=False, blank=True)
     #function to generate a path to upload the file
     def filePathGenerate(instance,filename):
-        temp = 'private/lasya/' + str(instance.teamName) + '_' + str(instance.user) + '_' + str(instance.institution) + '/'
+        temp = 'private/lasya/' + str(instance.full_name) + '_' + str(instance.user) + '_' + str(instance.institution) + '/'
         temp2 = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
         temp3 = '/' + os.path.split(filename)[1]
         temp = temp + temp2 + temp3
@@ -511,7 +511,23 @@ class IBMHackathonRegistration(models.Model):
     #form details
 
     #user details
-    full_name =  models.CharField(max_length=127)
+    teamName = models.CharField(max_length=144)
+    member1 = models.CharField(max_length=200, blank=False)
+    qualification1 = models.CharField(max_length=200, blank=False)
+    email1 = models.EmailField(max_length=144, null=False, blank=False)
+    contact1 = models.CharField(max_length=20, blank=False)
+    member2 = models.CharField(max_length=200, blank=True)
+    qualification2 = models.CharField(max_length=200, blank=True)
+    email2 = models.EmailField(max_length=144, null=False, blank=True)
+    contact2 = models.CharField(max_length=20, blank=True)
+    member3 = models.CharField(max_length=200, blank=True)
+    qualification3 = models.CharField(max_length=200, blank=True)
+    email3 = models.EmailField(max_length=144, null=False, blank=True)
+    contact3 = models.CharField(max_length=20, blank=True)
+    member4 = models.CharField(max_length=200, blank=True)
+    qualification4 = models.CharField(max_length=200, blank=True)
+    email4 = models.EmailField(max_length=144, null=False, blank=True)
+    contact4 = models.CharField(max_length=20, blank=True)
     institution = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     email = models.EmailField(max_length=200, null=False, blank=False)

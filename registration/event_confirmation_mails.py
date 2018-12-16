@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib import messages
 
 #sends the event confirmation mail to both the team email and the user email, unless they are the same. if they are the same, only one email is sent
-def event_confirmation_mail(event_name,email,request,email2=False,email3=False,email4=False,name2=False,name3=False,name4=False,):
+def event_confirmation_mail(event_name,email,request,email2=False,email3=False,email4=False,name2=False,name3=False,name4=False,email5=False,name5=False,):
     #email confirmation
     base_location = "{0}://{1}".format(request.scheme, request.get_host())
     subject = event_name + " Registration Successful"
@@ -59,6 +59,16 @@ def event_confirmation_mail(event_name,email,request,email2=False,email3=False,e
                 html_content = render_to_string('registration/email_templates/event_registered.html', {'event_name':event_name,'base_location':base_location,'name':tempName}) # render with dynamic value
                 msg5.attach_alternative(html_content, "text/html")
                 msg5.send()
+        if email5:
+            if (email5 != request.user.email) and (email5 != email):
+                msg6 = EmailMultiAlternatives(subject, text_content, settings.SERVER_EMAIL, [email5])
+                if name5:
+                    tempName = name5
+                else:
+                    tempName = name
+                html_content = render_to_string('registration/email_templates/event_registered.html', {'event_name':event_name,'base_location':base_location,'name':tempName}) # render with dynamic value
+                msg6.attach_alternative(html_content, "text/html")
+                msg6.send()
     except:
         success=False
         messages.add_message(request, messages.INFO, 'We are facing some difficulty sending the confirmation mail.')

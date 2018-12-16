@@ -1409,7 +1409,7 @@ def ibmhackathonRegistration(request):
                             if request.POST.get("submit"):
                                 thisInstance.isSubmit = True
                                 thisInstance.submit_date = timezone.now()
-                                if event_confirmation_mail('IBM Hackathon',request.POST['email'],request):
+                                if event_confirmation_mail('IBM Hackathon',request.POST['email'],request,thisInstance.member1email,thisInstance.member2email,thisInstance.member3email,thisInstance.member1name,thisInstance.member2name,thisInstance.member3name,thisInstance.member4email,thisInstance.member4name,):
                                     thisInstance.confirmation_email_sent = True
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Registration Form')
@@ -1429,7 +1429,7 @@ def ibmhackathonRegistration(request):
                         if request.POST.get("submit"):
                             reg.isSubmit = True
                             reg.submit_date = timezone.now()
-                            if event_confirmation_mail('IBM Hackathon',request.POST['email'],request):
+                            if event_confirmation_mail('IBM Hackathon',request.POST['email'],request,reg.member1email,reg.member2email,reg.member3email,reg.member1name,reg.member2name,reg.member3name,reg.member4email,reg.member4name,):
                                 reg.confirmation_email_sent = True
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Registration Form')
@@ -1440,7 +1440,7 @@ def ibmhackathonRegistration(request):
                             return render(request, 'registration/ibmhackathonRegistration.html',{'form':f})
                         return redirect('registration')
                 else:
-                    f = IBMHackathonForm(initial = {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email,"contactForCalls":thisUserData.contact,})
+                    f = IBMHackathonForm(initial = {"member1":thisUserData.full_name,"email1":thisUserData.email,"institution":thisUserData.contact,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email,"contactForCalls":thisUserData.contact,})
             return render(request, 'registration/ibmhackathonRegistration.html',{ 'form':f})
 
         else:

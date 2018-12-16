@@ -207,7 +207,7 @@ class ISCRegistrationResource(ExportMixin,admin.ModelAdmin):
         model = ISCRegistration
 
 class IBMHackathonRegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user', 'full_name' ,'email','institution','city','submit_date')
+    list_display = ('user', 'teamName' ,'email','institution','city','submit_date')
     list_filter = ('submit_date','city',)
 
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts

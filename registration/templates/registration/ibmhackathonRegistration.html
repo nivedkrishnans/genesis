@@ -48,10 +48,19 @@
           {% endif %}
           <p>View the complete details of this event <a href="{% url 'ibmhackathonRegistration'%}">here</a>.</p>
           <p><a href="{% url 'registration'%}">Click here</a> to go back to the registrations index page.</p>
+            <p style="margin-bottom:14px;">Note:</p>
+          <ul>
+            <li>For Section II of this form, you can either fill in your responses in the space provided, or you can upload a PDF.</li>
+          </ul>
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
-
+                {% if forloop.counter is 1 %} <p style="font-size:1.5em; font-family:'Titillium Web',sans-serif; text-decoration:underline"> Section I </p> {% endif %}
+                {% if forloop.counter is 6 %} <p style="font-size:1.2em; font-family:'Titillium Web',sans-serif;"> Team Member 1: </p> {% endif %}
+                {% if forloop.counter is 10 %} <p style="font-size:1.2em; font-family:'Titillium Web',sans-serif;"> Team Member 2: </p> {% endif %}
+                {% if forloop.counter is 14 %} <p style="font-size:1.2em; font-family:'Titillium Web',sans-serif;"> Team Member 3: </p> {% endif %}
+                {% if forloop.counter is 18 %} <p style="font-size:1.2em; font-family:'Titillium Web',sans-serif;"> Team Member 4: </p> {% endif %}
+                {% if forloop.counter is 22 %} <p style="font-size:1.5em; font-family:'Titillium Web',sans-serif; text-decoration:underline"> Section II  </p> {% endif %}
                 <div class="field-space">
                     {{ field.errors }}
                     {{ field.label_tag }}
