@@ -458,3 +458,28 @@ class DecoherencePrelimsForm(forms.ModelForm):
             'question24':forms.RadioSelect(attrs={'class':'radioS'}),
             'question25':forms.RadioSelect(attrs={'class':'radioS'}),
         }
+
+
+class CryptothlonPrelimsForm(forms.ModelForm):
+    class Meta:
+        model = CryptothlonPrelim
+        fields = ('a01','a07','a08','a09','a10','a11','a13','a16','a17','d02','d03','d04','d05','d06','d12','d13','d14',)
+        labels = {
+            'a01':"Across 1",
+            'a07':"Across 7",
+            'a08':"Across 8",
+            'a09':"Across 9",
+            'a10':"Across 10",
+            'a11':"Across 11",
+            'a13':"Across 13",
+            'a16':"Across 16",
+            'a17':"Across 17",
+            'd02':"Down 2",
+            'd03':"Down 3",
+            'd04':"Down 4",
+            'd05':"Down 5",
+            'd06':"Down 6",
+            'd12':"Down 12",
+            'd13':"Down 13",
+            'd14':"Down 14",
+        }

@@ -701,3 +701,40 @@ class DecoherencePrelim(models.Model):
     email = models.EmailField(max_length=200, null=False, blank=False)
     def __str__(self):
         return str(self.user)
+
+
+
+class CryptothlonPrelim(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    cryptothlonRegistration = models.ForeignKey(CryptothlonRegistration, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
+    #form details
+    a01 = models.CharField(null=True, blank=True, max_length=24)
+    a07 = models.CharField(null=True, blank=True, max_length=24)
+    a08 = models.CharField(null=True, blank=True, max_length=24)
+    a09 = models.CharField(null=True, blank=True, max_length=24)
+    a10 = models.CharField(null=True, blank=True, max_length=24)
+    a11 = models.CharField(null=True, blank=True, max_length=24)
+    a13 = models.CharField(null=True, blank=True, max_length=24)
+    a16 = models.CharField(null=True, blank=True, max_length=24)
+    a17 = models.CharField(null=True, blank=True, max_length=24)
+    d02 = models.CharField(null=True, blank=True, max_length=24)
+    d03 = models.CharField(null=True, blank=True, max_length=24)
+    d04 = models.CharField(null=True, blank=True, max_length=24)
+    d05 = models.CharField(null=True, blank=True, max_length=24)
+    d06 = models.CharField(null=True, blank=True, max_length=24)
+    d12 = models.CharField(null=True, blank=True, max_length=24)
+    d13 = models.CharField(null=True, blank=True, max_length=24)
+    d14 = models.CharField(null=True, blank=True, max_length=24)
+    #team details
+    teamName = models.CharField(max_length=144)
+    institution = models.CharField(max_length=144)
+    city = models.CharField(max_length=144)
+    confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
+    modifyTimes = models.TextField(default=" ",max_length=1200, null=False, blank=True)
+    email = models.EmailField(max_length=200, null=False, blank=False)
+    def __str__(self):
+        return str(self.user)

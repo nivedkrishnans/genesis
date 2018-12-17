@@ -244,6 +244,12 @@ class DecoherenceSubjectiveQuestionResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = DecoherenceSubjectiveQuestion
 
+
+class CryptothlonPrelimResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user','teamName','cryptothlonRegistration','submit_date','institution','city')
+    class Meta:
+        model = CryptothlonPrelim
+
 admin.site.register(UserData,UserDataResource)
 admin.site.register(AdminEvent,AdminEventResource)
 admin.site.register(CampusAmbassador,CampusAmbassadorResource)
@@ -260,6 +266,7 @@ admin.site.register(PISRegistration,PISRegistrationResource)
 admin.site.register(ScienceJournalismRegistration,ScienceJournalismRegistrationResource)
 admin.site.register(DebubularyRegistration,DebubularyRegistrationResource)
 admin.site.register(CryptothlonRegistration,CryptothlonRegistrationResource)
+admin.site.register(CryptothlonPrelim,CryptothlonPrelimResource)
 admin.site.register(StatusDates,StatusDatesResource)
 admin.site.register(DecoherencePrelim,DecoherencePrelimResource)
 admin.site.register(DecoherenceObjectiveQuestion,DecoherenceObjectiveQuestionResource)

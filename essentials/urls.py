@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from . import views
 import  originals.views
+import  registration.views
 
 urlpatterns = [
 	url(r'^$', views.events, name="events"),
@@ -15,6 +16,7 @@ urlpatterns = [
 	url(r'^explain_the_concept/$', views.etc , name="etc"),
 	url(r'^debubulary/$', views.debubulary , name="debubulary"),
 	url(r'^cryptothlon/$', views.cryptothlon , name="cryptothlon"),
+	url(r'^cryptothlon/prelims/Z2OoBGAamCfIW4jwr2ZDpn1yQCKgvtochtCKkno/OoBGAnOZCGgSpf2GNzymCfI9WutochouKt9mPy/nomPyouKgZeouKt9WuJWutoZeBq4IhKkr1y6NZ2/$', registration.views.cryptothlonPrelims , name="cryptothlonPrelims"),
 	url(r'^vignettora/$', views.vignettora , name="vignettora"),
 	url(r'^sciencejournalism/$', views.sciencejournalism , name="sciencejournalism"),
 	url(r'^chemisticon/$', views.chemisticon , name="chemisticon"),

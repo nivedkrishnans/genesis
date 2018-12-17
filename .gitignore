@@ -9,3 +9,4 @@ media
 mysite/settings.py
 sent_emails
 requirements.txt
+registration/myVariables.py
