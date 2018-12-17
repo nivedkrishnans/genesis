@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Workshops | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Voces|Cinzel+Decorative:400,700|Coda|Salsa" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/workshops.css'%}">
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <h3>Workshops</h3>
+    <div class="events-container">
+      <div class="event-area">
+          <h4 class="event_title">AutoCAD</h4>
+          <img class="event_logo" src="{%static 'img/workshops/indialabs_logo.png'%}" alt="pravega innovation summit" />
+          <p class="event_text">This course covers the essential core topics for working with AutoCAD. </p>
+          <p class="event_time">19 - 20 Jan 2019</p>
+          <a href="{% static 'docs/workshops/AutoCAD.pdf' %}" target="_blank"><div class="seeMore"> Download PDF </div></a>
+      </div>
+      <div class="event-area">
+          <h4 class="event_title">3D Printing</h4>
+          <!--
+          <img class="event_logo" src="{%static 'img/events/pis_logo.png'%}" alt="pravega innovation summit" />
+          -->
+          <p class="event_text">This workshop introduces the participants to 3D Printing and the related softwares.</p>
+          <p class="event_time">19 - 20 Jan 2019</p>
+          <a href="#"><div class="seeMore"> Download PDF </div></a>
+      </div>
+      <div class="event-area">
+          <h4 class="event_title">Humanoid Robotics</h4>
+          <!--
+          <img class="event_logo" src="{%static 'img/events/pis_logo.png'%}" alt="pravega innovation summit" />
+          -->
+          <p class="event_text">This workshop Introduces the participants to Humanoid Robots.</p>
+          <p class="event_time">19 - 20 Jan 2019</p>
+          <a href="#"><div class="seeMore"> Download PDF </div></a>
+      </div>
+      <div class="event-area">
+          <h4 class="event_title">StaadPro</h4>
+          <img class="event_logo" src="{%static 'img/workshops/indialabs_logo.png'%}" alt="pravega innovation summit" />
+          <p class="event_text">Staad.pro is a computer aided analysis and design software used to solve the multistory structures indeterminacy in few seconds by dividing the entire structure into elements with most accuracy. </p>
+          <p class="event_time">17 - 18 Jan 2019</p>
+          <a href="{% static 'docs/workshops/StaadPro.pdf' %}" target="_blank"><div class="seeMore">  Download PDF </div></a>
+      </div>
+      <div class="event-area">
+          <h4 class="event_title">Design Thinking</h4>
+          <!--
+          <img class="event_logo" src="{%static 'img/events/pis_logo.png'%}" alt="pravega innovation summit" />
+          -->
+          <p class="event_text">Bringing together the pillars of scientific growth and innovation.</p>
+          <p class="event_time">19 - 20 Jan 2019</p>
+          <a href="#"><div class="seeMore"> Download PDF </div></a>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <script src="{%static 'js/navBar.js'%}"> </script>
+
+{% endblock %}

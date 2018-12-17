@@ -584,6 +584,14 @@ class PISRegistration(models.Model):
     prospects = models.TextField(null=False, blank=True)
     marketResearch = models.TextField(null=False, blank=True)
     prototyping = models.TextField(null=False, blank=True)
+    #def filePathGenerate(instance,filename):
+    #    temp = 'private/pis/' + str(instance.full_name) + '_' + str(instance.user) + '_' + str(instance.institution) + '/'
+    #    temp2 = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
+    #    temp3 = '/' + os.path.split(filename)[1]
+    #    temp = temp + temp2 + temp3
+    #    return temp
+    #responseFile = models.FileField(validators=[FileExtensionValidator(allowed_extensions=['pdf'])], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
+
     #user details
     institution = models.CharField(max_length=200)
     city = models.CharField(max_length=200)

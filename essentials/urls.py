@@ -22,6 +22,7 @@ urlpatterns = [
 	url(r'^interschool/$', views.interschool , name="interschool"),
 	url(r'^ibm_hackathon/$', views.ibm_hackathon , name="ibm_hackathon"),
 	url(r'^notify_pronites/$', views.notify_pronites , name="notify_pronites"),
+	url(r'^workshops/$', views.workshops , name="workshops"),
 	url(r'^inotherwords/$', originals.views.InOtherWords , name="inotherwords"),
 	url(r'^inotherwords/ch01$', originals.views.IOW_challenge01 , name="iow_challenge01"),
 	url(r'^inotherwords/ch02$', originals.views.IOW_challenge02 , name="iow_challenge02"),

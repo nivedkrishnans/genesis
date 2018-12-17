@@ -378,7 +378,7 @@ class IBMHackathonForm(forms.ModelForm):
 class PISForm(forms.ModelForm):
     class Meta:
         model = PISRegistration
-        fields = ('teamName', 'member1name','member1mobile','member1email','member2name','member2mobile','member2email','member3name','member3mobile','member3email','ideaAbstract','motivation','prospects','marketResearch','prototyping','howyouknow')
+        fields = ('teamName', 'member1name','member1mobile','member1email','member2name','member2mobile','member2email','member3name','member3mobile','member3email','ideaAbstract','motivation','prospects','marketResearch','prototyping','howyouknow') # 'responseFile',
         labels = {
             "teamName": "Team Name",
             "member1name": "Name",
@@ -395,6 +395,7 @@ class PISForm(forms.ModelForm):
             "prospects": "How do you think your idea will make an impact?",
             "marketResearch": "Market Research (Target customers, potential sposors) (optional)",
             "prototyping": "Prototyping (Product feasibility, scalability, and current progress) (optional)",
+            #"responseFile": "If you wish to elaborate on you ideas and plans please attach a PDF detailing the same",
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
             }
 

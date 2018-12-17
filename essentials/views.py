@@ -97,6 +97,10 @@ def ibm_hackathon(request):
 
 
 
+def workshops(request):
+	return render(request, 'essentials/workshops.html', {})
+
+
 def partners(request):
 	return render(request, 'essentials/partners.html', {})
 

@@ -1,0 +1,118 @@
+.main{
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  padding-top: 68px;
+  background-color: rgba(17,17,17,0.7);
+  background-image: none;
+}
+
+h3{
+  font-family: 'Voces', cursive, script;
+  text-align: center;
+  font-size: 32px;
+}
+.event_title{
+    padding: 0;
+    margin: 2px auto;
+    text-align: center;
+    font-size: 28px;
+    transition: all 0.4s;
+    font-family: 'Coda', cursive;
+    font-weight: 400;
+    text-transform: none;
+}
+
+  .events-container{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .event-area{
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: flex-start;
+      background-color: rgba(8,8,8,0.4);
+      border-radius: 2px;
+      margin: 18px;
+      min-height: 200px;
+      height: auto;
+      width: 80%;
+      padding: 12px;
+  }
+
+  .event_logo{
+      max-width: 80%;
+      height: 120px;
+      margin: 8px auto;
+      object-fit: contain;
+
+  }
+
+  .event_text{
+      padding: 0;
+      margin: 2px auto;
+      font-size: 18px;
+      font-family: 'Coda', cursive;
+      text-align: left;
+      min-height: 80px;
+  }
+  .event_time{
+      padding: 0;
+      margin: 2px auto 8px auto;
+      font-size: 14px;
+      font-family: 'Coda', cursive;
+      text-align: center;
+  }
+
+  .seeMore{
+    text-align: center;
+      font-size: 16px;
+      width: auto;
+      height:auto;
+      padding: 8px 14px;
+      border: 2px solid rgba(255,255,240,1);
+      display: block;
+      margin: 0;
+      color: rgba(255,255,240,1);
+  }
+  .seeMore:hover{
+      color: rgba(8,8,8,1);
+      border: 2px solid rgba(255,255,240,1);
+      background-color: rgba(255,255,240,0.9);
+  }
+@media(min-width:760px){
+    .main{
+      padding-top: 100px;
+    }
+    .event_text{
+        font-size: 16px;
+    }
+    .event_title{
+        font-size: 22px;
+        min-height: 3em;
+        vertical-align: middle;
+    }
+  .events-container{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .event-area{
+      display: flex;
+      margin: 24px;
+      width: 280px;
+  }
+
+}
