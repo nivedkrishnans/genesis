@@ -738,3 +738,10 @@ class CryptothlonPrelim(models.Model):
     email = models.EmailField(max_length=200, null=False, blank=False)
     def __str__(self):
         return str(self.user)
+
+class CryptothlonPrelimDump(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(null=True, blank=True)
+    dumpString = models.TextField(default=" ",max_length=2000, null=True, blank=True)
+    def __str__(self):
+        return str(self.user) + str(self.create_date)

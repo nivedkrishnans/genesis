@@ -19,7 +19,16 @@ from datetime import datetime
 import json
 from .myVariables import CRYPTOTHLON_PRELIMS_PDF
 
-
+#making a dumpString from the request POST:
+def dumpStringGenerate(request):
+    dumpString = ""
+    dumpString = dumpString + str(request.user)
+    for i in request.POST:
+        try:
+            dumpString = dumpString +  ' , ( ' + str(i) + ' , ' + request.POST[str(i)] + ' )'
+        except:
+            dumpString = dumpString + ' , ' + str(i)
+    return dumpString
 
 def closed(request):
     return render(request, 'registration/closed.html', {})
@@ -1667,6 +1676,10 @@ def cryptothlonPrelims(request):
     pdfLink = '#'
     if examStarted:
         if request.user.is_authenticated:
+            #making a dump of the Responses
+            obj = CryptothlonPrelimDump.objects.create(user=request.user, create_date=timezone.now(), dumpString=dumpStringGenerate(request))
+            obj.save()
+
             base_location = "{0}://{1}".format(request.scheme, request.get_host())
             pdfLink = base_location + "/media/cryptothlon/" + CRYPTOTHLON_PRELIMS_PDF
             allResponses = CryptothlonPrelim.objects.order_by('-create_date')

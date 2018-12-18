@@ -32,6 +32,37 @@
             border-radius: 4px;
             border: 1px solid rgba(255,255,240,0.3);
         }
+        #alertModal{
+          border: 1px solid rgb(255,255,240);
+          display: none;
+          transform: translate(-50%, -50%);
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          max-width: 100vw;
+          background-color: rgba(0,0,0,0.9);
+          padding: 20px 14px;
+        }
+        #alertModal *{
+          text-align: center;
+        }
+        #closeAlertModal{
+          color: rgb(255,255,240);
+          border: none !important;
+          position: fixed;
+          transform: translate(50%, -50%);
+          top: 14px;
+          right: 14px;
+          font-size: 22px !important;
+          padding: 0 !important;
+          outline: none !important;
+        }
+        #closeAlertModal:hover{
+          background-color: transparent !important;
+          color: rgb(200,200,200) !important;
+          transform: translate(50%, -50%)!important;
+          font-size: 28px !important;
+        }
         #problemPDF{
           animation: bubbl 1s infinite;
           border: 2px solid white;
@@ -90,8 +121,25 @@
                   </ul>
               </div>
           {% endif %}
-          <p>View the details of this event <a href="{% url 'cryptothlon'%}">here</a>.</p>
           {% if examStarted and not examEnded %}
+          <!-- for the time up alert modal -->
+          <div id="alertModal">
+            <button onclick="closeAlertModal()" id="closeAlertModal">&#10005;</button>
+            <h4>Time Up!</h4>
+            <p>If the form doesn't submit itself, please submit manually to retain your responses.</p>
+          </div>
+          <script>
+            function closeAlertModal(){
+              document.getElementById('alertModal').style.display = 'none';
+              console.log('modal closed');
+            }
+            function openAlertModal(){
+              document.getElementById('alertModal').style.display = 'block';
+              console.log('modal opened');
+            }
+          </script>
+
+          <!-- Actual prelims code -->
           <div style="text-align:center;">
             <p style="margin-bottom:14px;">Download the Cryptothlon Prelims problem here:</p>
             <a id="problemPDF" target="_blank" href="{{pdfLink}}" style="margin:8px auto; font-size:18px;padding: 8px 14px; color:rgb(8,8,8); background-color:rgb(255,255,240);border-radius:4px;">Download PDF</a>
@@ -103,7 +151,6 @@
                   <li>You are supposed to attempt the Cryptothlon Prelims ONLY FROM ONE DEVICE AT A TIME.</li>
                   <li>At {{endTime}}, the form will try to save itself from all devices. This means that if you have the portal open in two different devices, the responses from one will overwrite the other, depending on the speed of your connections. </li>
                   <li>At {{endTime}}, if the form doesn't submit itself, you are supposed to manually submit it.</li>
-                  <li>Do not try to upload the answers to the subjective questions at the last moment.</li>
               </ul>
           </div>
           <p style="font-family: 'Titillium Web', sans-serif;">Duration:  {{startTime}} to {{endTime}}. </p>
@@ -156,12 +203,11 @@
 
                                   if (--timer < 0) {
                                       clearInterval(interval);
-
-                                      alert("Time Up! Submit your responses immediately to retain them.");
+                                      openAlertModal();
                                       document.getElementById("saveButton").click();
                                       setTimeout(function(){
                                           document.getElementById("saveButton").click();
-                                      }, 600000);
+                                      }, 120000);
                                   }
                               }, 1000);
                           }
