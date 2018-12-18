@@ -364,7 +364,7 @@ class IBMHackathonForm(forms.ModelForm):
             "email": "Email",
             "contact": "Mobile Number",
             "question1":"1. What factors do you think contribute to the reliability of news articles?",
-            "question2":"2. Provide a detailed approach to mining and cleaning news articles.",
+            "question2":"2. Provide an approach to mining and cleaning news articles.",
             "question3":"3. What IBM APIs you plan to use and how?",
             "question4":"4. (Optional) Do you have any previous experience working in ML, NLP and related fields?",
             "responseFile": "You can also submit your responses in a pdf file",
