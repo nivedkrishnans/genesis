@@ -472,7 +472,7 @@ class CryptothlonPrelimsForm(forms.ModelForm):
             'a10':"Across 10",
             'a11':"Across 11",
             'a13':"Across 13",
-            'a16':"Across 16",
+            'a16':"Across 15",
             'a17':"Across 17",
             'd02':"Down 2",
             'd03':"Down 3",
