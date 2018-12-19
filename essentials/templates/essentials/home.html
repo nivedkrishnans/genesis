@@ -136,12 +136,23 @@
             <button id="closeAnnouncementModal" onclick="closeAnnouncementModal();">&#10006;</button>
             <div id="announcementsContainer">
 
-                    <img id="TTPoster" src="{% static 'img/events/pronites/TesseracT.jpg' %}"/>
+                    <img id="TTPoster" src="{% static 'img/events/cryptothlon.jpeg' %}"/>
 
                 <div id="announcementButtons">
-                    <a href="https://insider.in/pravega-pro-nites-day-lll-with-tesseract-jan20-2019/event" class="announcementLinks">Book Now</a>
+                    <a href="{% url 'cryptothlonPrelims' %}" class="announcementLinks">Participate Now</a>
                 </div>
             </div>
+            <style>
+              .announcementLinks{
+                color: #cef3ff !important;
+                border: 2px solid #cef3ff;
+                background-color: rgb(8,8,8);
+              }
+              .announcementLinks:hover{
+                color: rgb(8,8,8);
+                background-color: #cef3ff;
+              }
+            </style>
         </div>
         <script src="{%static 'js/sectionsDisplay.js'%}" type="text/javascript"></script>
         <script >
