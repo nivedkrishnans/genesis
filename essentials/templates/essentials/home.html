@@ -58,7 +58,9 @@
                     </p>
                     <div id="title-button-container" class="animatedOnload">
                         <a id="title-register" href="{%url 'registration'%}" >Register Now</a>
-                        <a id="title-register" href="{%url 'cryptothlonPrelims'%}" >Cryptothlon Prelims</a>
+                        {% if campusAmbassadorOpen %}
+                            <a id="title-register2" href="{%url 'campusambassadors'%}" style="animation-play-state: running;">Join Us</a>
+                        {% endif %}
                     </div>
                 </div>
                 <img src="{%static 'img/IISc_logo.png'%}" id="iiscLogo">
@@ -136,23 +138,12 @@
             <button id="closeAnnouncementModal" onclick="closeAnnouncementModal();">&#10006;</button>
             <div id="announcementsContainer">
 
-                    <img id="TTPoster" src="{% static 'img/events/cryptothlon.jpeg' %}"/>
+                    <img id="TTPoster" src="{% static 'img/events/pronites/TesseracT.jpg' %}"/>
 
                 <div id="announcementButtons">
-                    <a href="{% url 'cryptothlonPrelims' %}" class="announcementLinks">Participate Now</a>
+                    <a href="https://insider.in/pravega-pro-nites-day-lll-with-tesseract-jan20-2019/event" class="announcementLinks">Book Now</a>
                 </div>
             </div>
-            <style>
-              .announcementLinks{
-                color: #cef3ff !important;
-                border: 2px solid #cef3ff;
-                background-color: rgb(8,8,8);
-              }
-              .announcementLinks:hover{
-                color: rgb(8,8,8);
-                background-color: #cef3ff;
-              }
-            </style>
         </div>
         <script src="{%static 'js/sectionsDisplay.js'%}" type="text/javascript"></script>
         <script >

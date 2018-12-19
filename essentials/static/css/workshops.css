@@ -112,7 +112,10 @@ h3{
   .event-area{
       display: flex;
       margin: 24px;
-      width: 280px;
+      width: 320px;
+  }
+  .event_logo{
+    height: 200px;
   }
 
 }
