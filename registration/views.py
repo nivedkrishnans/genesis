@@ -1421,7 +1421,7 @@ def ibmhackathonRegistration(request):
                             if request.POST.get("submit"):
                                 thisInstance.isSubmit = True
                                 thisInstance.submit_date = timezone.now()
-                                if event_confirmation_mail('IBM Hackathon',request.POST['email'],request,thisInstance.member1email,thisInstance.member2email,thisInstance.member3email,thisInstance.member1name,thisInstance.member2name,thisInstance.member3name,thisInstance.member4email,thisInstance.member4name,):
+                                if event_confirmation_mail('IBM Hackathon',request.POST['email'],request,thisInstance.email1,thisInstance.email2,thisInstance.email3,thisInstance.member1,thisInstance.member2,thisInstance.member3,thisInstance.email4,thisInstance.member4,):
                                     thisInstance.confirmation_email_sent = True
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Registration Form')
@@ -1441,7 +1441,7 @@ def ibmhackathonRegistration(request):
                         if request.POST.get("submit"):
                             reg.isSubmit = True
                             reg.submit_date = timezone.now()
-                            if event_confirmation_mail('IBM Hackathon',request.POST['email'],request,reg.member1email,reg.member2email,reg.member3email,reg.member1name,reg.member2name,reg.member3name,reg.member4email,reg.member4name,):
+                            if event_confirmation_mail('IBM Hackathon',request.POST['email'],request,reg.email1,reg.email2,reg.email3,reg.member1,reg.member2,reg.member3,reg.email4,reg.member4,):
                                 reg.confirmation_email_sent = True
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully submitted your IBM Hackathon Registration Form')
