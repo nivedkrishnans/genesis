@@ -319,6 +319,7 @@ class ETCForm(forms.ModelForm):
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
 
+
 class ISCForm(forms.ModelForm):
     class Meta:
         model = ISCRegistration
@@ -374,6 +375,15 @@ class IBMHackathonForm(forms.ModelForm):
     #widgets = {
     #        'question1': Textarea(attrs={'class': 'IBM', 'rows': 5}),
     #    }
+
+class ETCRegisteredForm(forms.ModelForm):
+    class Meta:
+        model = ETCRegisteredRegistration
+        fields = ('videoFile','videoFileLink')
+        labels = {
+            "videoFile": videoFileSupportMessage(lasyaSizeLimit),
+            "videoFileLink":"Link to Video (Only if you do not upload the video file)"
+            }
 
 class PISForm(forms.ModelForm):
     class Meta:
