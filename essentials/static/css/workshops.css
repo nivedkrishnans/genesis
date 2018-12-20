@@ -87,6 +87,25 @@ h3{
       border: 2px solid rgba(255,255,240,1);
       background-color: rgba(255,255,240,0.9);
   }
+  .event-essentials{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: flex-end;
+      font-size: 16px;
+  }
+   .mainLink{
+     color: rgb(255,255,240) !important;
+     border: 2px solid rgb(255,255,240) !important;
+     background-color: rgb(8,8,8) !important;
+     font-size: 18px;
+     padding: 8px 14px;
+     margin: 4px 8px;
+   }
+   .mainLink:hover{
+     color: rgb(8,8,8) !important;
+     background-color: rgb(255,255,240) !important;
+   }
 @media(min-width:760px){
     .main{
       padding-top: 100px;
