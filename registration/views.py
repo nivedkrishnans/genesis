@@ -17,7 +17,7 @@ from .event_confirmation_mails import event_confirmation_mail
 from django.http import JsonResponse
 from datetime import datetime
 import json
-from .myVariables import CRYPTOTHLON_PRELIMS_PDF
+#from .myVariables import CRYPTOTHLON_PRELIMS_PDF
 
 #making a dumpString from the request POST:
 def dumpStringGenerate(request):
@@ -48,6 +48,7 @@ def registration_index(request):
 
     #distionary of events and their models
     eventDictionary={
+      'etcregistered':ETCRegisteredRegistration,
         'ibmhackathon':IBMHackathonRegistration,
         'isc':ISCRegistration,
         'Campus Ambassadors':CampusAmbassador,
@@ -1316,6 +1317,7 @@ def etcRegistration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
+
 def iscRegistration(request):
 
     thisEvent = get_object_or_404(AdminEvent, title='isc')
@@ -1459,6 +1461,94 @@ def ibmhackathonRegistration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
+
+def etcregisteredRegistration(request):
+    redirect('etcRegistration')
+    thisEvent = get_object_or_404(AdminEvent, title='etcregistered')
+    if thisEvent.registrationStatus == 'opened':
+        f = ETCRegisteredForm()
+        if request.user.is_authenticated:
+            allRegistrations =ETCRegisteredRegistration.objects.all()
+            etcregistrations=ETCRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            isSubmit = False
+            ETCInstance=False
+            thisInstance = False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+            for i in etcregistrations:
+                if (request.user==i.user):
+                    ETCInstance=i
+            if ETCInstance!=False and ETCInstance.isSubmit:
+                if isRegistered:
+                    if thisInstance.isSubmit:
+                        isSubmit=True
+                        return render(request, 'registration/registered.html',{'form':f})
+                    else:
+                        f = ETCRegisteredForm(instance=thisInstance)
+                        if request.method == "POST":
+                            f = ETCRegisteredForm(request.POST, instance=thisInstance)
+                            if f.is_valid():
+                                thisInstance = f.save(commit=False)
+                                if request.POST.get("submit"):
+                                    if f["videoFileLink"].value() or f["videoFile"].value() :
+                                        thisInstance.isSubmit = True
+                                        thisInstance.submit_date = timezone.now()
+                                        if event_confirmation_mail('ETC Video Upload',ETCInstance.email,request):
+                                            thisInstance.confirmation_email_sent = True
+                                        thisInstance.save()
+                                        messages.add_message(request, messages.INFO, 'You have succesfully submitted your Video for Explain The Concept')
+                                        return redirect('registration')
+                                    else:
+                                        messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
+                                        return render(request, 'registration/lasyaRegistration.html', {'form': f})
+                                else:
+                                    thisInstance.last_modify_date = timezone.now()
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully modified your video upload for Explain The Concept')
+                                    f =ETCRegisteredForm(instance=thisInstance)
+                                    return render(request, 'registration/etcregisteredRegistration.html', {'form': f})
+                else:
+                    if request.method == "POST":
+                        f = ETCRegisteredForm(request.POST, request.FILES)
+                        if f.is_valid():
+                            reg = f.save(commit=False)
+                            reg.user = request.user
+
+                            if request.POST.get("submit"):
+                                if f["videoFileLink"].value() or f["videoFile"].value() :
+                                    reg.isSubmit = True
+                                    reg.submit_date = timezone.now()
+                                    if event_confirmation_mail('ETC Video Upload',ETCInstance.email,request):
+                                        reg.confirmation_email_sent = True
+                                    reg.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your video for Explain The Concept')
+                                else:
+                                    messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
+                                    return render(request, 'registration/etcregisteredRegistration.html', {'form': f})
+                            else:
+                                reg.last_modify_date = timezone.now()
+                                reg.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully saved your Video upload for Explain The Concept')
+                                return render(request, 'registration/etcregisteredRegistration.html', {'form': f})
+                            return redirect('registration')
+                    else:
+                        f = ETCRegisteredForm()
+            else:
+                return redirect('etcRegistration')
+            return render(request, 'registration/etcregisteredRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Explain The Concept')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
 
 def pisRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='pis')
