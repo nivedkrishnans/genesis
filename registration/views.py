@@ -17,7 +17,7 @@ from .event_confirmation_mails import event_confirmation_mail
 from django.http import JsonResponse
 from datetime import datetime
 import json
-#from .myVariables import CRYPTOTHLON_PRELIMS_PDF
+from .myVariables import CRYPTOTHLON_PRELIMS_PDF
 
 #making a dumpString from the request POST:
 def dumpStringGenerate(request):
@@ -45,10 +45,11 @@ def redirectRegistrationIndex(request):
 def registration_index(request):
     # campusAmbassador is not an event
     campusAmbassadorEvent = AdminEvent.objects.filter(title='Campus Ambassadors').first()
+    #accomodationRegistration=AdminEvent.objects.filter(title='Accomodation').first()
 
     #distionary of events and their models
     eventDictionary={
-      'etcregistered':ETCRegisteredRegistration,
+        'etcregistered':ETCRegisteredRegistration,
         'ibmhackathon':IBMHackathonRegistration,
         'isc':ISCRegistration,
         'Campus Ambassadors':CampusAmbassador,
@@ -69,6 +70,9 @@ def registration_index(request):
         'sciencejournalism':ScienceJournalismRegistration,
     }
 
+
+
+
     #inotherwords
     iow_isactive = list(InOtherWord.objects.filter(active=True))
 
@@ -76,6 +80,9 @@ def registration_index(request):
     openedEvents = list(AdminEvent.objects.filter(registrationStatus='opened').order_by('-priority'))
     closedEvents = list(AdminEvent.objects.filter(registrationStatus='closed').order_by('-priority'))
     notyetEvents = list(AdminEvent.objects.filter(registrationStatus='notyet').order_by('-priority'))
+
+    #RemovingAccomodation
+    #openedEvents.remove(accomodationRegistration)
 
     #showing which events where Registered
     registeredEvents = []
@@ -129,6 +136,9 @@ def registration_index(request):
     if campusAmbassadorEvent in openedEvents :openedEvents.remove(campusAmbassadorEvent)
     if campusAmbassadorEvent in closedEvents :closedEvents.remove(campusAmbassadorEvent)
     if campusAmbassadorEvent in notyetEvents :notyetEvents.remove(campusAmbassadorEvent)
+
+    #Add accomodation
+    #if accomodationRegistration :openedEvents.insert(0,accomodationRegistration)
 
     return render(request, 'registration/registration_index.html', {'iow_isactive':iow_isactive,'campusAmbassadorEvent':campusAmbassadorEvent,'registeredEventsString':registeredEventsString, 'openedEvents':openedEvents, 'closedEvents':closedEvents, 'notyetEvents':notyetEvents })
 
