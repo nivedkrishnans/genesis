@@ -49,6 +49,7 @@ def registration_index(request):
 
     #distionary of events and their models
     eventDictionary={
+      'vignettoraregistered':VignettoraRegisteredRegistration,
         'etcregistered':ETCRegisteredRegistration,
         'ibmhackathon':IBMHackathonRegistration,
         'isc':ISCRegistration,
@@ -1213,7 +1214,7 @@ def vignettoraRegistration(request):
                 else:
                     f = VignettoraForm(instance=thisInstance)
                     if request.method == "POST":
-                        f =  VignettoraForm(request.POST, request.FILES)
+                        f =  VignettoraForm(request.POST, request.FILES,instance=thisInstance)
                         if f.is_valid():
                             thisInstance = f.save(commit=False)
                             if request.POST.get("submit"):
@@ -1228,7 +1229,7 @@ def vignettoraRegistration(request):
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully modified your Vignettora Registration Form')
-                                f =VignettoraForm()
+                                f =VignettoraForm(instance=thisInstance)
                                 return render(request, 'registration/vignettoraRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
@@ -1504,7 +1505,7 @@ def etcregisteredRegistration(request):
                     else:
                         f = ETCRegisteredForm(instance=thisInstance)
                         if request.method == "POST":
-                            f = ETCRegisteredForm(request.POST, instance=thisInstance)
+                            f = ETCRegisteredForm(request.POST,request.FILES, instance=thisInstance)
                             if f.is_valid():
                                 thisInstance = f.save(commit=False)
                                 if request.POST.get("submit"):
@@ -1518,7 +1519,7 @@ def etcregisteredRegistration(request):
                                         return redirect('registration')
                                     else:
                                         messages.add_message(request, messages.INFO, 'Please upload video file or enter video link' )
-                                        return render(request, 'registration/lasyaRegistration.html', {'form': f})
+                                        return render(request, 'registration/etcregisteredRegistration.html', {'form': f})
                                 else:
                                     thisInstance.last_modify_date = timezone.now()
                                     thisInstance.save()
@@ -1557,6 +1558,99 @@ def etcregisteredRegistration(request):
             return render(request, 'registration/etcregisteredRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for Explain The Concept')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+def vignettoraregisteredRegistration(request):
+
+    thisEvent = get_object_or_404(AdminEvent, title='vignettoraregistered')
+    if thisEvent.registrationStatus == 'opened':
+        f = VignettoraRegisteredForm()
+        if request.user.is_authenticated:
+            allRegistrations =VignettoraRegisteredRegistration.objects.all()
+            vignettoraregistrations=VignettoraRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            isSubmit = False
+            thisInstance = False
+            vignettoraInstance=False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+            for i in vignettoraregistrations:
+                if (request.user==i.user):
+                    vignettoraInstance=i
+
+            if vignettoraInstance!=False and vignettoraInstance.isSubmit:
+                if isRegistered:
+                    if thisInstance.isSubmit:
+                        isSubmit=True
+                        return render(request, 'registration/registered.html',{'form':f})
+                    else:
+                        f = VignettoraRegisteredForm(instance=thisInstance)
+                        if request.method == "POST":
+                            f = VignettoraRegisteredForm(request.POST,request.FILES, instance=thisInstance)
+                            if f.is_valid():
+                                thisInstance = f.save(commit=False)
+                                if request.POST.get("submit"):
+                                    if f["articleFileLink"].value() or f["articleFile"].value() :
+                                        thisInstance.isSubmit = True
+                                        thisInstance.submit_date = timezone.now()
+                                        if event_confirmation_mail('Vignettora Submission',vignettoraInstance.email,request):
+                                            thisInstance.confirmation_email_sent = True
+                                        thisInstance.save()
+                                        messages.add_message(request, messages.INFO, 'You have succesfully submitted an article for Vignettora Event')
+                                        return redirect('registration')
+                                    else:
+                                        messages.add_message(request, messages.INFO, 'Please upload article file or enter article link' )
+                                        return render(request, 'registration/vignettoraregisteredRegistration.html', {'form': f})
+                                else:
+                                    thisInstance.last_modify_date = timezone.now()
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully modified your article submission for Vignettora Event')
+                                    f =VignettoraRegisteredForm(instance=thisInstance)
+                                    return render(request, 'registration/vignettoraregisteredRegistration.html', {'form': f})
+                else:
+                    f = VignettoraRegisteredForm()
+                    if request.method == "POST":
+                        f = VignettoraRegisteredForm(request.POST,request.FILES,)
+                        if f.is_valid():
+
+                            thisInstance = f.save(commit=False)
+                            thisInstance.user = request.user
+
+                            if request.POST.get("submit"):
+                                if f["articleFileLink"].value() or f["articleFile"].value() :
+                                    thisInstance.isSubmit = True
+                                    thisInstance.submit_date = timezone.now()
+                                    if event_confirmation_mail('Vignettora Submission',vignettoraInstance.email,request):
+                                        thisInstance.confirmation_email_sent = True
+                                    thisInstance.save()
+                                    messages.add_message(request, messages.INFO, 'You have succesfully submitted an article for Vignettora Event')
+                                    return redirect('registration')
+                                else:
+                                    messages.add_message(request, messages.INFO, 'Please upload article file or enter article link' )
+                                    return render(request, 'registration/vignettoraregisteredRegistration.html', {'form': f})
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your article submission for Vignettora Event')
+                                f =VignettoraRegisteredForm()
+                                return render(request, 'registration/vignettoraregisteredRegistration.html', {'form': f})
+
+            else:
+                messages.add_message(request, messages.INFO, 'Please submit your Vignettora registration form to submit a Article.')
+                return redirect('vignettoraRegistration')
+
+            return render(request, 'registration/vignettoraregisteredRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for Vignettora')
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})

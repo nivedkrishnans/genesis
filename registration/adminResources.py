@@ -30,6 +30,15 @@ def seeArticleFile(self, obj):    #for showings uploaded video link in the list 
         temp = '-'
     return format_html(temp)
 
+def seeArticleLink(self, obj):     #for showings external article link in the list of model instances
+    try:
+        if obj.articleFileLink:
+            temp = '<a href="%s">%s</a>' % (obj.articleFileLink, "Link")
+        else:
+            temp = '-'
+    except:
+        temp = '-'
+    return format_html(temp)
 
 def seeAudioVideoFile(self, obj):    #for showings uploaded video link in the list of model instances
     try:
@@ -41,7 +50,15 @@ def seeAudioVideoFile(self, obj):    #for showings uploaded video link in the li
         temp = '-'
     return format_html(temp)
 
-
+def seeVideoLink(self, obj):     #for showings external video link in the list of model instances
+    try:
+        if obj.videoFileLink:
+            temp = '<a href="%s">%s</a>' % (obj.videoFileLink, "Link")
+        else:
+            temp = '-'
+    except:
+        temp = '-'
+    return format_html(temp)
 def seeVideoLink(self, obj):     #for showings external video link in the list of model instances
     try:
         if obj.videoFileLink:

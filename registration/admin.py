@@ -231,6 +231,20 @@ class ETCRegisteredRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = ETCRegisteredRegistration
 
+class VignettoraRegisteredRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user', 'submit_date','seeArticleFile','seeArticleLink',)
+    list_filter = ('submit_date',)
+
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+    def seeArticleFile(self, obj):                        #shows uploaded video link in the list of model instances`
+        return adminResources.seeArticleFile(self, obj)
+    def seeArticleLink(self, obj):                         #shows external video link in the list of model instances
+        return adminResources.seeArticleLink(self, obj)
+
+    class Meta:
+        model = VignettoraRegisteredRegistration
+
 class PISRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','institution','city','submit_date')
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
@@ -296,3 +310,4 @@ admin.site.register(VignettoraRegistration,VignettoraRegistrationResource)
 admin.site.register(ISCRegistration,ISCRegistrationResource)
 admin.site.register(IBMHackathonRegistration,IBMHackathonRegistrationResource)
 admin.site.register(ETCRegisteredRegistration,ETCRegisteredRegistrationResource)
+admin.site.register(VignettoraRegisteredRegistration,VignettoraRegisteredRegistrationResource)

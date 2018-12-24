@@ -385,6 +385,15 @@ class ETCRegisteredForm(forms.ModelForm):
             "videoFileLink":"Link to Video (Only if you do not upload the video file)"
             }
 
+class VignettoraRegisteredForm(forms.ModelForm):
+    class Meta:
+        model = VignettoraRegisteredRegistration
+        fields = ('articleFileLink','articleFile')
+        labels = {
+        "articleFile": articleFileSupportMessage(),
+        "articleFileLink": "Link to Article (only if you do not upload the article)"
+            }
+
 class PISForm(forms.ModelForm):
     class Meta:
         model = PISRegistration

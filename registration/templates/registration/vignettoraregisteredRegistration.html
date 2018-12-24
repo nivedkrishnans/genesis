@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
     <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
-    <title>ETC Video Upload | Pravega 2019, IISc Bangalore</title>
+    <title>Vignettora Registration | Pravega 2019, IISc Bangalore</title>
     <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway:300,400|Titillium+Web" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/reg.css'%}">
 {% endblock %}
 
 {% block content %}
     <div id="main">
-        <div class="heading">ETC Video Upload</div>
+        <div class="heading">Vignettora Submission Form</div>
         {% if user.is_authenticated %}
           <p>Hi {{ user }}!</p>
           {% if form.errors %}
@@ -46,7 +46,7 @@
                   </ul>
               </div>
           {% endif %}
-          <p>View the complete details of this event <a href="{% url 'etcRegistration'%}">here</a>.</p>
+          <p>View the complete details of this event <a href="{% url 'vignettoraRegistration'%}">here</a>.</p>
           <p><a href="{% url 'registration'%}">Click here</a> to go back to the registrations index page.</p>
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -72,7 +72,7 @@
             </div>
           </form>
         {% else %}
-            <p>You have to log in to register for Explain The Concept</p><br>
+            <p>You have to log in to register for Vignettora Submission</p><br>
             Have an account? <a href="{% url 'login' %}">Click here to Log in</a><br>
             Don't have an account? <a href="{% url 'signup' %}">Click here to sign up</a><br>
 
