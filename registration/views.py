@@ -17,7 +17,7 @@ from .event_confirmation_mails import event_confirmation_mail
 from django.http import JsonResponse
 from datetime import datetime
 import json
-from .myVariables import CRYPTOTHLON_PRELIMS_PDF
+#from .myVariables import CRYPTOTHLON_PRELIMS_PDF
 
 #making a dumpString from the request POST:
 def dumpStringGenerate(request):
@@ -1473,7 +1473,6 @@ def ibmhackathonRegistration(request):
 
 
 def etcregisteredRegistration(request):
-    redirect('etcRegistration')
     thisEvent = get_object_or_404(AdminEvent, title='etcregistered')
     if thisEvent.registrationStatus == 'opened':
         f = ETCRegisteredForm()
