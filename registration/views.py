@@ -1495,6 +1495,7 @@ def etcregisteredRegistration(request):
             for i in etcregistrations:
                 if (request.user==i.user):
                     ETCInstance=i
+
             if ETCInstance!=False and ETCInstance.isSubmit:
                 if isRegistered:
                     if thisInstance.isSubmit:
@@ -1551,6 +1552,7 @@ def etcregisteredRegistration(request):
                     else:
                         f = ETCRegisteredForm()
             else:
+                messages.add_message(request, messages.INFO, 'Please submit your Explain The Concept registration form to submit a video.')
                 return redirect('etcRegistration')
             return render(request, 'registration/etcregisteredRegistration.html', {'form': f})
         else:
