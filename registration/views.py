@@ -17,7 +17,7 @@ from .event_confirmation_mails import event_confirmation_mail
 from django.http import JsonResponse
 from datetime import datetime
 import json
-#from .myVariables import CRYPTOTHLON_PRELIMS_PDF
+from .myVariables import CRYPTOTHLON_PRELIMS_PDF
 
 #making a dumpString from the request POST:
 def dumpStringGenerate(request):
@@ -49,7 +49,7 @@ def registration_index(request):
 
     #distionary of events and their models
     eventDictionary={
-      'vignettoraregistered':VignettoraRegisteredRegistration,
+        'vignettoraregistered':VignettoraRegisteredRegistration,
         'etcregistered':ETCRegisteredRegistration,
         'ibmhackathon':IBMHackathonRegistration,
         'isc':ISCRegistration,
@@ -1224,7 +1224,7 @@ def vignettoraRegistration(request):
                                     thisInstance.confirmation_email_sent = True
                                 thisInstance.save()
                                 messages.add_message(request, messages.INFO, 'You have succesfully submitted your Vignettora Registration Form')
-                                return redirect('registration')
+                                return redirect('vignettoraregisteredRegistration')
                             else:
                                 thisInstance.last_modify_date = timezone.now()
                                 thisInstance.save()
@@ -1249,7 +1249,7 @@ def vignettoraRegistration(request):
                             reg.save()
                             messages.add_message(request, messages.INFO, 'You have succesfully saved your Vignettora Registration Form')
                             return render(request, 'registration/vignettoraRegistration.html', {'form': f})
-                        return redirect('registration')
+                        return redirect('vignettoraregisteredRegistration')
                 else:
                     f = VignettoraForm(initial= {"full_name":thisUserData.full_name,"institution":thisUserData.institution,"city":thisUserData.city,"email":thisUserData.email,"contactForCalls":thisUserData.contact,})
             return render(request, 'registration/vignettoraRegistration.html', {'form': f})
