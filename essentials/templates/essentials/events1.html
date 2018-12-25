@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Events | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Cookie|Fredericka+the+Great|Oleo+Script|Carter+One|Marck+Script|Notable|Oleo+Script|Quantico" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/events1.css'%}">
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <div id="categories">
+      <div class="main-category" id="category1">
+        <div class="category-display">
+          title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1 title1
+        </div>
+        <div class="category-content">
+          content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1 content1
+        </div>
+      </div>
+      <div class="main-category" id="category2">
+        <div class="category-display">
+          title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2 title2
+        </div>
+        <div class="category-content">
+          content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2
+        </div>
+      </div>
+      <div class="main-category" id="category3">
+        <div class="category-display">
+          title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3 title3
+        </div>
+        <div class="category-content">
+          content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3 content3
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <script src="{%static 'js/navBar.js'%}"> </script>
+  <script>
+    var category1 = document.getElementById("category1");
+    var category2 = document.getElementById("category2");
+    var category3 = document.getElementById("category3");
+    var allCategories = document.getElementsByClassName("main-category");
+
+    //open category on hovering
+    category1.addEventListener("mouseover", function(){categoryOpen(1);});
+    category2.addEventListener("mouseover", function(){categoryOpen(2);});
+    category3.addEventListener("mouseover", function(){categoryOpen(3);});
+
+    //close all categories on leaving
+    category1.addEventListener("mouseout", function(){categoryClose(1);});
+    category2.addEventListener("mouseout", function(){categoryClose(2);});
+    category3.addEventListener("mouseout", function(){categoryClose(3);});
+
+
+    function categoryOpen(n){
+      for(var i=1; i<= allCategories.length; i++){
+        currentCategory = document.getElementById("category" + i);
+        if (i==n){
+          currentCategory.querySelector(".category-display").style.display = "none";
+          currentCategory.querySelector(".category-content").style.display = "block";
+          currentCategory.style.flexGrow = 4;
+          currentCategory.style.flexShrink = 4;
+          console.log("opened category" + i);
+        }
+        else{
+          currentCategory.querySelector(".category-display").style.display = "block";
+          currentCategory.querySelector(".category-content").style.display = "none";
+          currentCategory.style.flexGrow = 1;
+          currentCategory.style.flexShrink = 1;
+          console.log("closed category" + i);
+        }
+      }
+    }
+    function categoryClose(n){
+      currentCategory = document.getElementById("category" + n);
+      currentCategory.querySelector(".category-display").style.display = "block";
+      currentCategory.querySelector(".category-content").style.display = "none";
+      currentCategory.style.flexGrow = 1;
+      currentCategory.style.flexShrink = 1;
+      console.log("closed category" +n);
+    }
+
+  </script>
+{% endblock %}
