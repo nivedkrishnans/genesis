@@ -38,11 +38,10 @@ html{
 }
 
 .background{
-    background-color:red;
     background-image: url(../img/tesseract/band_background.png);
-    height:100vh;
+    height:100%;
     width:100%;
-    background-size: cover;
+    background-size:contain;
 }
 .book_btn{
     color:#dddddd;
@@ -60,6 +59,7 @@ html{
     background-color:white;
     color:black;
 }
+
 
 
 @media (min-width:760px) {
