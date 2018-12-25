@@ -23,6 +23,7 @@ urlpatterns = [
 	url(r'^molecularmurals/$', views.molecularmurals , name="molecularmurals"),
 	url(r'^interschool/$', views.interschool , name="interschool"),
 	url(r'^ibm_hackathon/$', views.ibm_hackathon , name="ibm_hackathon"),
+	url(r'^kryptochase/$', views.kryptochase , name="kryptochase"),
 	url(r'^notify_pronites/$', views.notify_pronites , name="notify_pronites"),
 	url(r'^workshops/$', views.workshops , name="workshops"),
 	url(r'^inotherwords/$', originals.views.InOtherWords , name="inotherwords"),

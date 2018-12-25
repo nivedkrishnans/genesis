@@ -95,6 +95,9 @@ def etc(request):
 def ibm_hackathon(request):
 	return render(request, 'essentials/ibm_hackathon.html', {})
 
+def kryptochase(request):
+	return render(request, 'essentials/kryptochase.html', {})
+
 
 
 def workshops(request):
