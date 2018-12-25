@@ -1,0 +1,81 @@
+html{
+    padding: 0;
+    margin: 0;
+}
+
+
+#main{
+    background-color: black;
+    box-sizing: border-box;
+    width: 100%;
+    height:100%;
+    padding:0px;
+    margin:0px;
+}
+
+#navBar{
+    display: none;
+}
+
+.band_name{
+    height:100px;
+    margin-top:30vh;
+    transform: translateY(-50%);
+    background-image:url(../img/tesseract/tesseract.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.band_logo{
+    height:400px;
+    width:400px;
+    opacity: 0.1;
+    margin: 0px auto;
+    background-size:contain;
+    background-image: url(../img/tesseract/tess_band_logo.png);
+    transform: translateY(-85%);
+}
+
+.background{
+    background-color:red;
+    background-image: url(../img/tesseract/band_background.png);
+    height:100vh;
+    width:100%;
+    background-size: cover;
+}
+.book_btn{
+    color:#dddddd;
+    text-align: center;
+    margin: auto;
+    width:200px;
+    height:40px;
+    font-size: 20px;
+    line-height: 40px;
+    border: 1px #dddddd solid;
+    transform: translateY(400%);
+}
+
+.book_btn:hover{
+    background-color:white;
+    color:black;
+}
+
+
+@media (min-width:760px) {
+    #main{
+        padding: 128px 96px 196px 96px;
+    }
+}
+
+@media (min-width: 992px) {
+    #main{
+        padding: 128px 196px 196px 196px;
+    }
+}
+
+@media (min-width: 1800px) {
+    #main{
+        padding: 160px 234px 196px 234px;
+    }
+}
