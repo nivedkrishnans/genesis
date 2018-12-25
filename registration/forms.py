@@ -388,9 +388,9 @@ class ETCRegisteredForm(forms.ModelForm):
 class VignettoraRegisteredForm(forms.ModelForm):
     class Meta:
         model = VignettoraRegisteredRegistration
-        fields = ('articleFileLink','articleFile')
+        fields = ('articleFile','articleFileLink',)
         labels = {
-        "articleFile": articleFileSupportMessage(),
+        "articleFile": "Upload File (" + articleFileSupportMessage() + ")",
         "articleFileLink": "Link to Article (only if you do not upload the article)"
             }
 

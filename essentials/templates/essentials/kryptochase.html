@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>KryptoChase | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+    <style>
+        section{
+            background-color:rgba(8,8,8,0.5);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">KryptoChase</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+     Modern systems of security largely depend on cryptography and encryption. Finding a key is difficult enough, but what about one which is constantly changing? Pravega presents KryptoChase, a crypto-challenge where the participants try to convert their String to a dynamic MasterString with given specific operations - A cyber version of Scotland Yard!</p>
+            <div class="event-essentials">
+                <a href="{% url 'debubularyRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
+            </div>
+		</div>
+		</div>
+		</section >
+        
+      <section> <style="background-color:rgba(8,8,8,0.5);">
+      			<div class="slide">
+              <div class="main-section">
+                  <div class="section-heading">Brief Rules</div>
+                  <div class="horizontal-line"></div>
+				  <p>Rules for individual matches:<br/>
+                  <ol>
+                    <li> Two teams face off in a string chasing frenzy, where one of the teams, the ‘CHASERS’, try and corner the ‘CHASEES’.</li>
+                    <li> Each member of the CHASERS team will have a string, which will be public, and of the same even length.</li>
+                    <li> The (entire) CHASEES team will have one single string, which will only be revealed to the CHASERS after every few turns, and will be of same length as the chasers.</li>
+                    <li> The objective of the CHASERS is to 'CATCH’ the CHASEES, as in to make atleast one of the CHASERS’ strings indentical to the then-CHASEES-string.</li>
+                    <li> Both the teams in their turns can change their strings using 4 opeations. These operations are grouped into two types, cyclic shifts and reversals. </li>
+					<li> After every turn of the CHASERS, the CHASEES will know the exact strings of each of the CHASERS. The CHASERS, however, will only know the type of operation used by the CHASEES after the latter’s turn, except for the times when the CHASEES need to reveal their strings every few turns.</li>
+					<li> Both the teams will have a limited number of powerups, listed here -
+						<ol type = 'a'>
+							<li> CHASERS powerups:
+							<ol type = 'i'>
+								<li> Reveal one character of the then-CHASEES-string.</li>
+								<li> The CHASERS can enter a string manually, and get the number of correctly oriented characters in it compared to the actual CHASEE string, checked position by position. (Only the number of correct positions will be revealed, not the exact positions of errors and correct guesses.)</li>
+							</ol>
+							</li>
+							<li> CHASEES powerups:
+							<ol type = 'i'>
+								<li> Do twice the usual number of operations in a single step.</li>
+								<li> Hide the type of operation done in the chance.</li>
+							</ol>
+						</ol>
+					</li>
+					<li> The CHASERS win if they are able to CATCH the CHASEES within a fixed number of turns. The CHASEES win otherwise.</li>
+                  </ol>
+              </div>
+      		</div>
+      		</section>
+
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is important to handle the footer during resizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="horizontal-line"></div>
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}
