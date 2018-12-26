@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load index %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Registration | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway:300,400|Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/comingsoon.css'%}">
+    <link rel="stylesheet" href="{%static 'css/reg_index.css'%}">
+    <style>
+            .event-area-highlighted{
+                background-color: rgba(12,12,12,0.9);
+                border: 1px solid rgba(255,255,240);
+                transition: transform 0.2s;
+                animation-name: eventHighlight;
+                animation-duration: 0.8s;
+                animation-iteration-count: infinite;
+            }
+            @keyframes eventHighlight {
+                0%{
+                    transform: scale(1,1);
+                }
+                50%{
+                    transform: scale(1.01,1.01);
+                }
+                100%{
+                    transform: scale(1,1);
+                }
+
+            }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div id="main">
+        <!--
+            Add list of registered events
+
+        -->
+        <div class="event-area">
+            <div class="heading">Pravega Registrations</div>
+            {% if user.is_authenticated %}
+              <p class="center"> You are logged in as {{ user }}!</p>
+              <div class="buttonCollection">
+                  <a href="{% url 'logout' %}"><div class="divButton">Log Out</div></a>
+                  <a href="{% url 'password_change' %}"><div class="divButton">Change Password</div></a>
+              </div>
+            {% endif %}
+            {{event.title}}<br>{{event.description}}
+        </div>
+
+    </div>
+
+    <script src="{%static 'js/navBar.js'%}"> </script>
+{% endblock %}

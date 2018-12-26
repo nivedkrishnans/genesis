@@ -5,6 +5,7 @@ from django.conf import settings
 import essentials.views
 import originals.views
 import registration.views
+import eventslist.views
 from . import views
 from django.views.generic import TemplateView
 
@@ -16,6 +17,7 @@ urlpatterns = [
     url(r'^registration/', include('registration.urls')),
     url(r'^register/',registration.views.redirectRegistrationIndex),
 	url(r'^updates/$', essentials.views.updates , name="updates"),
+    url(r'^eventindex/',include('eventslist.urls')),
     url(r'^events/', include('essentials.urls')),
 	url(r'^help/$', essentials.views.FaqListView.as_view() , name="help"),
 	url(r'^contact/$', essentials.views.contact , name="contact"),
