@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import *
 from django.contrib.auth.models import User
 from django.conf import settings
-from .forms import *
 from django.shortcuts import render, redirect, get_object_or_404, reverse, Http404
 from django.utils import timezone
 from datetime import datetime
