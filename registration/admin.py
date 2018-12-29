@@ -245,6 +245,20 @@ class VignettoraRegisteredRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = VignettoraRegisteredRegistration
 
+class PISRound2RegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user', 'submit_date','seeVideoFile','seeVideoLink',)
+    list_filter = ('submit_date',)
+
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+    def seeVideoFile(self, obj):                        #shows uploaded video link in the list of model instances`
+        return adminResources.seeVideoFile(self, obj)
+    def seeVideoLink(self, obj):                         #shows external video link in the list of model instances
+        return adminResources.seeVideoLink(self, obj)
+
+    class Meta:
+        model = PISRound2Registration
+
 class PISRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','institution','city','submit_date')
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
@@ -311,3 +325,4 @@ admin.site.register(ISCRegistration,ISCRegistrationResource)
 admin.site.register(IBMHackathonRegistration,IBMHackathonRegistrationResource)
 admin.site.register(ETCRegisteredRegistration,ETCRegisteredRegistrationResource)
 admin.site.register(VignettoraRegisteredRegistration,VignettoraRegisteredRegistrationResource)
+admin.site.register(PISRound2Registration,PISRound2RegistrationResource)

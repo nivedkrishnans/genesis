@@ -394,6 +394,15 @@ class VignettoraRegisteredForm(forms.ModelForm):
         "articleFileLink": "Link to Article (only if you do not upload the article)"
             }
 
+class PISRound2Form(forms.ModelForm):
+    class Meta:
+        model = PISRound2Registration
+        fields = ('videoFile','videoFileLink')
+        labels = {
+            "videoFile": videoFileSupportMessage(lasyaSizeLimit),
+            "videoFileLink":"Link to Video (Only if you do not upload the video file)"
+            }
+
 class PISForm(forms.ModelForm):
     class Meta:
         model = PISRegistration

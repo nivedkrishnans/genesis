@@ -3,6 +3,8 @@ from . import views
 import django.contrib.auth.views
 
 urlpatterns = [
+    url(r'^pisRound2$', views.pisRound2Registration, name='pisRound2Registration'),
+    url(r'^pisRound2/$', views.pisRound2Registration, name='pisRound2Registration'),
     url(r'^vignettoraregistered$', views.vignettoraregisteredRegistration, name='vignettoraregisteredRegistration'),
     url(r'^vignettoraregistered/$', views.vignettoraregisteredRegistration, name='vignettoraregisteredRegistration'),
     url(r'^etcregistered$', views.etcregisteredRegistration, name='etcregisteredRegistration'),

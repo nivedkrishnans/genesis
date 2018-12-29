@@ -615,6 +615,31 @@ class VignettoraRegisteredRegistration(models.Model):
     def __str__(self):
         return str(self.user)
 
+class PISRound2Registration(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    #form details
+
+    videoFileLink = models.URLField(max_length=300, null=False, blank=True)
+    #function to generate a path to upload the file
+    def filePathGenerate(instance,filename):
+        temp = 'private/pisround2/'+ str(instance.user) + '_'
+        temp2 = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
+        temp3 = '/' + os.path.split(filename)[1]
+        temp = temp + temp2 + temp3
+        return temp
+    videoFile = models.FileField(validators=[lasya_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
+
+    #how you got to know about this program/event
+
+    confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
+    def __str__(self):
+        return str(self.user)
+
 class PISRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
