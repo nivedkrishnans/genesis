@@ -1686,7 +1686,7 @@ def pisRound2Registration(request):
                 if (request.user==i.user):
                     PISInstance=i
 
-            if PISInstance!=False and PISInstance.isSubmit:
+            if PISInstance!=False and PISInstance.selectionStatus=='selected':
                 if isRegistered:
                     if thisInstance.isSubmit:
                         isSubmit=True
@@ -1742,7 +1742,7 @@ def pisRound2Registration(request):
                     else:
                         f = PISRound2Form()
             else:
-                messages.add_message(request, messages.INFO, '')
+                messages.add_message(request, messages.INFO, 'You have not been selected for PIS Round 2')
                 return redirect('registration')
             return render(request, 'registration/PISRound2Registration.html', {'form': f})
         else:

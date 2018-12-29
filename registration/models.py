@@ -616,6 +616,7 @@ class VignettoraRegisteredRegistration(models.Model):
         return str(self.user)
 
 class PISRound2Registration(models.Model):
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     #form details
@@ -644,6 +645,14 @@ class PISRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     #form details
+
+    SELECTION_STATUS_CHOICES=(
+        ('notselected','Not Selected'),
+        ('selected','Selected'),
+    )
+    selectionStatus = models.CharField(default="notselected", max_length=200, choices=SELECTION_STATUS_CHOICES)
+
+    
     #team details
     teamName = models.CharField(max_length=200)
     member1name = models.CharField(max_length=200)

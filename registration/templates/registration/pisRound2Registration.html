@@ -17,7 +17,7 @@
 
 {% block content %}
     <div id="main">
-        <div class="heading">Pravega Innovation Summit Round 2 Registration</div>
+        <div class="heading">Pravega Innovation Summit Round 2</div>
         {% if user.is_authenticated %}
           <p>Hi {{ user }}!</p>
           {% if form.errors %}
@@ -46,7 +46,7 @@
                   </ul>
               </div>
           {% endif %}
-          <p>View the complete details of this event <a href="{% url 'pisRound2Registration'%}">here</a>.</p>
+          <p>View the complete details of this event <a href="{% url 'pis'%}">here</a>.</p>
           <p><a href="{% url 'registration'%}">Click here</a> to go back to the registrations index page.</p>
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
