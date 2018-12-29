@@ -249,7 +249,7 @@ class PISRound2RegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user', 'submit_date','seeVideoFile','seeVideoLink',)
     list_filter = ('submit_date',)
 
-    
+
     def seeVideoFile(self, obj):                        #shows uploaded video link in the list of model instances`
         return adminResources.seeVideoFile(self, obj)
     def seeVideoLink(self, obj):                         #shows external video link in the list of model instances
@@ -260,8 +260,7 @@ class PISRound2RegistrationResource(ExportMixin,admin.ModelAdmin):
 
 class PISRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','institution','city','submit_date')
-    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
-        return adminResources.superuser_fields(self, request, obj)
+    
     class Meta:
         model = PISRegistration
 
