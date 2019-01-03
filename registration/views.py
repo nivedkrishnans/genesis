@@ -1744,7 +1744,7 @@ def pisRound2Registration(request):
             else:
                 messages.add_message(request, messages.INFO, 'You have not been selected for PIS Round 2')
                 return redirect('registration')
-            return render(request, 'registration/PISRound2Registration.html', {'form': f})
+            return render(request, 'registration/pisRound2Registration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for PIS Round 2')
             return redirect('login')
