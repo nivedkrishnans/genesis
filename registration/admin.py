@@ -258,9 +258,19 @@ class PISRound2RegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = PISRound2Registration
 
+class PUBGRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user', 'full_name' ,'city','submit_date')
+    list_filter = ('submit_date','city',)
+
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+
+    class Meta:
+        model = PUBGRegistration
+
 class PISRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','teamName','institution','city','submit_date')
-    
+
     class Meta:
         model = PISRegistration
 
@@ -324,3 +334,4 @@ admin.site.register(IBMHackathonRegistration,IBMHackathonRegistrationResource)
 admin.site.register(ETCRegisteredRegistration,ETCRegisteredRegistrationResource)
 admin.site.register(VignettoraRegisteredRegistration,VignettoraRegisteredRegistrationResource)
 admin.site.register(PISRound2Registration,PISRound2RegistrationResource)
+admin.site.register(PUBGRegistration,PUBGRegistrationResource)

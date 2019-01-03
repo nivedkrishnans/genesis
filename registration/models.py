@@ -641,6 +641,34 @@ class PISRound2Registration(models.Model):
     def __str__(self):
         return str(self.user)
 
+class PUBGRegistration(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    #form details
+
+    #user details
+    full_name =  models.CharField(max_length=127)
+    city = models.CharField(max_length=200)
+    contact = models.CharField(max_length=20)
+    characterid=models.CharField(max_length=127)
+    whatsapp=models.CharField(max_length=20)
+
+    full_name1 =  models.CharField(max_length=127)
+    city1 = models.CharField(max_length=200)
+    contact1 = models.CharField(max_length=20)
+    characterid1=models.CharField(max_length=127)
+    whatsapp1=models.CharField(max_length=20)
+
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
+    confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
+    def __str__(self):
+        return str(self.user)
+
 class PISRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
@@ -652,7 +680,7 @@ class PISRegistration(models.Model):
     )
     selectionStatus = models.CharField(default="notselected", max_length=200, choices=SELECTION_STATUS_CHOICES)
 
-    
+
     #team details
     teamName = models.CharField(max_length=200)
     member1name = models.CharField(max_length=200)

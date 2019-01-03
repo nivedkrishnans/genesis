@@ -403,6 +403,24 @@ class PISRound2Form(forms.ModelForm):
             "videoFileLink":"Link to Video (Only if you do not upload the video file)"
             }
 
+class PUBGForm(forms.ModelForm):
+    class Meta:
+        model = PUBGRegistration
+        fields = ('full_name','city','contact','characterid','whatsapp','full_name1','city1','contact1','characterid1','whatsapp1','howyouknow')
+        labels = {
+            "full_name": "Full Name",
+            "city": "City",
+            "contact": "Mobile Number",
+            'characterid':"Your PUBG Character ID",
+            'whatsapp':"Your WhatsApp Mobile Number",
+            "full_name1": "Full Name",
+            "city1": "City",
+            "contact1": "Mobile Number",
+            'characterid1':"Your PUBG Character ID",
+            'whatsapp1':"Your WhatsApp Mobile Number",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
+            }
+
 class PISForm(forms.ModelForm):
     class Meta:
         model = PISRegistration

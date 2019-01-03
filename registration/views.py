@@ -49,6 +49,7 @@ def registration_index(request):
 
     #distionary of events and their models
     eventDictionary={
+        'pubg':PUBGRegistration,
         'pisRound2':PISRound2Registration,
         'vignettoraregistered':VignettoraRegisteredRegistration,
         'etcregistered':ETCRegisteredRegistration,
@@ -1751,6 +1752,80 @@ def pisRound2Registration(request):
     else:
         return render(request, 'registration/closed.html',{})
 
+
+def pubgRegistration(request):
+
+    thisEvent = get_object_or_404(AdminEvent, title='pubg')
+    if thisEvent.registrationStatus == 'opened':
+        f = PUBGForm()
+        if request.user.is_authenticated:
+            allRegistrations =PUBGRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            isSubmit = False
+            thisInstance = False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+
+
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    isSubmit=True
+                    return render(request, 'registration/registered.html',{'form':f})
+                else:
+                    f = PUBGForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = PUBGForm(request.POST, instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('PUBG',thisUserData.email,request):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your PUBG Tournament Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your PUBG Tournament Registration Form')
+                                f =PUBGForm(instance=thisInstance)
+                                return render(request, 'registration/pubgRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = PUBGForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('PUBG',thisUserData.email,request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your PUBG Tournament Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your PUBG Tournament Registration Form')
+                            return render(request, 'registration/pubgRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = PUBGForm(initial={"city":thisUserData.city,"contactForCalls":thisUserData.contact,})
+            return render(request, 'registration/pubgRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for the PUBG')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
 
 def pisRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='pis')
