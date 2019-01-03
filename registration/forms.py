@@ -296,6 +296,15 @@ class ScienceJournalismForm(forms.ModelForm):
 
         }
 
+class ScienceJournalismSubmissionForm(forms.ModelForm):
+    class Meta:
+        model = ScienceJournalismSubmission
+        fields = ('title','articleFile',)
+        labels = {
+            "title": "Title",
+            "articleFile": articleFileSupportMessage(),
+        }
+
 class ETCForm(forms.ModelForm):
     class Meta:
         model = ETCRegistration

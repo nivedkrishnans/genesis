@@ -859,3 +859,22 @@ class CryptothlonPrelimDump(models.Model):
     dumpString = models.TextField(default=" ",max_length=2000, null=True, blank=True)
     def __str__(self):
         return str(self.user) + str(self.create_date)
+
+
+
+class ScienceJournalismSubmission(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    scienceJournalismRegistration = models.ForeignKey(ScienceJournalismRegistration, on_delete=models.DO_NOTHING, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    title = models.CharField(blank=True, null=False, max_length=200)
+    def filePathGenerate(instance,filename):
+        temp = 'private/sciencejournalism/' + str(instance.user) + '/'
+        temp2 = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
+        temp3 = '/' + os.path.split(filename)[1]
+        temp = temp + temp2 + temp3
+        return temp
+    articleFile = models.FileField(validators=[sciencejournalism_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
+
+    submit_date = models.DateTimeField( null=True, blank=True)
+    def __str__(self):
+        return str(self.user)

@@ -51,6 +51,7 @@ def registration_index(request):
     eventDictionary={
         'pubg':PUBGRegistration,
         'pisRound2':PISRound2Registration,
+        'sciencejournalismArticles':ScienceJournalismSubmission,
         'vignettoraregistered':VignettoraRegisteredRegistration,
         'etcregistered':ETCRegisteredRegistration,
         'ibmhackathon':IBMHackathonRegistration,
@@ -1800,7 +1801,7 @@ def pubgRegistration(request):
                                 return render(request, 'registration/pubgRegistration.html', {'form': f})
             else:
                 if request.method == "POST":
-                    f = PUBGForm(request.POST, request.FILES)
+                    f = PUBGForm(request.POST)
                     if f.is_valid():
                         reg = f.save(commit=False)
                         reg.user = request.user
@@ -2132,6 +2133,49 @@ def cryptothlonPrelims(request):
             messages.add_message(request, messages.INFO, 'Please log in to participate in the Cryptothlon Prelims')
             return redirect('login')
 
+def sciencejournalismsubmission(request):
+    thisEvent = get_object_or_404(AdminEvent, title='sciencejournalismArticles')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allSubmissions = ScienceJournalismSubmission.objects.all()
+            allRegistrations = ScienceJournalismRegistration.objects.all()
+            isRegistered = False
+            thisInstance = False
+            thisRegistation = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisRegistation = i
+            f = ScienceJournalismSubmissionForm()
+            if isRegistered:
+                if request.method == "POST":
+                    f = ScienceJournalismSubmissionForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        thisSubmission = f.save(commit=False)
+                        thisSubmission.user = request.user
+                        thisSubmission.scienceJournalismRegistration = thisRegistation
+                        #checking if the video file was uploaded.
+                        if f["articleFile"].value():
+                            thisSubmission.submit_date = timezone.now()
+                            thisSubmission.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted an article for Science Journalism')
+                            return redirect('sciencejournalismsubmission')
+                        else:
+                            f = ScienceJournalismSubmissionForm()
+                            messages.add_message(request, messages.INFO, 'Please upload article')
+                            return render(request, 'registration/sciencejournalismsubmission.html', {'form': f})
+                    else:
+                        return render(request, 'registration/sciencejournalismsubmission.html', {'form': f})
+                else:
+                    return render(request, 'registration/sciencejournalismsubmission.html', {'form': f})
+            else:
+                return render(request, 'registration/notRegistered.html', {'form': f})
+
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to submit articles for Science Journalism')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
 
 def time(request):
     try:

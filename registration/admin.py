@@ -53,6 +53,17 @@ class ScienceJournalismRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = ScienceJournalismRegistration
 
+class ScienceJournalismSubmissionResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user', 'title','submit_date','seeArticleFile')
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+    def seeArticleFile(self, obj):                        #shows uploaded video link in the list of model instances`
+        return adminResources.seeArticleFile(self, obj)
+    class Meta:
+        model = ScienceJournalismSubmission
+
+
+
 class ETCRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','full_name','year','major', 'email','institution','city','submit_date')
     def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
@@ -319,6 +330,7 @@ admin.site.register(ChemisticonRegistration,ChemisticonRegistrationResource)
 admin.site.register(WikimediaPhotographyRegistration,WikimediaPhotographyRegistrationResource)
 admin.site.register(PISRegistration,PISRegistrationResource)
 admin.site.register(ScienceJournalismRegistration,ScienceJournalismRegistrationResource)
+admin.site.register(ScienceJournalismSubmission,ScienceJournalismSubmissionResource)
 admin.site.register(DebubularyRegistration,DebubularyRegistrationResource)
 admin.site.register(CryptothlonRegistration,CryptothlonRegistrationResource)
 admin.site.register(CryptothlonPrelim,CryptothlonPrelimResource)
