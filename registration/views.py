@@ -49,7 +49,7 @@ def registration_index(request):
 
     #distionary of events and their models
     eventDictionary={
-      'pisRound2':PISRound2Registration,
+        'pisRound2':PISRound2Registration,
         'vignettoraregistered':VignettoraRegisteredRegistration,
         'etcregistered':ETCRegisteredRegistration,
         'ibmhackathon':IBMHackathonRegistration,
