@@ -257,10 +257,11 @@ class VignettoraRegisteredRegistrationResource(ExportMixin,admin.ModelAdmin):
         model = VignettoraRegisteredRegistration
 
 class PISRound2RegistrationResource(ExportMixin,admin.ModelAdmin):
-    list_display = ('user', 'submit_date','seeVideoFile','seeVideoLink',)
+    list_display = ('user', 'submit_date','societalImpact','viability','originality','implementaton','totalScore','seeVideoFile','seeVideoLink')
     list_filter = ('submit_date',)
 
-
+    def totalScore(self, obj):                        #shows calculated total score
+        return (obj.societalImpact + obj.viability + obj.originality + obj.implementaton)
     def seeVideoFile(self, obj):                        #shows uploaded video link in the list of model instances`
         return adminResources.seeVideoFile(self, obj)
     def seeVideoLink(self, obj):                         #shows external video link in the list of model instances

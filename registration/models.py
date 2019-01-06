@@ -631,7 +631,11 @@ class PISRound2Registration(models.Model):
         return temp
     videoFile = models.FileField(validators=[lasya_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
 
-    #how you got to know about this program/event
+    #score
+    societalImpact = models.IntegerField(null=True,blank=True,default=0)
+    viability = models.IntegerField(null=True,blank=True,default=0)
+    originality = models.IntegerField(null=True,blank=True,default=0)
+    implementaton = models.IntegerField(null=True,blank=True,default=0)
 
     confirmation_email_sent = models.BooleanField(default=False)
     #whether or not the form was submitted
