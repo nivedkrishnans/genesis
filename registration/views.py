@@ -91,7 +91,6 @@ def registration_index(request):
     #showing which events where Registered
     registeredEvents = []
     registeredEventsString = ''
-
     if request.user.is_authenticated:
         for i in openedEvents:
             allRegistrations = eventDictionary[i.title].objects.all()

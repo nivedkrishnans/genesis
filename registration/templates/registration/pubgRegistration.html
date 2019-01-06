@@ -51,8 +51,8 @@
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
-            {% if forloop.counter is 1 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 1: </p> {% endif %}
-            {% if forloop.counter is 6 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 2: </p>  {% endif %}
+            {% if forloop.counter is 2 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 1: </p> {% endif %}
+            {% if forloop.counter is 7 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 2: </p>  {% endif %}
 
 
 

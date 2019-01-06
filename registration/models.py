@@ -875,7 +875,7 @@ class ScienceJournalismSubmission(models.Model):
         temp = temp + temp2 + temp3
         return temp
     articleFile = models.FileField(validators=[sciencejournalism_file_validation], upload_to=filePathGenerate, null=False, blank=True, max_length=600)
-
+    isSubmit = models.BooleanField(default=True)
     submit_date = models.DateTimeField( null=True, blank=True)
     def __str__(self):
         return str(self.user)
