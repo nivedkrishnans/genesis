@@ -6,6 +6,7 @@ import  registration.views
 urlpatterns = [
 	url(r'^$', views.events, name="events"),
 	url(r'^proscenium/$', views.proscenium , name="proscenium"),
+	url(r'^gaming/$', views.gaming , name="gaming"),
 	url(r'^lasya/$', views.lasya , name="lasya"),
 	url(r'^footprints/$', views.footprints , name="footprints"),
 	url(r'^battleofbands/$', views.battleofbands , name="battleofbands"),

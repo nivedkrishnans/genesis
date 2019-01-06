@@ -79,7 +79,7 @@ h3{
       padding: 8px 14px;
       border: 2px solid rgba(255,255,240,1);
       display: block;
-      margin: 0;
+      margin: 2px;
       color: rgba(255,255,240,1);
   }
   .seeMore:hover{

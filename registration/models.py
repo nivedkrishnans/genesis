@@ -647,6 +647,7 @@ class PUBGRegistration(models.Model):
     #form details
 
     #user details
+    team_name =  models.CharField(max_length=127)
     full_name =  models.CharField(max_length=127)
     city = models.CharField(max_length=200)
     contact = models.CharField(max_length=20)

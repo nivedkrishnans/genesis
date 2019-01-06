@@ -98,6 +98,9 @@ def ibm_hackathon(request):
 def kryptochase(request):
 	return render(request, 'essentials/kryptochase.html', {})
 
+def gaming(request):
+	return render(request, 'essentials/gaming.html', {})
+
 
 
 def workshops(request):

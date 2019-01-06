@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Gaming | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+{% endblock %}
+
+{% block content %}
+<div style="margin-bottom:14px;" id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Gaming Events</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+            <img style="width:100%;max-width:90vw;margin:14px auto; max-height: 80vw;" src="{% static 'img/events/gaming/gaming_pravega_2019_IISc_Bangalore.png'%}" />
+            <div class="event-essentials">
+                <a href="{% url 'pubgRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  PUBG Tournament Registration</div></a>
+            </div>
+		</div>
+		</div>
+		</section >
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+{%endblock %}

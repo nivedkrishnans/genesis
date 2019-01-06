@@ -415,8 +415,9 @@ class PISRound2Form(forms.ModelForm):
 class PUBGForm(forms.ModelForm):
     class Meta:
         model = PUBGRegistration
-        fields = ('full_name','city','contact','characterid','whatsapp','full_name1','city1','contact1','characterid1','whatsapp1','howyouknow')
+        fields = ('team_name','full_name','city','contact','characterid','whatsapp','full_name1','city1','contact1','characterid1','whatsapp1','howyouknow')
         labels = {
+            "team_name": "Team Name",
             "full_name": "Full Name",
             "city": "City",
             "contact": "Mobile Number",
