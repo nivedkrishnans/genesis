@@ -68,6 +68,9 @@ def wikimediaphotography(request):
 def pis(request):
 	return render(request, 'essentials/pis.html', {})
 
+def pisResults(request):
+	return render(request, 'essentials/pisResults.html', {})
+
 def sciencejournalism(request):
 	return render(request, 'essentials/sciencejournalism.html', {})
 
