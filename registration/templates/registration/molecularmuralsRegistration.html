@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 <!DOCTYPE html>
 {% load staticfiles %}
@@ -10,14 +9,14 @@
     <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
     <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
-    <title>PUBG Registration | Pravega 2019, IISc Bangalore</title>
+    <title>Molecular Murals Registration | Pravega 2019, IISc Bangalore</title>
     <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway:300,400|Titillium+Web" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/reg.css'%}">
 {% endblock %}
 
 {% block content %}
     <div id="main">
-        <div class="heading">PUBG Tournament Registration</div>
+        <div class="heading">Molecular Murals Registration</div>
         {% if user.is_authenticated %}
           <p>Hi {{ user }}!</p>
           {% if form.errors %}
@@ -46,15 +45,14 @@
                   </ul>
               </div>
           {% endif %}
-          <p>View the complete details of this event <a href="{% url 'gaming'%}">here</a>.</p>
+          <p>View the complete details of this event <a href="{% url 'molecularmuralsRegistration'%}">here</a>.</p>
           <p><a href="{% url 'registration'%}">Click here</a> to go back to the registrations index page.</p>
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
-            {% if forloop.counter is 2 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 1: </p> {% endif %}
-            {% if forloop.counter is 7 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 2: </p>  {% endif %}
-
-
+            {% if forloop.counter is 4 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 1: </p> {% endif %}
+            {% if forloop.counter is 8 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 2: </p>  {% endif %}
+            {% if forloop.counter is 12 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 3: </p>  {% endif %}
 
                 <div class="field-space">
                     {{ field.errors }}
@@ -76,7 +74,7 @@
             </div>
           </form>
         {% else %}
-            <p>You have to log in to register for PUBG</p><br>
+            <p>You have to log in to register for Molecular Murals</p><br>
             Have an account? <a href="{% url 'login' %}">Click here to Log in</a><br>
             Don't have an account? <a href="{% url 'signup' %}">Click here to sign up</a><br>
 

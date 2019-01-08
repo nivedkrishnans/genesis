@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>24 Hours Film Making Challenge | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+  <link rel="stylesheet" href="{%static 'css/workshops.css'%}">
+    <style>
+        section{
+            background-color:rgba(8,8,8,0.5);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">24 Hours Film Making Challenge</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      Suit up to attend a filmmaking workshop at the biggest Science Fest of the country! Here at India's largest campus filmmaking workshop; prepare for the most spirited filmmaking experience you’ve ever had.
+In teams of 10 or fewer (excluding the cast), prepare a script, shoot, edit, and submit your 120-second original on the theme within 24 hours, to be critiqued by established panellists.
+With goodies and competition vouchers for winners, have a chance to have your winning films will be screened at Asia’s largest content creation festival!
+</p>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">About India Film Project</div>
+            <div class="horizontal-line"></div>
+          <p>
+          India Film Project has established itself as one of the largest content-driven activity in the globe with a community of over 5.5 Lac creators. IFP Season 7 in 2017 saw over 45,000 enthusiasts participating across the fest from 262 cities. The festival saw over 20,000 attendees and over a hundred celebrated filmmakers and artists.
+        </p>
+        <img style="height:170px;display: block; margin-left: auto; margin-right: auto;" src="{%static 'img/events/IFP.png'%}" alt="IFP">
+			</div>
+        </div>
+
+		</section>
+    <!--<section> <style="background-color:rgba(8,8,8,0.5);">
+    			<div class="slide">
+            <div class="main-section">
+                <div class="section-heading">What we will do at your campus:</div>
+                <div class="horizontal-line"></div>
+
+                <ul>
+                    <li>
+                          Conduct a one hour workshop on filmmaking
+                    </li>
+                    <li>
+                        Organize our flagship 24 hour filmmaking challenge – Open for all
+                    </li>
+                  <li>
+                     Showcase winning films at your fest finale and give prizes to winners
+                  </li>
+                </ul>
+
+            </div>
+    		</div>
+    		</section>-->
+      <section style="background-color:rgba(8,8,8,0.5);">
+      			<div class="slide">
+              <div class="main-section">
+                  <div class="section-heading">Rules for 24 Hour Filmmaking Challenge</div>
+                  <div class="horizontal-line"></div>
+                  <ul>
+                    <li>The theme will be revealed via WhatsApp/SMS at the beginning of 24 hours.</li>
+                    <li>Tasks – Each team has to perform following tasks in the given period of 24 hours – Scripting, Casting, Location and Art Design,</li>
+                    <li>Teams can shoot on DSLR or Mobile on 720p or higher. However, the editing must be done on a laptop.</li>
+                    <li>Team Leaders will receive the link for uploading the films at the start of the competition.</li>
+                    <li>Maximum length of film should be 120 seconds excluding beginning and end credits.</li>
+                    <li>You can have maximum 10 members in your team, excluding the cast.</li>
+                    <li>Any film received after the 24 hour deadline will be disqualified.</li>
+                  </ul>
+              </div>
+      		</div>
+      		</section>
+
+          <section style="background-color:rgba(8,8,8,0.5);">
+            <div class="slide">
+          <div class="main-section">
+            <div class="section-heading">Registration</div>
+            <div class="horizontal-line"></div>
+        </div>
+        <div >
+          <div class="event-essentials">
+            <a href="https://goo.gl/forms/VYQrfVg4VZ1L98sG2" target="_blank"><div style="font-size: 17px;" class="yellow-status">Workshops Registration</div></a>
+            <a href="https://goo.gl/forms/1PcBpA6TdzSI94L03" target="_blank"><div style="font-size: 17px;" class="yellow-status">24 Hours Film Making Challenge Registration</div></a>
+          </div>
+    </div>
+    </div>
+	 </section>
+    <section style="background-color:rgba(8,8,8,0.5);">
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+
+            <div class="main-section">
+                <div class="section-heading">Any Questions?</div>
+                <div class="horizontal-line"></div>
+
+                <p>
+                  Contact our 24 Hours Film Making Challenge Coordinator, Rydham Goyal
+                </p>
+                <p>
+                  rydhamgoyal@iisc.ac.in
+                </p>
+
+
+                </div>
+
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

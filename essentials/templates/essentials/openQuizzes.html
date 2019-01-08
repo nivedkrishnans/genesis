@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Open Quizzes | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Open Quizzes</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      Pravega is proud to present two Open Quizzes as part of this year's quizzing extravaganza. All quizzes will take place in room G21 of the Old Physics Building. </p>
+      <ul>
+        <li> MELA Quiz by Thejaswi Udupa
+          <br> Sunday, 20th January at 10 AM
+        </li>
+        <li> The General Quiz by Dr. Arul Mani
+          <br> Sunday, 20th January at 3 PM
+        </li>
+      </ul>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Essential Information</div>
+            <div class="horizontal-line"></div>
+        <ul>
+          <li> Teams of 3 or less. </li>
+          <li> Registration fee of 150 per team per quiz </li>
+          <li> First Prize 7.5k and Second Prize 5k </li>
+        </ul>
+			</div>
+        </div>
+
+		</section>
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Rules</div>
+            <div class="horizontal-line"></div>
+            <ul>
+              <li>Pravega reserves the right to disqualify any team not adhering to rules and regulations.</li>
+              <li>The Quiz Master will be the final arbitrator regarding all diputes.</li>
+              <li>Any person affiliated to IISc (student or otherwise) who fulfils all the other criteria for participation are allowed to participate.</li>
+            </ul>
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

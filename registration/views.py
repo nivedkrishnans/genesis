@@ -50,6 +50,7 @@ def registration_index(request):
     #distionary of events and their models
     eventDictionary={
         'pubg':PUBGRegistration,
+        'molecularmurals':MolecularMuralsRegistration,
         'pisRound2':PISRound2Registration,
         'sciencejournalismArticles':ScienceJournalismSubmission,
         'vignettoraregistered':VignettoraRegisteredRegistration,
@@ -460,6 +461,82 @@ def chemisticonRegistration(request):
             return render(request, 'registration/chemisticonRegistration.html', {'form': f})
         else:
             messages.add_message(request, messages.INFO, 'Please log in to register for the Chemisticon')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
+
+def molecularmuralsRegistration(request):
+    thisEvent = get_object_or_404(AdminEvent, title='molecularmurals')
+
+    if thisEvent.registrationStatus == 'opened':
+        f= MolecularMuralsForm()
+        if request.user.is_authenticated:
+            allRegistrations = MolecularMuralsRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            thisInstance = False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    return render(request, 'registration/registered.html',{'form':f})
+                else:
+                    f = MolecularMuralsForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = MolecularMuralsForm(request.POST, request.FILES,instance=thisInstance )
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('Molecular Murals',request.POST['email1'],request,request.POST['email2'],request.POST['email3']):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Molecular Murals Event Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Molecular Murals Event Registration Form')
+                                f =MolecularMuralsForm(instance=thisInstance)
+                                return render(request, 'registration/molecularmuralsRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = MolecularMuralsForm(request.POST, request.FILES)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('Molecular Murals',request.POST['email1'],request.POST['email2'],request.POST['email3'],request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Molecular Murals Event Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Molecular Murals Event Registration Form')
+                            return render(request, 'registration/molecularmuralsRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = MolecularMuralsForm(initial={
+                    "institution": thisUserData.institution,
+                    "city":thisUserData.city ,
+                    "email": thisUserData.email,
+                    "contact": thisUserData.contact})
+            return render(request, 'registration/molecularmuralsRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for the Molecular Murals')
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})

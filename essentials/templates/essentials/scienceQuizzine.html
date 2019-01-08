@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>BASE Science Quizzine | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">BASE Science Quizzine</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+		<p>
+      Pravega is proud to present BASE Science Quizzine, an inter-school science quiz. The quiz will set by the IISc UG Quiz Club and will be in a Prelims-Final format.  </p>
+      <p> Venue: G21 Old Physics Building <br> Date: Saturday, 19th January, 2019 <br> Time: 3 PM </p>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Essential Information</div>
+            <div class="horizontal-line"></div>
+        <ul>
+          <li> Teams of 2 or less. </li>
+          <li> BASE Science Quizzine is an inter-school quiz. Both member of the team should be from the same school (same branch of a school if it has branches)</li>
+          <li> Registration is free. </li>
+          <li> First Prize 6k and Second Prize 4k </li>
+        </ul>
+			</div>
+        </div>
+
+		</section>
+    <section  style="background-color:rgba(8,8,8,0.5);">
+<div class="slide">
+    <div class="main-section">
+        <div class="section-heading">Format</div>
+        <div class="horizontal-line"></div>
+    <ul>
+      <li> The top eight teams will be selected into the finals through a written preliminary round. </li>
+      <li> The final will comprise of various rounds at the end of which, the winner will be declared.</li>
+      <li> All rules will be clarified at the event if a doubt arises. </li>
+    </ul>
+  </div>
+    </div>
+
+</section>
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Rules</div>
+            <div class="horizontal-line"></div>
+            <ul>
+              <li>Identity Cards should be produced upon request.</li>
+              <li> There is no cap on the number of teams that can participate from a school </li>
+              <li>Pravega reserves the right to disqualify any team not adhering to rules and regulations.</li>
+              <li>The Quiz Master will be the final arbitrator regarding all diputes.</li>
+            </ul>
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}

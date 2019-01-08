@@ -54,9 +54,17 @@ def decoherence(request):
 def decoherenceprelimsresult(request):
 	return render(request, 'essentials/decoherencePrelimsResult.html', {})
 
-
 def footprints(request):
 	return render(request, 'essentials/footprints.html', {})
+
+def openQuizzes(request):
+	return render(request, 'essentials/openQuizzes.html', {})
+
+def collegeQuizzes(request):
+	return render(request, 'essentials/collegeQuizzes.html', {})
+
+def scienceQuizzine(request):
+	return render(request, 'essentials/scienceQuizzine.html', {})
 
 def lasya(request):
 	return render(request, 'essentials/lasya.html', {'file_info' : videoFileSupportMessage(lasyaSizeLimit),})
@@ -103,6 +111,9 @@ def kryptochase(request):
 
 def gaming(request):
 	return render(request, 'essentials/gaming.html', {})
+
+def ifp(request):
+	return render(request, 'essentials/IFP.html', {})
 
 
 
