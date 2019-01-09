@@ -20,6 +20,7 @@ urlpatterns = [
 	url(r'^help/$', essentials.views.FaqListView.as_view() , name="help"),
 	url(r'^contact/$', essentials.views.contact , name="contact"),
 	url(r'^partners/$', essentials.views.partners , name="partners"),
+    url(r'^sponsors/$', essentials.views.sponsors , name="sponsors"),
     url(r'^originals/$', originals.views.originals , name="originals"),
 	url(r'^archive/$', originals.views.archive , name="archive"),
 	url(r'^policy/$', essentials.views.policy , name="policy"),

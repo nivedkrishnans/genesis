@@ -124,6 +124,9 @@ def workshops(request):
 def partners(request):
 	return render(request, 'essentials/partners.html', {})
 
+def sponsors(request):
+	return render(request, 'essentials/sponsors.html', {})
+
 
 class FaqListView(generic.ListView):
 	faqInfo=Faq

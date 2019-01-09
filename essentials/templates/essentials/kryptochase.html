@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
     <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
-    <title>IBM Hackathon | Pravega 2019, IISc Bangalore</title>
+    <title>KryptoChase | Pravega 2019, IISc Bangalore</title>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
 
@@ -29,11 +29,11 @@
 		<section  style="background-color:rgba(8,8,8,0.5);">
 		<div class="slide">
 
-        <div class="heading">IBM Hackathon</div>
+        <div class="heading">KryptoChase</div>
         <div class="horizontal-line"></div>
         <div class="main-section">
 		<p>
-     Distribution of knowledge when done right leads the way to revolutionary progress in just about any field of the society. However, with increasing fake articles and news circulating on various forms of social media, the time and energy to sort between the true and the made-up simply seems not worth it. We invite you to align your problem solving and coding skills to tackle this situation. In this IBM hackathon, the participants are required to come up with strategies to scrape, structure and clean data from the web, identify a feature set that has a correlation with reliability, change their code on the fly to suit new test cases and provide a finished product capable of being deployed. Get a chance to attend an online workshop by Pravega and interact with eminent researchers from the Indian Institute of Science in this year’s IBM Hackathon at Pravega!</p>
+     Modern systems of security largely depend on cryptography and encryption. Finding a key is difficult enough, but what about one which is constantly changing? Pravega presents KryptoChase, a crypto-challenge where the participants try to convert their String to a dynamic MasterString with given specific operations - A cyber version of Scotland Yard!</p>
             <div class="event-essentials">
                 <a href="{% url 'debubularyRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  Register Now</div></a>
             </div>
@@ -44,25 +44,42 @@
       <section> <style="background-color:rgba(8,8,8,0.5);">
       			<div class="slide">
               <div class="main-section">
-                  <div class="section-heading">Brief Rules</div>
+                  <div class="section-heading">Rules for individual matches:</div>
                   <div class="horizontal-line"></div>
                   <ol>
-                    <li>The participants are required to register and submit their solutions to a set of questions <link> online before December 25, 2018. Participants may participate in teams of four.</li>
-                    <li>Ten finalists will be chosen on the basis of their solutions and will be invited for an online workshop.</li>
-                    <li>The finals will be held at the Indian Institute of Science. It will be a five-round event with 3 hrs per round. </li>
+                    <li>Two teams face off in a string chasing frenzy, where one of the teams, the ‘CHASERS’, try and corner the ‘CHASEES’.</li>
+                    <li>Each member of the CHASERS team will have a string, which will be public, and of the same even length.</li>
+                    <li>The (entire) CHASEES team will have one single string, which will only be revealed to the CHASERS after every few turns, and will be of same length as the chasers.</li>
+					<li>The objective of the CHASERS is to 'CATCH’ the CHASEES, as in to make atleast one of the CHASERS’ strings indentical to the then-CHASEES-string.</li>
+					<li>Both the teams in their turns can change their strings using 4 opeations. These operations are grouped into two types, cyclic shifts and reversals. </li>
                   </ol>
               </div>
       		</div>
       	</section>
 		
 		<section> <style="background-color:rgba(8,8,8,0.5);">
-      			<div class="slide">
+			<div class="slide">
               <div class="main-section">
                   <div class="section-heading">Brief Rules</div>
                   <div class="horizontal-line"></div>
                   <ol>
-                    <li>At the beginning of each round, participants will be provided with a set of test articles. The code has to be run on these articles and modifications are to be made in the code. The code is to be submitted to get the labels for first data set. Repeat. </li>
-                    <li>The judgement will be on the basis of error rate, time complexity and space complexity. Scores of all rounds will be combined to decide the winner.</li>
+                    <li>After every turn of the CHASERS, the CHASEES will know the exact strings of each of the CHASERS. The CHASERS, however, will only know the type of operation used by the CHASEES after the latter’s turn, except for the times when the CHASEES need to reveal their strings every few turns.</li>
+					<li>Both the teams will have a limited number of powerups, listed here -
+						<ol type = 'a'>
+						<li>CHASERS powerups:
+							<ol type = 'i'>
+							<li>Reveal one character of the then-CHASEES-string.</li>
+							<li>The CHASERS can enter a string manually, and get the number of correctly oriented characters in it compared to the actual CHASEE string, checked position by position. (Only the number of correct positions will be revealed, not the exact positions of errors and correct guesses.)</li>
+							</ol>
+						</li>
+						<li>CHASEES powerups:
+							<ol type = 'i'>
+							<li>Do twice the usual number of operations in a single step.</li>
+							<li>Hide the type of operation done in the chance.</li>
+							</ol>
+						</li>
+						</ol>
+						<li>The CHASERS win if they are able to CATCH the CHASEES within a fixed number of turns. The CHASEES win otherwise.</li>
                   </ol>
               </div>
       		</div>
@@ -71,11 +88,11 @@
 		<section style="background-color:rgba(8,8,8,0.5);">
 
 		<!--The id "last" is important to handle the footer during resizes-->
+Make sure your computer has an active Internet connection.
 		<div class="slide" id="last">
         <div class="main-section">
             <div class="horizontal-line"></div>
         </div>
-
 		</div>
 		<div id="footer-id">
 
