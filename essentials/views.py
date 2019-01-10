@@ -127,6 +127,11 @@ def partners(request):
 def sponsors(request):
 	return render(request, 'essentials/sponsors.html', {})
 
+def sponsorsRedirect(request):
+	return redirect('partners')
+
+def homeRedirect(request):
+	return redirect('home')
 
 class FaqListView(generic.ListView):
 	faqInfo=Faq

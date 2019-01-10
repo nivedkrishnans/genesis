@@ -16,13 +16,39 @@
 
 {% block content %}
 <div style="margin-bottom:14px;" id="main" class="main" >
-		<section  style="background-color:rgba(8,8,8,0.5);">
+		<section  style="padding:24px; background-color:rgba(0,0,0,0.5);">
 		<div class="slide">
 
         <div class="heading">Gaming Events</div>
         <div class="horizontal-line"></div>
         <div class="main-section">
-            <img style="width:100%;max-width:90vw;margin:14px auto; max-height: 80vw;" src="{% static 'img/events/gaming/gaming_pravega_2019_IISc_Bangalore.png'%}" />
+              <style>
+                #gaming_poster{
+                  width:100%;
+                  max-width:90vw;
+                  margin:14px auto;
+                  max-height: 80vw;
+                  display: block;
+                }
+                @media(min-width:760px){
+                  #gaming_poster{
+                    width:80%;
+                  }
+                }
+              </style>
+            <img id="gaming_poster" src="{% static 'img/events/gaming/gaming_pravega_2019_IISc_Bangalore.png'%}" />
+            <div  style="margin:14px;" class="section-heading">PUBG Rules:</div>
+            <ol style="margin:14px;">
+              <li>It is a duo, meaning 2 players in a team
+              </li><li>Once, registered, you'll be added to the whatsapp group on the day of the qualifiers where the room ID and password of the server will be given. Once you get them, you can join the server for the qualifier at the specified time.
+              </li><li> There will be 5 qualifiers spread out amongst the 3 days.
+              </li><li> Each qualifiers will have 3 random maps and a point system is in place for calculating the points obtained by each team.
+              </li><li> The top 10 teams from each qualifier will be selected for the finals which will be conducted at the IISc campus on
+                  20th Jan starting at 11am.
+              </li><li>The finals will be between 50 teams.
+              </li><li>Teams that haven't gotten selected in the qualifiers can register again for the next qualifier if the slots are available.
+              </li>
+            </ol>
             <div class="event-essentials">
                 <a href="{% url 'pubgRegistration' %}"><div class="yellow-status"><!-- &#10010; -->  PUBG Tournament Registration</div></a>
             </div>
