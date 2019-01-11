@@ -52,7 +52,6 @@
             {% for field in form %}
             {% if forloop.counter is 4 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 1: </p> {% endif %}
             {% if forloop.counter is 8 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 2: </p>  {% endif %}
-            {% if forloop.counter is 12 %} <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Participant 3: </p>  {% endif %}
 
                 <div class="field-space">
                     {{ field.errors }}

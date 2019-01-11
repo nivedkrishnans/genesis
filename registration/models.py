@@ -340,10 +340,7 @@ class MolecularMuralsRegistration(models.Model):
     qualification2 = models.CharField(max_length=200, blank=True)
     email2 = models.EmailField(max_length=144, null=False, blank=True)
     contact2 = models.CharField(max_length=20, blank=True)
-    participant3 = models.CharField(max_length=200, blank=True)
-    qualification3 = models.CharField(max_length=200, blank=True)
-    email3 = models.EmailField(max_length=144, null=False, blank=True)
-    contact3 = models.CharField(max_length=20, blank=True)
+    
     institution = models.CharField(max_length=144)
     city = models.CharField(max_length=144)
     #how you got to know about this program/event

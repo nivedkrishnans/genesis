@@ -222,8 +222,7 @@ class MolecularMuralsForm(forms.ModelForm):
     class Meta:
         model = MolecularMuralsRegistration
         fields = ('teamName', 'institution','city', 'participant1', 'qualification1', 'email1', 'contact1',
-        'participant2', 'qualification2', 'email2', 'contact2',
-        'participant3', 'qualification3', 'email3', 'contact3','howyouknow')
+        'participant2', 'qualification2', 'email2', 'contact2','howyouknow')
         labels = {
             "teamName": "Team Name",
             "institution": "Institution",
@@ -235,10 +234,6 @@ class MolecularMuralsForm(forms.ModelForm):
             "qualification2": "Qualification",
             "email2": 'Email',
             "contact2": "Mobile Number",
-            "participant3": "Full Name",
-            "qualification3": "Qualification",
-            "email3": 'Email',
-            "contact3": "Mobile Number",
             "city": "City",
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
         }
