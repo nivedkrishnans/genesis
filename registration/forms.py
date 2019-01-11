@@ -353,14 +353,36 @@ class ETCForm(forms.ModelForm):
 
 class ISCForm(forms.ModelForm):
     class Meta:
-        model = ISCRegistration
-        fields = ('full_name','institution','city','email','contact','howyouknow')
+        model = BaseISCRegistration
+        fields = ('school_name','school_address','city','email','school_contact','teacher_contact',
+            'student1a', 'class1a', 'student1b', 'class1b', 'student1c', 'class1c',
+            'student2a', 'class2a', 'student2b', 'class2b', 'student2c', 'class2c',
+            'student3a', 'class3a', 'student3b', 'class3b', 'student3c', 'class3c', 'howyouknow')
         labels = {
-            "full_name": "Full Name",
-            "institution": "Institution",
+            "school_name": "School Name",
+            "school_address": "School Address",
             "city": "City",
             "email": "Email",
-            "contact": "Mobile Number",
+            "school_contact": "School Contact Number",
+            "teacher_contact": "Accompanying Teacher Contact Number",
+            "student1a": "Member 1 Name" ,
+            "class1a": "Member 1 Class",
+            "student1b": "Member 2 Name" ,
+            "class1b": "Member 2 Class",
+            "student1c": "Member 3 Name" ,
+            "class1c": "Member 3 Class",
+            "student2a": "Member 1 Name" ,
+            "class2a": "Member 1 Class",
+            "student2b": "Member 2 Name" ,
+            "class2b": "Member 2 Class",
+            "student2c": "Member 3 Name" ,
+            "class2c": "Member 3 Class",
+            "student3a": "Member 1 Name" ,
+            "class3a": "Member 1 Class",
+            "student3b": "Member 2 Name" ,
+            "class3b": "Member 2 Class",
+            "student3c": "Member 3 Name" ,
+            "class3c": "Member 3 Class",
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
             }
 

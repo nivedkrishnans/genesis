@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
     <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
-    <title>ISc Registration | Pravega 2019, IISc Bangalore</title>
+    <title>Base Inter-School Science Competition Registration | Pravega 2019, IISc Bangalore</title>
     <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway:300,400|Titillium+Web" rel="stylesheet">
     <link rel="stylesheet" href="{%static 'css/reg.css'%}">
 {% endblock %}
 
 {% block content %}
     <div id="main">
-        <div class="heading">Inter-School Talent Contest Registration</div>
+        <div class="heading">Base Inter-School Science Competition Registration</div>
         {% if user.is_authenticated %}
           <p>Hi {{ user }}!</p>
           {% if form.errors %}
@@ -51,8 +51,12 @@
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
+                {% if forloop.counter is 7 %} <hr> <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Team 1: </p> {% endif %}
+                {% if forloop.counter is 13 %} <hr> <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Team 2: </p> {% endif %}
+                {% if forloop.counter is 19 %} <hr> <p style="font-size:1.3em; font-family:'Titillium Web',sans-serif;"> Team 3: </p> {% endif %}
 
                 <div class="field-space">
+
                     {{ field.errors }}
                     {{ field.label_tag }}
                     {{ field }}

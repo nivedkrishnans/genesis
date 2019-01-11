@@ -227,6 +227,16 @@ class ISCRegistrationResource(ExportMixin,admin.ModelAdmin):
     class Meta:
         model = ISCRegistration
 
+class BaseISCRegistrationResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user', 'school_name','school_contact','email','city','submit_date')
+    list_filter = ('submit_date','city',)
+
+    def get_readonly_fields(self, request, obj=None):   #makes all fields read only for non superuser staff accounts
+        return adminResources.superuser_fields(self, request, obj)
+
+    class Meta:
+        model = BaseISCRegistration
+
 class IBMHackathonRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user', 'teamName' ,'email','institution','city','submit_date')
     list_filter = ('submit_date','city',)
@@ -354,6 +364,7 @@ admin.site.register(DecoherenceSubjectiveQuestion,DecoherenceSubjectiveQuestionR
 admin.site.register(ETCRegistration,ETCRegistrationResource)
 admin.site.register(VignettoraRegistration,VignettoraRegistrationResource)
 admin.site.register(ISCRegistration,ISCRegistrationResource)
+admin.site.register(BaseISCRegistration,BaseISCRegistrationResource)
 admin.site.register(IBMHackathonRegistration,IBMHackathonRegistrationResource)
 admin.site.register(ETCRegisteredRegistration,ETCRegisteredRegistrationResource)
 admin.site.register(VignettoraRegisteredRegistration,VignettoraRegisteredRegistrationResource)

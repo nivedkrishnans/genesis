@@ -340,7 +340,7 @@ class MolecularMuralsRegistration(models.Model):
     qualification2 = models.CharField(max_length=200, blank=True)
     email2 = models.EmailField(max_length=144, null=False, blank=True)
     contact2 = models.CharField(max_length=20, blank=True)
-    
+
     institution = models.CharField(max_length=144)
     city = models.CharField(max_length=144)
     #how you got to know about this program/event
@@ -511,7 +511,7 @@ class ETCRegistration(models.Model):
         return str(self.user)
 
 
-class ISCRegistration(models.Model):
+class ISCRegistration(models.Model):        #this model is discarded. see BaseISCRegistration
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     #form details
@@ -522,6 +522,51 @@ class ISCRegistration(models.Model):
     city = models.CharField(max_length=200)
     email = models.EmailField(max_length=200, null=False, blank=False)
     contact = models.CharField(max_length=20)
+
+    #how you got to know about this program/event
+    howyouknow = models.CharField(blank=True, null=False, max_length=200)
+    confirmation_email_sent = models.BooleanField(default=False)
+    #whether or not the form was submitted
+    isSubmit = models.BooleanField(default=False)
+    last_modify_date = models.DateTimeField( null=True, blank=True)
+    submit_date = models.DateTimeField( null=True, blank=True)
+    def __str__(self):
+        return str(self.user)
+
+class BaseISCRegistration(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    #form details
+
+    #user details
+    school_name =  models.CharField(max_length=127)
+    school_address =  models.TextField(max_length=2000)
+    city = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200, null=False, blank=False)
+    school_contact = models.CharField(max_length=20, null=False, blank=False)
+    teacher_contact = models.CharField(max_length=20, null=False, blank=True)
+
+    student1a = models.CharField(max_length=127, null=False, blank=True)
+    class1a = models.CharField(max_length=127, null=False, blank=True)
+    student1b = models.CharField(max_length=127, null=False, blank=True)
+    class1b = models.CharField(max_length=127, null=False, blank=True)
+    student1c = models.CharField(max_length=127, null=False, blank=True)
+    class1c = models.CharField(max_length=127, null=False, blank=True)
+
+    student2a = models.CharField(max_length=127, null=False, blank=True)
+    class2a = models.CharField(max_length=127, null=False, blank=True)
+    student2b = models.CharField(max_length=127, null=False, blank=True)
+    class2b = models.CharField(max_length=127, null=False, blank=True)
+    student2c = models.CharField(max_length=127, null=False, blank=True)
+    class2c = models.CharField(max_length=127, null=False, blank=True)
+    
+    student3a = models.CharField(max_length=127, null=False, blank=True)
+    class3a = models.CharField(max_length=127, null=False, blank=True)
+    student3b = models.CharField(max_length=127, null=False, blank=True)
+    class3b = models.CharField(max_length=127, null=False, blank=True)
+    student3c = models.CharField(max_length=127, null=False, blank=True)
+    class3c = models.CharField(max_length=127, null=False, blank=True)
+
 
     #how you got to know about this program/event
     howyouknow = models.CharField(blank=True, null=False, max_length=200)
