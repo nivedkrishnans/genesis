@@ -475,6 +475,18 @@ class PUBGForm(forms.ModelForm):
             "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
             }
 
+class OpenMicForm(forms.ModelForm):
+    class Meta:
+        model = OpenMicRegistration
+        fields = ('full_name','city','contact','email','howyouknow')
+        labels = {
+            "full_name": "Full Name",
+            "city": "City",
+            "contact": "Mobile Number",
+            "email": "email",
+            "howyouknow": "How did you come to know about this event/program? (Eg: Name/ID of Campus Ambassador, Facebook, Instagram, etc.)"
+            }
+
 class PISForm(forms.ModelForm):
     class Meta:
         model = PISRegistration

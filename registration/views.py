@@ -50,6 +50,7 @@ def registration_index(request):
     #distionary of events and their models
     eventDictionary={
         'pubg':PUBGRegistration,
+        'openmic':OpenMicRegistration,
         'molecularmurals':MolecularMuralsRegistration,
         'pisRound2':PISRound2Registration,
         'sciencejournalismArticles':ScienceJournalismSubmission,
@@ -1973,6 +1974,80 @@ def pubgRegistration(request):
             return redirect('login')
     else:
         return render(request, 'registration/closed.html',{})
+
+
+def openMicRegistration(request):
+
+    thisEvent = get_object_or_404(AdminEvent, title='openmic')
+    if thisEvent.registrationStatus == 'opened':
+        f = OpenMicForm()
+        if request.user.is_authenticated:
+            allRegistrations =OpenMicRegistration.objects.all()
+            allUserData = UserData.objects.all()
+            isRegistered = False
+            isSubmit = False
+            thisInstance = False
+            thisUserData = False
+            for i in allRegistrations:
+                if (request.user == i.user):
+                    isRegistered = True
+                    thisInstance = i
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+            if isRegistered:
+                if thisInstance.isSubmit:
+                    isSubmit=True
+                    return render(request, 'registration/registered.html',{'form':f})
+                else:
+                    f = OpenMicForm(instance=thisInstance)
+                    if request.method == "POST":
+                        f = OpenMicForm(request.POST, instance=thisInstance)
+                        if f.is_valid():
+                            thisInstance = f.save(commit=False)
+                            if request.POST.get("submit"):
+                                thisInstance.isSubmit = True
+                                thisInstance.submit_date = timezone.now()
+                                if event_confirmation_mail('Open Mic',thisUserData.email,request):
+                                    thisInstance.confirmation_email_sent = True
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully submitted your Open Mic Registration Form')
+                                return redirect('registration')
+                            else:
+                                thisInstance.last_modify_date = timezone.now()
+                                thisInstance.save()
+                                messages.add_message(request, messages.INFO, 'You have succesfully modified your Open Mic Registration Form')
+                                f =OpenMicForm(instance=thisInstance)
+                                return render(request, 'registration/openMicRegistration.html', {'form': f})
+            else:
+                if request.method == "POST":
+                    f = OpenMicForm(request.POST)
+                    if f.is_valid():
+                        reg = f.save(commit=False)
+                        reg.user = request.user
+
+                        if request.POST.get("submit"):
+                            reg.isSubmit = True
+                            reg.submit_date = timezone.now()
+                            if event_confirmation_mail('Open Mic',thisUserData.email,request):
+                                reg.confirmation_email_sent = True
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully submitted your Open Mic Registration Form')
+                        else:
+                            reg.last_modify_date = timezone.now()
+                            reg.save()
+                            messages.add_message(request, messages.INFO, 'You have succesfully saved your Open Mic Registration Form')
+                            return render(request, 'registration/openMicRegistration.html', {'form': f})
+                        return redirect('registration')
+                else:
+                    f = OpenMicForm(initial={"full_name":thisUserData.full_name,"email":thisUserData.email,"city":thisUserData.city,"contact":thisUserData.contact,})
+            return render(request, 'registration/openMicRegistration.html', {'form': f})
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to register for the Open Mic')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})
+
 
 def pisRegistration(request):
     thisEvent = get_object_or_404(AdminEvent, title='pis')

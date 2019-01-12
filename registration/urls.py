@@ -5,6 +5,8 @@ import django.contrib.auth.views
 urlpatterns = [
     url(r'^pubg$', views.pubgRegistration, name='pubgRegistration'),
     url(r'^pubg/$', views.pubgRegistration, name='pubgRegistration'),
+    url(r'^openmic$', views.openMicRegistration, name='openMicRegistration'),
+    url(r'^openmic/$', views.openMicRegistration, name='openMicRegistration'),
     url(r'^pisRound2$', views.pisRound2Registration, name='pisRound2Registration'),
     url(r'^pisRound2/$', views.pisRound2Registration, name='pisRound2Registration'),
     url(r'^vignettoraregistered$', views.vignettoraregisteredRegistration, name='vignettoraregisteredRegistration'),
