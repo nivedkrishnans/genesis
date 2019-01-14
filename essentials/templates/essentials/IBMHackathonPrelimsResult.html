@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>IBM Hackathon Prelims Result | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+    <div id="main">
+            <style type="text/css">
+            #main{
+                margin: 60px 0 14px 0;
+            }
+            @media(min-width:760px){
+                #main{
+                    margin: 120px 0 14px 0;
+                }
+            }
+            .tg  {border-collapse:collapse;border-spacing:0;border-color:#aaa;margin:auto;}
+            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aaa;color:rgb(255,255,240);background-color:rgb(30,30,30);}
+            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#555;color:#000;background-color:#ffed6d}
+            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+            .tg .tg-dg7a{background-color:rgb(8,8,8);text-align:left;vertical-align:top}
+            .tg .tg-0lax{text-align:left;vertical-align:top}
+            </style>
+            <h2 style="text-align:center;font-family: 'Titillium Web', sans-serif; font-weight: 400; font-size: 22px; text-decoration: underline;">IBM Hackathon Selected Teams</h2>
+            <table class="tg">
+              <tr>
+                <th class="tg-0pky">Team Name</th>
+                <th class="tg-0pky">Institution</th>
+                <th class="tg-0pky">City</th>
+              </tr>
+              <tr>
+                <td class="tg-xldj">R"IoT"</td>
+                <td class="tg-0pky">PES University</td>
+                <td class="tg-xldj">Bangalore</td>
+              </tr>
+              <tr>
+                <td class="tg-xldj">BMSCE</td>
+                <td class="tg-0pky">BMS College of Engineering</td>
+                <td class="tg-xldj">Bangalore</td>
+              </tr>
+              <tr>
+                <td class="tg-xldj">DataCrunchers</td>
+                <td class="tg-0pky">PES University</td>
+                <td class="tg-xldj">Bangalore</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Two_Towers</td>
+                <td class="tg-0pky">IIEST, Shibpur</td>
+                <td class="tg-0pky">Kolkata</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Aye! See 'em?</td>
+                <td class="tg-0pky">BITS Pilani</td>
+                <td class="tg-0pky">Pilani</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">0 | 1 ?</td>
+                <td class="tg-0pky">PES University</td>
+                <td class="tg-0pky">Bangalore</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Team LITE</td>
+                <td class="tg-0pky">BITS Pilani</td>
+                <td class="tg-0pky">Pilani</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">SMDK</td>
+                <td class="tg-0pky">PES University</td>
+                <td class="tg-0pky">Bengaluru</td>
+              </tr>
+            </table>
+    </div>
+    <script src="{%static 'js/navBar.js'%}"> </script>
+{%endblock %}

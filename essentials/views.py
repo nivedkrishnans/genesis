@@ -109,6 +109,9 @@ def etc(request):
 def ibm_hackathon(request):
 	return render(request, 'essentials/ibm_hackathon.html', {})
 
+def ibmhackathonprelimsresult(request):
+	return render(request, 'essentials/IBMHackathonPrelimsResult.html', {})
+
 def kryptochase(request):
 	return render(request, 'essentials/kryptochase.html', {})
 
@@ -118,7 +121,11 @@ def gaming(request):
 def ifp(request):
 	return render(request, 'essentials/IFP.html', {})
 
+def integrationbee(request):
+	return render(request, 'essentials/integrationbee.html', {})
 
+def sandhi(request):
+	return render(request, 'essentials/sandhi.html', {})
 
 def workshops(request):
 	return render(request, 'essentials/workshops.html', {})

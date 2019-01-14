@@ -135,7 +135,7 @@ def registration_index(request):
                     else:
                         registeredEventsString = registeredEventsString + ", "
                     j+=1
-            registeredEventsString = "<p class='center'> You have successfully registered for " +  registeredEventsString + "</p>"
+            registeredEventsString = "<p style='text-align:left;font-size:0.9em;'> You have successfully registered for " +  registeredEventsString + "</p>"
 
     #removes the campusAmbassador from the lists of Events
     if campusAmbassadorEvent in openedEvents :openedEvents.remove(campusAmbassadorEvent)

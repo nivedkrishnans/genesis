@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Integration Bee| Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<link rel="stylesheet" href="{%static 'css/eventstyle.css'%}" />
+	<script src="{%static 'js/jquery.js'%}" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="main" >
+		<section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+
+        <div class="heading">Integration Bee</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+
+            <p>
+                The integration bee is a mathematically intense event, based off the format of the MIT Integration Bee. The prelims consists of about 20 questions for 15 minutes, and the top 8 people would be selected. Then they battle out in pairs to find the value of an integral, and the first person to get the answer will win that round. The problems would consist of definite, indefinite integral and any other types of integral the organizers can come up with. The problems would be along 12th standard level.
+            </p>
+		</div>
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Prelims</div>
+            <div class="horizontal-line"></div>
+            <p>
+                The prelims would consist of 20 problems spread over 15 minutes, and the top 8 will be selected for the finals. In case of ties, the participants would be ranked based on the tie breaker questions
+            </p>
+			</div>
+        </div>
+
+		</section  >
+		<section style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Finals</div>
+            <div class="horizontal-line"></div>
+            <p>
+                The finalists would battle against each other in a 1 verses 1 format. The 2 competing participants would have to solve the integral on the board, and the first person to arrive at the answer wins and proceeds to the next round.
+            </p>
+        </div>
+		</div>
+		</section >
+        <section style="background-color:rgba(8,8,8,0.5);">
+        <div class="slide">
+        <div class="main-section">
+            <div class="section-heading">Prizes</div>
+            <div class="horizontal-line"></div>
+            <p>
+                The winners get a total prize amount of 10,000 rupees. Finalists would be given finalist certificates, and everyone would get participation certificates. For any details, contact the coordinator.
+            </p>
+        </div>
+        </div>
+        </section >
+
+		<section style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Any Questions?</div>
+            <div class="horizontal-line"></div>
+                <p>
+                  Contact our Event Coordinator, Prathyush Poduval
+                </p>
+                <p>
+                    prathyushp@iisc.ac.in
+                </p>
+
+        </div>
+
+		</div>
+		<div id="footer-id">
+
+
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/navBar.js'%}"> </script>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+{%endblock %}
