@@ -32,6 +32,7 @@ urlpatterns = [
 	url(r'^college_quizzes/$', views.collegeQuizzes , name="collegeQuizzes"),
 	url(r'^BASE_science_quizzine/$', views.scienceQuizzine , name="scienceQuizzine"),
 	url(r'^indian_film_project/$', views.ifp , name="ifp"),
+	url(r'^whodunnit/$', views.whodunnit , name="whodunnit"),
 	url(r'^inotherwords/$', originals.views.InOtherWords , name="inotherwords"),
 	url(r'^inotherwords/ch01$', originals.views.IOW_challenge01 , name="iow_challenge01"),
 	url(r'^inotherwords/ch02$', originals.views.IOW_challenge02 , name="iow_challenge02"),

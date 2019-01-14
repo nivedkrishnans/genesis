@@ -91,6 +91,9 @@ def chemisticon(request):
 def interschool(request):
 	return render(request, 'essentials/interschool.html', {})
 
+def whodunnit(request):
+	return render(request, 'essentials/whodunnit.html', {})
+
 def debubulary(request):
 	return render(request, 'essentials/debubulary.html', {})
 
