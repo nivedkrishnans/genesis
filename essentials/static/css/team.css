@@ -1,0 +1,113 @@
+.main{
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  padding-top: 68px;
+  background-color: rgba(0,0,0,0.3);
+  background-image: none;
+}
+
+h3{
+  font-family: 'Cinzel Decorative', cursive;
+  font-weight: 400;
+  text-align: center;
+  font-size: 32px;
+  background-color: black;
+  margin-bottom: 14px;
+  padding: 14px;
+}
+.member-name{
+    padding: 0;
+    margin: 2px auto;
+    text-align: center;
+    font-size: 28px;
+    transition: all 0.4s;
+    font-family: 'Coda', cursive;
+    font-weight: 400;
+    text-transform: none;
+}
+
+  .members-container{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .member-area{
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: flex-start;
+      background-color: rgba(0,0,0,0.8);
+      border-radius: 2px;
+      margin: 18px;
+      min-height: 200px;
+      height: auto;
+      width: 80%;
+      padding: 12px;
+  }
+
+  .member-image{
+      max-width: 80%;
+      height: 200px;
+      margin: 8px auto;
+      object-fit: contain;
+      border-radius: 8px;
+      transition: all 0.2s;
+  }
+  .member-image:hover{
+      transform: scale(1.03 ,1.03);
+  }
+
+  .member-designation{
+      padding: 0;
+      margin: 2px auto;
+      font-size: 18px;
+      font-family: 'Titillium Web', sans-serif;
+      text-align: left;
+      min-height: 2em;
+  }
+  .member-mail{
+      padding: 0;
+      margin: 2px auto;
+      font-size: 16px;
+      font-family: 'Titillium Web', sans-serif;
+      text-align: center;
+  }
+
+@media(min-width:760px){
+    .main{
+      padding-top: 100px;
+    }
+    .member-designation{
+        font-size: 16px;
+    }
+    .member-name{
+        font-size: 22px;
+        min-height: 2em;
+        vertical-align: middle;
+    }
+  .members-container{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .member-area{
+      display: flex;
+      margin: 24px;
+      width: 260px;
+  }
+  .member-image{
+    height: 200px;
+  }
+
+}

@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^events/', include('essentials.urls')),
 	url(r'^help/$', essentials.views.FaqListView.as_view() , name="help"),
 	url(r'^contact/$', essentials.views.contact , name="contact"),
+    url(r'^team/$', essentials.views.team , name="team"),
     url(r'^sponsors/$', essentials.views.sponsors , name="partners"), # the /sponsors came after /partners, hence like this. /partners will be redirected.
 	url(r'^partners/$', essentials.views.sponsorsRedirect , name="sponsorsRedirect"),
     url(r'^originals/$', originals.views.originals , name="originals"),

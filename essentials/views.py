@@ -137,6 +137,9 @@ def partners(request):
 def sponsors(request):
 	return render(request, 'essentials/sponsors.html', {})
 
+def team(request):
+	return render(request, 'essentials/team.html', {})
+
 def sponsorsRedirect(request):
 	return redirect('partners')
 
