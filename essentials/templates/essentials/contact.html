@@ -3,194 +3,56 @@
 {% load staticfiles %}
 
 {% block head %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{%static 'css/style.css'%}">
     <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
     <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
 
-    <title>Workshops | Pravega 2019, IISc Bangalore</title>
-    <link href="https://fonts.googleapis.com/css?family=Salsa|Oregano|Expletus+Sans|Overlock+SC|Voces|Cinzel+Decorative:400,700|Coda|Salsa|Titillium+Web:300,400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="{%static 'css/team.css'%}">
+    <title>Contact | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Overlock+SC|Raleway:300,400|Dosis:300,400,700,800|Abel" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/contact.css'%}">
 {% endblock %}
 
 {% block content %}
-  <div class="main">
-    <h3>  Core Team</h3>
-
-    <div class="members-container">
-      <div class="member-area">
-          <h4 class="member-name">Shrey Gupta</h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation">Convener</p>
-          <p class="member-mail">shreygupta@iisc.ac.in</p>
-      </div>
-
-      <div class="member-area">
-          <h4 class="member-name">Sankalpa Hazra</h4>
-          <img class="member-image" src="{%static 'img/team/sankalpa.png'%}"  />
-          <p class="member-designation">Deputy Convener</p>
-          <p class="member-mail">sankalpah@iisc.ac.in</p>
-      </div>
-
-      <div class="member-area">
-          <h4 class="member-name">Aniket Rajendra Ingole</h4>
-          <img class="member-image" src="{%static 'img/team/aniket.png'%}"  />
-          <p class="member-designation">Merchandise Coordinator</p>
-          <p class="member-mail">aniketingole@iisc.ac.in</p>
-      </div>
-
-      <div class="member-area">
-          <h4 class="member-name">Nived Krishnan S</h4>
-          <img class="member-image" src="{%static 'img/team/nivedkrishnans.jpg'%}"  />
-          <p class="member-designation">Web & Software</p>
-          <p class="member-mail">niveds@iisc.ac.in</p>
-      </div>
-
-      <div class="member-area">
-          <h4 class="member-name">Sukanya Majumder</h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation">Design Coordinator</p>
-          <p class="member-mail">sukanyam@iisc.ac.in</p>
-      </div>
-
-      <div class="member-area">
-          <h4 class="member-name">Ninad Huilgol</h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation">Design Coordinator</p>
-          <p class="member-mail">ninadhuilgol@iisc.ac.in</p>
-      </div>
-
-      <div class="member-area">
-          <h4 class="member-name">Debabrata Ghosh</h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation">Decorations Coordinator</p>
-          <p class="member-mail">debabratag@iisc.ac.in</p>
-      </div>
-
-      <div class="member-area">
-          <h4 class="member-name">Bhoomika Ashok Bhat</h4>
-          <img class="member-image" src="{%static 'img/team/IMG_9142.jpg'%}"  />
-          <p class="member-designation">Publicity Coordinator</p>
-          <p class="member-mail">bhoomikabhat@iisc.ac.in@iisc.ac.in</p>
-      </div>
-
+<div id = "main">
+    <div class = "top">
+        <h1>CONTACT</h1>
+        <p id = "request">Please feel free to contact us</p>
     </div>
-
-    <div class="members-container">
-      <div class="member-area">
-          <h4 class="member-name">Rahul Shah</h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation">Publicity Coordinator</p>
-          <p class="member-mail">rahulshah@iisc.ac.in</p>
-      </div>
-      <div class="member-area">
-          <h4 class="member-name"></h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation"></p>
-          <p class="member-mail">@iisc.ac.in</p>
-      </div>
-      <div class="member-area">
-          <h4 class="member-name"></h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation"></p>
-          <p class="member-mail">@iisc.ac.in</p>
-      </div>
-      <div class="member-area">
-          <h4 class="member-name"></h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation"></p>
-          <p class="member-mail">@iisc.ac.in</p>
-      </div>
+    <div class = "contact-container">
+        <div class = "contact-detail">
+            <p>Praveen Jayakumar</p>
+            <p class = "designation">Sponsorship and Corporate Relations</p>
+            <a href="mailto:jpraveen@iisc.ac.in"><p class = "email">jpraveen@iisc.ac.in</p></a>
+        </div>
+        <div id='cc' class = "contact-detail">
+            <p>Shrey Gupta</p>
+            <p class = "designation">Convener</p>
+            <a href="mailto:shreygupta@iisc.ac.in"><p class = "email">shreygupta@iisc.ac.in</p></a>
+        </div>
+        <div class = "contact-detail">
+            <p>Prakhar Suhalka</p>
+            <p class = "designation">Workshops Coordinator</p>
+            <a href="mailto:workshops@pravega.org"><p class = "email">workshops@pravega.org</p></a>
+        </div>
+        <div class = "contact-detail">
+            <p>Arpit Behera</p>
+            <p class = "designation">General Events Co-Coordinator</p>
+            <a href="mailto:arpitbehera@iisc.ac.in"><p class = "email">arpitbehera@iisc.ac.in</p></a>
+        </div>
+        <div class = "contact-detail">
+            <p>Ansh Kuhikar</p>
+            <p class = "designation">General Events Co-Coordinator</p>
+            <a href="mailto:anshkuhikar@iisc.ac.in"><p class = "email">anshkuhikar@iisc.ac.in</p></a>
+        </div>
+        <div class = "contact-detail">
+            <p>Agrim Sharma</p>
+            <p class = "designation">Science Events Coordinator</p>
+            <a href="mailto:agrimsharma@iisc.ac.in"><p class = "email">agrimsharma@iisc.ac.in</p></a>
+        </div>
     </div>
+</div>
 
-
-    <h3>  Event Coordinators</h3>
-
-    <div class="members-container">
-      <div class="member-area">
-          <h4 class="member-name">Ramachandra Bangari</h4>
-          <img class="member-image" src="{%static 'img/team/bangari.png'%}"  />
-          <p class="member-designation">Wikimedia India Photography Contest Coordinator</p>
-          <p class="member-mail">ramachandrab@iisc.ac.in</p>
-      </div>
-      <div class="member-area">
-          <h4 class="member-name">Aman Gupta</h4>
-          <img class="member-image" src="{%static 'img/team/aman.png'%}"  />
-          <p class="member-designation">ExCITE (Science Exhibition) Coordinator</p>
-          <p class="member-mail">amangupta@iisc.ac.in@iisc.ac.in</p>
-      </div>
-      <div class="member-area">
-          <h4 class="member-name">Sayantan Mandal</h4>
-          <img class="member-image" src="{%static 'img/team/sayantan.png'%}"  />
-          <p class="member-designation">Chemistry Coordinator</p>
-          <p class="member-mail">msayantan@iisc.ac.in</p>
-      </div>
-      <div class="member-area">
-          <h4 class="member-name">Prathyush Poduval</h4>
-          <img class="member-image" src="{%static 'img/team/poduval.png'%}"  />
-          <p class="member-designation">Integration Bee Coordinator</p>
-          <p class="member-mail">prathyushp@iisc.ac.in</p>
-      </div>
-    </div>
-
-    <div class="members-container">
-      <div class="member-area">
-          <h4 class="member-name">Divyoj Singh</h4>
-          <img class="member-image" src="{%static 'img/team/divyoj.png'%}"  />
-          <p class="member-designation">Decoherence Coordinator</p>
-          <p class="member-mail">divyojsingh@iisc.ac.in</p>
-      </div>
-      <div class="member-area">
-          <h4 class="member-name">Hari P Narayanan</h4>
-          <img class="member-image" src="{%static 'img/team/hari1.jpg'%}"  />
-          <p class="member-designation">Pronites Coordinator</p>
-          <p class="member-mail">haripn@iisc.ac.in</p>
-      </div>
-
-      <div class="member-area">
-          <h4 class="member-name">Rydham Goyal</h4>
-          <img class="member-image" src="{%static 'img/team/rydham.jpg'%}"  />
-          <p class="member-designation">24 Hours film making challenge Coordinator</p>
-          <p class="member-mail">rydhamgoyal@iisc.ac.in</p>
-      </div>
-
-      <div class="member-area">
-          <h4 class="member-name"></h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation"></p>
-          <p class="member-mail">@iisc.ac.in</p>
-      </div>
-    </div>
-
-    <div class="members-container">
-      <div class="member-area">
-          <h4 class="member-name"></h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation"></p>
-          <p class="member-mail">@iisc.ac.in</p>
-      </div>
-      <div class="member-area">
-          <h4 class="member-name"></h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation"></p>
-          <p class="member-mail">@iisc.ac.in</p>
-      </div>
-      <div class="member-area">
-          <h4 class="member-name"></h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation"></p>
-          <p class="member-mail">@iisc.ac.in</p>
-      </div>
-      <div class="member-area">
-          <h4 class="member-name"></h4>
-          <img class="member-image" src="{%static 'img/team/male.jpg'%}"  />
-          <p class="member-designation"></p>
-          <p class="member-mail">@iisc.ac.in</p>
-      </div>
-    </div>
-  </div>
-  <script src="{%static 'js/navBar.js'%}"> </script>
-
+    <script src="{%static 'js/navBar.js'%}"> </script>
 {% endblock %}
