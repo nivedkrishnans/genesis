@@ -9,6 +9,7 @@
 
 h3{
   font-family: 'Cinzel Decorative', cursive;
+
   font-weight: 400;
   text-align: center;
   font-size: 32px;
@@ -17,12 +18,13 @@ h3{
   padding: 14px;
 }
 .member-name{
+
     padding: 0;
     margin: 2px auto;
     text-align: center;
     font-size: 28px;
     transition: all 0.4s;
-    font-family: 'Coda', cursive;
+    font-family: 'Overlock SC', cursive;
     font-weight: 400;
     text-transform: none;
 }
@@ -42,13 +44,14 @@ h3{
       flex-direction: column;
       align-content: center;
       justify-content: flex-start;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0,0,0,0.6);
       border-radius: 2px;
       margin: 18px;
       min-height: 200px;
       height: auto;
       width: 80%;
       padding: 12px;
+      border-radius: 8px;
   }
 
   .member-image{
@@ -67,15 +70,18 @@ h3{
       padding: 0;
       margin: 2px auto;
       font-size: 18px;
-      font-family: 'Titillium Web', sans-serif;
+      font-family: 'Expletus Sans', cursive;
+
+
       text-align: left;
       min-height: 2em;
   }
   .member-mail{
       padding: 0;
       margin: 2px auto;
-      font-size: 16px;
-      font-family: 'Titillium Web', sans-serif;
+      font-size: 14px;
+      font-family: 'Expletus Sans', cursive;
+
       text-align: center;
   }
 
@@ -84,7 +90,7 @@ h3{
       padding-top: 100px;
     }
     .member-designation{
-        font-size: 16px;
+        font-size: 18px;
     }
     .member-name{
         font-size: 22px;
