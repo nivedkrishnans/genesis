@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Escape Room | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+	    <link rel="stylesheet" href="{%static 'css/eventstyle.css'%}">
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+{% endblock %}
+
+{% block content %}
+
+<div id="main" class="main" >
+		<section style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide first">
+
+        <div class="heading">Escape Room</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+            <p>
+                Pravega is proud to announce a brand new fun and challenging free-for-all event, combining intriguing clues with mind-bending puzzles that will push your creative thinking to its limits! It will be conducted on all three days (18th, 19th and 20th January) in the Tutorial room - 2 in the UG office
+
+            </p>
+        </div>
+
+		</div>
+		</section >
+        <section  style="background-color:rgba(8,8,8,0.5);">
+        <div class="slide">
+            <div class="main-section">
+                <div class="section-heading">Description</div>
+                <div class="horizontal-line"></div>
+                <ul>
+                    <li>Time limit: 20 minutes</li>
+                    <li>Groups of 4 participants at a time.</li>
+                    <li>Registration on the spot.</li>
+                    <li>Solve all puzzles in the time limit to win.</li>
+                    <li>Get the wrong answer, or run out of time, and you lose.</li>
+                </ul>
+               <p>Features a new puzzle each day!</p>
+            </div>
+        </div>
+
+        </section >
+
+		<section  style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Any Questions?</div>
+            <div class="horizontal-line"></div>
+               <p>
+                  Contact our Event Coordinator, Pratyush Menon
+                </p>
+                <p>
+                    <!--write email id here-->
+                </p>
+        </div>
+		</div>
+		<div id="footer-id">
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+<script src="{%static 'js/navBar.js'%}"> </script>
+{%endblock %}

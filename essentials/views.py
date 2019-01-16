@@ -72,6 +72,9 @@ def lasya(request):
 def wikimediaphotography(request):
 	return render(request, 'essentials/wikimediaphotography.html', {})
 
+def escaperoom(request):
+	return render(request, 'essentials/escaperoom.html', {})
+
 
 def pis(request):
 	return render(request, 'essentials/pis.html', {})

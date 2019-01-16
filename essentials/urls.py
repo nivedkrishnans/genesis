@@ -16,6 +16,7 @@ urlpatterns = [
 	url(r'^pravega_innovation_summit/$', views.pis , name="pis"),
 	url(r'^pravega_innovation_summit/results$', views.pisResults , name="pisResults"),
 	url(r'^explain_the_concept/$', views.etc , name="etc"),
+	url(r'^escaperoom/$', views.escaperoom , name="escaperoom"),
 	url(r'^debubulary/$', views.debubulary , name="debubulary"),
 	url(r'^cryptothlon/$', views.cryptothlon , name="cryptothlon"),
 	url(r'^cryptothlon/prelims/j7oEkC4hdpLEZKvPz6IC/$', registration.views.cryptothlonPrelims , name="cryptothlonPrelims"),
