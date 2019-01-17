@@ -42,6 +42,9 @@ def registered(request):
 def redirectRegistrationIndex(request):
     return redirect('registration')
 
+def inotherwordssubmissionredirect(request):
+    return redirect('inOtherWordsSubmission')
+
 def registration_index(request):
     # campusAmbassador is not an event
     campusAmbassadorEvent = AdminEvent.objects.filter(title='Campus Ambassadors').first()
@@ -50,6 +53,7 @@ def registration_index(request):
     #distionary of events and their models
     eventDictionary={
         'pubg':PUBGRegistration,
+        'iowlive':InOtherWordsSubmission,
         'openmic':OpenMicRegistration,
         'molecularmurals':MolecularMuralsRegistration,
         'pisRound2':PISRound2Registration,
@@ -2414,3 +2418,40 @@ def time(request):
 
 def getServerTime(request):
     return JsonResponse({'serverTime': timezone.now().isoformat()})
+
+def inOtherWordsSubmission(request):
+    thisEvent = get_object_or_404(AdminEvent, title='iowlive')
+    if thisEvent.registrationStatus == 'opened':
+        if request.user.is_authenticated:
+            allSubmissions = InOtherWordsSubmission.objects.all()
+            allUserData = UserData.objects.all()
+            thisUserData = False
+            for i in allUserData:
+                if (request.user == i.user):
+                    thisUserData = i
+            f = InOtherWordsSubmissionForm()
+            if request.method == "POST":
+                f =  InOtherWordsSubmissionForm(request.POST, request.FILES)
+                if f.is_valid():
+                    thisSubmission = f.save(commit=False)
+                    thisSubmission.user = request.user
+                    thisSubmission.submit_date = timezone.now()
+                    if thisUserData:
+                        thisSubmission.email = thisUserData.email
+                        thisSubmission.institution = thisUserData.institution
+                        thisSubmission.city = thisUserData.city
+                    thisSubmission.save()
+                    messages.add_message(request, messages.INFO, 'You have succesfully submitted your In Other Words response.')
+                    return redirect('inOtherWordsSubmission')
+                else:
+                    messages.add_message(request, messages.INFO, 'Some error has occurred. Please try again.')
+                    return render(request, 'registration/inOtherWordsSubmission.html', {'form': f})
+            else:
+                return render(request, 'registration/inOtherWordsSubmission.html', {'form': f})
+
+
+        else:
+            messages.add_message(request, messages.INFO, 'Please log in to submit your in other words responses.')
+            return redirect('login')
+    else:
+        return render(request, 'registration/closed.html',{})

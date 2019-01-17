@@ -595,3 +595,16 @@ class CryptothlonPrelimsForm(forms.ModelForm):
             'd13':"Down 13",
             'd14':"Down 14",
         }
+
+
+
+class InOtherWordsSubmissionForm(forms.ModelForm):
+    class Meta:
+        model = InOtherWordsSubmission
+        fields = ('level','answer','comments','imageFile',)
+        labels = {
+            'level':"Question Level",
+            'answer':"Answer",
+            'comments':"Comments (If any)",
+            'imageFile':"Image (If necessary)",
+        }

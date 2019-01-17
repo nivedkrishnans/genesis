@@ -3,7 +3,9 @@ from . import views
 import django.contrib.auth.views
 
 urlpatterns = [
-    url(r'^pubg$', views.pubgRegistration, name='pubgRegistration'),
+    url(r'^inotherwords/submission$', views.inotherwordssubmissionredirect, name='inotherwordssubmissionredirect'),
+    url(r'^inotherwords/submission$', views.inotherwordssubmissionredirect, name='inotherwordssubmissionredirect'),
+    url(r'^pubg/$', views.pubgRegistration, name='pubgRegistration'),
     url(r'^pubg/$', views.pubgRegistration, name='pubgRegistration'),
     url(r'^openmic$', views.openMicRegistration, name='openMicRegistration'),
     url(r'^openmic/$', views.openMicRegistration, name='openMicRegistration'),

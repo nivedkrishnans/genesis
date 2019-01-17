@@ -981,20 +981,23 @@ class ScienceJournalismSubmission(models.Model):
 class InOtherWordsSubmission(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-    IOW_LEVEL__CHOICES=(
-        (1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),
+    IOW_LEVEL_CHOICES=(
+        (1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10'),(11,'1'),(12,'2'),(13,'3'),(14,'4'),(15,'5'),
     )
-    level = models.IntegerField(choices=IOW_LEVEL__CHOICES, blank=False, null=False)
+    level = models.IntegerField(default=1, choices=IOW_LEVEL_CHOICES, blank=False, null=False)
     def filePathGenerate(instance,filename):
         temp = 'private/inotherwords/' + str(instance.user) + '/'
         temp2 = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)])
         temp3 = '/' + os.path.split(filename)[1]
         temp = temp + temp2 + temp3
         return temp
+    institution = models.CharField(null=False, blank=True,max_length=144)
+    city = models.CharField(null=False, blank=True,max_length=144)
+    email = models.EmailField(max_length=200, null=False, blank=True)
+
     imageFile = models.ImageField(null=False, blank=True, upload_to=filePathGenerate)
-    answer =  models.TextField(max_length=2000)
-    comments =  models.TextField(max_length=2000)
-    isSubmit = models.BooleanField(default=True)
+    answer =  models.TextField(null=False, blank=True,max_length=2000)
+    comments =  models.TextField(null=False, blank=True,max_length=2000)
     submit_date = models.DateTimeField( null=True, blank=True)
     def __str__(self):
         return str(self.user)

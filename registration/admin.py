@@ -63,6 +63,12 @@ class ScienceJournalismSubmissionResource(ExportMixin,admin.ModelAdmin):
         model = ScienceJournalismSubmission
 
 
+class InOtherWordsSubmissionResource(ExportMixin,admin.ModelAdmin):
+    list_display = ('user', 'level','email','answer','comments','submit_date','imageFile')
+
+    class Meta:
+        model = ScienceJournalismSubmission
+
 
 class ETCRegistrationResource(ExportMixin,admin.ModelAdmin):
     list_display = ('user','full_name','year','major', 'email','institution','city','submit_date')
@@ -363,6 +369,7 @@ admin.site.register(WikimediaPhotographyRegistration,WikimediaPhotographyRegistr
 admin.site.register(PISRegistration,PISRegistrationResource)
 admin.site.register(ScienceJournalismRegistration,ScienceJournalismRegistrationResource)
 admin.site.register(ScienceJournalismSubmission,ScienceJournalismSubmissionResource)
+admin.site.register(InOtherWordsSubmission,InOtherWordsSubmissionResource)
 admin.site.register(DebubularyRegistration,DebubularyRegistrationResource)
 admin.site.register(CryptothlonRegistration,CryptothlonRegistrationResource)
 admin.site.register(CryptothlonPrelim,CryptothlonPrelimResource)
