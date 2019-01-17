@@ -982,7 +982,7 @@ class InOtherWordsSubmission(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     IOW_LEVEL_CHOICES=(
-        (1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10'),(11,'1'),(12,'2'),(13,'3'),(14,'4'),(15,'5'),
+        (1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10'),(11,'11'),(12,'12'),(13,'13'),(14,'14'),(15,'15'),
     )
     level = models.IntegerField(default=1, choices=IOW_LEVEL_CHOICES, blank=False, null=False)
     def filePathGenerate(instance,filename):
