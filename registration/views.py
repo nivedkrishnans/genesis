@@ -48,6 +48,7 @@ def inotherwordssubmissionredirect(request):
 def registration_index(request):
     # campusAmbassador is not an event
     campusAmbassadorEvent = AdminEvent.objects.filter(title='Campus Ambassadors').first()
+    iowsubmissionevent = AdminEvent.objects.filter(title='iowlive').first()
     #accomodationRegistration=AdminEvent.objects.filter(title='Accomodation').first()
 
     #distionary of events and their models
@@ -90,6 +91,12 @@ def registration_index(request):
     openedEvents = list(AdminEvent.objects.filter(registrationStatus='opened').order_by('-priority'))
     closedEvents = list(AdminEvent.objects.filter(registrationStatus='closed').order_by('-priority'))
     notyetEvents = list(AdminEvent.objects.filter(registrationStatus='notyet').order_by('-priority'))
+
+
+    #removing iow submission from registered events string
+    if iowsubmissionevent in openedEvents :openedEvents.remove(iowsubmissionevent)
+    if iowsubmissionevent in closedEvents :closedEvents.remove(iowsubmissionevent)
+    if iowsubmissionevent in notyetEvents :notyetEvents.remove(iowsubmissionevent)
 
     #RemovingAccomodation
     #openedEvents.remove(accomodationRegistration)
