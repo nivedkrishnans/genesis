@@ -95,6 +95,9 @@ def chemisticon(request):
 def interschool(request):
 	return render(request, 'essentials/interschool.html', {})
 
+def airbus_aeromodellinginitiative(request):
+	return render(request, 'essentials/airbus_aeromodellinginitiative.html', {})
+
 def whodunnit(request):
 	return render(request, 'essentials/whodunnit.html', {})
 

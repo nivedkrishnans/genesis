@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/hamburger.css'%}">
+    <link rel="icon" href="{%static 'img/logo-gold.gif'%}">
+
+    <title>Airbus Aeromodelling Initiative | Pravega 2019, IISc Bangalore</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Overlock+SC|Fira+Sans+Condensed:400,400i,600,600i" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/eventdetails.css'%}">
+	    <link rel="stylesheet" href="{%static 'css/eventstyle.css'%}">
+	<link rel="stylesheet" href="{%static 'css/onepage-scroll.css'%}" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" rel="text/javascript" ></script>
+	<script src="{%static 'js/jquery.onepage-scroll.js'%}" rel="text/javascript" ></script>
+{% endblock %}
+
+{% block content %}
+
+<div id="main" class="main" >
+		<section style="background-color:rgba(8,8,8,0.5);">
+		<div class="slide first">
+
+        <div class="heading">Airbus Aeromodelling Initiative</div>
+        <div class="horizontal-line"></div>
+        <div class="main-section">
+            <p>
+                It’s an honour for Pravega to host the Aero-modelling initiative in association with our Title Sponsor Airbus. Because science should not be exclusive, this is a joint venture to introduce underprivileged primary school students to the wonder of Aero-modelling, Planes✈ and the science of things that fly. Launched in 2018, it's a fun, interactive session taught by Airbus employees to kindle the flame of science in these kids.
+
+            </p>
+        </div>
+
+		</div>
+		</section >
+
+
+		<section  style="background-color:rgba(8,8,8,0.5);">
+
+		<!--The id "last" is imoprtant to handle the footer during reizes-->
+		<div class="slide" id="last">
+        <div class="main-section">
+            <div class="section-heading">Any Questions?</div>
+            <div class="horizontal-line"></div>
+               <p>
+                  Contact our Event Coordinator, Sidharth Soundararajan (sidharths@iisc.ac.in) .
+                </p>
+                <p>
+                    <!--write email id here-->
+                </p>
+        </div>
+		</div>
+		<div id="footer-id">
+
+{% endblock %}
+
+{%block postfooter %}
+		</div>
+		</section>
+</div>
+<script src="{%static 'js/slideScroll.js'%}"></script>
+<script src="{%static 'js/navBar.js'%}"> </script>
+{%endblock %}

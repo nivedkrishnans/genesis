@@ -35,6 +35,7 @@ urlpatterns = [
 	url(r'^BASE_science_quizzine/$', views.scienceQuizzine , name="scienceQuizzine"),
 	url(r'^indian_film_project/$', views.ifp , name="ifp"),
 	url(r'^whodunnit/$', views.whodunnit , name="whodunnit"),
+	url(r'^airbus_aeromodellinginitiative/$', views.airbus_aeromodellinginitiative , name="airbus_aeromodellinginitiative"),
 	url(r'^integrationbee/$', views.integrationbee , name="integrationbee"),
 	url(r'^sandhi/$', views.sandhi , name="sandhi"),
 	url(r'^inotherwords/$', originals.views.InOtherWords , name="inotherwords"),
