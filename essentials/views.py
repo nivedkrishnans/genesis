@@ -34,7 +34,8 @@ def events(request):
 	return render(request, 'essentials/events_v2.html', {})
 
 def contact(request):
-	return render(request, 'essentials/contact.html', {})
+	#return render(request, 'essentials/contact.html', {})
+	return render(request, 'essentials/team.html', {})
 
 def register(request):
 	return render(request, 'essentials/register.html', {})
