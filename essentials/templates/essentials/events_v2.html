@@ -22,13 +22,15 @@
 
     <title>Events | Pravega 2019, IISc Bangalore</title>
     <link href="https://fonts.googleapis.com/css?family=Overlock+SC|Voces|Cinzel+Decorative:400,700|Coda|Salsa" rel="stylesheet">
-    <link rel="stylesheet" href="{%static 'css/events_v2_2.css'%}">
+    <link rel="stylesheet" href="{%static 'css/events_v2_3.css'%}">
 
 
 {% endblock %}
 
 {% block content %}
   <div class="main">
+    <div class="schedule"><p>See full schedule <a style="color:white; text-decoration:underline;" target="_blank" href="{% static 'docs/Pravega_2019_Schedule.pdf' %}">here</a>.</p></div>
+
     <div id="categories">
       <section class="main-category" id="category1">
         <div class="category-display">
@@ -336,6 +338,7 @@
     </div>
 
   </div>
+
   <script src="{%static 'js/navBar.js'%}"> </script>
   <script>
     var category1 = $("#category1");
