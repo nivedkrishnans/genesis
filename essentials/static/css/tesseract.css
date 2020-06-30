@@ -1,0 +1,161 @@
+html{
+    padding: 0;
+    margin: 0;
+}
+
+
+#main{
+    background-color: black;
+    box-sizing: border-box;
+    width: 100%;
+    height:100%;
+    padding:30vh 0px 0px 0px;
+    margin:0px;
+}
+
+#navBar{
+    display: none;
+}
+
+.band_name{
+    height:100px;
+    width:90%;
+    margin:20vh 5% 0 5%;
+    background-image:url(../img/tesseract/tesseract.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateY(-300%);
+}
+
+.foreground{
+    border:0px;
+    padding: 0px;
+    background-color:black;
+    width:100%;
+    height: 100%;
+}
+
+.band_logo{
+    z-index: 1;
+    position: relative;
+    height:200px;
+    width:200px;
+    opacity: 0.1;
+    margin: 0px auto;
+    background-size:contain;
+    background-image: url(../img/tesseract/tess_band_logo.png);
+}
+
+
+.band_page{
+    height:100vh;
+    width:100%;
+    background-image: url(../img/tesseract/tesseract_bg2.png);
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position: bottom;
+}
+
+.band_description{
+    position: relative;
+    top:30%;
+    width:80%;
+    margin:auto;
+    text-align: center;
+    font-size:18px;
+    color:white;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.book_btn{
+    color:white;
+    text-align: center;
+    margin: auto;
+    width:30%;
+    height:30px;
+    line-height: 30px;
+    font-size:15px;
+    border: 1px #dddddd solid;
+    transform: translateY(-600%);
+}
+
+.book_btn:hover{
+    background-color:white;
+    color:black;
+}
+
+.description_container{
+    background-image: url(../img/tesseract/tess-band.png);
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    padding:0px;
+    box-sizing: border-box;
+    height:100vh;
+    background-color:black;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.description_text{
+    position: relative;
+    top:50%;
+    transform: translateY(-50%);
+    width:80%;
+    margin:auto;
+    font-size:18px;
+    text-align: center;
+}
+
+@media (min-width:760px) {
+    #main{
+        padding: 200px 0px 0px 0px;
+    }
+    
+    .band_name{
+        width:80%;
+        transform: translateY(-250%);
+        margin:0px 10% 0 10%;
+    }
+    
+    .band_logo{
+        height:400px;
+        width:400px;
+    }
+    
+    .book_btn{
+        width:200px;
+        height:40px;
+        font-size: 20px;
+        line-height: 40px;
+        transform: translateY(-200%);
+    }
+    
+    .description_text{
+        font-size: 30px;
+    }
+    
+    .band_description{
+        font-size:30px;
+    }
+    
+    .foreground{
+        height:90vh;
+    }
+    
+    .description_container{
+        background-size:50%;
+    }
+}
+
+@media (min-width: 992px) {
+    #main{
+        padding: 200px 0px 0px 0px;
+    }
+}
+
+@media (min-width: 1800px) {
+    #main{
+        padding: 250px 0px 0px 0px;
+    }
+}
